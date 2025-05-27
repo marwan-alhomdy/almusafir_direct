@@ -1,0 +1,444 @@
+import 'image.dart';
+
+class Datum {
+  int? id;
+  String? code;
+  String? refType;
+  String? name;
+  String? color;
+  String? description;
+  String? companysId;
+  String? departmentsId;
+  int? isRequiredCart;
+  int? isCheckMinCartTotal;
+  int? isCheckMaxCartTotal;
+  int? isMultiShopInCart;
+  int? isFreeShopShipping;
+  int? isFirstOrderFree;
+  int? isFirstOrderShopFree;
+  int? isAllowExpectedCartTotal;
+  int? isRequiredExpectedCartTotal;
+  int? isAllowNewItemCart;
+  int? isExtentOfDelivery;
+  int? isDefaultShopId;
+  int? isCheckAppOpen;
+  int? isRequiredShopId;
+  int? isCheckShopOpen;
+  int? isAllowVehicleType;
+  int? isRequiredVehicleType;
+  String? defaultVehicleType;
+  int? isAllowLoadType;
+  int? isRequiredLoadType;
+  String? defaultLoadType;
+  int? isAllowLoadPeople;
+  int? isRequiredLoadPeople;
+  int? defaultLoadPeople;
+  int? isAllowCustomerNotes;
+  int? isRequiredCustomerNotes;
+  int? isAllowCancel;
+  String? allowTimeCancel;
+  int? isAllowBecauseCancel;
+  int? isRequiredBecauseCancel;
+  int? isAllowLoadNotes;
+  int? isRequiredLoadNotes;
+  int? isLoadLiter;
+  int? isAllowWeight;
+  int? isRequiredWeight;
+  int? isAllowLength;
+  int? isRequiredLength;
+  int? isAllowWidth;
+  int? isRequiredWidth;
+  int? isAllowHeight;
+  int? isRequiredHeight;
+  int? isAllowLoadStorageSensitive;
+  int? isRequiredLoadStorageSensitive;
+  int? defaultLoadStorageSensitive;
+  int? isAllowLoadFragileMaterials;
+  int? isRequiredLoadFragileMaterials;
+  int? defaultLoadFragileMaterials;
+  int? isBrokerage;
+  String? brokerageRate;
+  int? isAllowShiping;
+  int? isRequiredShiping;
+  int? isCalcExpectedShiping;
+  int? isAllowCoupon;
+  int? isAllowCouponShiping;
+  int? isAllowTip;
+  int? isAllowDouble;
+  int? doubleCheckMatchItemsOrder;
+  int? doubleCheckMatchSubtotalItemsOrder;
+  int? doubleCheckMatchCouponOrder;
+  int? doubleCheckMatchCouponShiping;
+  int? doubleCheckMatchTipOrder;
+  int? doubleCheckMatchShipingOrder;
+  int? isAllowOfflinePaymenet;
+  int? isAllowImage;
+  int? isAllowFromAddress;
+  int? isRequiredFromAddress;
+  int? isAllowShippingAddress;
+  int? isRequiredShippingAddress;
+  int? isAllowBillingAddress;
+  int? isRequiredBillingAddress;
+  int? isRequiredImage;
+  int? isAllowListRequests;
+  int? isPublicDeliverys;
+  int? isPrivateDeliverys;
+  int? isAppDeliverys;
+  int? isUseCustomers;
+  int? isUseManageShop;
+  int? isDefault;
+  int? isHidden;
+  int? isActive;
+  int? isSoon;
+  String? status;
+  dynamic otherData;
+  dynamic configData;
+  String? flag;
+  int? sortOrder;
+  String? createdBy;
+  String? updatedBy;
+  String? deletedBy;
+  String? createdAt;
+  String? updatedAt;
+  String? deletedAt;
+  Image? image;
+  List<dynamic>? images;
+  List<dynamic>? files;
+  String? objectType;
+
+  Datum({
+    this.id,
+    this.code,
+    this.refType,
+    this.name,
+    this.color,
+    this.description,
+    this.companysId,
+    this.departmentsId,
+    this.isRequiredCart,
+    this.isCheckMinCartTotal,
+    this.isCheckMaxCartTotal,
+    this.isMultiShopInCart,
+    this.isFreeShopShipping,
+    this.isFirstOrderFree,
+    this.isFirstOrderShopFree,
+    this.isAllowExpectedCartTotal,
+    this.isRequiredExpectedCartTotal,
+    this.isAllowNewItemCart,
+    this.isExtentOfDelivery,
+    this.isDefaultShopId,
+    this.isCheckAppOpen,
+    this.isRequiredShopId,
+    this.isCheckShopOpen,
+    this.isAllowVehicleType,
+    this.isRequiredVehicleType,
+    this.defaultVehicleType,
+    this.isAllowLoadType,
+    this.isRequiredLoadType,
+    this.defaultLoadType,
+    this.isAllowLoadPeople,
+    this.isRequiredLoadPeople,
+    this.defaultLoadPeople,
+    this.isAllowCustomerNotes,
+    this.isRequiredCustomerNotes,
+    this.isAllowCancel,
+    this.allowTimeCancel,
+    this.isAllowBecauseCancel,
+    this.isRequiredBecauseCancel,
+    this.isAllowLoadNotes,
+    this.isRequiredLoadNotes,
+    this.isLoadLiter,
+    this.isAllowWeight,
+    this.isRequiredWeight,
+    this.isAllowLength,
+    this.isRequiredLength,
+    this.isAllowWidth,
+    this.isRequiredWidth,
+    this.isAllowHeight,
+    this.isRequiredHeight,
+    this.isAllowLoadStorageSensitive,
+    this.isRequiredLoadStorageSensitive,
+    this.defaultLoadStorageSensitive,
+    this.isAllowLoadFragileMaterials,
+    this.isRequiredLoadFragileMaterials,
+    this.defaultLoadFragileMaterials,
+    this.isBrokerage,
+    this.brokerageRate,
+    this.isAllowShiping,
+    this.isRequiredShiping,
+    this.isCalcExpectedShiping,
+    this.isAllowCoupon,
+    this.isAllowCouponShiping,
+    this.isAllowTip,
+    this.isAllowDouble,
+    this.doubleCheckMatchItemsOrder,
+    this.doubleCheckMatchSubtotalItemsOrder,
+    this.doubleCheckMatchCouponOrder,
+    this.doubleCheckMatchCouponShiping,
+    this.doubleCheckMatchTipOrder,
+    this.doubleCheckMatchShipingOrder,
+    this.isAllowOfflinePaymenet,
+    this.isAllowImage,
+    this.isAllowFromAddress,
+    this.isRequiredFromAddress,
+    this.isAllowShippingAddress,
+    this.isRequiredShippingAddress,
+    this.isAllowBillingAddress,
+    this.isRequiredBillingAddress,
+    this.isRequiredImage,
+    this.isAllowListRequests,
+    this.isPublicDeliverys,
+    this.isPrivateDeliverys,
+    this.isAppDeliverys,
+    this.isUseCustomers,
+    this.isUseManageShop,
+    this.isDefault,
+    this.isHidden,
+    this.isActive,
+    this.isSoon,
+    this.status,
+    this.otherData,
+    this.configData,
+    this.flag,
+    this.sortOrder,
+    this.createdBy,
+    this.updatedBy,
+    this.deletedBy,
+    this.createdAt,
+    this.updatedAt,
+    this.deletedAt,
+    this.image,
+    this.images,
+    this.files,
+    this.objectType,
+  });
+
+  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+        id: json['id'] as int?,
+        code: json['code'] as String?,
+        refType: json['ref_type'] as String?,
+        name: json['name'] as String?,
+        color: json['color'] as String?,
+        description: json['description'] as String?,
+        companysId: json['companys_id'] as String?,
+        departmentsId: json['departments_id'] as String?,
+        isRequiredCart: json['is_required_cart'] as int?,
+        isCheckMinCartTotal: json['is_check_min_cart_total'] as int?,
+        isCheckMaxCartTotal: json['is_check_max_cart_total'] as int?,
+        isMultiShopInCart: json['is_multi_shop_in_cart'] as int?,
+        isFreeShopShipping: json['is_free_shop_shipping'] as int?,
+        isFirstOrderFree: json['is_first_order_free'] as int?,
+        isFirstOrderShopFree: json['is_first_order_shop_free'] as int?,
+        isAllowExpectedCartTotal: json['is_allow_expected_cart_total'] as int?,
+        isRequiredExpectedCartTotal:
+            json['is_required_expected_cart_total'] as int?,
+        isAllowNewItemCart: json['is_allow_new_item_cart'] as int?,
+        isExtentOfDelivery: json['is_extent_of_delivery'] as int?,
+        isDefaultShopId: json['is_default_shop_id'] as int?,
+        isCheckAppOpen: json['is_check_app_open'] as int?,
+        isRequiredShopId: json['is_required_shop_id'] as int?,
+        isCheckShopOpen: json['is_check_shop_open'] as int?,
+        isAllowVehicleType: json['is_allow_vehicle_type'] as int?,
+        isRequiredVehicleType: json['is_required_vehicle_type'] as int?,
+        defaultVehicleType: json['default_vehicle_type'] as String?,
+        isAllowLoadType: json['is_allow_load_type'] as int?,
+        isRequiredLoadType: json['is_required_load_type'] as int?,
+        defaultLoadType: json['default_load_type'] as String?,
+        isAllowLoadPeople: json['is_allow_load_people'] as int?,
+        isRequiredLoadPeople: json['is_required_load_people'] as int?,
+        defaultLoadPeople: json['default_load_people'] as int?,
+        isAllowCustomerNotes: json['is_allow_customer_notes'] as int?,
+        isRequiredCustomerNotes: json['is_required_customer_notes'] as int?,
+        isAllowCancel: json['is_allow_cancel'] as int?,
+        allowTimeCancel: json['allow_time_cancel'] as String?,
+        isAllowBecauseCancel: json['is_allow_because_cancel'] as int?,
+        isRequiredBecauseCancel: json['is_required_because_cancel'] as int?,
+        isAllowLoadNotes: json['is_allow_load_notes'] as int?,
+        isRequiredLoadNotes: json['is_required_load_notes'] as int?,
+        isLoadLiter: json['is_load_liter'] as int?,
+        isAllowWeight: json['is_allow_weight'] as int?,
+        isRequiredWeight: json['is_required_weight'] as int?,
+        isAllowLength: json['is_allow_length'] as int?,
+        isRequiredLength: json['is_required_length'] as int?,
+        isAllowWidth: json['is_allow_width'] as int?,
+        isRequiredWidth: json['is_required_width'] as int?,
+        isAllowHeight: json['is_allow_height'] as int?,
+        isRequiredHeight: json['is_required_height'] as int?,
+        isAllowLoadStorageSensitive:
+            json['is_allow_load_storage_sensitive'] as int?,
+        isRequiredLoadStorageSensitive:
+            json['is_required_load_storage_sensitive'] as int?,
+        defaultLoadStorageSensitive:
+            json['default_load_storage_sensitive'] as int?,
+        isAllowLoadFragileMaterials:
+            json['is_allow_load_fragile_materials'] as int?,
+        isRequiredLoadFragileMaterials:
+            json['is_required_load_fragile_materials'] as int?,
+        defaultLoadFragileMaterials:
+            json['default_load_fragile_materials'] as int?,
+        isBrokerage: json['is_brokerage'] as int?,
+        brokerageRate: json['brokerage_rate'] as String?,
+        isAllowShiping: json['is_allow_shiping'] as int?,
+        isRequiredShiping: json['is_required_shiping'] as int?,
+        isCalcExpectedShiping: json['is_calc_expected_shiping'] as int?,
+        isAllowCoupon: json['is_allow_coupon'] as int?,
+        isAllowCouponShiping: json['is_allow_coupon_shiping'] as int?,
+        isAllowTip: json['is_allow_tip'] as int?,
+        isAllowDouble: json['is_allow_double'] as int?,
+        doubleCheckMatchItemsOrder:
+            json['double_check_match_items_order'] as int?,
+        doubleCheckMatchSubtotalItemsOrder:
+            json['double_check_match_subtotal_items_order'] as int?,
+        doubleCheckMatchCouponOrder:
+            json['double_check_match_coupon_order'] as int?,
+        doubleCheckMatchCouponShiping:
+            json['double_check_match_coupon_shiping'] as int?,
+        doubleCheckMatchTipOrder: json['double_check_match_tip_order'] as int?,
+        doubleCheckMatchShipingOrder:
+            json['double_check_match_shiping_order'] as int?,
+        isAllowOfflinePaymenet: json['is_allow_offline_paymenet'] as int?,
+        isAllowImage: json['is_allow_image'] as int?,
+        isAllowFromAddress: json['is_allow_from_address'] as int?,
+        isRequiredFromAddress: json['is_required_from_address'] as int?,
+        isAllowShippingAddress: json['is_allow_shipping_address'] as int?,
+        isRequiredShippingAddress: json['is_required_shipping_address'] as int?,
+        isAllowBillingAddress: json['is_allow_billing_address'] as int?,
+        isRequiredBillingAddress: json['is_required_billing_address'] as int?,
+        isRequiredImage: json['is_required_image'] as int?,
+        isAllowListRequests: json['is_allow_list_requests'] as int?,
+        isPublicDeliverys: json['is_public_deliverys'] as int?,
+        isPrivateDeliverys: json['is_private_deliverys'] as int?,
+        isAppDeliverys: json['is_app_deliverys'] as int?,
+        isUseCustomers: json['is_use_customers'] as int?,
+        isUseManageShop: json['is_use_manage_shop'] as int?,
+        isDefault: json['is_default'] as int?,
+        isHidden: json['is_hidden'] as int?,
+        isActive: json['is_active'] as int?,
+        isSoon: json['is_soon'] as int?,
+        status: json['status'] as String?,
+        otherData: json['other_data'] as dynamic,
+        configData: json['config_data'] as dynamic,
+        flag: json['flag'] as String?,
+        sortOrder: json['sort_order'] as int?,
+        createdBy: json['created_by'] as String?,
+        updatedBy: json['updated_by'] as String?,
+        deletedBy: json['deleted_by'] as String?,
+        createdAt: json['created_at'] as String?,
+        updatedAt: json['updated_at'] as String?,
+        deletedAt: json['deleted_at'] as String?,
+        image: json['image'] == null
+            ? null
+            : Image.fromJson(json['image'] as Map<String, dynamic>),
+        images: json['images'] as List<dynamic>?,
+        files: json['files'] as List<dynamic>?,
+        objectType: json['object_type'] as String?,
+      );
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'code': code,
+        'ref_type': refType,
+        'name': name,
+        'color': color,
+        'description': description,
+        'companys_id': companysId,
+        'departments_id': departmentsId,
+        'is_required_cart': isRequiredCart,
+        'is_check_min_cart_total': isCheckMinCartTotal,
+        'is_check_max_cart_total': isCheckMaxCartTotal,
+        'is_multi_shop_in_cart': isMultiShopInCart,
+        'is_free_shop_shipping': isFreeShopShipping,
+        'is_first_order_free': isFirstOrderFree,
+        'is_first_order_shop_free': isFirstOrderShopFree,
+        'is_allow_expected_cart_total': isAllowExpectedCartTotal,
+        'is_required_expected_cart_total': isRequiredExpectedCartTotal,
+        'is_allow_new_item_cart': isAllowNewItemCart,
+        'is_extent_of_delivery': isExtentOfDelivery,
+        'is_default_shop_id': isDefaultShopId,
+        'is_check_app_open': isCheckAppOpen,
+        'is_required_shop_id': isRequiredShopId,
+        'is_check_shop_open': isCheckShopOpen,
+        'is_allow_vehicle_type': isAllowVehicleType,
+        'is_required_vehicle_type': isRequiredVehicleType,
+        'default_vehicle_type': defaultVehicleType,
+        'is_allow_load_type': isAllowLoadType,
+        'is_required_load_type': isRequiredLoadType,
+        'default_load_type': defaultLoadType,
+        'is_allow_load_people': isAllowLoadPeople,
+        'is_required_load_people': isRequiredLoadPeople,
+        'default_load_people': defaultLoadPeople,
+        'is_allow_customer_notes': isAllowCustomerNotes,
+        'is_required_customer_notes': isRequiredCustomerNotes,
+        'is_allow_cancel': isAllowCancel,
+        'allow_time_cancel': allowTimeCancel,
+        'is_allow_because_cancel': isAllowBecauseCancel,
+        'is_required_because_cancel': isRequiredBecauseCancel,
+        'is_allow_load_notes': isAllowLoadNotes,
+        'is_required_load_notes': isRequiredLoadNotes,
+        'is_load_liter': isLoadLiter,
+        'is_allow_weight': isAllowWeight,
+        'is_required_weight': isRequiredWeight,
+        'is_allow_length': isAllowLength,
+        'is_required_length': isRequiredLength,
+        'is_allow_width': isAllowWidth,
+        'is_required_width': isRequiredWidth,
+        'is_allow_height': isAllowHeight,
+        'is_required_height': isRequiredHeight,
+        'is_allow_load_storage_sensitive': isAllowLoadStorageSensitive,
+        'is_required_load_storage_sensitive': isRequiredLoadStorageSensitive,
+        'default_load_storage_sensitive': defaultLoadStorageSensitive,
+        'is_allow_load_fragile_materials': isAllowLoadFragileMaterials,
+        'is_required_load_fragile_materials': isRequiredLoadFragileMaterials,
+        'default_load_fragile_materials': defaultLoadFragileMaterials,
+        'is_brokerage': isBrokerage,
+        'brokerage_rate': brokerageRate,
+        'is_allow_shiping': isAllowShiping,
+        'is_required_shiping': isRequiredShiping,
+        'is_calc_expected_shiping': isCalcExpectedShiping,
+        'is_allow_coupon': isAllowCoupon,
+        'is_allow_coupon_shiping': isAllowCouponShiping,
+        'is_allow_tip': isAllowTip,
+        'is_allow_double': isAllowDouble,
+        'double_check_match_items_order': doubleCheckMatchItemsOrder,
+        'double_check_match_subtotal_items_order':
+            doubleCheckMatchSubtotalItemsOrder,
+        'double_check_match_coupon_order': doubleCheckMatchCouponOrder,
+        'double_check_match_coupon_shiping': doubleCheckMatchCouponShiping,
+        'double_check_match_tip_order': doubleCheckMatchTipOrder,
+        'double_check_match_shiping_order': doubleCheckMatchShipingOrder,
+        'is_allow_offline_paymenet': isAllowOfflinePaymenet,
+        'is_allow_image': isAllowImage,
+        'is_allow_from_address': isAllowFromAddress,
+        'is_required_from_address': isRequiredFromAddress,
+        'is_allow_shipping_address': isAllowShippingAddress,
+        'is_required_shipping_address': isRequiredShippingAddress,
+        'is_allow_billing_address': isAllowBillingAddress,
+        'is_required_billing_address': isRequiredBillingAddress,
+        'is_required_image': isRequiredImage,
+        'is_allow_list_requests': isAllowListRequests,
+        'is_public_deliverys': isPublicDeliverys,
+        'is_private_deliverys': isPrivateDeliverys,
+        'is_app_deliverys': isAppDeliverys,
+        'is_use_customers': isUseCustomers,
+        'is_use_manage_shop': isUseManageShop,
+        'is_default': isDefault,
+        'is_hidden': isHidden,
+        'is_active': isActive,
+        'is_soon': isSoon,
+        'status': status,
+        'other_data': otherData,
+        'config_data': configData,
+        'flag': flag,
+        'sort_order': sortOrder,
+        'created_by': createdBy,
+        'updated_by': updatedBy,
+        'deleted_by': deletedBy,
+        'created_at': createdAt,
+        'updated_at': updatedAt,
+        'deleted_at': deletedAt,
+        'image': image?.toJson(),
+        'images': images,
+        'files': files,
+        'object_type': objectType,
+      };
+}

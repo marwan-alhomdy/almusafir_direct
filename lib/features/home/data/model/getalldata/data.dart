@@ -1,17 +1,17 @@
-import 'adverts.dart';
-import 'current_user.dart';
-import 'department.dart';
-import 'orderstypes.dart';
-import 'settings.dart';
+import '../adverts/adverts.dart';
+import '../current_user/current_user.dart';
+import '../department/department.dart';
+import '../orderstypes/orderstypes.dart';
+import '../settings/settings.dart';
 
-class Data {
+class DataAllData {
   Settings? settings;
   CurrentUser? currentUser;
   Department? department;
   Adverts? adverts;
   Orderstypes? orderstypes;
 
-  Data({
+  DataAllData({
     this.settings,
     this.currentUser,
     this.department,
@@ -19,7 +19,7 @@ class Data {
     this.orderstypes,
   });
 
-  factory Data.fromJson(Map<String, dynamic> json) => Data(
+  factory DataAllData.fromJson(Map<String, dynamic> json) => DataAllData(
         settings: json['settings'] == null
             ? null
             : Settings.fromJson(json['settings'] as Map<String, dynamic>),

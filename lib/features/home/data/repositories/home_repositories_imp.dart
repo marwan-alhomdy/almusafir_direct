@@ -34,9 +34,11 @@ class HomeRepostitoryImp extends HomeRepostitory {
         return Left(ServerFailure(e.toString()));
       }
     } else {
+      print("===========22222=============");
+
       try {
-        final setting = await localDataSource.getAllDataCached();
-        return Right(setting);
+        final local = await localDataSource.getAllDataCached();
+        return Right(local);
       } on EmptyCacheException {
         return Left(EmtyCacheFailure());
       } catch (e) {

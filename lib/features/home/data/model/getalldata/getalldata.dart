@@ -6,7 +6,7 @@ class Getalldata {
   String? message;
   dynamic error;
   dynamic errors;
-  Data? data;
+  DataAllData? data;
 
   Getalldata({
     this.code,
@@ -25,7 +25,7 @@ class Getalldata {
         errors: json['errors'] as dynamic,
         data: json['data'] == null
             ? null
-            : Data.fromJson(json['data'] as Map<String, dynamic>),
+            : DataAllData.fromJson(json['data'] as Map<String, dynamic>),
       );
 
   Map<String, dynamic> toJson() => {

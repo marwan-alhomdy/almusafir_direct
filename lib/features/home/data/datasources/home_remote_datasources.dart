@@ -14,6 +14,7 @@ class HomeRemoteDataSourceImplWithDio extends HomeRemoteDataSource {
     final response = await apiService.get(
       endPoint: "v1/data/all?exclude_item=tags_types,menus,categories,products",
     );
+    print(response);
     return Getalldata.fromJson(response);
   }
 }

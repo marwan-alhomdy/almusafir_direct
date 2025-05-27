@@ -1,7 +1,7 @@
 // ignore_for_file: constant_identifier_names
-const BASE_URL = 'https://api.thebwash.com/api/';
+const BASE_URL = 'https://account.now-ye.com/api/';
 
-const SOCKET_URL = 'https://api.thebwash.com/api/';
+const SOCKET_URL = 'https://account.now-ye.com/api/';
 
 const GOOGLE_API_KEY = "";
 

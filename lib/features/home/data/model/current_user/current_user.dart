@@ -1,10 +1,12 @@
+import 'data.dart';
+
 class CurrentUser {
   bool? status;
   String? name;
   String? message;
   dynamic error;
   dynamic errors;
-  List<dynamic>? data;
+  Data? data;
 
   CurrentUser({
     this.status,
@@ -21,7 +23,9 @@ class CurrentUser {
         message: json['message'] as String?,
         error: json['error'] as dynamic,
         errors: json['errors'] as dynamic,
-        data: json['data'] as List<dynamic>?,
+        data: json['data'] == null
+            ? null
+            : Data.fromJson(json['data'] as Map<String, dynamic>),
       );
 
   Map<String, dynamic> toJson() => {
@@ -30,6 +34,6 @@ class CurrentUser {
         'message': message,
         'error': error,
         'errors': errors,
-        'data': data,
+        'data': data?.toJson(),
       };
 }
