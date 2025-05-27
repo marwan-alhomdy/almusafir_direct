@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 
 import '../../../../core/data/models/cloudflare.module.dart';
 import '../../../../core/error/exception.dart';
@@ -26,9 +27,11 @@ class ProfileRepostitoryImpl extends ProfileRepostitory {
             await profileRemoteDataSource.updateUserProfile(data: data);
         return Right(remotePosts);
       } on ServerExecption catch (e) {
-        return Left(ServerFailure(e.message.toString()));
+        return Left(ServerFailure(e.message ?? ""));
+      } on DioException catch (e) {
+        return Left(DioFailure.fromDiorError(e));
       } catch (e) {
-        return Left(ServerFailure());
+        return Left(ServerFailure(e.toString()));
       }
     } else {
       return Left(OfflineFailure());
@@ -47,9 +50,11 @@ class ProfileRepostitoryImpl extends ProfileRepostitory {
                 newImage: newImage, currentImage: currentImage, mobile: mobile);
         return Right(remoteUrlImage);
       } on ServerExecption catch (e) {
-        return Left(ServerFailure(e.message.toString()));
+        return Left(ServerFailure(e.message ?? ""));
+      } on DioException catch (e) {
+        return Left(DioFailure.fromDiorError(e));
       } catch (e) {
-        return Left(ServerFailure());
+        return Left(ServerFailure(e.toString()));
       }
     } else {
       return Left(OfflineFailure());
@@ -63,9 +68,11 @@ class ProfileRepostitoryImpl extends ProfileRepostitory {
         final remotePosts = await profileRemoteDataSource.logout();
         return Right(remotePosts);
       } on ServerExecption catch (e) {
-        return Left(ServerFailure(e.message.toString()));
+        return Left(ServerFailure(e.message ?? ""));
+      } on DioException catch (e) {
+        return Left(DioFailure.fromDiorError(e));
       } catch (e) {
-        return Left(ServerFailure());
+        return Left(ServerFailure(e.toString()));
       }
     } else {
       return Left(OfflineFailure());
@@ -81,9 +88,11 @@ class ProfileRepostitoryImpl extends ProfileRepostitory {
             await profileRemoteDataSource.changeCodeVehicle(code: code);
         return Right(remotePosts);
       } on ServerExecption catch (e) {
-        return Left(ServerFailure(e.message.toString()));
+        return Left(ServerFailure(e.message ?? ""));
+      } on DioException catch (e) {
+        return Left(DioFailure.fromDiorError(e));
       } catch (e) {
-        return Left(ServerFailure());
+        return Left(ServerFailure(e.toString()));
       }
     } else {
       return Left(OfflineFailure());

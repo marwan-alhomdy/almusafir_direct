@@ -4,9 +4,9 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/constants/cached/cached_name.dart';
-import '../../../../../core/data/models/delegate.module.dart';
 import '../../../../../helper/cache_helper.dart';
 import '../../../../../helper/public_infromation.dart';
+import '../../../data/model/getalldata/getalldata.dart';
 import '../../../domain/usecases/get_all_data_uescases.dart';
 
 part 'home_event.dart';
@@ -24,14 +24,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     final failureOrSuccess = await fetchAllData();
     failureOrSuccess.fold(
         (failuer) => emit(ErrorFetchAllDataState(message: failuer.message)),
-        (delegate) {
-      emit(FetchAllDataSuccessfullyState(delegate: delegate));
-      _fetchAllDataSuccessfully(delegate);
+        (data) {
+      emit(FetchAllDataSuccessfullyState(data: data));
+      _fetchAllDataSuccessfully(data);
     });
   }
 
-  void _fetchAllDataSuccessfully(DelegateModule delegate) {
-    CacheHelper.setString(CachedAppKey.deleagete, json.encode(delegate));
-    Helper.delegate = delegate;
+  void _fetchAllDataSuccessfully(Getalldata data) {
+    CacheHelper.setString(CachedAppKey.dataApp, json.encode(data));
+    Helper.dataApp = data;
   }
 }

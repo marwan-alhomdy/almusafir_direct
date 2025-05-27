@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/constants/cached/cached_name.dart';
-import '../../../../core/data/models/delegate.module.dart';
 import '../../../../core/utils/resource/images.dart';
 import '../../../../core/utils/resource/size_config.dart';
 import '../../../../helper/cache_helper.dart';
 import '../../../../helper/public_infromation.dart';
 import '../../../auth/persention/view/auth_view.dart';
+import '../../../home/data/model/getalldata/getalldata.dart';
 import '../../../home/presentation/view/home_view.dart';
 
 class SplashViewBody extends StatefulWidget {
@@ -51,8 +51,8 @@ class SplashViewBodyState extends State<SplashViewBody>
       if ((CacheHelper.getBool(CachedAppKey.isAuth) ?? false) == false) {
         Get.offAll(() => const AuthintcationView());
       } else {
-        final delegate = CacheHelper.getString(CachedAppKey.deleagete) ?? "";
-        Helper.delegate = DelegateModule.fromJson(json.decode(delegate));
+        final data = CacheHelper.getString(CachedAppKey.dataApp) ?? "";
+        Helper.dataApp = Getalldata.fromJson(json.decode(data));
         Get.offAll(() => const HomeView());
       }
     });

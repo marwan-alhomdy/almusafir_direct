@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 
 import '../../../../core/data/models/user_model.module.dart';
 import '../../../../core/error/exception.dart';
@@ -21,9 +22,11 @@ class AuthRepostitoryImpl extends AuthRepostitory {
             username: username, password: password);
         return Right(remotePosts);
       } on ServerExecption catch (e) {
-        return Left(ServerFailure(e.message.toString()));
+        return Left(ServerFailure(e.message ?? ""));
+      } on DioException catch (e) {
+        return Left(DioFailure.fromDiorError(e));
       } catch (e) {
-        return Left(ServerFailure());
+        return Left(ServerFailure(e.toString()));
       }
     } else {
       return Left(OfflineFailure());
@@ -41,9 +44,11 @@ class AuthRepostitoryImpl extends AuthRepostitory {
             mobile: mobile, otp: otp, fcbTocken: fcbTocken);
         return Right(remotePosts);
       } on ServerExecption catch (e) {
-        return Left(ServerFailure(e.message.toString()));
+        return Left(ServerFailure(e.message ?? ""));
+      } on DioException catch (e) {
+        return Left(DioFailure.fromDiorError(e));
       } catch (e) {
-        return Left(ServerFailure());
+        return Left(ServerFailure(e.toString()));
       }
     } else {
       return Left(OfflineFailure());
@@ -58,10 +63,12 @@ class AuthRepostitoryImpl extends AuthRepostitory {
           mobile: mobile,
         );
         return Right(remotePosts);
-      } on ServerExecption {
-        return Left(ServerFailure());
+      } on ServerExecption catch (e) {
+        return Left(ServerFailure(e.message ?? ""));
+      } on DioException catch (e) {
+        return Left(DioFailure.fromDiorError(e));
       } catch (e) {
-        return Left(ServerFailure());
+        return Left(ServerFailure(e.toString()));
       }
     } else {
       return Left(OfflineFailure());

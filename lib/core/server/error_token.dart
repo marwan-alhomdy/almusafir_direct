@@ -20,7 +20,7 @@ class ErrorTokenAuth {
 
   static void logoutApp() {
     CacheHelper.removeAt(CachedAppKey.isAuth);
-    CacheHelper.removeAt(CachedAppKey.deleagete);
+    CacheHelper.removeAt(CachedAppKey.dataApp);
 
     FirebaseMessaging.instance
         .unsubscribeFromTopic("drivers")

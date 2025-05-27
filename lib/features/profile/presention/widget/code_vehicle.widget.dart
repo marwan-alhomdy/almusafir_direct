@@ -7,8 +7,6 @@ import 'package:get/get.dart';
 import '../../../../core/utils/resource/color_app.dart';
 import '../../../../core/utils/resource/text_style.dart';
 import '../../../../core/widget/field/pinput_widget.dart';
-import '../../../../core/widget/plate/code_plate.widget.dart';
-import '../../../../helper/public_infromation.dart';
 import '../bloc/code_vehicle/code_vehicle_cubit.dart';
 
 class CodeVehicleWidget extends StatelessWidget {
@@ -35,10 +33,6 @@ class CodeVehicleWidget extends StatelessWidget {
                   fontSize: 18,
                   color: AppColors.blackOneColor,
                 ),
-              ),
-              CodePlateWidget(
-                margin: const EdgeInsets.all(20),
-                code: Helper.delegate?.code ?? "",
               ),
               const SizedBox(height: 10),
               Text(

@@ -11,8 +11,8 @@ final class HomeInitial extends HomeState {}
 
 //! Successfully
 class FetchAllDataSuccessfullyState extends HomeState {
-  final DelegateModule delegate;
-  const FetchAllDataSuccessfullyState({required this.delegate});
+  final Getalldata data;
+  const FetchAllDataSuccessfullyState({required this.data});
 }
 
 //! Error

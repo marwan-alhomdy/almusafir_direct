@@ -2,7 +2,7 @@
 
 //!============CAHCHED SHARED PREFERENCES ====
 class CachedAppKey {
-  static const deleagete = "DELEAGETE_CACHED";
+  static const dataApp = "DateApp_CACHED";
   static const authToken = "AUTH_TOKEN";
   static const languageCode = "LANGUAGE_TYPE";
   static const isAuth = "IS_AUTH";

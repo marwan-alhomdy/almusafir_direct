@@ -1,8 +1,8 @@
-import '../../../../core/data/models/delegate.module.dart';
 import '../../../../core/services/api.service.dart';
+import '../model/getalldata/getalldata.dart';
 
 abstract class HomeRemoteDataSource {
-  Future<DelegateModule> fetchAllData();
+  Future<Getalldata> fetchAllData();
 }
 
 class HomeRemoteDataSourceImplWithDio extends HomeRemoteDataSource {
@@ -10,10 +10,10 @@ class HomeRemoteDataSourceImplWithDio extends HomeRemoteDataSource {
   HomeRemoteDataSourceImplWithDio({required this.apiService});
 
   @override
-  Future<DelegateModule> fetchAllData() async {
+  Future<Getalldata> fetchAllData() async {
     final response = await apiService.get(
-      endPoint: "delegate-api/all-data",
+      endPoint: "v1/data/all?exclude_item=tags_types,menus,categories,products",
     );
-    return DelegateModule.fromJson(response);
+    return Getalldata.fromJson(response);
   }
 }

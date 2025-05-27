@@ -9,7 +9,6 @@ import '../../../../core/api/add_fcm_api.dart';
 import '../../../../core/widget/upgrade/upgrade.widget.dart';
 import '../../../booking/presentation/pages/mybooking.view.dart';
 import '../../../chat/presentation/pages/chat.view.dart';
-import '../../../explore/presentation/pages/explore.view.dart';
 import '../../../profile/presention/view/profile.view.dart';
 import '../logic/bloc/home_bloc.dart';
 import '../widget/home.widget.dart';
@@ -43,7 +42,8 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => di.sl<HomeBloc>()),
+        BlocProvider(
+            create: (context) => di.sl<HomeBloc>()..add(FetchAllDataEvent())),
       ],
       child: UpgradeWidget(
         child: Scaffold(
@@ -55,7 +55,7 @@ class _HomeViewState extends State<HomeView> {
               const HomeWidget(),
               const MyBookingView(),
               const ChatView(),
-              const ExploreView(),
+              // const ExploreView(),
               const ProfileVeiw(),
             ][currentIndex]),
       ),

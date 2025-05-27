@@ -1,3 +1,4 @@
+import 'package:almusafir_direct/features/home/presentation/view/home_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,6 @@ import '../core/locale/data_locale_translation.dart';
 import 'core/firebase/firebase_message.dart';
 import 'core/locale/locale_controller.dart';
 import 'core/utils/resource/theme_app.dart';
-import 'features/splash/presentation/splash_view.dart';
 import 'helper/api_helper.dart';
 import 'helper/my_bloc_observer.dart';
 import 'helper/public_infromation.dart';
@@ -55,7 +55,7 @@ class _MyAppState extends State<MyApp> {
         child: child!,
       ),
       debugShowCheckedModeBanner: false,
-      home: const SplashView(),
+      home: const HomeView(),
       locale: localeController.initLocale,
       translations: DataLoacleTranslations(),
       theme: Themes.themeDark,

@@ -33,11 +33,11 @@ class NavigationWidget extends StatelessWidget {
           selectedIcon: Icon(Iconsax.message, color: AppColors.mainOneColor),
           label: 'الرسائل',
         ),
-        NavigationDestination(
-          icon: Icon(Icons.settings_outlined),
-          selectedIcon: Icon(Icons.settings, color: AppColors.mainOneColor),
-          label: 'استكشاف',
-        ),
+        // NavigationDestination(
+        //   icon: Icon(Icons.settings_outlined),
+        //   selectedIcon: Icon(Icons.settings, color: AppColors.mainOneColor),
+        //   label: 'استكشاف',
+        // ),
         NavigationDestination(
           icon: Icon(Iconsax.frame_1_copy),
           selectedIcon: Icon(Iconsax.frame, color: AppColors.mainOneColor),

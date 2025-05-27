@@ -11,7 +11,6 @@ import '../../../../core/widget/appbar/my_appbar.dart';
 import '../../../../core/widget/carousel_slider.widget.dart';
 import '../../../../core/widget/state/error.widget.dart';
 import '../../../../core/widget/state/loading_widget.dart';
-import '../../../../helper/public_infromation.dart';
 import '../../../service_details/presentation/pages/service_details.view.dart';
 import '../../../services/presentation/pages/service.view.dart';
 import '../logic/bloc/home_bloc.dart';
@@ -22,10 +21,8 @@ class HomeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: AppColors.secondaryOneColor,
       appBar: const MyAppBarWithLogo(),
       body: BlocBuilder<HomeBloc, HomeState>(builder: (context, state) {
-        return const _HomeWidget();
         if (state is FetchAllDataSuccessfullyState) {
           return const _HomeWidget();
         } else if (state is ErrorFetchAllDataState) {
@@ -63,7 +60,8 @@ class _HomeWidget extends StatelessWidget {
               children: [
                 const SizedBox(width: double.infinity),
                 Text(
-                  "${"Hello".tr} ${Helper.delegate?.name ?? ""} 👋",
+                  "TODO",
+                  //"${"Hello".tr} ${Helper.dataApp?.data.?currentUsera?? ""} 👋",
                   style: AppTextStyles.getMediumStyle(fontSize: 18),
                 ),
                 Text(
