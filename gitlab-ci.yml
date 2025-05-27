@@ -1,0 +1,33 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  XCODE_PROJECT: "Runner.xcworkspace" # غيّره إلى Xcode project الخاص بك
+  XCODE_SCHEME: "Runner"
+  EXPORT_OPTIONS_PLIST: "ios/exportOptions.plist"
+
+before_script:
+  - gem install fastlane  # تثبيت Fastlane
+  - fastlane --version    # التحقق من التثبيت
+
+build_ios:
+  stage: build
+  tags:
+    - ios
+  script:
+    - fastlane gym --workspace "$XCODE_PROJECT" --scheme "$XCODE_SCHEME" --export_options "$EXPORT_OPTIONS_PLIST"
+  artifacts:
+    paths:
+      - build/ios/output/*.ipa
+
+deploy_firebase:
+  stage: deploy
+  tags:
+    - ios
+  script:
+    - curl -X POST "https://firebaseappdistribution.googleapis.com/v1/apps/{APP_ID}/releases" \
+      -H "Authorization: Bearer $FIREBASE_TOKEN" \
+      -F "file=@build/ios/output/Runner.ipa"
+  only:
+    - main  # نفّذ الخطوة فقط عند دمج التغييرات في `main`

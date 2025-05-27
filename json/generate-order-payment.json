@@ -1,0 +1,34 @@
+{
+    "success": true,
+    "code": 201,
+    "message": "Operation Successful",
+    "data": {
+        "reportData": {
+            "debtId": 1,
+            "createdAt": "2023-08-02T13:08:19.398Z",
+            "orderRef": "ORD33837",
+            "moneyOut": 120,
+            "deliveryTime": "16:8",
+            "deliveryDate": "2023-08-02T13:08:19.160Z",
+            "cart": {
+                "totalAmount": 120,
+                "address": {
+                    "id": 328,
+                    "address": "123 - Street fahd king"
+                }
+            },
+            "payment": {
+                "createdAt": "2023-08-02T13:08:19.398Z",
+                "transationId": "TRS000000004"
+            },
+            "customer": {
+                "name": "محمد جمال"
+            },
+            "store": {
+                "id": 8,
+                "city": "Kuwait",
+                "arabicCity": "الكويت"
+            }
+        }
+    }
+}

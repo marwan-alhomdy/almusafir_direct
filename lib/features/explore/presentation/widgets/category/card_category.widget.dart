@@ -1,0 +1,81 @@
+import 'package:flutter/material.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
+
+import '../../../../../core/utils/resource/text_style.dart';
+import '../../../../../core/utils/style/border_radius.dart';
+import '../../../../../core/widget/image/image_widget.dart';
+
+class CardCategoryWidget extends StatelessWidget {
+  const CardCategoryWidget(
+      {super.key,
+      required this.image,
+      required this.title,
+      this.price,
+      this.address,
+      this.description});
+  final String image;
+  final String title;
+  final num? price;
+  final String? address;
+  final String? description;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 200,
+      child: Card(
+        elevation: 0.3,
+        margin: EdgeInsets.all(5),
+        child: Column(
+          spacing: 5,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ClipRRect(
+                borderRadius: BorderRadiusAttribute.top(12),
+                child: ImageWidget(image,
+                    width: 200, height: 150, fit: BoxFit.cover)),
+            Text(
+              title,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: AppTextStyles.getMediumStyle(),
+            ),
+            if (address != null)
+              Row(
+                spacing: 4,
+                children: [
+                  Icon(Iconsax.location_copy, size: 12),
+                  Text(
+                    address!,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: AppTextStyles.getMediumStyle(fontSize: 12),
+                  ),
+                ],
+              ),
+            if (price != null)
+              Text(
+                "$price\$",
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: AppTextStyles.getBoldStyle(
+                  color: Colors.orange,
+                  fontSize: 18,
+                ),
+              ),
+            if (description != null)
+              Text(
+                description!,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: AppTextStyles.getMediumStyle(fontSize: 10),
+              ),
+            SizedBox(height: 20),
+          ],
+        ),
+      ),
+    );
+  }
+}

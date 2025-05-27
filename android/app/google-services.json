@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "603396215111",
+    "project_id": "b-wash-4b7f7",
+    "storage_bucket": "b-wash-4b7f7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:603396215111:android:902e113333a0a193c8fc62",
+        "android_client_info": {
+          "package_name": "com.bwash.company"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcdEPWYhpde0BzhcbgRKIAQXbSqslssXc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:603396215111:android:db8f5ffbf6765b94c8fc62",
+        "android_client_info": {
+          "package_name": "com.almusafir.direct"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcdEPWYhpde0BzhcbgRKIAQXbSqslssXc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,104 @@
+{
+    "id": 2404,
+    "nameEn": "car-wash-riyadh",
+    "nameAr": "مغسلة كار -الرياض",
+    "isActive": true,
+    "Longitude": 46.826968,
+    "Latitude": 24.649668,
+    "address": {
+        "area": "السليمانية",
+        "city": "الرياض",
+        "short": "RHSB7081",
+        "state": "منطقة الرياض",
+        "country": "المملكة العربية السعودية",
+        "building": "7081",
+        "location": "",
+        "postCode": "12232",
+        "streetName": "السامري",
+        "streetNumber": "7081"
+    },
+    "isMain": null,
+    "washCompanyId": 213,
+    "openTime": [],
+    "closeTime": [],
+    "openDays": [
+        {
+            "open": true,
+            "shift1OpenTime": "2025-04-29T06:10:00.000Z",
+            "shift2OpenTime": "2025-04-29T12:20:00.000Z",
+            "shift1CloseTime": "2025-04-29T10:15:00.000Z",
+            "shift2CloseTime": "2025-04-29T20:55:00.000Z"
+        },
+        {
+            "open": true,
+            "shift1OpenTime": "2025-04-29T06:10:00.000Z",
+            "shift2OpenTime": "2025-04-29T12:20:00.000Z",
+            "shift1CloseTime": "2025-04-29T10:15:00.000Z",
+            "shift2CloseTime": "2025-04-29T20:55:00.000Z"
+        },
+        {
+            "open": true,
+            "shift1OpenTime": "2025-04-29T06:10:00.000Z",
+            "shift2OpenTime": "2025-04-29T12:20:00.000Z",
+            "shift1CloseTime": "2025-04-29T10:15:00.000Z",
+            "shift2CloseTime": "2025-04-29T20:55:00.000Z"
+        },
+        {
+            "open": true,
+            "shift1OpenTime": "2025-04-29T06:10:00.000Z",
+            "shift2OpenTime": "2025-04-29T12:20:00.000Z",
+            "shift1CloseTime": "2025-04-29T10:15:00.000Z",
+            "shift2CloseTime": "2025-04-29T20:55:00.000Z"
+        },
+        {
+            "open": false,
+            "shift1OpenTime": null,
+            "shift2OpenTime": null,
+            "shift1CloseTime": null,
+            "shift2CloseTime": null
+        },
+        {
+            "open": true,
+            "shift1OpenTime": "2025-04-29T06:10:00.000Z",
+            "shift2OpenTime": "2025-04-29T12:20:00.000Z",
+            "shift1CloseTime": "2025-04-29T10:15:00.000Z",
+            "shift2CloseTime": "2025-04-29T20:55:00.000Z"
+        },
+        {
+            "open": true,
+            "shift1OpenTime": "2025-04-29T06:10:00.000Z",
+            "shift2OpenTime": "2025-04-29T12:20:00.000Z",
+            "shift1CloseTime": "2025-04-29T10:15:00.000Z",
+            "shift2CloseTime": "2025-04-29T20:55:00.000Z"
+        }
+    ],
+    "createdAt": "2025-04-29T14:03:06.764Z",
+    "updatedAt": "2025-05-05T17:50:23.904Z",
+    "deleteDate": null,
+    "WashBranchWashTypes": [
+        {
+            "WashTypeId": 9,
+            "WashType": {
+                "id": 9,
+                "name": "Regular exterior wash",
+                "nameAr": "غسيل عادي خارجي"
+            }
+        },
+        {
+            "WashTypeId": 8,
+            "WashType": {
+                "id": 8,
+                "name": "Regular interior wash",
+                "nameAr": "غسيل عادي داخلي "
+            }
+        },
+        {
+            "WashTypeId": 10,
+            "WashType": {
+                "id": 10,
+                "name": "Regular full wash",
+                "nameAr": "غسيل عادي شامل"
+            }
+        }
+    ]
+}

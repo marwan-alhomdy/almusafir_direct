@@ -1,0 +1,2 @@
+/Users/prom1/AndroidStudioProjects/yaya-ezz/bwash/bwash-driver/android/app/.cxx/Debug/6z1h6x6a/x86/CMakeFiles/edit_cache.dir
+/Users/prom1/AndroidStudioProjects/yaya-ezz/bwash/bwash-driver/android/app/.cxx/Debug/6z1h6x6a/x86/CMakeFiles/rebuild_cache.dir
