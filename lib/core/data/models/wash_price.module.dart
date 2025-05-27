@@ -1,4 +1,3 @@
-import '../../../features/google_map/data/model/wash_type.module.dart';
 import 'vehicle_size.module.dart';
 
 class WashPrice {
@@ -7,7 +6,7 @@ class WashPrice {
   int? washTypeId;
   int? vehicleSizeId;
   num? price;
-  WashType? washType;
+
   VehicleSize? vehicleSize;
 
   WashPrice({
@@ -16,7 +15,6 @@ class WashPrice {
     this.washTypeId,
     this.vehicleSizeId,
     this.price,
-    this.washType,
     this.vehicleSize,
   });
 
@@ -26,9 +24,6 @@ class WashPrice {
         washTypeId: json['washTypeId'],
         vehicleSizeId: json['vehicleSizeId'],
         price: json['price'],
-        washType: json['washType'] == null
-            ? null
-            : WashType.fromJson(json['washType'] as Map<String, dynamic>),
         vehicleSize: json['VehicleSize'] == null
             ? null
             : VehicleSize.fromJson(json['VehicleSize'] as Map<String, dynamic>),
@@ -40,7 +35,6 @@ class WashPrice {
         'washTypeId': washTypeId,
         'vehicleSizeId': vehicleSizeId,
         'price': price,
-        'washType': washType?.toJson(),
         'VehicleSize': vehicleSize?.toJson(),
       };
 }

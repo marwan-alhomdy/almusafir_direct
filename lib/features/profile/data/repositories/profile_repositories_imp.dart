@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/controller/work_on_servers/network/network_info.dart';
 import '../../../../core/data/models/cloudflare.module.dart';
 import '../../../../core/error/exception.dart';
 import '../../../../core/error/faiture.dart';
+import '../../../../core/services/network_info.dart';
 import '../../domain/repositories/profile_repositories.dart';
 import '../dataSourse/profile_data_sourse.dart';
 import '../dataSourse/uplod_image_data_source.dart';

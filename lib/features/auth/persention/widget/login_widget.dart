@@ -9,7 +9,6 @@ import '../../../../core/utils/resource/text_style.dart';
 import '../../../../core/utils/validator/validator.dart';
 import '../../../../core/widget/button/button.widget.dart';
 import '../../../../core/widget/field/password_field.widget.dart';
-import '../../../home/presentation/view/home_view.dart';
 import '../bloc/auth_bloc/auth_bloc.dart';
 import 'custom/logo_auth.widget.dart';
 import 'custom/username_field_widget.dart';

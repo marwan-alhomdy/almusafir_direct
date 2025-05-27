@@ -1,6 +1,5 @@
-import 'package:iconsax_flutter/iconsax_flutter.dart';
-import '../../utils/resource/color_app.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 class PasswordFieldWidget extends StatefulWidget {
   const PasswordFieldWidget({

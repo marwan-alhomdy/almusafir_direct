@@ -42,34 +42,4 @@ class UploadImageCloudinartDataSourceImpCloudinary
       throw ServerExecption();
     }
   }
-
-  // @override
-  // Future<String> uploadImagePofile({required String urlImage}) async {
-  //   try {
-  //     var headers = {
-  //       'authority': 'api.cloudflare.com',
-  //       'Authorization': 'Bearer -VvHgj2ssJyBfinWoTqjRFKVJz-QhC2qy83GSiR_',
-  //       'Cookie':
-  //           '__cflb=0H28vgHxwvgAQtjUGUFqYFDiSDreGJnUo8bRDejDeR3; __cfruid=bc96f8617b0a8f929f63d01e1f6a06090bb341db-1678111731'
-  //     };
-  //     var request = http.MultipartRequest(
-  //         'POST',
-  //         Uri.parse(
-  //             'https://api.cloudflare.com/client/v4/accounts/d00fddfbe71a6bd4cbd1cfb12095d1a1/images/v1'));
-  //     request.fields
-  //         .addAll({'requireSignedURLs': 'false', 'metadata': '{"sdf":"sdf"}'});
-  //     request.files.add(await http.MultipartFile.fromPath('file', urlImage));
-  //     request.headers.addAll(headers);
-  //     http.StreamedResponse response = await request.send();
-  //     if (response.statusCode == 200 || response.statusCode == 201) {
-  //       final resonseBody = await response.stream.bytesToString();
-  //       final decodeJson = json.decode(resonseBody);
-  //       return decodeJson["result"]["variants"][0];
-  //     } else {
-  //       throw ServerExecption();
-  //     }
-  //   } catch (e) {
-  //     throw ServerExecption();
-  //   }
-  // }
 }

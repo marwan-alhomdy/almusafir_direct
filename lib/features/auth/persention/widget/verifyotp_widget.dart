@@ -1,18 +1,12 @@
 import 'package:almusafir_direct/core/utils/resource/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/utils/resource/color_app.dart';
-import '../../../../core/utils/resource/images.dart';
-
 import '../../../../core/widget/button/button.widget.dart';
-
 import '../../../../core/widget/field/pinput_widget.dart';
 import '../bloc/auth_bloc/auth_bloc.dart';
 import '../view/complete_profile.view.dart';
-import '../view/verifyotp.view.dart';
 import 'custom/logo_auth.widget.dart';
 
 class VerifyotpWidget extends StatelessWidget {

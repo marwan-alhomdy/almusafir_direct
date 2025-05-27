@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/controller/work_on_servers/network/network_info.dart';
 import '../../../../core/data/models/delegate.module.dart';
 import '../../../../core/error/exception.dart';
 import '../../../../core/error/faiture.dart';
+import '../../../../core/services/network_info.dart';
 import '../../domain/repositories/home_repositories.dart';
 import '../datasources/home_local_datasource.dart';
 import '../datasources/home_remote_datasources.dart';

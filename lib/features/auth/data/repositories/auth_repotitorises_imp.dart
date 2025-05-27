@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/controller/work_on_servers/network/network_info.dart';
 import '../../../../core/data/models/user_model.module.dart';
 import '../../../../core/error/exception.dart';
 import '../../../../core/error/faiture.dart';
+import '../../../../core/services/network_info.dart';
 import '../../domain/repositories/auth_repostitorise.dart';
 import '../dataSourse/auth_remote_data_source.dart';
 
