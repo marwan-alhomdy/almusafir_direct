@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/constants/enum/field_name.auht.dart';
 import '../../../../../core/data/custom/country.dart';
+import '../../../../../core/utils/function/input_type_helper.dart';
 import '../../../../home/data/model/current_user/current_user.dart';
 import '../../../domain/usecases/check_activation.usescases.dart';
 import '../../../domain/usecases/send_activation.usecases.dart';
@@ -22,19 +23,25 @@ class ValidateOtpCubit extends Cubit<ValidateOtpState> {
   }) : super(ValidateOtpInitial());
 
   final GlobalKey<FormState> formState = GlobalKey();
-  final mobileController = TextEditingController();
+  final mobileOrEmailController = TextEditingController();
   final pinController = TextEditingController();
   final pinputFocusNode = FocusNode();
   Country country = CountryManager.firstCountry();
 
-  String? _mobile;
-  String get mobile => _mobile ?? country.code + mobileController.text;
-  void setMobile(String value) => _mobile = value;
+  String? _mobileOrEmail;
+
+  String get mobileOrEmail =>
+      _mobileOrEmail ??
+      (InputTypeHelper.isPhone(mobileOrEmailController.text)
+          ? country.code + mobileOrEmailController.text
+          : mobileOrEmailController.text);
+
+  void setMobileOrEmail(String value) => _mobileOrEmail = value;
 
   Future<void> verifyOtpEvent() async {
     emit(ValidateOtpLoading());
     final data = {
-      "login": mobile,
+      "login": _mobileOrEmail,
       "token": pinController.text,
       "api_version": "v2",
       'profile': '1',
@@ -50,7 +57,7 @@ class ValidateOtpCubit extends Cubit<ValidateOtpState> {
   Future<void> sendOtp() async {
     emit(ValidateOtpLoading());
     final data = {
-      "login": mobile,
+      "login": _mobileOrEmail,
       "api_version": "v2",
       'channel': 'otp_whatsapp',
       'field_name': 'check_login',
@@ -64,9 +71,9 @@ class ValidateOtpCubit extends Cubit<ValidateOtpState> {
 
   Future<void> sendactivation(
       {FieldNameAuth fieldNameAuth = FieldNameAuth.activation}) async {
-    emit(ValidateOtpLoading());
+    emit(SendOtpLoading());
     final data = {
-      "login": mobile,
+      "login": _mobileOrEmail,
       "api_version": "v2",
       'channel': 'otp_whatsapp',
       "field_name": fieldNameAuth.name,
@@ -82,7 +89,7 @@ class ValidateOtpCubit extends Cubit<ValidateOtpState> {
       {FieldNameAuth fieldNameAuth = FieldNameAuth.activation}) async {
     emit(ValidateOtpLoading());
     final data = {
-      "login": mobile,
+      "login": _mobileOrEmail,
       "code": pinController.text,
       "api_version": "v2",
       'profile': true,

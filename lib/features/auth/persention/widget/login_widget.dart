@@ -7,6 +7,7 @@ import '../../../../core/utils/resource/text_style.dart';
 import '../../../../core/utils/validator/validator.dart';
 import '../../../../core/widget/button/button.widget.dart';
 import '../../../../core/widget/field/mobile_email_field.widget.dart';
+import '../../../../helper/public_infromation.dart';
 import '../logic/auth_bloc/auth_bloc.dart';
 import '../view/forget_password.view.dart';
 import '../view/register.view.dart';
@@ -23,24 +24,22 @@ class _LoginWidgetState extends State<LoginWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 100, left: 20, right: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Form(
         key: context.read<AuthBloc>().formState,
         child: Column(
-          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             LogoAuthWidget(),
-            Text("mobile".tr, style: AppTextStyles.getMediumStyle()),
+            Text("mobileOrEmail".tr, style: AppTextStyles.getMediumStyle()),
             const SizedBox(height: 15),
             MobileOrEmailFieldWidget(
               country: context.read<AuthBloc>().country,
-              controller: context.read<AuthBloc>().mobileController,
+              controller: context.read<AuthBloc>().mobileOrEmailController,
               validator: "".validator(),
-              onChangedCountry: (country) {
-                context.read<AuthBloc>().country = country;
-                setState(() {});
-              },
+              onChangedCountry: (country) =>
+                  setState(() => context.read<AuthBloc>().country = country),
             ),
             const SizedBox(height: 15),
             Text("password".tr, style: AppTextStyles.getMediumStyle()),
@@ -60,35 +59,47 @@ class _LoginWidgetState extends State<LoginWidget> {
             const SizedBox(height: 20),
             Center(
               child: TextButton(
-                  onPressed: () => Get.to(() => ForgetPasswordView()),
+                  onPressed: _moveToForgetPassword,
                   child: Text(
-                    "نسيت كلمة السر".tr,
+                    "forgotPassword".tr,
                     style: AppTextStyles.getMediumStyle(),
                   )),
             ),
             Center(
               child: TextButton(
-                  onPressed: () => Get.to(() => RegisterView()),
-                  child: Text.rich(
-                    TextSpan(
-                      children: [
-                        TextSpan(text: "ليس لديك حساب ؟".tr),
-                        WidgetSpan(child: SizedBox(width: 10)),
-                        TextSpan(
-                          text: "إنشاء حساب".tr,
-                          style: AppTextStyles.getMediumStyle(
-                              color: Colors.orange),
-                        ),
-                      ],
-                    ),
-                    style: AppTextStyles.getMediumStyle(),
-                  )),
+                onPressed: _moveToRegister,
+                child: Text.rich(
+                  TextSpan(
+                    children: [
+                      TextSpan(text: "youDon'tHaveAnAccount".tr),
+                      WidgetSpan(child: SizedBox(width: 10)),
+                      TextSpan(
+                        text: "createAccount".tr,
+                        style: TextStyle(color: Colors.orange),
+                      ),
+                    ],
+                  ),
+                  style: AppTextStyles.getMediumStyle(),
+                ),
+              ),
             ),
             const SizedBox(height: 50),
           ],
         ),
       ),
     );
+  }
+
+  Future<void> _moveToRegister() async {
+    Get.to(() => RegisterView())?.then((_) {
+      if (Helper.isAuth) Get.back();
+    });
+  }
+
+  Future<void> _moveToForgetPassword() async {
+    Get.to(() => ForgetPasswordView())?.then((_) {
+      if (Helper.isAuth) Get.back();
+    });
   }
 
   Future<void> _login() async {

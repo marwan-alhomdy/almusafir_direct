@@ -1,6 +1,6 @@
 import 'data.dart';
 
-class Getalldata {
+class PrimaryData {
   int? code;
   bool? status;
   String? message;
@@ -8,7 +8,7 @@ class Getalldata {
   dynamic errors;
   DataAllData? data;
 
-  Getalldata({
+  PrimaryData({
     this.code,
     this.status,
     this.message,
@@ -17,7 +17,7 @@ class Getalldata {
     this.data,
   });
 
-  factory Getalldata.fromJson(Map<String, dynamic> json) => Getalldata(
+  factory PrimaryData.fromJson(Map<String, dynamic> json) => PrimaryData(
         code: json['code'] as int?,
         status: json['status'] as bool?,
         message: json['message'] as String?,

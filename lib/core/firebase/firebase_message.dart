@@ -99,7 +99,7 @@ class AppFirebaseMessage extends AppFirebaseMessageGoogleMap {
   }
 
   void changeNoitfcation() {
-    Helper.notification = true;
+    Helper.isNotification = true;
     CacheHelper.setBool(CachedAppKey.isNotification, true);
     eventDelegate();
   }

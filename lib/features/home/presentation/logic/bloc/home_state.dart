@@ -11,7 +11,7 @@ final class HomeInitial extends HomeState {}
 
 //! Successfully
 class FetchAllDataSuccessfullyState extends HomeState {
-  final Getalldata data;
+  final PrimaryData data;
   const FetchAllDataSuccessfullyState({required this.data});
 }
 

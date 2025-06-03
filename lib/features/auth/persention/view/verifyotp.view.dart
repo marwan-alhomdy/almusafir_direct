@@ -14,19 +14,19 @@ import '../widget/verifyotp_widget.dart';
 class VerifyOtpView extends StatelessWidget {
   const VerifyOtpView(
       {super.key,
-      required this.mobile,
+      required this.mobileOrEmail,
       this.onSuccess,
       this.fieldNameAuth = FieldNameAuth.activation});
   final FieldNameAuth fieldNameAuth;
 
   final Function(CurrentUser)? onSuccess;
-  final String mobile;
+  final String mobileOrEmail;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => di.sl<ValidateOtpCubit>()
-        ..setMobile(mobile)
+        ..setMobileOrEmail(mobileOrEmail)
         ..sendactivation(fieldNameAuth: fieldNameAuth),
       child: Scaffold(
         appBar: AuthAppBer(),
@@ -46,6 +46,6 @@ class VerifyOtpView extends StatelessWidget {
     } else if (state is CheckActivationSuccess) {
       setAuth(state.currentUser);
       Get.back();
-    } else if (state is SendOtpSuccess) {}
+    }
   }
 }

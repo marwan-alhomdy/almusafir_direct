@@ -1,3 +1,15 @@
+const Map<String, String> _almusafirEn = {
+  "youDon'tHaveAnAccount": "You don't have an account?",
+  "createAccount": "Sign Up",
+  "forgotPassword": "Forgot Password",
+  "sendOtp": "Send OTP",
+  "mobileOrEmail": "Mobile or Email",
+  "dateOfBirth": "Date of birth",
+  "6otp": "Please enter the 6-digit OTP we sent to your phone number",
+  "verifyData": "Verify Data",
+  "resendOtp": "Resend OTP",
+};
+
 const Map<String, String> _enCore = {
   "Delete account": "Delete account",
   "Delete account title": "Are you sure to delete the account",
@@ -403,6 +415,7 @@ const Map<String, String> _en = {
 
 Map<String, String> get en {
   return {}
+    ..addAll(_almusafirEn)
     ..addAll(_en)
     ..addAll(_enCore)
     ..addAll(_enAuth)

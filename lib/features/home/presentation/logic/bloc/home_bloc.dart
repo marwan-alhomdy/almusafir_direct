@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/constants/cached/cached_name.dart';
 import '../../../../../helper/cache_helper.dart';
 import '../../../../../helper/public_infromation.dart';
-import '../../../data/model/getalldata/getalldata.dart';
+import '../../../data/model/getalldata/primary_data.dart';
 import '../../../domain/usecases/get_all_data_uescases.dart';
 
 part 'home_event.dart';
@@ -30,8 +30,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     });
   }
 
-  void _fetchAllDataSuccessfully(Getalldata data) {
+  void _fetchAllDataSuccessfully(PrimaryData data) {
     CacheHelper.setString(CachedAppKey.dataApp, json.encode(data));
-    Helper.dataApp = data;
+    Helper.primaryData = data;
   }
 }

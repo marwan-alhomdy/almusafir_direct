@@ -1,3 +1,15 @@
+const Map<String, String> _almusafirAr = {
+  "youDon'tHaveAnAccount": "ليس لديك حساب ؟",
+  "createAccount": "إنشاء حساب",
+  "forgotPassword": "نسيت كلمة السر",
+  "sendOtp": "إرسال كود التحقق",
+  "mobileOrEmail": "رقم الهاتف أو البريد الإلكتروني",
+  "dateOfBirth": "تاريخ الميلاد",
+  "6otp": "يرجى ادخال الرمز المكون من 6 ارقام الذي ارسلناه لك",
+  "verifyData": "التحقق من البيانات ",
+  "resendOtp": "إعادة إرسال الكود",
+};
+
 const Map<String, String> _arCore = {
   //?account
   "Delete account": "حذف الحساب",
@@ -398,6 +410,7 @@ const Map<String, String> _ar = {
 
 Map<String, String> get ar {
   return {}
+    ..addAll(_almusafirAr)
     ..addAll(_ar)
     ..addAll(_arCore)
     ..addAll(_arAuth)

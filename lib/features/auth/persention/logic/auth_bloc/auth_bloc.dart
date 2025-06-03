@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/data/custom/country.dart';
 import '../../../../../core/error/faiture.dart';
+import '../../../../../core/utils/function/input_type_helper.dart';
 import '../../../../home/data/model/current_user/current_user.dart';
 import '../../../domain/usecases/login_usescases.dart';
 import '../../../domain/usecases/resend_opt_usescases.dart';
@@ -14,7 +15,7 @@ part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final GlobalKey<FormState> formState = GlobalKey();
-  final mobileController = TextEditingController();
+  final mobileOrEmailController = TextEditingController();
   final passwordController = TextEditingController();
 
   Country country = CountryManager.firstCountry();
@@ -31,12 +32,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<LoginEvent>(loginEvent);
   }
 
-  String get mobile => country.code + mobileController.text;
+  String get mobile => country.code + mobileOrEmailController.text;
+
+  String get mobileOrEmail =>
+      InputTypeHelper.isPhone(mobileOrEmailController.text)
+          ? mobile
+          : mobileOrEmailController.text;
 
   Future<void> loginEvent(LoginEvent event, Emitter<AuthState> emit) async {
     emit(LoadingAuthState());
     final data = {
-      "login": mobile,
+      "login": mobileOrEmail,
       "api_version": "v2",
       "profile": "1",
       "password": passwordController.text

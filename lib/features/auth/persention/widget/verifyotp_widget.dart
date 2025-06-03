@@ -18,52 +18,45 @@ class VerifyotpWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 100, left: 20, right: 20),
-      child: Form(
-        // key: authBloc.formState,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Spacer(),
-            LogoAuthWidget(),
-            const Spacer(),
-            Text("pleasePhoneN".tr,
-                style: AppTextStyles.getBoldStyle(fontSize: 22)),
-            const SizedBox(height: 10),
-            Text("4otp".tr,
-                textAlign: TextAlign.start,
-                style: AppTextStyles.getMediumStyle()),
-            Text(
-              "*******",
-              //TODO: rmove this hard code
-              // "${authBloc.mobileController.text.substring(0, 4)}***",
-              textDirection: TextDirection.ltr,
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Spacer(),
+          LogoAuthWidget(),
+          const Spacer(),
+          Text("verifyData".tr,
+              style: AppTextStyles.getBoldStyle(fontSize: 22)),
+          const SizedBox(height: 10),
+          Text("6otp".tr,
               textAlign: TextAlign.start,
-              style: const TextStyle(),
-            ),
-            const SizedBox(height: 20),
-            PinputWidget(
-              pinController: context.read<ValidateOtpCubit>().pinController,
-              pinputFocusNode: context.read<ValidateOtpCubit>().pinputFocusNode,
-              onCompeted: (pin) => _verifyOtp(context),
-            ),
-            const SizedBox(height: 20),
-            BlocBuilder<ValidateOtpCubit, ValidateOtpState>(
-                builder: (context, state) {
-              return (state is ValidateOtpLoading)
+              style: AppTextStyles.getMediumStyle()),
+          const SizedBox(height: 20),
+          PinputWidget(
+            pinController: context.read<ValidateOtpCubit>().pinController,
+            pinputFocusNode: context.read<ValidateOtpCubit>().pinputFocusNode,
+            onCompeted: (pin) => _verifyOtp(context),
+          ),
+          const SizedBox(height: 20),
+          BlocBuilder<ValidateOtpCubit, ValidateOtpState>(
+              builder: (context, state) => (state is ValidateOtpLoading)
                   ? ButtonLoadingWidget(isLoading: true, text: "")
                   : ButtonLoadingWidget(
-                      onTap: () => _verifyOtp(context), text: "Verify".tr);
-            }),
-            ResendOtpButton(
-              onResend: () => context
-                  .read<ValidateOtpCubit>()
-                  .sendactivation(fieldNameAuth: fieldNameAuth),
-            ),
-            const Spacer(),
-          ],
-        ),
+                      onTap: () => _verifyOtp(context), text: "Verify".tr)),
+          const SizedBox(height: 10),
+          BlocBuilder<ValidateOtpCubit, ValidateOtpState>(
+            builder: (context, state) => (state is SendOtpLoading)
+                ? const CircularProgressIndicator()
+                : ResendOtpButton(
+                    isStartCountdown: state is SendOtpSuccess,
+                    onResend: () => context
+                        .read<ValidateOtpCubit>()
+                        .sendactivation(fieldNameAuth: fieldNameAuth),
+                  ),
+          ),
+          const Spacer(),
+        ],
       ),
     );
   }

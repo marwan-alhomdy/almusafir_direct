@@ -19,35 +19,41 @@ class ForgetPasswordWidget extends StatefulWidget {
 }
 
 class _ForgetPasswordWidgetState extends State<ForgetPasswordWidget> {
+  late final ValidateOtpCubit validateOtpCubit;
+
+  @override
+  void initState() {
+    validateOtpCubit = context.read<ValidateOtpCubit>();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 100, left: 20, right: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Form(
-        key: context.read<ValidateOtpCubit>().formState,
+        key: validateOtpCubit.formState,
         child: Column(
-          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             LogoAuthWidget(),
-            Text("mobile".tr, style: AppTextStyles.getMediumStyle()),
+            Text("mobileOrEmail".tr, style: AppTextStyles.getMediumStyle()),
             const SizedBox(height: 15),
             MobileOrEmailFieldWidget(
-              country: context.read<ValidateOtpCubit>().country,
-              controller: context.read<ValidateOtpCubit>().mobileController,
+              country: validateOtpCubit.country,
+              controller: validateOtpCubit.mobileOrEmailController,
               validator: "".validator(),
-              onChangedCountry: (country) {
-                context.read<ValidateOtpCubit>().country = country;
-                setState(() {});
-              },
+              onChangedCountry: (country) =>
+                  setState(() => validateOtpCubit.country = country),
             ),
             const SizedBox(height: 20),
             BlocBuilder<ValidateOtpCubit, ValidateOtpState>(
-              builder: (context, state) {
+              builder: (_, state) {
                 return (state is SendOtpLoading)
                     ? ButtonLoadingWidget(isLoading: true, text: "")
                     : ButtonLoadingWidget(
-                        onTap: _login, text: "إرسال كود التحقق".tr);
+                        onTap: _moveToVerifyOtp, text: "sendOtp".tr);
               },
             ),
             const SizedBox(height: 50),
@@ -57,12 +63,12 @@ class _ForgetPasswordWidgetState extends State<ForgetPasswordWidget> {
     );
   }
 
-  Future<void> _login() async {
-    final validateOtpCubit = context.read<ValidateOtpCubit>();
+  Future<void> _moveToVerifyOtp() async {
     if (validateOtpCubit.formState.currentState?.validate() ?? false) {
-      final mobile = validateOtpCubit.mobile;
-      Get.off(() => VerifyOtpView(
-          mobile: mobile, fieldNameAuth: FieldNameAuth.check_login));
+      final mobileOrEmail = validateOtpCubit.mobileOrEmail;
+      Get.to(() => VerifyOtpView(
+          mobileOrEmail: mobileOrEmail,
+          fieldNameAuth: FieldNameAuth.check_login))?.then((_) => Get.back());
     }
   }
 }

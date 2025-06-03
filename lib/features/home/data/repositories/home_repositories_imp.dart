@@ -7,7 +7,7 @@ import '../../../../core/services/network_info.dart';
 import '../../domain/repositories/home_repositories.dart';
 import '../datasources/home_local_datasource.dart';
 import '../datasources/home_remote_datasources.dart';
-import '../model/getalldata/getalldata.dart';
+import '../model/getalldata/primary_data.dart';
 
 class HomeRepostitoryImp extends HomeRepostitory {
   final HomeRemoteDataSource remoteDataSource;
@@ -20,7 +20,7 @@ class HomeRepostitoryImp extends HomeRepostitory {
       required this.networkInfo});
 
   @override
-  Future<Either<Failure, Getalldata>> fetchAllData() async {
+  Future<Either<Failure, PrimaryData>> fetchAllData() async {
     if (await networkInfo.isConnected) {
       try {
         final remotePosts = await remoteDataSource.fetchAllData();

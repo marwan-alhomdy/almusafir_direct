@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import '/injection_container.dart' as di;
 import '../../../../core/utils/function/message_box.dart';
 import '../../../../core/utils/function/set_auth.dart';
+import '../../../../helper/public_infromation.dart';
 import '../logic/regiser_cubit/regiser_cubit.dart';
 import '../widget/custom/auth.appber.dart';
 import '../widget/register.widget.dart';
@@ -31,11 +32,13 @@ class RegisterView extends StatelessWidget {
     if (state is SuccessRegiserState) {
       setAuth(state.currentUser);
       Get.back();
-    } else if (state is MoveToActivationState) {
-      final mobile = context.read<RegiserCubit>().mobile;
-      Get.off(() => VerifyOtpView(mobile: mobile));
     } else if (state is ErrorRegiserState) {
       MessageBox.showError(context, state.message);
+    } else if (state is MoveToActivationState) {
+      final mobile = context.read<RegiserCubit>().mobile;
+      Get.off(() => VerifyOtpView(mobileOrEmail: mobile))?.then((_) {
+        if (Helper.isAuth) Get.back();
+      });
     }
   }
 }

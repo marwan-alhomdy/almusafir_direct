@@ -1,3 +1,4 @@
+import 'package:almusafir_direct/helper/public_infromation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -31,10 +32,13 @@ class AuthintcationView extends StatelessWidget {
     if (state is LoginSuccessfulState) {
       setAuth(state.currentUser);
       Get.back();
-    } else if (state is MoveToActivationState) {
-      Get.off(() => VerifyOtpView(mobile: context.read<AuthBloc>().mobile));
     } else if (state is ErrorLoginState) {
       MessageBox.showError(context, state.message);
+    } else if (state is MoveToActivationState) {
+      final mobileOrEmail = context.read<AuthBloc>().mobile;
+      Get.to(() => VerifyOtpView(mobileOrEmail: mobileOrEmail))?.then((_) {
+        if (Helper.isAuth) Get.back();
+      });
     }
   }
 }

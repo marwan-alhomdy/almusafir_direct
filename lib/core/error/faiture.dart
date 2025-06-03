@@ -150,10 +150,13 @@ class DioFailure extends Failure {
     }
   }
 
-  factory DioFailure.fromResponse(int statusCode, dynamic response) {
-    if (response["message"] != null && response["error"] != null) {
-      final error = response["error"] ?? "";
-      final messageError = response["message"] ?? "";
+  factory DioFailure.fromResponse(statusCode, dynamic response) {
+    print(response);
+    if (response is Map &&
+        response["message"] != null &&
+        response["error"] != null) {
+      final error = response["error"]?.toString() ?? "";
+      final messageError = response["message"]?.toString() ?? "";
       final message = "$messageError\n$error";
       return DioFailure(message);
     } else if (statusCode == 404) {
