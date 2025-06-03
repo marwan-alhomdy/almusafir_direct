@@ -1,0 +1,1222 @@
+[
+  {
+    "name": "Yemen",
+    "arabicName": "اليمن",
+    "image": "",
+    "flag": "🇾🇪",
+    "code": "+967"
+  },
+  {
+    "name": "Saudi Arabia",
+    "arabicName": "المملكة العربية السعودية",
+    "image": "saudi_arabia_image_url",
+    "flag": "🇸🇦",
+    "code": "+966"
+  },
+  
+ 
+  {
+    "name": "Mauritania",
+    "arabicName": "موريتانيا",
+    "image": "mauritania_image_url",
+    "flag": "🇲🇷",
+    "code": "+222"
+  },
+  {
+    "name": "Morocco",
+    "arabicName": "المغرب",
+    "image": "morocco_image_url",
+    "flag": "🇲🇦",
+    "code": "+212"
+  },
+  {
+    "name": "Palestine",
+    "arabicName": "فلسطين",
+    "image": "palestine_image_url",
+    "flag": "🇵🇸",
+    "code": "+970"
+  },
+  {
+    "name": "Somalia",
+    "arabicName": "الصومال",
+    "image": "somalia_image_url",
+    "flag": "🇸🇴",
+    "code": "+252"
+  },
+  {
+    "name": "Afghanistan",
+    "arabicName": "أفغانستان",
+    "image": "",
+    "flag": "🇦🇫",
+    "code": "+93"
+  },
+  {
+    "name": "Albania",
+    "arabicName": "ألبانيا",
+    "image": "",
+    "flag": "🇦🇱",
+    "code": "+355"
+  },
+  {
+    "name": "Algeria",
+    "arabicName": "الجزائر",
+    "image": "",
+    "flag": "🇩🇿",
+    "code": "+213"
+  },
+  {
+    "name": "Andorra",
+    "arabicName": "أندورا",
+    "image": "",
+    "flag": "🇦🇩",
+    "code": "+376"
+  },
+  {
+    "name": "Angola",
+    "arabicName": "أنغولا",
+    "image": "",
+    "flag": "🇦🇴",
+    "code": "+244"
+  },
+  {
+    "name": "Antigua and Barbuda",
+    "arabicName": "أنتيغوا وبربودا",
+    "image": "",
+    "flag": "🇦🇬",
+    "code": "+1"
+  },
+  {
+    "name": "Argentina",
+    "arabicName": "الأرجنتين",
+    "image": "",
+    "flag": "🇦🇷",
+    "code": "+54"
+  },
+  {
+    "name": "Armenia",
+    "arabicName": "أرمينيا",
+    "image": "",
+    "flag": "🇦🇲",
+    "code": "+374"
+  },
+  {
+    "name": "Australia",
+    "arabicName": "أستراليا",
+    "image": "",
+    "flag": "🇦🇺",
+    "code": "+61"
+  },
+  {
+    "name": "Austria",
+    "arabicName": "النمسا",
+    "image": "",
+    "flag": "🇦🇹",
+    "code": "+43"
+  },
+  {
+    "name": "Azerbaijan",
+    "arabicName": "أذربيجان",
+    "image": "",
+    "flag": "🇦🇿",
+    "code": "+994"
+  },
+  {
+    "name": "Bahamas",
+    "arabicName": "جزر البهاما",
+    "image": "",
+    "flag": "🇧🇸",
+    "code": "+1"
+  },
+  {
+    "name": "Bahrain",
+    "arabicName": "البحرين",
+    "image": "",
+    "flag": "🇧🇭",
+    "code": "+973"
+  },
+  {
+    "name": "Bangladesh",
+    "arabicName": "بنغلاديش",
+    "image": "",
+    "flag": "🇧🇩",
+    "code": "+880"
+  },
+  {
+    "name": "Barbados",
+    "arabicName": "بربادوس",
+    "image": "",
+    "flag": "🇧🇧",
+    "code": "+1"
+  },
+  {
+    "name": "Belarus",
+    "arabicName": "بيلاروسيا",
+    "image": "",
+    "flag": "🇧🇾",
+    "code": "+375"
+  },
+  {
+    "name": "Belgium",
+    "arabicName": "بلجيكا",
+    "image": "",
+    "flag": "🇧🇪",
+    "code": "+32"
+  },
+  {
+    "name": "Belize",
+    "arabicName": "بليز",
+    "image": "",
+    "flag": "🇧🇿",
+    "code": "+501"
+  },
+  {
+    "name": "Benin",
+    "arabicName": "بنين",
+    "image": "",
+    "flag": "🇧🇯",
+    "code": "+229"
+  },
+  {
+    "name": "Bhutan",
+    "arabicName": "بوتان",
+    "image": "",
+    "flag": "🇧🇹",
+    "code": "+975"
+  },
+  {
+    "name": "Cameroon",
+    "arabicName": "الكاميرون",
+    "image": "",
+    "flag": "🇨🇲",
+    "code": "+237"
+  },
+  {
+    "name": "Canada",
+    "arabicName": "كندا",
+    "image": "",
+    "flag": "🇨🇦",
+    "code": "+1"
+  },
+  {
+    "name": "Cape Verde",
+    "arabicName": "الرأس الأخضر",
+    "image": "",
+    "flag": "🇨🇻",
+    "code": "+238"
+  },
+  {
+    "name": "Central African Republic",
+    "arabicName": "جمهورية أفريقيا الوسطى",
+    "image": "",
+    "flag": "🇨🇫",
+    "code": "+236"
+  },
+  {
+    "name": "Chad",
+    "arabicName": "تشاد",
+    "image": "",
+    "flag": "🇹🇩",
+    "code": "+235"
+  },
+  {
+    "name": "Chile",
+    "arabicName": "شيلي",
+    "image": "",
+    "flag": "🇨🇱",
+    "code": "+56"
+  },
+  {
+    "name": "China",
+    "arabicName": "الصين",
+    "image": "",
+    "flag": "🇨🇳",
+    "code": "+86"
+  },
+  {
+    "name": "Colombia",
+    "arabicName": "كولومبيا",
+    "image": "",
+    "flag": "🇨🇴",
+    "code": "+57"
+  },
+  {
+    "name": "Comoros",
+    "arabicName": "جزر القمر",
+    "image": "",
+    "flag": "🇰🇲",
+    "code": "+269"
+  },
+  {
+    "name": "Congo (Brazzaville}",
+    "arabicName": "الكونغو (برازافيل}",
+    "image": "",
+    "flag": "🇨🇬",
+    "code": "+242"
+  },
+  {
+    "name": "Congo (Kinshasa}",
+    "arabicName": "الكونغو (كينشاسا}",
+    "image": "",
+    "flag": "🇨🇩",
+    "code": "+243"
+  },
+  {
+    "name": "Costa Rica",
+    "arabicName": "كوستاريكا",
+    "image": "",
+    "flag": "🇨🇷",
+    "code": "+506"
+  },
+  {
+    "name": "Cote d'Ivoire",
+    "arabicName": "ساحل العاج",
+    "image": "",
+    "flag": "🇨🇮",
+    "code": "+225"
+  },
+  {
+    "name": "Croatia",
+    "arabicName": "كرواتيا",
+    "image": "",
+    "flag": "🇭🇷",
+    "code": "+385"
+  },
+  {
+    "name": "Cuba",
+    "arabicName": "كوبا",
+    "image": "",
+    "flag": "🇨🇺",
+    "code": "+53"
+  },
+  {
+    "name": "Cyprus",
+    "arabicName": "قبرص",
+    "image": "",
+    "flag": "🇨🇾",
+    "code": "+357"
+  },
+  {
+    "name": "Czech Republic",
+    "arabicName": "التشيك",
+    "image": "",
+    "flag": "🇨🇿",
+    "code": "+420"
+  },
+  {
+    "name": "Denmark",
+    "arabicName": "الدانمارك",
+    "image": "",
+    "flag": "🇩🇰",
+    "code": "+45"
+  },
+  {
+    "name": "Djibouti",
+    "arabicName": "جيبوتي",
+    "image": "",
+    "flag": "🇩🇯",
+    "code": "+253"
+  },
+  {
+    "name": "Dominica",
+    "arabicName": "دومينيكا",
+    "image": "",
+    "flag": "🇩🇲",
+    "code": "+1"
+  },
+  {
+    "name": "Ecuador",
+    "arabicName": "الإكوادور",
+    "image": "",
+    "flag": "🇪🇨",
+    "code": "+593"
+  },
+  {
+    "name": "Egypt",
+    "arabicName": "مصر",
+    "image": "egypt_image_url",
+    "flag": "🇪🇬",
+    "code": "+20"
+  },
+  {
+    "name": "El Salvador",
+    "arabicName": "السلفادور",
+    "image": "",
+    "flag": "🇸🇻",
+    "code": "+503"
+  },
+  {
+    "name": "Equatorial Guinea",
+    "arabicName": "غينيا الاستوائية",
+    "image": "",
+    "flag": "🇬🇶",
+    "code": "+240"
+  },
+  {
+    "name": "Eritrea",
+    "arabicName": "إريتريا",
+    "image": "",
+    "flag": "🇪🇷",
+    "code": "+291"
+  },
+  {
+    "name": "Estonia",
+    "arabicName": "إستونيا",
+    "image": "",
+    "flag": "🇪🇪",
+    "code": "+372"
+  },
+  {
+    "name": "Eswatini",
+    "arabicName": "إسواتيني",
+    "image": "",
+    "flag": "🇸🇿",
+    "code": "+268"
+  },
+  {
+    "name": "Ethiopia",
+    "arabicName": "إثيوبيا",
+    "image": "",
+    "flag": "🇪🇹",
+    "code": "+251"
+  },
+  {
+    "name": "Fiji",
+    "arabicName": "فيجي",
+    "image": "",
+    "flag": "🇫🇯",
+    "code": "+679"
+  },
+  {
+    "name": "Finland",
+    "arabicName": "فنلندا",
+    "image": "",
+    "flag": "🇫🇮",
+    "code": "+358"
+  },
+  {
+    "name": "France",
+    "arabicName": "فرنسا",
+    "image": "",
+    "flag": "🇫🇷",
+    "code": "+33"
+  },
+  {
+    "name": "Gabon",
+    "arabicName": "الجابون",
+    "image": "",
+    "flag": "🇬🇦",
+    "code": "+241"
+  },
+  {
+    "name": "Gambia",
+    "arabicName": "غامبيا",
+    "image": "",
+    "flag": "🇬🇲",
+    "code": "+220"
+  },
+  {
+    "name": "Georgia",
+    "arabicName": "جورجيا",
+    "image": "",
+    "flag": "🇬🇪",
+    "code": "+995"
+  },
+  {
+    "name": "Germany",
+    "arabicName": "ألمانيا",
+    "image": "",
+    "flag": "🇩🇪",
+    "code": "+49"
+  },
+  {
+    "name": "Ghana",
+    "arabicName": "غانا",
+    "image": "",
+    "flag": "🇬🇭",
+    "code": "+233"
+  },
+  {
+    "name": "Greece",
+    "arabicName": "اليونان",
+    "image": "",
+    "flag": "🇬🇷",
+    "code": "+30"
+  },
+  {
+    "name": "Grenada",
+    "arabicName": "غرينادا",
+    "image": "",
+    "flag": "🇬🇩",
+    "code": "+1"
+  },
+  {
+    "name": "Guatemala",
+    "arabicName": "غواتيمالا",
+    "image": "",
+    "flag": "🇬🇹",
+    "code": "+502"
+  },
+  {
+    "name": "Guinea",
+    "arabicName": "غينيا",
+    "image": "",
+    "flag": "🇬🇳",
+    "code": "+224"
+  },
+  {
+    "name": "Fiji",
+    "arabicName": "فيجي",
+    "image": "",
+    "flag": "🇫🇯",
+    "code": "+679"
+  },
+  {
+    "name": "Finland",
+    "arabicName": "فنلندا",
+    "image": "",
+    "flag": "🇫🇮",
+    "code": "+358"
+  },
+  {
+    "name": "France",
+    "arabicName": "فرنسا",
+    "image": "",
+    "flag": "🇫🇷",
+    "code": "+33"
+  },
+  {
+    "name": "Gabon",
+    "arabicName": "الجابون",
+    "image": "",
+    "flag": "🇬🇦",
+    "code": "+241"
+  },
+  {
+    "name": "Gambia",
+    "arabicName": "غامبيا",
+    "image": "",
+    "flag": "🇬🇲",
+    "code": "+220"
+  },
+  {
+    "name": "Georgia",
+    "arabicName": "جورجيا",
+    "image": "",
+    "flag": "🇬🇪",
+    "code": "+995"
+  },
+  {
+    "name": "Germany",
+    "arabicName": "ألمانيا",
+    "image": "",
+    "flag": "🇩🇪",
+    "code": "+49"
+  },
+  {
+    "name": "Ghana",
+    "arabicName": "غانا",
+    "image": "",
+    "flag": "🇬🇭",
+    "code": "+233"
+  },
+  {
+    "name": "Greece",
+    "arabicName": "اليونان",
+    "image": "",
+    "flag": "🇬🇷",
+    "code": "+30"
+  },
+  {
+    "name": "Grenada",
+    "arabicName": "غرينادا",
+    "image": "",
+    "flag": "🇬🇩",
+    "code": "+1"
+  },
+  {
+    "name": "Guatemala",
+    "arabicName": "غواتيمالا",
+    "image": "",
+    "flag": "🇬🇹",
+    "code": "+502"
+  },
+  {
+    "name": "Guinea",
+    "arabicName": "غينيا",
+    "image": "",
+    "flag": "🇬🇳",
+    "code": "+224"
+  },
+  {
+    "name": "Guinea-Bissau",
+    "arabicName": "غينيا بيساو",
+    "image": "",
+    "flag": "🇬🇼",
+    "code": "+245"
+  },
+  {
+    "name": "Guyana",
+    "arabicName": "غيانا",
+    "image": "",
+    "flag": "🇬🇾",
+    "code": "+592"
+  },
+  {
+    "name": "Haiti",
+    "arabicName": "هايتي",
+    "image": "",
+    "flag": "🇭🇹",
+    "code": "+509"
+  },
+  {
+    "name": "Holy See",
+    "arabicName": "الفاتيكان",
+    "image": "",
+    "flag": "🇻🇦",
+    "code": "+379"
+  },
+  {
+    "name": "Honduras",
+    "arabicName": "هندوراس",
+    "image": "",
+    "flag": "🇭🇳",
+    "code": "+504"
+  },
+  {
+    "name": "Hungary",
+    "arabicName": "هنغاريا",
+    "image": "",
+    "flag": "🇭🇺",
+    "code": "+36"
+  },
+  {
+    "name": "Iceland",
+    "arabicName": "آيسلندا",
+    "image": "",
+    "flag": "🇮🇸",
+    "code": "+354"
+  },
+  {
+    "name": "India",
+    "arabicName": "الهند",
+    "image": "",
+    "flag": "🇮🇳",
+    "code": "+91"
+  },
+  {
+    "name": "Iran",
+    "arabicName": "إيران",
+    "image": "",
+    "flag": "🇮🇷",
+    "code": "+98"
+  },
+  {
+    "name": "Iraq",
+    "arabicName": "العراق",
+    "image": "",
+    "flag": "🇮🇶",
+    "code": "+964"
+  },
+  {
+    "name": "Ireland",
+    "arabicName": "أيرلندا",
+    "image": "",
+    "flag": "🇮🇪",
+    "code": "+353"
+  },
+  {
+    "name": "Italy",
+    "arabicName": "إيطاليا",
+    "image": "",
+    "flag": "🇮🇹",
+    "code": "+39"
+  },
+  {
+    "name": "Jamaica",
+    "arabicName": "جامايكا",
+    "image": "",
+    "flag": "🇯🇲",
+    "code": "+1"
+  },
+  {
+    "name": "Japan",
+    "arabicName": "اليابان",
+    "image": "",
+    "flag": "🇯🇵",
+    "code": "+81"
+  },
+  {
+    "name": "Jordan",
+    "arabicName": "الأردن",
+    "image": "",
+    "flag": "🇯🇴",
+    "code": "+962"
+  },
+  {
+    "name": "Kazakhstan",
+    "arabicName": "كازاخستان",
+    "image": "",
+    "flag": "🇰🇿",
+    "code": "+7"
+  },
+  {
+    "name": "Kenya",
+    "arabicName": "كينيا",
+    "image": "",
+    "flag": "🇰🇪",
+    "code": "+254"
+  },
+  {
+    "name": "Kiribati",
+    "arabicName": "كيريباتي",
+    "image": "",
+    "flag": "🇰🇮",
+    "code": "+686"
+  },
+  {
+    "name": "Kuwait",
+    "arabicName": "الكويت",
+    "image": "",
+    "flag": "🇰🇼",
+    "code": "+965"
+  },
+  {
+    "name": "Kyrgyzstan",
+    "arabicName": "قرغيزستان",
+    "image": "",
+    "flag": "🇰🇬",
+    "code": "+996"
+  },
+  {
+    "name": "Lao People's Democratic Republic",
+    "arabicName": "جمهورية لاو الديمقراطية الشعبية",
+    "image": "",
+    "flag": "🇱🇦",
+    "code": "+856"
+  },
+  {
+    "name": "Latvia",
+    "arabicName": "لاتفيا",
+    "image": "",
+    "flag": "🇱🇻",
+    "code": "+371"
+  },
+  {
+    "name": "Lebanon",
+    "arabicName": "لبنان",
+    "image": "",
+    "flag": "🇱🇧",
+    "code": "+961"
+  },
+  {
+    "name": "Lesotho",
+    "arabicName": "ليسوتو",
+    "image": "",
+    "flag": "🇱🇸",
+    "code": "+266"
+  },
+  {
+    "name": "Liberia",
+    "arabicName": "ليبيريا",
+    "image": "",
+    "flag": "🇱🇷",
+    "code": "+231"
+  },
+  {
+    "name": "Libya",
+    "arabicName": "ليبيا",
+    "image": "",
+    "flag": "🇱🇾",
+    "code": "+218"
+  },
+  {
+    "name": "Italy",
+    "arabicName": "إيطاليا",
+    "image": "",
+    "flag": "🇮🇹",
+    "code": "+39"
+  },
+  {
+    "name": "Jamaica",
+    "arabicName": "جامايكا",
+    "image": "",
+    "flag": "🇯🇲",
+    "code": "+1"
+  },
+  {
+    "name": "Japan",
+    "arabicName": "اليابان",
+    "image": "",
+    "flag": "🇯🇵",
+    "code": "+81"
+  },
+  {
+    "name": "Jordan",
+    "arabicName": "الأردن",
+    "image": "",
+    "flag": "🇯🇴",
+    "code": "+962"
+  },
+  {
+    "name": "Kazakhstan",
+    "arabicName": "كازاخستان",
+    "image": "",
+    "flag": "🇰🇿",
+    "code": "+7"
+  },
+  {
+    "name": "Kenya",
+    "arabicName": "كينيا",
+    "image": "",
+    "flag": "🇰🇪",
+    "code": "+254"
+  },
+  {
+    "name": "Kiribati",
+    "arabicName": "كيريباتي",
+    "image": "",
+    "flag": "🇰🇮",
+    "code": "+686"
+  },
+  {
+    "name": "Korea, North",
+    "arabicName": "كوريا الشمالية",
+    "image": "",
+    "flag": "🇰🇵",
+    "code": "+850"
+  },
+  {
+    "name": "Korea, South",
+    "arabicName": "كوريا الجنوبية",
+    "image": "",
+    "flag": "🇰🇷",
+    "code": "+82"
+  },
+  {
+    "name": "Kosovo",
+    "arabicName": "كوسوفو",
+    "image": "",
+    "flag": "🇽🇰",
+    "code": "+383"
+  },
+  {
+    "name": "Kuwait",
+    "arabicName": "الكويت",
+    "image": "",
+    "flag": "🇰🇼",
+    "code": "+965"
+  },
+  {
+    "name": "Kyrgyzstan",
+    "arabicName": "قيرغيزستان",
+    "image": "",
+    "flag": "🇰🇬",
+    "code": "+996"
+  },
+  {
+    "name": "Laos",
+    "arabicName": "لاوس",
+    "image": "",
+    "flag": "🇱🇦",
+    "code": "+856"
+  },
+  {
+    "name": "Latvia",
+    "arabicName": "لاتفيا",
+    "image": "",
+    "flag": "🇱🇻",
+    "code": "+371"
+  },
+  {
+    "name": "Lebanon",
+    "arabicName": "لبنان",
+    "image": "",
+    "flag": "🇱🇧",
+    "code": "+961"
+  },
+  {
+    "name": "Lesotho",
+    "arabicName": "ليسوتو",
+    "image": "",
+    "flag": "🇱🇸",
+    "code": "+266"
+  },
+  {
+    "name": "Liberia",
+    "arabicName": "ليبيريا",
+    "image": "",
+    "flag": "🇱🇷",
+    "code": "+231"
+  },
+  {
+    "name": "Libya",
+    "arabicName": "ليبيا",
+    "image": "",
+    "flag": "🇱🇾",
+    "code": "+218"
+  },
+  {
+    "name": "Liechtenstein",
+    "arabicName": "ليختنشتاين",
+    "image": "",
+    "flag": "🇱🇮",
+    "code": "+423"
+  },
+  {
+    "name": "Lithuania",
+    "arabicName": "ليتوانيا",
+    "image": "",
+    "flag": "🇱🇹",
+    "code": "+370"
+  },
+  {
+    "name": "North Korea",
+    "arabicName": "كوريا الشمالية",
+    "image": "",
+    "flag": "🇰🇵",
+    "code": "+850"
+  },
+  {
+    "name": "North Macedonia",
+    "arabicName": "مقدونيا الشمالية",
+    "image": "",
+    "flag": "🇲🇰",
+    "code": "+389"
+  },
+  {
+    "name": "Norway",
+    "arabicName": "النرويج",
+    "image": "",
+    "flag": "🇳🇴",
+    "code": "+47"
+  },
+  {
+    "name": "Oman",
+    "arabicName": "عمان",
+    "image": "",
+    "flag": "🇴🇲",
+    "code": "+968"
+  },
+  {
+    "name": "Pakistan",
+    "arabicName": "باكستان",
+    "image": "",
+    "flag": "🇵🇰",
+    "code": "+92"
+  },
+  {
+    "name": "Palau",
+    "arabicName": "بالاو",
+    "image": "",
+    "flag": "🇵🇼",
+    "code": "+680"
+  },
+  {
+    "name": "Panama",
+    "arabicName": "بنما",
+    "image": "",
+    "flag": "🇵🇦",
+    "code": "+507"
+  },
+  {
+    "name": "Papua New Guinea",
+    "arabicName": "بابوا غينيا الجديدة",
+    "image": "",
+    "flag": "🇵🇬",
+    "code": "+675"
+  },
+  {
+    "name": "Paraguay",
+    "arabicName": "باراغواي",
+    "image": "",
+    "flag": "🇵🇾",
+    "code": "+595"
+  },
+  {
+    "name": "Peru",
+    "arabicName": "بيرو",
+    "image": "",
+    "flag": "🇵🇪",
+    "code": "+51"
+  },
+  {
+    "name": "Philippines",
+    "arabicName": "الفلبين",
+    "image": "",
+    "flag": "🇵🇭",
+    "code": "+63"
+  },
+  {
+    "name": "Poland",
+    "arabicName": "بولندا",
+    "image": "",
+    "flag": "🇵🇱",
+    "code": "+48"
+  },
+  {
+    "name": "Portugal",
+    "arabicName": "البرتغال",
+    "image": "",
+    "flag": "🇵🇹",
+    "code": "+351"
+  },
+  {
+    "name": "Qatar",
+    "arabicName": "قطر",
+    "image": "",
+    "flag": "🇶🇦",
+    "code": "+974"
+  },
+  {
+    "name": "Romania",
+    "arabicName": "رومانيا",
+    "image": "",
+    "flag": "🇷🇴",
+    "code": "+40"
+  },
+  {
+    "name": "Russia",
+    "arabicName": "روسيا",
+    "image": "",
+    "flag": "🇷🇺",
+    "code": "+7"
+  },
+  {
+    "name": "Rwanda",
+    "arabicName": "رواندا",
+    "image": "",
+    "flag": "🇷🇼",
+    "code": "+250"
+  },
+  {
+    "name": "Saint Kitts and Nevis",
+    "arabicName": "سانت كيتس ونيفيس",
+    "image": "",
+    "flag": "🇰🇳",
+    "code": "+1"
+  },
+  {
+    "name": "Saint Lucia",
+    "arabicName": "سانت لوسيا",
+    "image": "",
+    "flag": "🇱🇨",
+    "code": "+1"
+  },
+  {
+    "name": "Saint Vincent and the Grenadines",
+    "arabicName": "سانت فنسنت والجرينادين",
+    "image": "",
+    "flag": "🇻🇨",
+    "code": "+1"
+  },
+  {
+    "name": "Sudan",
+    "arabicName": "السودان",
+    "image": "",
+    "flag": "🇸🇩",
+    "code": "+249"
+  },
+  {
+    "name": "Suriname",
+    "arabicName": "سورينام",
+    "image": "",
+    "flag": "🇸🇷",
+    "code": "+597"
+  },
+  {
+    "name": "Sweden",
+    "arabicName": "السويد",
+    "image": "",
+    "flag": "🇸🇪",
+    "code": "+46"
+  },
+  {
+    "name": "Switzerland",
+    "arabicName": "سويسرا",
+    "image": "",
+    "flag": "🇨🇭",
+    "code": "+41"
+  },
+  {
+    "name": "Syria",
+    "arabicName": "سوريا",
+    "image": "",
+    "flag": "🇸🇾",
+    "code": "+963"
+  },
+  {
+    "name": "Taiwan",
+    "arabicName": "تايوان",
+    "image": "",
+    "flag": "🇹🇼",
+    "code": "+886"
+  },
+  {
+    "name": "Tajikistan",
+    "arabicName": "طاجيكستان",
+    "image": "",
+    "flag": "🇹🇯",
+    "code": "+992"
+  },
+  {
+    "name": "Tanzania",
+    "arabicName": "تانزانيا",
+    "image": "",
+    "flag": "🇹🇿",
+    "code": "+255"
+  },
+  {
+    "name": "Thailand",
+    "arabicName": "تايلاند",
+    "image": "",
+    "flag": "🇹🇭",
+    "code": "+66"
+  },
+  {
+    "name": "Timor-Leste",
+    "arabicName": "تيمور الشرقية",
+    "image": "",
+    "flag": "🇹🇱",
+    "code": "+670"
+  },
+  {
+    "name": "Togo",
+    "arabicName": "توغو",
+    "image": "",
+    "flag": "🇹🇬",
+    "code": "+228"
+  },
+  {
+    "name": "Tonga",
+    "arabicName": "تونغا",
+    "image": "",
+    "flag": "🇹🇴",
+    "code": "+676"
+  },
+  {
+    "name": "Trinidad and Tobago",
+    "arabicName": "ترينيداد وتوباغو",
+    "image": "",
+    "flag": "🇹🇹",
+    "code": "+1"
+  },
+  {
+    "name": "Tunisia",
+    "arabicName": "تونس",
+    "image": "",
+    "flag": "🇹🇳",
+    "code": "+216"
+  },
+  {
+    "name": "Turkey",
+    "arabicName": "تركيا",
+    "image": "",
+    "flag": "🇹🇷",
+    "code": "+90"
+  },
+  {
+    "name": "Turkmenistan",
+    "arabicName": "تركمانستان",
+    "image": "",
+    "flag": "🇹🇲",
+    "code": "+993"
+  },
+  {
+    "name": "Tuvalu",
+    "arabicName": "توفالو",
+    "image": "",
+    "flag": "🇹🇻",
+    "code": "+688"
+  },
+  {
+    "name": "Uganda",
+    "arabicName": "أوغندا",
+    "image": "",
+    "flag": "🇺🇬",
+    "code": "+256"
+  },
+  {
+    "name": "Ukraine",
+    "arabicName": "أوكرانيا",
+    "image": "",
+    "flag": "🇺🇦",
+    "code": "+380"
+  },
+  {
+    "name": "United Arab Emirates",
+    "arabicName": "الإمارات العربية المتحدة",
+    "image": "",
+    "flag": "🇦🇪",
+    "code": "+971"
+  },
+  {
+    "name": "United Kingdom",
+    "arabicName": "المملكة المتحدة",
+    "image": "",
+    "flag": "🇬🇧",
+    "code": "+44"
+  },
+  {
+    "name": "United States",
+    "arabicName": "الولايات المتحدة",
+    "image": "",
+    "flag": "🇺🇸",
+    "code": "+1"
+  },
+  {
+    "name": "Uruguay",
+    "arabicName": "الأوروغواي",
+    "image": "",
+    "flag": "🇺🇾",
+    "code": "+598"
+  },
+  {
+    "name": "Uzbekistan",
+    "arabicName": "أوزبكستان",
+    "image": "",
+    "flag": "🇺🇿",
+    "code": "+998"
+  },
+  {
+    "name": "Vanuatu",
+    "arabicName": "فانواتو",
+    "image": "",
+    "flag": "🇻🇺",
+    "code": "+678"
+  },
+  {
+    "name": "Vatican City",
+    "arabicName": "الفاتيكان",
+    "image": "",
+    "flag": "🇻🇦",
+    "code": "+379"
+  },
+  {
+    "name": "Venezuela",
+    "arabicName": "فنزويلا",
+    "image": "",
+    "flag": "🇻🇪",
+    "code": "+58"
+  },
+  {
+    "name": "Vietnam",
+    "arabicName": "فيتنام",
+    "image": "",
+    "flag": "🇻🇳",
+    "code": "+84"
+  },
+  {
+    "name": "Zambia",
+    "arabicName": "زامبيا",
+    "image": "",
+    "flag": "🇿🇲",
+    "code": "+260"
+  },
+  {
+    "name": "Zimbabwe",
+    "arabicName": "زيمبابوي",
+    "image": "",
+    "flag": "🇿🇼",
+    "code": "+263"
+  }
+]

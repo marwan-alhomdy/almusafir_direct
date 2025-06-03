@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../resource/color_app.dart';
 import '../resource/text_style.dart';
 
@@ -17,7 +18,7 @@ class MessageBoxDialogWidget extends StatelessWidget {
         Container(
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Get.isDarkMode ? Colors.grey.shade800 : Colors.white,
               borderRadius: BorderRadius.circular(20),
             ),
             // padding: const EdgeInsets.all(10),

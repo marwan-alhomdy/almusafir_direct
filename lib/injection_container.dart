@@ -9,10 +9,15 @@ import 'core/services/network_info.dart';
 import 'features/auth/data/dataSourse/auth_remote_data_source.dart';
 import 'features/auth/data/repositories/auth_repotitorises_imp.dart';
 import 'features/auth/domain/repositories/auth_repostitorise.dart';
+import 'features/auth/domain/usecases/check_activation.usescases.dart';
 import 'features/auth/domain/usecases/login_usescases.dart';
+import 'features/auth/domain/usecases/register.usecases.dart';
 import 'features/auth/domain/usecases/resend_opt_usescases.dart';
-import 'features/auth/domain/usecases/verifyopt_usecases.dart';
-import 'features/auth/persention/bloc/auth_bloc/auth_bloc.dart';
+import 'features/auth/domain/usecases/send_activation.usecases.dart';
+import 'features/auth/domain/usecases/validate_otp_code.usecases.dart';
+import 'features/auth/persention/logic/auth_bloc/auth_bloc.dart';
+import 'features/auth/persention/logic/regiser_cubit/regiser_cubit.dart';
+import 'features/auth/persention/logic/validate_otp_cubit/validate_otp_cubit.dart';
 import 'features/home/data/datasources/home_local_datasource.dart';
 import 'features/home/data/datasources/home_remote_datasources.dart';
 import 'features/home/data/repositories/home_repositories_imp.dart';
@@ -24,6 +29,7 @@ import 'features/profile/data/dataSourse/uplod_image_data_source.dart';
 import 'features/profile/data/repositories/profile_repositories_imp.dart';
 import 'features/profile/domain/repositories/profile_repositories.dart';
 import 'features/profile/domain/usecases/change_code_vehicle.usecases.dart';
+import 'features/profile/domain/usecases/delete_usecases.dart';
 import 'features/profile/domain/usecases/logout_usecases.dart';
 import 'features/profile/domain/usecases/update_user_profile.usecases.dart';
 import 'features/profile/domain/usecases/upload_image_cloudflare_usecases.dart';
@@ -43,11 +49,20 @@ Future<void> init() async {
         resendOptUseCases: sl(),
       ));
 
+  sl.registerFactory(() => RegiserCubit(registerUseCases: sl()));
+  sl.registerFactory(() => ValidateOtpCubit(
+        verigyOtpUseCases: sl(),
+        checkActivationUseCases: sl(),
+        sendActivationUseCases: sl(),
+      ));
+
   //home
   sl.registerFactory(() => HomeBloc(fetchAllData: sl()));
 
-  sl.registerFactory(() =>
-      ProfileBloc(uploadImageCloudflare: sl(), logoutDriverUseCases: sl()));
+  sl.registerFactory(() => ProfileBloc(
+      deleteAccountUseCases: sl(),
+      uploadImageCloudflare: sl(),
+      logoutDriverUseCases: sl()));
   sl.registerFactory(() => CodeVehicleCubit(changeCodeVehicleUsecases: sl()));
 
   sl.registerFactory(() => UserProfileBloc(updateUserProfile: sl()));
@@ -58,13 +73,17 @@ Future<void> init() async {
   //Auth
   sl.registerLazySingleton(() => LoginUseCases(sl()));
   sl.registerLazySingleton(() => ResendOptUseCases(sl()));
-  sl.registerLazySingleton(() => VerigyOtpUseCases(sl()));
+  sl.registerLazySingleton(() => ValidateOtpCodeUseCases(sl()));
+  sl.registerLazySingleton(() => RegisterUseCases(sl()));
+  sl.registerLazySingleton(() => SendActivationUseCases(sl()));
+  sl.registerLazySingleton(() => CheckActivationUseCases(sl()));
 
   //Profile
 
   sl.registerLazySingleton(() => UpdateUserProfileUsecases(sl()));
   sl.registerLazySingleton(() => UploadImageWithCloudflareUseCases(sl()));
   sl.registerLazySingleton(() => LogoutDriverUseCases(sl()));
+  sl.registerLazySingleton(() => DeleteAccountUseCases(sl()));
 
   sl.registerLazySingleton(() => ChangeCodeVehicleUsecases(sl()));
 

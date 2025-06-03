@@ -1,9 +1,11 @@
+import 'package:almusafir_direct/helper/cache_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
 import '/injection_container.dart' as di;
 import '../../../../core/Animation/animation_limiter_widget.dart';
+import '../../../../core/constants/cached/cached_name.dart';
 import '../../../../core/server/error_token.dart';
 import '../../../../core/utils/function/message_box.dart';
 import '../../../../core/utils/function/toast_box.dart';
@@ -15,13 +17,19 @@ import '../widget/button/button_delete_widget.dart';
 import '../widget/button/button_favorite.widget.dart';
 import '../widget/button/button_helpcenter.widget.dart';
 import '../widget/button/button_language.widget.dart';
+import '../widget/button/button_login.widget.dart';
 import '../widget/button/button_logout.widget.dart';
 import '../widget/button/button_payment_method.widget.dart';
 import '../widget/button/button_theme.widget.dart';
 
-class ProfileVeiw extends StatelessWidget {
+class ProfileVeiw extends StatefulWidget {
   const ProfileVeiw({super.key});
 
+  @override
+  State<ProfileVeiw> createState() => _ProfileVeiwState();
+}
+
+class _ProfileVeiwState extends State<ProfileVeiw> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,15 +43,22 @@ class ProfileVeiw extends StatelessWidget {
             child: AnimationLimiterWidget(
               children: [
                 SizedBox(height: 10),
-                const ButtonAcountWidget(),
+                (CacheHelper.getBool(CachedAppKey.isAuth) ?? false)
+                    ? const ButtonAcountWidget()
+                    : ButtonLoginWidget(
+                        onLogin: () => setState(() {
+                              print("onLogin");
+                            })),
                 const ButtonFavoriteWidget(),
                 const ButtonPaymentMethodWidget(),
                 const ButtonContactUsWidget(),
                 const ButtonHelpCenterWidget(),
                 const ButtonLanguageWidget(),
                 const ButtonThemeWidget(),
-                const ButtonDeleteAccountWidget(),
-                const ButtonLogoutWidget(),
+                if (CacheHelper.getBool(CachedAppKey.isAuth) ?? false) ...[
+                  const ButtonDeleteAccountWidget(),
+                  const ButtonLogoutWidget(),
+                ],
               ],
             ),
           ),
@@ -58,9 +73,9 @@ class ProfileVeiw extends StatelessWidget {
     } else if (state is ErrorProfileState) {
       Get.back();
       ToastBox.show(message: state.message);
-    } else if (state is LogoutSuccessfulState) {
+    } else if (state is LogoutOrDeleteAccountSuccessfulState) {
       Get.back();
-      ErrorTokenAuth.logoutApp();
+      setState(() => ErrorTokenAuth.logoutApp());
     }
   }
 }

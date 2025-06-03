@@ -98,4 +98,22 @@ class ProfileRepostitoryImpl extends ProfileRepostitory {
       return Left(OfflineFailure());
     }
   }
+
+  @override
+  Future<Either<Failure, Unit>> deleteAccount() async {
+    if (await networkInfo.isConnected) {
+      try {
+        final remotePosts = await profileRemoteDataSource.deleteAccount();
+        return Right(remotePosts);
+      } on ServerExecption catch (e) {
+        return Left(ServerFailure(e.message ?? ""));
+      } on DioException catch (e) {
+        return Left(DioFailure.fromDiorError(e));
+      } catch (e) {
+        return Left(ServerFailure(e.toString()));
+      }
+    } else {
+      return Left(OfflineFailure());
+    }
+  }
 }

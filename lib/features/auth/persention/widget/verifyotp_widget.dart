@@ -3,15 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
+import '../../../../core/constants/enum/field_name.auht.dart';
 import '../../../../core/widget/button/button.widget.dart';
 import '../../../../core/widget/field/pinput_widget.dart';
-import '../bloc/auth_bloc/auth_bloc.dart';
-import '../view/complete_profile.view.dart';
+import '../logic/validate_otp_cubit/validate_otp_cubit.dart';
 import 'custom/logo_auth.widget.dart';
+import 'custom/resendotp_button.widget.dart';
 
 class VerifyotpWidget extends StatelessWidget {
-  const VerifyotpWidget({super.key, required this.authBloc});
-  final AuthBloc authBloc;
+  const VerifyotpWidget(
+      {super.key, this.fieldNameAuth = FieldNameAuth.activation});
+  final FieldNameAuth fieldNameAuth;
 
   @override
   Widget build(BuildContext context) {
@@ -42,39 +44,33 @@ class VerifyotpWidget extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             PinputWidget(
-                pinController: authBloc.pinController,
-                pinputFocusNode: authBloc.pinputFocusNode,
-                onCompeted: (pin) {
-                  Get.to(() => CompleteProfileView(authBloc: authBloc));
-                }),
-            const SizedBox(height: 10),
+              pinController: context.read<ValidateOtpCubit>().pinController,
+              pinputFocusNode: context.read<ValidateOtpCubit>().pinputFocusNode,
+              onCompeted: (pin) => _verifyOtp(context),
+            ),
             const SizedBox(height: 20),
-            BlocBuilder<AuthBloc, AuthState>(
-                bloc: authBloc,
+            BlocBuilder<ValidateOtpCubit, ValidateOtpState>(
                 builder: (context, state) {
-                  if (state is LoadingAuthState) {
-                    return ButtonLoadingWidget(
-                      isLoading: true,
-                      onTap: () {},
-                      text: "Verify".tr,
-                    );
-                  } else {
-                    return ButtonLoadingWidget(
-                      onTap: () {
-                        Get.to(() => CompleteProfileView(authBloc: authBloc));
-
-                        // if (authBloc.pinController.text.isNotEmpty) {
-                        //   authBloc.add(const VerifyOtpEvent());
-                        // }
-                      },
-                      text: "Verify".tr,
-                    );
-                  }
-                }),
+              return (state is ValidateOtpLoading)
+                  ? ButtonLoadingWidget(isLoading: true, text: "")
+                  : ButtonLoadingWidget(
+                      onTap: () => _verifyOtp(context), text: "Verify".tr);
+            }),
+            ResendOtpButton(
+              onResend: () => context
+                  .read<ValidateOtpCubit>()
+                  .sendactivation(fieldNameAuth: fieldNameAuth),
+            ),
             const Spacer(),
           ],
         ),
       ),
     );
+  }
+
+  void _verifyOtp(BuildContext context) {
+    context
+        .read<ValidateOtpCubit>()
+        .checkactivation(fieldNameAuth: fieldNameAuth);
   }
 }

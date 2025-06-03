@@ -13,9 +13,7 @@ class ButtonLogoutWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card.filled(
       child: ListTile(
-        onTap: () async {
-          _signOut(context);
-        },
+        onTap: () => _signOut(context),
         minTileHeight: 50,
         leading: const Icon(Iconsax.logout_1, size: 18),
         title: Text("log_out".tr),

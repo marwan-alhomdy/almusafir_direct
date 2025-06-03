@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../../core/constants/enum/explore.dart';
-import 'card_category.widget.dart';
+import '../../../../../core/widget/card/card_vertical.widget.dart';
 
 class FilterCategoryWidget extends StatelessWidget {
   const FilterCategoryWidget({super.key, required this.category});
@@ -22,7 +22,7 @@ class FilterCategoryWidget extends StatelessWidget {
         ]
             .map((image) => SizedBox(
                   width: Get.width * 0.5,
-                  child: CardCategoryWidget(
+                  child: CardVerticalWidget(
                     image: image,
                     title: "خصم 50% على جميع الرحلات".tr,
                     address: category.address,

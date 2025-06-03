@@ -1,9 +1,6 @@
-import '../../data/models/user_model.module.dart';
+import '../../../features/home/data/model/current_user/current_user.dart';
+import '../../../helper/public_infromation.dart';
 
-void setAuth(UserModel user) {
-  // Helper.dataApp = user.user;
-  // CacheHelper.setString(CachedAppKey.authToken, user.accessToken ?? "");
-  // CacheHelper.setBool(CachedAppKey.isAuth, true);
-  // CacheHelper.setString(
-  //     CachedAppKey.deleagete, json.encode(user.user?.toJson()));
+void setAuth(CurrentUser user) {
+  Helper.dataApp?.data?.currentUser = user;
 }

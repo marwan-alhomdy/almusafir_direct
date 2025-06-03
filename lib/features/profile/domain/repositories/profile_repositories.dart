@@ -8,6 +8,7 @@ abstract class ProfileRepostitory {
       {required Map<String, dynamic> data});
 
   Future<Either<Failure, Unit>> logout();
+  Future<Either<Failure, Unit>> deleteAccount();
   Future<Either<Failure, Cloudflare>> uploadImageWithCloudflare(
       {required String newImage,
       required String? currentImage,

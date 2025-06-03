@@ -4,6 +4,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../core/constants/cached/cached_name.dart';
 import '../core/data/models/wash.module.dart';
 import '../core/firebase/firebase_message.dart';
+import '../features/home/data/model/current_user/data.dart';
 import '../features/home/data/model/getalldata/getalldata.dart';
 import 'cache_helper.dart';
 
@@ -25,6 +26,8 @@ class Helper {
       myLocation = LatLng(value?.latitude ?? 0, value?.longitude ?? 0);
 
   static LatLng get getterMyLocation => myLocation;
+
+  static DataCurrentUser? get user => dataApp?.data?.currentUser?.data;
 
   static void init() async {
     await CacheHelper.init();

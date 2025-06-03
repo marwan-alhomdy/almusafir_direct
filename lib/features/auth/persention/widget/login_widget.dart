@@ -1,17 +1,16 @@
-import 'package:almusafir_direct/features/auth/persention/view/verifyotp.view.dart';
+import 'package:almusafir_direct/core/widget/field/password_field.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart';
 
-import '../../../../core/utils/resource/color_app.dart';
 import '../../../../core/utils/resource/text_style.dart';
 import '../../../../core/utils/validator/validator.dart';
 import '../../../../core/widget/button/button.widget.dart';
-import '../../../../core/widget/field/password_field.widget.dart';
-import '../bloc/auth_bloc/auth_bloc.dart';
+import '../../../../core/widget/field/mobile_email_field.widget.dart';
+import '../logic/auth_bloc/auth_bloc.dart';
+import '../view/forget_password.view.dart';
+import '../view/register.view.dart';
 import 'custom/logo_auth.widget.dart';
-import 'custom/username_field_widget.dart';
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({super.key});
@@ -31,18 +30,21 @@ class _LoginWidgetState extends State<LoginWidget> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Spacer(),
             LogoAuthWidget(),
-            const Spacer(),
-            Text("userName".tr, style: AppTextStyles.getMediumStyle()),
+            Text("mobile".tr, style: AppTextStyles.getMediumStyle()),
             const SizedBox(height: 15),
-            UsernameFieldWidget(
-              controller: context.read<AuthBloc>().usernameController,
+            MobileOrEmailFieldWidget(
+              country: context.read<AuthBloc>().country,
+              controller: context.read<AuthBloc>().mobileController,
               validator: "".validator(),
+              onChangedCountry: (country) {
+                context.read<AuthBloc>().country = country;
+                setState(() {});
+              },
             ),
             const SizedBox(height: 15),
             Text("password".tr, style: AppTextStyles.getMediumStyle()),
-            const SizedBox(height: 10),
+            const SizedBox(height: 15),
             PasswordFieldWidget(
               controller: context.read<AuthBloc>().passwordController,
               validator: "".validator(),
@@ -50,42 +52,38 @@ class _LoginWidgetState extends State<LoginWidget> {
             const SizedBox(height: 20),
             BlocBuilder<AuthBloc, AuthState>(
               builder: (context, state) {
-                if (state is LoadingAuthState) {
-                  return ButtonLoadingWidget(
-                    isLoading: true,
-                    onTap: () {},
-                    text: "",
-                  );
-                } else {
-                  return ButtonLoadingWidget(
-                    onTap: _login,
-                    text: "login".tr,
-                  );
-                }
+                return (state is LoadingAuthState)
+                    ? ButtonLoadingWidget(isLoading: true, text: "")
+                    : ButtonLoadingWidget(onTap: _login, text: "login".tr);
               },
             ),
             const SizedBox(height: 20),
-            Text(
-              "By using the app and logging in, you agree to ".tr,
-              style:
-                  AppTextStyles.getMediumStyle(color: AppColors.grayTwoColor),
+            Center(
+              child: TextButton(
+                  onPressed: () => Get.to(() => ForgetPasswordView()),
+                  child: Text(
+                    "نسيت كلمة السر".tr,
+                    style: AppTextStyles.getMediumStyle(),
+                  )),
             ),
-            GestureDetector(
-              onTap: () {
-                final Uri url =
-                    Uri.parse('https://app.thebwash.com/ar/privacy-policy/');
-                launchUrl(
-                  url,
-                  mode: LaunchMode.externalApplication,
-                );
-              },
-              child: Text(
-                "Terms of Service and Privacy Policy".tr,
-                style: AppTextStyles.getMediumStyle(
-                    color: AppColors.blackOneColor),
-              ),
+            Center(
+              child: TextButton(
+                  onPressed: () => Get.to(() => RegisterView()),
+                  child: Text.rich(
+                    TextSpan(
+                      children: [
+                        TextSpan(text: "ليس لديك حساب ؟".tr),
+                        WidgetSpan(child: SizedBox(width: 10)),
+                        TextSpan(
+                          text: "إنشاء حساب".tr,
+                          style: AppTextStyles.getMediumStyle(
+                              color: Colors.orange),
+                        ),
+                      ],
+                    ),
+                    style: AppTextStyles.getMediumStyle(),
+                  )),
             ),
-            const Spacer(),
             const SizedBox(height: 50),
           ],
         ),
@@ -94,10 +92,9 @@ class _LoginWidgetState extends State<LoginWidget> {
   }
 
   Future<void> _login() async {
-    Get.to(() => VerifyOtpView(authBloc: context.read<AuthBloc>()));
-    //   final authBloc = context.read<AuthBloc>();
-    //   if (authBloc.formState.currentState?.validate() ?? false) {
-    //     authBloc.add(const LoginEvent());
-    //   }
+    final authBloc = context.read<AuthBloc>();
+    if (authBloc.formState.currentState?.validate() ?? false) {
+      authBloc.add(const LoginEvent());
+    }
   }
 }

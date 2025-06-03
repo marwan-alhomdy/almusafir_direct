@@ -20,3 +20,8 @@ class UploadImageWithCloudflareEvent extends ProfileEvent {
 class LogoutProfileEvent extends ProfileEvent {
   const LogoutProfileEvent();
 }
+
+//!delete account
+class DeleteAccountEvent extends ProfileEvent {
+  const DeleteAccountEvent();
+}

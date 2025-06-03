@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:almusafir_direct/core/constants/endpoint.dart';
 import 'package:dio/dio.dart';
 
 import '../constants/config.dart';
@@ -30,7 +31,11 @@ class ApiService {
       if (onHeaderResponse != null) {
         onHeaderResponse(response.headers);
       }
-      return _checkResponse(response, endPoint);
+      if (response.data["status"] == false) {
+        _responseError(response, endPoint);
+      } else {
+        return _checkResponse(response);
+      }
     } catch (e) {
       log(e.toString());
       rethrow;
@@ -45,14 +50,23 @@ class ApiService {
     String baseUrl = BASE_URL,
   }) async {
     try {
+      print("================================================");
+      log(endPoint);
+      print("================================================");
       var response = await _dio.post(
         '$baseUrl$endPoint',
         data: data,
         queryParameters: queryParameters,
         options: Options(headers: headers ?? HeaderServer.header),
       );
-
-      return _checkResponse(response, endPoint);
+      print("================================================");
+      log(response.data.toString());
+      print("================================================");
+      if (response.data["status"] == false) {
+        _responseError(response, endPoint);
+      } else {
+        return _checkResponse(response);
+      }
     } catch (e) {
       rethrow;
     }
@@ -72,7 +86,11 @@ class ApiService {
         queryParameters: queryParameters,
         options: Options(headers: headers ?? HeaderServer.header),
       );
-      return _checkResponse(response, endPoint);
+      if (response.data["status"] == false) {
+        _responseError(response, endPoint);
+      } else {
+        return _checkResponse(response);
+      }
     } catch (e) {
       log(e.toString());
       rethrow;
@@ -93,7 +111,11 @@ class ApiService {
         queryParameters: queryParameters,
         options: Options(headers: headers ?? HeaderServer.header),
       );
-      return _checkResponse(response, endPoint);
+      if (response.data["status"] == false) {
+        _responseError(response, endPoint);
+      } else {
+        return _checkResponse(response);
+      }
     } catch (e) {
       log(e.toString());
       rethrow;
@@ -115,14 +137,18 @@ class ApiService {
         options: Options(headers: headers ?? HeaderServer.header),
       );
 
-      return _checkResponse(response, endPoint);
+      if (response.data["status"] == false) {
+        _responseError(response, endPoint);
+      } else {
+        return _checkResponse(response);
+      }
     } catch (e) {
       log(e.toString());
       rethrow;
     }
   }
 
-  Future<dynamic> _checkResponse(Response response, String endPoint) {
+  Future<dynamic> _checkResponse(Response response) {
     final statusCode = response.statusCode ?? 0;
     if (statusCode == 200 || statusCode == 201) {
       return Future.value(response.data);
@@ -134,5 +160,22 @@ class ApiService {
     } else {
       throw ServerExecption();
     }
+  }
+
+  void _responseError(Response response, String endPoint) {
+    print("================================================");
+    log(response.data.toString());
+    print("================================================");
+    final error = response.data["error"] ?? "";
+    final messageError = response.data["message"] ?? "";
+    final message = "$messageError\n$error";
+    log(message);
+    if (endPoint == EndPointName.login) {
+      throw AccountNotActiveExecption();
+    } else if (endPoint == EndPointName.register) {
+      throw AccountNotActiveExecption();
+    } else if (endPoint == EndPointName.sendOtp) {}
+
+    throw ServerExecption(message: message);
   }
 }

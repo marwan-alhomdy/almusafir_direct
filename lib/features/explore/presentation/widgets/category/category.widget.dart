@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../../core/constants/enum/explore.dart';
-import 'card_category.widget.dart';
+import '../../../../../core/widget/card/card_category.widget.dart';
 import 'header_category.widget.dart';
 
 class CategoryWidget extends StatelessWidget {

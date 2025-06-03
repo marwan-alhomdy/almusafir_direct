@@ -1,10 +1,9 @@
 import 'dart:developer';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:get/get.dart';
 
-import '../../features/auth/persention/view/auth_view.dart';
 import '../../helper/cache_helper.dart';
+import '../../helper/public_infromation.dart';
 import '../constants/cached/cached_name.dart';
 
 class ErrorTokenAuth {
@@ -21,11 +20,13 @@ class ErrorTokenAuth {
   static void logoutApp() {
     CacheHelper.removeAt(CachedAppKey.isAuth);
     CacheHelper.removeAt(CachedAppKey.dataApp);
+    CacheHelper.removeAt(CachedAppKey.authToken);
+    Helper.dataApp?.data?.currentUser = null;
 
     FirebaseMessaging.instance
         .unsubscribeFromTopic("drivers")
         .then((v) => log("Success"))
         .catchError((e) => log("$e"));
-    Get.off(() => const AuthintcationView());
+    // Get.off(() => const AuthintcationView());
   }
 }

@@ -1,15 +1,8 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/constants/cached/cached_name.dart';
 import '../../../../core/utils/resource/images.dart';
 import '../../../../core/utils/resource/size_config.dart';
-import '../../../../helper/cache_helper.dart';
-import '../../../../helper/public_infromation.dart';
-import '../../../auth/persention/view/auth_view.dart';
-import '../../../home/data/model/getalldata/getalldata.dart';
 import '../../../home/presentation/view/home_view.dart';
 
 class SplashViewBody extends StatefulWidget {
@@ -47,14 +40,8 @@ class SplashViewBodyState extends State<SplashViewBody>
   }
 
   void _goToNextView() {
-    Future.delayed(const Duration(seconds: 1), () async {
-      if ((CacheHelper.getBool(CachedAppKey.isAuth) ?? false) == false) {
-        Get.offAll(() => const AuthintcationView());
-      } else {
-        final data = CacheHelper.getString(CachedAppKey.dataApp) ?? "";
-        Helper.dataApp = Getalldata.fromJson(json.decode(data));
-        Get.offAll(() => const HomeView());
-      }
+    Future.delayed(const Duration(seconds: 2), () async {
+      Get.offAll(() => const HomeView());
     });
   }
 }

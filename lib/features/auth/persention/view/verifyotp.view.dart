@@ -1,55 +1,51 @@
+import 'package:almusafir_direct/core/utils/function/message_box.dart';
+import 'package:almusafir_direct/core/utils/function/set_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
-import '../../../../core/locale/locale_controller.dart';
-import '../../../../core/utils/function/message_box.dart';
-import '../../../../core/utils/function/set_auth.dart';
-import '../../../../core/utils/resource/color_app.dart';
-import '../../../home/presentation/view/home_view.dart';
-import '../bloc/auth_bloc/auth_bloc.dart';
-
-import '../widget/verifyotp_widget.dart';
-
 import 'package:get/get.dart';
 
+import '/injection_container.dart' as di;
+import '../../../../core/constants/enum/field_name.auht.dart';
+import '../../../home/data/model/current_user/current_user.dart';
+import '../logic/validate_otp_cubit/validate_otp_cubit.dart';
+import '../widget/custom/auth.appber.dart';
+import '../widget/verifyotp_widget.dart';
+
 class VerifyOtpView extends StatelessWidget {
-  const VerifyOtpView({super.key, required this.authBloc});
-  final AuthBloc authBloc;
+  const VerifyOtpView(
+      {super.key,
+      required this.mobile,
+      this.onSuccess,
+      this.fieldNameAuth = FieldNameAuth.activation});
+  final FieldNameAuth fieldNameAuth;
+
+  final Function(CurrentUser)? onSuccess;
+  final String mobile;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        foregroundColor: AppColors.mainOneColor,
-        actions: [
-          IconButton(
-            onPressed: _changeLanguage,
-            icon: const Icon(Iconsax.translate),
-          ),
-          const SizedBox(width: 20),
-        ],
-      ),
-      body: BlocListener<AuthBloc, AuthState>(
-        bloc: authBloc,
-        listener: _listenerSignInBlocState,
-        child: VerifyotpWidget(authBloc: authBloc),
+    return BlocProvider(
+      create: (context) => di.sl<ValidateOtpCubit>()
+        ..setMobile(mobile)
+        ..sendactivation(fieldNameAuth: fieldNameAuth),
+      child: Scaffold(
+        appBar: AuthAppBer(),
+        body: BlocListener<ValidateOtpCubit, ValidateOtpState>(
+          listener: _listenerBlocState,
+          child: VerifyotpWidget(fieldNameAuth: fieldNameAuth),
+        ),
       ),
     );
   }
 
-  void _listenerSignInBlocState(BuildContext context, AuthState state) {
-    if (state is LoginSuccessfulState) {
-      setAuth(state.user);
-      Get.offAll(() => const HomeView());
-    } else if (state is ErrorLoginState) {
+  void _listenerBlocState(BuildContext context, ValidateOtpState state) {
+    if (state is ValidateOtpError) {
       MessageBox.showError(context, state.message);
-    }
-  }
-
-  void _changeLanguage() {
-    LocaleController localeController = Get.find();
-    final code = localeController.languageCode == "en" ? "ar" : "en";
-    localeController.chingeLanguage(languageCode: code);
+    } else if (state is SendOtpError) {
+      MessageBox.showError(context, state.message);
+    } else if (state is CheckActivationSuccess) {
+      setAuth(state.currentUser);
+      Get.back();
+    } else if (state is SendOtpSuccess) {}
   }
 }

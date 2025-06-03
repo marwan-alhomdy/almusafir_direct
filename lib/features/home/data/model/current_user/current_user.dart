@@ -6,7 +6,7 @@ class CurrentUser {
   String? message;
   dynamic error;
   dynamic errors;
-  Data? data;
+  DataCurrentUser? data;
 
   CurrentUser({
     this.status,
@@ -17,17 +17,18 @@ class CurrentUser {
     this.data,
   });
 
-  factory CurrentUser.fromJson(Map<String, dynamic> json) => CurrentUser(
-        status: json['status'] as bool?,
-        name: json['name'] as String?,
-        message: json['message'] as String?,
-        error: json['error'] as dynamic,
-        errors: json['errors'] as dynamic,
-        data: json['data'] == null
-            ? null
-            : Data.fromJson(json['data'] as Map<String, dynamic>),
-      );
-
+  factory CurrentUser.fromJson(Map<String, dynamic> json) {
+    return CurrentUser(
+      status: json['status'] as bool?,
+      name: json['name'] as String?,
+      message: json['message'] as String?,
+      error: json['error'] as dynamic,
+      errors: json['errors'] as dynamic,
+      data: json['data'] == null || json['data'] is List
+          ? null
+          : DataCurrentUser.fromJson(json['data'] as Map<String, dynamic>),
+    );
+  }
   Map<String, dynamic> toJson() => {
         'status': status,
         'name': name,

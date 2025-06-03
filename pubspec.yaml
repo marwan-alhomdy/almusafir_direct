@@ -103,3 +103,4 @@ flutter:
     - assets/lottie/
     - assets/fonts/
     - assets/json/map_style_with_google.json
+    - assets/json/countries.json

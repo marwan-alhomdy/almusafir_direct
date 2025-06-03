@@ -26,8 +26,8 @@ class UploadImageCloudinarySuccessfulState extends ProfileState {
   const UploadImageCloudinarySuccessfulState({required this.urlImage});
 }
 
-class LogoutSuccessfulState extends ProfileState {
-  const LogoutSuccessfulState();
+class LogoutOrDeleteAccountSuccessfulState extends ProfileState {
+  const LogoutOrDeleteAccountSuccessfulState();
 }
 
 //! Loading

@@ -10,9 +10,9 @@ import '../../../../core/widget/appbar/my_appbar.dart';
 import '../../../../core/widget/carousel_slider.widget.dart';
 import '../../../../core/widget/state/error.widget.dart';
 import '../../../../core/widget/state/loading_widget.dart';
-import '../../../service_details/presentation/pages/service_details.view.dart';
 import '../../data/model/getalldata/data.dart';
 import '../logic/bloc/home_bloc.dart';
+import 'card_servsice.widget.dart';
 
 class HomeWidget extends StatelessWidget {
   const HomeWidget({super.key});
@@ -73,7 +73,7 @@ class _HomeWidget extends StatelessWidget {
           const SizedBox(height: 10),
           CarouselSliderGroupWidget(
               images: allData?.adverts?.data
-                      ?.map((e) => e.image?.original ?? "")
+                      ?.map((e) => e.image?.medium ?? "")
                       .toList() ??
                   []),
           Padding(
@@ -84,14 +84,8 @@ class _HomeWidget extends StatelessWidget {
                 shrinkWrap: true,
                 childAspectRatio: 5 / 4,
                 physics: NeverScrollableScrollPhysics(),
-                children: allData?.orderstypes?.data
-                        ?.map((e) => _CardServsiceWidget(
-                              onTap: () => Get.to(() => ServiceDetailsView()),
-                              image: e.image?.small ?? "",
-                              //icon: Iconsax.airplane,
-                              color: Colors.blue,
-                              title: e.name ?? "",
-                            ))
+                children: allData?.orderstypes?.orderType
+                        ?.map((e) => CardServsiceWidget(orderType: e))
                         .toList() ??
                     []),
           ),
@@ -135,46 +129,6 @@ class _HomeWidget extends StatelessWidget {
           //   ),
           // )
         ],
-      ),
-    );
-  }
-}
-
-class _CardServsiceWidget extends StatelessWidget {
-  const _CardServsiceWidget(
-      {
-      //required this.icon,
-      required this.image,
-      required this.color,
-      required this.title,
-      required this.onTap});
-  final VoidCallback onTap;
-  //final IconData icon;
-  final Color color;
-  final String image;
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card.filled(
-      margin: EdgeInsets.all(5),
-      child: InkWell(
-        customBorder: RoundedRectangleBorderAttribute.all(12),
-        onTap: onTap,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            // Icon(icon, color: color, size: 30),
-            ImageWidget(image, width: 50, height: 50, fit: BoxFit.cover),
-            SizedBox(height: 10),
-            Text(
-              title,
-              textAlign: TextAlign.center,
-              style: AppTextStyles.getRegularStyle(fontSize: 12),
-            ),
-          ],
-        ),
       ),
     );
   }

@@ -1,3 +1,6 @@
+import 'package:almusafir_direct/core/server/header_server.dart';
+
+import '../../../../core/constants/endpoint.dart';
 import '../../../../core/services/api.service.dart';
 import '../model/getalldata/getalldata.dart';
 
@@ -12,9 +15,10 @@ class HomeRemoteDataSourceImplWithDio extends HomeRemoteDataSource {
   @override
   Future<Getalldata> fetchAllData() async {
     final response = await apiService.get(
-      endPoint: "v1/data/all?exclude_item=tags_types,menus,categories,products",
-    );
-    print(response);
+        endPoint: EndPointName.getAllDate,
+        data: {"api_version": "v2"},
+        headers: HeaderServer.headerWithToken);
+
     return Getalldata.fromJson(response);
   }
 }

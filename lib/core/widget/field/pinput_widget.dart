@@ -14,7 +14,7 @@ class PinputWidget extends StatelessWidget {
       required this.pinController,
       required this.onCompeted,
       required this.pinputFocusNode,
-      this.length = 4});
+      this.length = 6});
 
   @override
   Widget build(BuildContext context) {

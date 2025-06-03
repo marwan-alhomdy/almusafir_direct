@@ -9,11 +9,3 @@ abstract class AuthEvent extends Equatable {
 class LoginEvent extends AuthEvent {
   const LoginEvent();
 }
-
-class VerifyOtpEvent extends AuthEvent {
-  const VerifyOtpEvent();
-}
-
-class ResendOtpEvent extends AuthEvent {
-  const ResendOtpEvent();
-}

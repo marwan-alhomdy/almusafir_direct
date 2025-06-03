@@ -101,13 +101,13 @@ class OutlinedButtonWidget extends StatelessWidget {
 class ButtonLoadingWidget extends StatelessWidget {
   const ButtonLoadingWidget({
     super.key,
-    required this.onTap,
+    this.onTap,
     required this.text,
     this.color,
     this.isLoading = false,
   });
 
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final String text;
   final Color? color;
   final bool isLoading;

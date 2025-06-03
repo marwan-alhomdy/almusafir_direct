@@ -6,12 +6,12 @@ import '../../utils/handler/handler.dart';
 class DatePickerFieldWidget extends StatelessWidget {
   const DatePickerFieldWidget({
     super.key,
-    required this.name,
+    this.name,
     this.validator,
     required this.controller,
     this.padding = 20,
   });
-  final String name;
+  final String? name;
   final double padding;
   final String? Function(String?)? validator;
   final TextEditingController controller;
@@ -27,7 +27,7 @@ class DatePickerFieldWidget extends StatelessWidget {
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
         suffix: Icon(Iconsax.calendar),
-        label: Text(name),
+        label: (name == null) ? null : Text(name ?? "----"),
       ),
     );
   }

@@ -21,4 +21,7 @@ class CustomerExistisExecption implements Exception {}
 
 class AccountNotActiveExecption implements Exception {}
 
-class CustomerNotFoundExecption implements Exception {}
+class CustomerNotFoundExecption implements Exception {
+  final String? message;
+  CustomerNotFoundExecption({this.message});
+}

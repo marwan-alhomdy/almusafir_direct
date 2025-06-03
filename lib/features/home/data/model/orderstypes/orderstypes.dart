@@ -6,7 +6,7 @@ class Orderstypes {
   String? message;
   dynamic error;
   dynamic errors;
-  List<Datum>? data;
+  List<OrderType>? orderType;
 
   Orderstypes({
     this.status,
@@ -14,7 +14,7 @@ class Orderstypes {
     this.message,
     this.error,
     this.errors,
-    this.data,
+    this.orderType,
   });
 
   factory Orderstypes.fromJson(Map<String, dynamic> json) => Orderstypes(
@@ -23,8 +23,8 @@ class Orderstypes {
         message: json['message'] as String?,
         error: json['error'] as dynamic,
         errors: json['errors'] as dynamic,
-        data: (json['data'] as List<dynamic>?)
-            ?.map((e) => Datum.fromJson(e as Map<String, dynamic>))
+        orderType: (json['data'] as List<dynamic>?)
+            ?.map((e) => OrderType.fromJson(e as Map<String, dynamic>))
             .toList(),
       );
 
@@ -34,6 +34,6 @@ class Orderstypes {
         'message': message,
         'error': error,
         'errors': errors,
-        'data': data?.map((e) => e.toJson()).toList(),
+        'data': orderType?.map((e) => e.toJson()).toList(),
       };
 }

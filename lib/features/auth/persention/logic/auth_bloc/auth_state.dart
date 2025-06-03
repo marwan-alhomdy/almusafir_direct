@@ -14,28 +14,17 @@ class LoadingAuthState extends AuthState {}
 //=========================================================
 //!Successful
 class LoginSuccessfulState extends AuthState {
-  final UserModel user;
-  const LoginSuccessfulState({required this.user});
+  final CurrentUser currentUser;
+  const LoginSuccessfulState({required this.currentUser});
 }
 
-class VerifyOtpSuccessfulState extends AuthState {
-  final dynamic data;
-  const VerifyOtpSuccessfulState({required this.data});
+class MoveToActivationState extends AuthState {
+  const MoveToActivationState();
 }
-
-class ResendOtpSuccessfulState extends AuthState {
-  const ResendOtpSuccessfulState();
-}
-
 //==========================================================
 
 //! Error
 class ErrorLoginState extends AuthState {
   final String message;
   const ErrorLoginState({required this.message});
-}
-
-class ErrorVerifyState extends AuthState {
-  final String message;
-  const ErrorVerifyState({required this.message});
 }

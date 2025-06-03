@@ -7,8 +7,8 @@ class HeaderServer {
   static Map<String, String> get header {
     return {
       'Content-Type': 'application/json',
+      "api_version": "v2",
       'User-Agent': Platform.isIOS ? 'ios' : 'android',
-      'X-Client-Key': 'eyJhcHAiOiJid2FzaC1hcHAiLCJ0eXBlIjoia2V5LWFwcCJ9',
     };
   }
 
@@ -17,8 +17,8 @@ class HeaderServer {
     return {
       'Authorization': 'Bearer $token',
       'Content-Type': 'application/json',
+      "api_version": "v2",
       'User-Agent': Platform.isIOS ? 'ios' : 'android',
-      'X-Client-Key': 'eyJhcHAiOiJid2FzaC1hcHAiLCJ0eXBlIjoia2V5LWFwcCJ9',
     };
   }
 

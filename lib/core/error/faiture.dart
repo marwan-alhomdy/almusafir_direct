@@ -151,7 +151,12 @@ class DioFailure extends Failure {
   }
 
   factory DioFailure.fromResponse(int statusCode, dynamic response) {
-    if (statusCode == 404) {
+    if (response["message"] != null && response["error"] != null) {
+      final error = response["error"] ?? "";
+      final messageError = response["message"] ?? "";
+      final message = "$messageError\n$error";
+      return DioFailure(message);
+    } else if (statusCode == 404) {
       return DioFailure(
         LanguageHelper.chooseLabelLanguage(
           arabic: "طلبك غير موجود، يرجى المحاولة لاحقًا",

@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import '../../../../core/error/faiture.dart';
 
+import '../../../../core/error/faiture.dart';
 import '../repositories/auth_repostitorise.dart';
 
 class ResendOptUseCases {

@@ -14,7 +14,7 @@ class ButtonDeleteAccountWidget extends StatelessWidget {
     return Card.filled(
       child: ListTile(
         onTap: () async {
-          _signOut(context);
+          deleteAccount(context);
         },
         minTileHeight: 50,
         leading: const Icon(Iconsax.trash, size: 18),
@@ -23,14 +23,14 @@ class ButtonDeleteAccountWidget extends StatelessWidget {
     );
   }
 
-  void _signOut(BuildContext context) {
+  void deleteAccount(BuildContext context) {
     showDialog(
         context: context,
         builder: (cxt) => MessageBoxDialogWidget(
               message: "Delete account title".tr,
               onAccenpt: () {
                 Get.back();
-                context.read<ProfileBloc>().add(const LogoutProfileEvent());
+                context.read<ProfileBloc>().add(const DeleteAccountEvent());
               },
             ));
   }
