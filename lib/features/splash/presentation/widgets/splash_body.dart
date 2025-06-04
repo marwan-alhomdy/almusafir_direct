@@ -29,8 +29,7 @@ class SplashViewBodyState extends State<SplashViewBody>
         const Spacer(),
         Center(
             child: Image.asset(
-          AppImages.LOGO_COLORS,
-          //color: Colors.white,
+          AppImages.logo,
           height: 200,
           width: 200,
         )),

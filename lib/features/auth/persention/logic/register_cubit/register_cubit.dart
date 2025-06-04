@@ -7,10 +7,10 @@ import '../../../../../core/error/faiture.dart';
 import '../../../../home/data/model/current_user/current_user.dart';
 import '../../../domain/usecases/register.usecases.dart';
 
-part 'regiser_state.dart';
+part 'register_state.dart';
 
-class RegiserCubit extends Cubit<RegiserState> {
-  RegiserCubit({required this.registerUseCases}) : super(RegiserInitial());
+class RegisterCubit extends Cubit<RegisterState> {
+  RegisterCubit({required this.registerUseCases}) : super(RegisterInitial());
   final RegisterUseCases registerUseCases;
 
   final GlobalKey<FormState> formState = GlobalKey();
@@ -26,7 +26,7 @@ class RegiserCubit extends Cubit<RegiserState> {
   String get mobile => country.code + mobileController.text;
 
   Future<void> register() async {
-    emit(LoadingRegiserState());
+    emit(LoadingRegisterState());
     final data = {
       'name': nameController.text,
       'email': emailController.text,
@@ -35,6 +35,7 @@ class RegiserCubit extends Cubit<RegiserState> {
       "api_version": "v2",
       'password': passwordController.text,
       'password_confirmation': passwordController.text,
+      'date_of_birth': dateOfBirthController.text,
       'country_id': country.code,
     };
     final result = await registerUseCases(data: data);
@@ -42,8 +43,8 @@ class RegiserCubit extends Cubit<RegiserState> {
       result.fold(
           (failure) => failure is AccountNotActiveFailure
               ? MoveToActivationState()
-              : ErrorRegiserState(failure.message),
-          (currentUser) => SuccessRegiserState(currentUser: currentUser)),
+              : ErrorRegisterState(failure.message),
+          (currentUser) => SuccessRegisterState(currentUser: currentUser)),
     );
   }
 }

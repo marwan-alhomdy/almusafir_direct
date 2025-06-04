@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+
 import '../../utils/resource/color_app.dart';
 import '../../utils/resource/images.dart';
 
@@ -35,8 +36,7 @@ class ImageWidget extends StatelessWidget {
         width: width,
         child: errorWiget ??
             Center(
-              child: Image.asset(AppImages.LOGO_COLORS,
-                  color: AppColors.mainOneColor),
+              child: Image.asset(AppImages.logo, color: AppColors.mainOneColor),
             ),
       );
     } else {
@@ -63,7 +63,7 @@ class ImageWidget extends StatelessWidget {
                   errorWiget ??
                   Center(
                     child: Image.asset(
-                      AppImages.LOGO_COLORS,
+                      AppImages.logo,
                       color: AppColors.mainOneColor,
                     ),
                   )),

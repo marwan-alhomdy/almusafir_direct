@@ -125,8 +125,7 @@ class ButtonLoadingWidget extends StatelessWidget {
             foregroundColor: Colors.white,
             elevation: 0,
             padding: const EdgeInsets.all(0),
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            shape: RoundedRectangleBorderAttribute.all(10),
           ),
           child: DecoratedBox(
             decoration: BoxDecoration(

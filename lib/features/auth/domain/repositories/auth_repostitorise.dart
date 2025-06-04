@@ -7,15 +7,10 @@ abstract class AuthRepostitory {
   Future<Either<Failure, CurrentUser>> login(
       {required Map<String, dynamic> data});
 
-  Future<Either<Failure, Unit>> resendOtp({required String mobile});
-
   Future<Either<Failure, CurrentUser>> register(
       {required Map<String, dynamic> data});
 
   Future<Either<Failure, Unit>> sendActivation(
-      {required Map<String, dynamic> data});
-
-  Future<Either<Failure, Unit>> validateOtpCode(
       {required Map<String, dynamic> data});
 
   Future<Either<Failure, CurrentUser>> checkActivation(

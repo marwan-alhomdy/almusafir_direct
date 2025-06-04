@@ -38,6 +38,9 @@ class _AccountProfileViewState extends State<AccountProfileView> {
 
   @override
   Widget build(BuildContext context) {
+    print("================================================");
+    print(Helper.user?.dateOfBirth);
+    print("================================================");
     return Scaffold(
       appBar: MyAppBarWithLogo(),
       body: Padding(
@@ -51,9 +54,9 @@ class _AccountProfileViewState extends State<AccountProfileView> {
                 child: ImageProfileWidget(
                     image: Helper.user?.avatar?.original ?? "")),
             const SizedBox(),
-            Text("اسم العميل".tr, style: AppTextStyles.getMediumStyle()),
+            Text("name".tr, style: AppTextStyles.getMediumStyle()),
             TextFieldWidget(controller: nameController),
-            Text("رقم الهاتف".tr, style: AppTextStyles.getMediumStyle()),
+            Text("mobile".tr, style: AppTextStyles.getMediumStyle()),
             Directionality(
                 textDirection: TextDirection.ltr,
                 child: TextFieldWidget(
@@ -63,7 +66,7 @@ class _AccountProfileViewState extends State<AccountProfileView> {
                 textDirection: TextDirection.ltr,
                 child: TextFieldWidget(
                     controller: emailController, isReadOnly: true)),
-            Text("Date of birth".tr, style: AppTextStyles.getMediumStyle()),
+            Text("dateOfBirth".tr, style: AppTextStyles.getMediumStyle()),
             DatePickerFieldWidget(
               padding: 0,
               controller: dateOfBirthController,

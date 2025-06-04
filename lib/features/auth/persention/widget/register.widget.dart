@@ -10,7 +10,7 @@ import '../../../../core/widget/field/date_picker_fild_widget.dart';
 import '../../../../core/widget/field/mobile_field.widget.dart';
 import '../../../../core/widget/field/password_field.widget.dart';
 import '../../../../core/widget/field/text_field.widget.dart';
-import '../logic/regiser_cubit/regiser_cubit.dart';
+import '../logic/register_cubit/register_cubit.dart';
 import 'custom/logo_auth.widget.dart';
 
 class RegisterWidget extends StatefulWidget {
@@ -21,10 +21,10 @@ class RegisterWidget extends StatefulWidget {
 }
 
 class _RegisterWidgetState extends State<RegisterWidget> {
-  late final RegiserCubit regiserCubit;
+  late final RegisterCubit registerCubit;
   @override
   void initState() {
-    regiserCubit = context.read<RegiserCubit>();
+    registerCubit = context.read<RegisterCubit>();
     super.initState();
   }
 
@@ -34,7 +34,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       physics: ClampingScrollPhysics(),
       child: Form(
-        key: regiserCubit.formState,
+        key: registerCubit.formState,
         child: Column(
           spacing: 5,
           mainAxisSize: MainAxisSize.min,
@@ -44,35 +44,35 @@ class _RegisterWidgetState extends State<RegisterWidget> {
             LogoAuthWidget(),
             Text("name".tr, style: AppTextStyles.getMediumStyle()),
             TextFieldWidget(
-              controller: regiserCubit.nameController,
+              controller: registerCubit.nameController,
               validator: "".validator(),
             ),
             Text("mobile".tr, style: AppTextStyles.getMediumStyle()),
             MobileFieldWidget(
-              country: regiserCubit.country,
-              controller: regiserCubit.mobileController,
+              country: registerCubit.country,
+              controller: registerCubit.mobileController,
               validator: "".validator(),
               onChangedCountry: (country) =>
-                  setState(() => regiserCubit.country = country),
+                  setState(() => registerCubit.country = country),
             ),
             Text("email".tr, style: AppTextStyles.getMediumStyle()),
             TextFieldWidget(
-              controller: regiserCubit.emailController,
+              controller: registerCubit.emailController,
             ),
             Text("dateOfBirth".tr, style: AppTextStyles.getMediumStyle()),
             DatePickerFieldWidget(
               padding: 0,
-              controller: regiserCubit.dateOfBirthController,
-              validator: "".tr.validator(),
+              controller: registerCubit.dateOfBirthController,
+              validator: "".validator(),
             ),
             Text("password".tr, style: AppTextStyles.getMediumStyle()),
             PasswordFieldWidget(
-              controller: regiserCubit.passwordController,
-              validator: "enterYourPassword".tr.validator(),
+              controller: registerCubit.passwordController,
+              validator: "".validator(),
             ),
             const SizedBox(height: 10),
-            BlocBuilder<RegiserCubit, RegiserState>(builder: (_, state) {
-              return (state is LoadingRegiserState)
+            BlocBuilder<RegisterCubit, RegisterState>(builder: (_, state) {
+              return (state is LoadingRegisterState)
                   ? ButtonLoadingWidget(isLoading: true, text: "")
                   : ButtonLoadingWidget(onTap: _register, text: "OK".tr);
             }),
@@ -109,8 +109,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
   }
 
   void _register() {
-    if (regiserCubit.formState.currentState!.validate()) {
-      regiserCubit.register();
+    if (registerCubit.formState.currentState!.validate()) {
+      registerCubit.register();
     }
   }
 }

@@ -27,30 +27,9 @@ class AuthRepostitoryImpl extends AuthRepostitory {
       } on ServerExecption catch (e) {
         return Left(ServerFailure(e.message ?? ""));
       } on DioException catch (e) {
-        print(e.response);
         if (e.response?.statusCode == 403) {
           return Left(AccountNotActiveFailure());
         }
-        return Left(DioFailure.fromDiorError(e));
-      } catch (e) {
-        return Left(ServerFailure(e.toString()));
-      }
-    } else {
-      return Left(OfflineFailure());
-    }
-  }
-
-  @override
-  Future<Either<Failure, Unit>> resendOtp({required String mobile}) async {
-    if (await networkInfo.isConnected) {
-      try {
-        final remotePosts = await remoteDataSource.resendOtp(
-          mobile: mobile,
-        );
-        return Right(remotePosts);
-      } on ServerExecption catch (e) {
-        return Left(ServerFailure(e.message ?? ""));
-      } on DioException catch (e) {
         return Left(DioFailure.fromDiorError(e));
       } catch (e) {
         return Left(ServerFailure(e.toString()));
@@ -95,25 +74,6 @@ class AuthRepostitoryImpl extends AuthRepostitory {
         return Left(ServerFailure(e.message ?? ""));
       } on DioException catch (e) {
         log(e.response!.data.toString());
-        return Left(DioFailure.fromDiorError(e));
-      } catch (e) {
-        return Left(ServerFailure(e.toString()));
-      }
-    } else {
-      return Left(OfflineFailure());
-    }
-  }
-
-  @override
-  Future<Either<Failure, Unit>> validateOtpCode(
-      {required Map<String, dynamic> data}) async {
-    if (await networkInfo.isConnected) {
-      try {
-        final remotePosts = await remoteDataSource.validateOtpCode(data: data);
-        return Right(remotePosts);
-      } on ServerExecption catch (e) {
-        return Left(ServerFailure(e.message ?? ""));
-      } on DioException catch (e) {
         return Left(DioFailure.fromDiorError(e));
       } catch (e) {
         return Left(ServerFailure(e.toString()));

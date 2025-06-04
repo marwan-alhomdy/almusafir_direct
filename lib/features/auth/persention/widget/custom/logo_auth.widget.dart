@@ -12,7 +12,7 @@ class LogoAuthWidget extends StatelessWidget {
       child: KeyboardVisibilityBuilder(
         builder: (context, isKeyboardVisible) => Visibility(
           visible: isKeyboardVisible == false,
-          child: Image.asset(AppImages.LOGO_COLORS, height: 150, width: 150),
+          child: Image.asset(AppImages.logo, height: 150, width: 150),
         ),
       ),
     );

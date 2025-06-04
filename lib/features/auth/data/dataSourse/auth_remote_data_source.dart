@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../core/constants/cached/cached_name.dart';
 import '../../../../core/constants/endpoint.dart';
+import '../../../../core/error/exception.dart';
 import '../../../../core/services/api.service.dart';
 import '../../../../helper/cache_helper.dart';
 import '../../../home/data/model/current_user/data.dart';
@@ -12,13 +13,9 @@ import '../../../home/data/model/current_user/data.dart';
 abstract class AuthRemoteDataSource {
   Future<CurrentUser> login({required Map<String, dynamic> data});
 
-  Future<Unit> resendOtp({required String mobile});
-
   Future<CurrentUser> register({required Map<String, dynamic> data});
 
   Future<Unit> sendActivation({required Map<String, dynamic> data});
-
-  Future<Unit> validateOtpCode({required Map<String, dynamic> data});
 
   Future<CurrentUser> checkActivation({required Map<String, dynamic> data});
 }
@@ -31,51 +28,32 @@ class AuthRemoteImplWithDio extends AuthRemoteDataSource {
     final response =
         await apiService.post(endPoint: EndPointName.login, data: data);
 
-    log(response.toString());
     return getCurrentUser(response);
-  }
-
-  @override
-  Future<Unit> resendOtp({required String mobile}) async {
-    final response = await apiService
-        .post(endPoint: EndPointName.resendOtp, data: {"mobile": mobile});
-    log(response.toString());
-    return Future.value(unit);
   }
 
   @override
   Future<CurrentUser> register({required Map<String, dynamic> data}) async {
     log(data.toString());
-    final response =
-        await apiService.post(endPoint: EndPointName.register, data: data);
-    log(response.toString());
-    return getCurrentUser(response);
+    final response = await apiService.postWithGetAllResponse(
+        endPoint: EndPointName.register, data: data);
+
+    if (response?.statusCode == 203) {
+      throw AccountNotActiveExecption();
+    }
+    return getCurrentUser(response.data);
   }
 
   @override
   Future<Unit> sendActivation({required Map<String, dynamic> data}) async {
-    log(data.toString());
-    final response = await apiService.post(
-        endPoint: EndPointName.sendactivation, data: data);
-
-    log(response.toString());
-    return Future.value(unit);
-  }
-
-  @override
-  Future<Unit> validateOtpCode({required Map<String, dynamic> data}) async {
-    final response =
-        await apiService.post(endPoint: EndPointName.otpValidate, data: data);
-
-    log(response.toString());
+    await apiService.post(endPoint: EndPointName.sendVerify, data: data);
     return Future.value(unit);
   }
 
   @override
   Future<CurrentUser> checkActivation(
       {required Map<String, dynamic> data}) async {
-    final response = await apiService.post(
-        endPoint: EndPointName.checkActivation, data: data);
+    final response =
+        await apiService.post(endPoint: EndPointName.checkVerify, data: data);
 
     return getCurrentUser(response);
   }

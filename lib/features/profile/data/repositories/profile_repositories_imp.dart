@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
-import '../../../../core/data/models/cloudflare.module.dart';
+import '../../../../core/data/custom/cloudflare.module.dart';
 import '../../../../core/error/exception.dart';
 import '../../../../core/error/faiture.dart';
 import '../../../../core/services/network_info.dart';

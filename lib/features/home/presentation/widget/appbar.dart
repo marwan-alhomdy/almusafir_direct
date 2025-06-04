@@ -13,7 +13,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       surfaceTintColor: AppColors.mainOneColor,
       elevation: 0,
       scrolledUnderElevation: 0,
-      title: Image.asset(AppImages.LOGO_COLORS, height: 40),
+      title: Image.asset(AppImages.logo, height: 40),
       // SizedBox(
       //   height: 100,
       //   child: Row(

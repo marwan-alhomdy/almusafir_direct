@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import '../../../../core/constants/enum/field_name.auht.dart';
 import '../../../../core/widget/button/button.widget.dart';
 import '../../../../core/widget/field/pinput_widget.dart';
-import '../logic/validate_otp_cubit/validate_otp_cubit.dart';
+import '../logic/verify_cubit/verify_cubit.dart';
 import 'custom/logo_auth.widget.dart';
 import 'custom/resendotp_button.widget.dart';
 
@@ -34,25 +34,25 @@ class VerifyotpWidget extends StatelessWidget {
               style: AppTextStyles.getMediumStyle()),
           const SizedBox(height: 20),
           PinputWidget(
-            pinController: context.read<ValidateOtpCubit>().pinController,
-            pinputFocusNode: context.read<ValidateOtpCubit>().pinputFocusNode,
+            pinController: context.read<VerifyCubit>().pinController,
+            pinputFocusNode: context.read<VerifyCubit>().pinputFocusNode,
             onCompeted: (pin) => _verifyOtp(context),
           ),
           const SizedBox(height: 20),
-          BlocBuilder<ValidateOtpCubit, ValidateOtpState>(
-              builder: (context, state) => (state is ValidateOtpLoading)
+          BlocBuilder<VerifyCubit, VerifyState>(
+              builder: (context, state) => (state is VerifyLoading)
                   ? ButtonLoadingWidget(isLoading: true, text: "")
                   : ButtonLoadingWidget(
                       onTap: () => _verifyOtp(context), text: "Verify".tr)),
           const SizedBox(height: 10),
-          BlocBuilder<ValidateOtpCubit, ValidateOtpState>(
+          BlocBuilder<VerifyCubit, VerifyState>(
             builder: (context, state) => (state is SendOtpLoading)
                 ? const CircularProgressIndicator()
                 : ResendOtpButton(
                     isStartCountdown: state is SendOtpSuccess,
                     onResend: () => context
-                        .read<ValidateOtpCubit>()
-                        .sendactivation(fieldNameAuth: fieldNameAuth),
+                        .read<VerifyCubit>()
+                        .sendActivation(fieldNameAuth: fieldNameAuth),
                   ),
           ),
           const Spacer(),
@@ -62,8 +62,6 @@ class VerifyotpWidget extends StatelessWidget {
   }
 
   void _verifyOtp(BuildContext context) {
-    context
-        .read<ValidateOtpCubit>()
-        .checkactivation(fieldNameAuth: fieldNameAuth);
+    context.read<VerifyCubit>().checkactivation(fieldNameAuth: fieldNameAuth);
   }
 }

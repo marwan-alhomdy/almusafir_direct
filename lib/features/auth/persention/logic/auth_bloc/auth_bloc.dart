@@ -7,8 +7,6 @@ import '../../../../../core/error/faiture.dart';
 import '../../../../../core/utils/function/input_type_helper.dart';
 import '../../../../home/data/model/current_user/current_user.dart';
 import '../../../domain/usecases/login_usescases.dart';
-import '../../../domain/usecases/resend_opt_usescases.dart';
-import '../../../domain/usecases/validate_otp_code.usecases.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
@@ -21,14 +19,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   Country country = CountryManager.firstCountry();
 
   final LoginUseCases loginUseCases;
-  final ValidateOtpCodeUseCases verigyOtpUseCases;
-  final ResendOptUseCases resendOptUseCases;
 
-  AuthBloc({
-    required this.loginUseCases,
-    required this.resendOptUseCases,
-    required this.verigyOtpUseCases,
-  }) : super(AuthBlocInitial()) {
+  AuthBloc({required this.loginUseCases}) : super(AuthBlocInitial()) {
     on<LoginEvent>(loginEvent);
   }
 

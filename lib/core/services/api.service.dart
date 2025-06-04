@@ -50,22 +50,40 @@ class ApiService {
     String baseUrl = BASE_URL,
   }) async {
     try {
-      print("================================================");
-      log(endPoint);
-      print("================================================");
       var response = await _dio.post(
         '$baseUrl$endPoint',
         data: data,
         queryParameters: queryParameters,
         options: Options(headers: headers ?? HeaderServer.header),
       );
-      print("================================================");
-      log(response.data.toString());
-      print("================================================");
       if (response.data["status"] == false) {
         _responseError(response, endPoint);
       } else {
         return _checkResponse(response);
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<dynamic> postWithGetAllResponse({
+    required String endPoint,
+    Map<String, String>? headers,
+    Map<String, dynamic>? queryParameters,
+    Object? data,
+    String baseUrl = BASE_URL,
+  }) async {
+    try {
+      var response = await _dio.post(
+        '$baseUrl$endPoint',
+        data: data,
+        queryParameters: queryParameters,
+        options: Options(headers: headers ?? HeaderServer.header),
+      );
+      if (response.data["status"] == false) {
+        _responseError(response, endPoint);
+      } else {
+        return _checkResponse2(response);
       }
     } catch (e) {
       rethrow;
@@ -148,10 +166,24 @@ class ApiService {
     }
   }
 
-  Future<dynamic> _checkResponse(Response response) {
+  dynamic _checkResponse(Response response) {
     final statusCode = response.statusCode ?? 0;
     if (statusCode == 200 || statusCode == 201) {
-      return Future.value(response.data);
+      return response.data;
+    } else if (response.statusCode == 412) {
+      throw SigOutExecption();
+    } else if (statusCode >= 400 && statusCode <= 404) {
+      final message = response.data["message"];
+      throw ServerExecption(message: message?.toString());
+    } else {
+      throw ServerExecption();
+    }
+  }
+
+  Response _checkResponse2(Response response) {
+    final statusCode = response.statusCode ?? 0;
+    if (statusCode >= 200 && statusCode <= 299) {
+      return response;
     } else if (response.statusCode == 412) {
       throw SigOutExecption();
     } else if (statusCode >= 400 && statusCode <= 404) {
@@ -163,9 +195,6 @@ class ApiService {
   }
 
   void _responseError(Response response, String endPoint) {
-    print("================================================");
-    log(response.data.toString());
-    print("================================================");
     final error = response.data["error"] ?? "";
     final messageError = response.data["message"] ?? "";
     final message = "$messageError\n$error";

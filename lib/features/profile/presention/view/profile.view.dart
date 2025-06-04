@@ -14,7 +14,6 @@ import '../bloc/profile_bloc/profile_bloc.dart';
 import '../widget/button/button_Acount.widget.dart';
 import '../widget/button/button_contactus.widget.dart';
 import '../widget/button/button_delete_widget.dart';
-import '../widget/button/button_favorite.widget.dart';
 import '../widget/button/button_helpcenter.widget.dart';
 import '../widget/button/button_language.widget.dart';
 import '../widget/button/button_login.widget.dart';
@@ -39,17 +38,13 @@ class _ProfileVeiwState extends State<ProfileVeiw> {
         child: BlocListener<ProfileBloc, ProfileState>(
           listener: _listenerProfile,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.all(10),
             child: AnimationLimiterWidget(
               children: [
-                SizedBox(height: 10),
                 (CacheHelper.getBool(CachedAppKey.isAuth) ?? false)
                     ? const ButtonAcountWidget()
-                    : ButtonLoginWidget(
-                        onLogin: () => setState(() {
-                              print("onLogin");
-                            })),
-                const ButtonFavoriteWidget(),
+                    : ButtonLoginWidget(onLogin: () => setState(() {})),
+                //  const ButtonFavoriteWidget(),
                 const ButtonPaymentMethodWidget(),
                 const ButtonContactUsWidget(),
                 const ButtonHelpCenterWidget(),

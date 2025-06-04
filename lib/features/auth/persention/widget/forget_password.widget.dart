@@ -7,7 +7,7 @@ import '../../../../core/utils/resource/text_style.dart';
 import '../../../../core/utils/validator/validator.dart';
 import '../../../../core/widget/button/button.widget.dart';
 import '../../../../core/widget/field/mobile_email_field.widget.dart';
-import '../logic/validate_otp_cubit/validate_otp_cubit.dart';
+import '../logic/verify_cubit/verify_cubit.dart';
 import '../view/verifyotp.view.dart';
 import 'custom/logo_auth.widget.dart';
 
@@ -19,11 +19,11 @@ class ForgetPasswordWidget extends StatefulWidget {
 }
 
 class _ForgetPasswordWidgetState extends State<ForgetPasswordWidget> {
-  late final ValidateOtpCubit validateOtpCubit;
+  late final VerifyCubit verifyCubit;
 
   @override
   void initState() {
-    validateOtpCubit = context.read<ValidateOtpCubit>();
+    verifyCubit = context.read<VerifyCubit>();
     super.initState();
   }
 
@@ -32,7 +32,7 @@ class _ForgetPasswordWidgetState extends State<ForgetPasswordWidget> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Form(
-        key: validateOtpCubit.formState,
+        key: verifyCubit.formState,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -41,14 +41,14 @@ class _ForgetPasswordWidgetState extends State<ForgetPasswordWidget> {
             Text("mobileOrEmail".tr, style: AppTextStyles.getMediumStyle()),
             const SizedBox(height: 15),
             MobileOrEmailFieldWidget(
-              country: validateOtpCubit.country,
-              controller: validateOtpCubit.mobileOrEmailController,
+              country: verifyCubit.country,
+              controller: verifyCubit.mobileOrEmailController,
               validator: "".validator(),
               onChangedCountry: (country) =>
-                  setState(() => validateOtpCubit.country = country),
+                  setState(() => verifyCubit.country = country),
             ),
             const SizedBox(height: 20),
-            BlocBuilder<ValidateOtpCubit, ValidateOtpState>(
+            BlocBuilder<VerifyCubit, VerifyState>(
               builder: (_, state) {
                 return (state is SendOtpLoading)
                     ? ButtonLoadingWidget(isLoading: true, text: "")
@@ -64,8 +64,8 @@ class _ForgetPasswordWidgetState extends State<ForgetPasswordWidget> {
   }
 
   Future<void> _moveToVerifyOtp() async {
-    if (validateOtpCubit.formState.currentState?.validate() ?? false) {
-      final mobileOrEmail = validateOtpCubit.mobileOrEmail;
+    if (verifyCubit.formState.currentState?.validate() ?? false) {
+      final mobileOrEmail = verifyCubit.mobileOrEmail;
       Get.to(() => VerifyOtpView(
           mobileOrEmail: mobileOrEmail,
           fieldNameAuth: FieldNameAuth.check_login))?.then((_) => Get.back());

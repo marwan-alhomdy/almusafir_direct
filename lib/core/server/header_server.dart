@@ -21,11 +21,4 @@ class HeaderServer {
       'User-Agent': Platform.isIOS ? 'ios' : 'android',
     };
   }
-
-  static Map<String, String> get headerWithCloudflare {
-    return {
-      'authority': 'api.cloudflare.com',
-      'Authorization': 'Bearer g9NwqK_lXj8BFpb_JgEaJuhKPK4t9GltksSnZtec'
-    };
-  }
 }

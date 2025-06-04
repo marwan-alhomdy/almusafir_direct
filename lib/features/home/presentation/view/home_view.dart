@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '/injection_container.dart' as di;
-import '../../../../core/api/add_fcm_api.dart';
 import '../../../../core/widget/upgrade/upgrade.widget.dart';
 import '../../../booking/presentation/pages/mybooking.view.dart';
 import '../../../chat/presentation/pages/chat.view.dart';
@@ -23,7 +22,6 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
-    AddFcmApi.addFcmToken();
     FirebaseMessaging.instance
         .subscribeToTopic("drivers")
         .then((v) => log("Success"))

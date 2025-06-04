@@ -60,7 +60,7 @@ class MyAppBarWithLogo extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       scrolledUnderElevation: 0,
       centerTitle: true,
-      title: Image.asset(AppImages.LOGO_COLORS, height: 30),
+      title: Image.asset(AppImages.logo, height: 30),
       actions: actions,
     );
   }

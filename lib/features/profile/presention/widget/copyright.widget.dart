@@ -14,7 +14,7 @@ class CopyrightWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
       child: Column(
         children: [
-          Image.asset(AppImages.LOGO_COLORS, height: 45),
+          Image.asset(AppImages.logo, height: 45),
           const SizedBox(height: 5),
           Text(
             "© ${DateTime.now().year}${"All rights reserved".tr}.",

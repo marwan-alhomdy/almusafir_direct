@@ -6,7 +6,7 @@ import '/injection_container.dart' as di;
 import '../../../../core/utils/function/message_box.dart';
 import '../../../../core/utils/function/set_auth.dart';
 import '../../../../helper/public_infromation.dart';
-import '../logic/regiser_cubit/regiser_cubit.dart';
+import '../logic/register_cubit/register_cubit.dart';
 import '../widget/custom/auth.appber.dart';
 import '../widget/register.widget.dart';
 import 'verifyotp.view.dart';
@@ -17,10 +17,10 @@ class RegisterView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => di.sl<RegiserCubit>(),
+      create: (context) => di.sl<RegisterCubit>(),
       child: Scaffold(
         appBar: AuthAppBer(),
-        body: BlocListener<RegiserCubit, RegiserState>(
+        body: BlocListener<RegisterCubit, RegisterState>(
           listener: _listenerSignInBlocState,
           child: RegisterWidget(),
         ),
@@ -28,14 +28,14 @@ class RegisterView extends StatelessWidget {
     );
   }
 
-  void _listenerSignInBlocState(BuildContext context, RegiserState state) {
-    if (state is SuccessRegiserState) {
+  void _listenerSignInBlocState(BuildContext context, RegisterState state) {
+    if (state is SuccessRegisterState) {
       setAuth(state.currentUser);
       Get.back();
-    } else if (state is ErrorRegiserState) {
+    } else if (state is ErrorRegisterState) {
       MessageBox.showError(context, state.message);
     } else if (state is MoveToActivationState) {
-      final mobile = context.read<RegiserCubit>().mobile;
+      final mobile = context.read<RegisterCubit>().mobile;
       Get.off(() => VerifyOtpView(mobileOrEmail: mobile))?.then((_) {
         if (Helper.isAuth) Get.back();
       });

@@ -20,7 +20,7 @@ class ServiceDetailsView extends StatelessWidget {
             pinned: true,
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             centerTitle: true,
-            title: Image.asset(AppImages.LOGO_COLORS, height: 30),
+            title: Image.asset(AppImages.logo, height: 30),
             flexibleSpace: FlexibleSpaceBar(
               collapseMode: CollapseMode.parallax,
               background: ImageServiceWidget(

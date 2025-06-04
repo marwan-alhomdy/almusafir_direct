@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/data/models/cloudflare.module.dart';
+import '../../../../core/data/custom/cloudflare.module.dart';
 import '../../../../core/error/faiture.dart';
 
 abstract class ProfileRepostitory {

@@ -12,12 +12,10 @@ import 'features/auth/domain/repositories/auth_repostitorise.dart';
 import 'features/auth/domain/usecases/check_activation.usescases.dart';
 import 'features/auth/domain/usecases/login_usescases.dart';
 import 'features/auth/domain/usecases/register.usecases.dart';
-import 'features/auth/domain/usecases/resend_opt_usescases.dart';
 import 'features/auth/domain/usecases/send_activation.usecases.dart';
-import 'features/auth/domain/usecases/validate_otp_code.usecases.dart';
 import 'features/auth/persention/logic/auth_bloc/auth_bloc.dart';
-import 'features/auth/persention/logic/regiser_cubit/regiser_cubit.dart';
-import 'features/auth/persention/logic/validate_otp_cubit/validate_otp_cubit.dart';
+import 'features/auth/persention/logic/register_cubit/register_cubit.dart';
+import 'features/auth/persention/logic/verify_cubit/verify_cubit.dart';
 import 'features/home/data/datasources/home_local_datasource.dart';
 import 'features/home/data/datasources/home_remote_datasources.dart';
 import 'features/home/data/repositories/home_repositories_imp.dart';
@@ -43,15 +41,10 @@ Future<void> init() async {
   //! features - posts
 
   //? Bloc
-  sl.registerFactory(() => AuthBloc(
-        loginUseCases: sl(),
-        verigyOtpUseCases: sl(),
-        resendOptUseCases: sl(),
-      ));
+  sl.registerFactory(() => AuthBloc(loginUseCases: sl()));
 
-  sl.registerFactory(() => RegiserCubit(registerUseCases: sl()));
-  sl.registerFactory(() => ValidateOtpCubit(
-        verigyOtpUseCases: sl(),
+  sl.registerFactory(() => RegisterCubit(registerUseCases: sl()));
+  sl.registerFactory(() => VerifyCubit(
         checkActivationUseCases: sl(),
         sendActivationUseCases: sl(),
       ));
@@ -72,8 +65,7 @@ Future<void> init() async {
   //? UseCase
   //Auth
   sl.registerLazySingleton(() => LoginUseCases(sl()));
-  sl.registerLazySingleton(() => ResendOptUseCases(sl()));
-  sl.registerLazySingleton(() => ValidateOtpCodeUseCases(sl()));
+
   sl.registerLazySingleton(() => RegisterUseCases(sl()));
   sl.registerLazySingleton(() => SendActivationUseCases(sl()));
   sl.registerLazySingleton(() => CheckActivationUseCases(sl()));

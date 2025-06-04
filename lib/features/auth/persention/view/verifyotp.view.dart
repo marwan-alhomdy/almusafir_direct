@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import '/injection_container.dart' as di;
 import '../../../../core/constants/enum/field_name.auht.dart';
 import '../../../home/data/model/current_user/current_user.dart';
-import '../logic/validate_otp_cubit/validate_otp_cubit.dart';
+import '../logic/verify_cubit/verify_cubit.dart';
 import '../widget/custom/auth.appber.dart';
 import '../widget/verifyotp_widget.dart';
 
@@ -25,12 +25,12 @@ class VerifyOtpView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => di.sl<ValidateOtpCubit>()
+      create: (context) => di.sl<VerifyCubit>()
         ..setMobileOrEmail(mobileOrEmail)
-        ..sendactivation(fieldNameAuth: fieldNameAuth),
+        ..sendActivation(fieldNameAuth: fieldNameAuth),
       child: Scaffold(
         appBar: AuthAppBer(),
-        body: BlocListener<ValidateOtpCubit, ValidateOtpState>(
+        body: BlocListener<VerifyCubit, VerifyState>(
           listener: _listenerBlocState,
           child: VerifyotpWidget(fieldNameAuth: fieldNameAuth),
         ),
@@ -38,8 +38,8 @@ class VerifyOtpView extends StatelessWidget {
     );
   }
 
-  void _listenerBlocState(BuildContext context, ValidateOtpState state) {
-    if (state is ValidateOtpError) {
+  void _listenerBlocState(BuildContext context, VerifyState state) {
+    if (state is VerifyError) {
       MessageBox.showError(context, state.message);
     } else if (state is SendOtpError) {
       MessageBox.showError(context, state.message);
