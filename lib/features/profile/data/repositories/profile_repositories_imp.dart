@@ -1,54 +1,31 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
-import '../../../../core/data/custom/cloudflare.module.dart';
 import '../../../../core/error/exception.dart';
 import '../../../../core/error/faiture.dart';
 import '../../../../core/services/network_info.dart';
+import '../../../home/data/model/current_user/avatar.dart';
+import '../../../home/data/model/current_user/current_user.dart';
 import '../../domain/repositories/profile_repositories.dart';
 import '../dataSourse/profile_data_sourse.dart';
-import '../dataSourse/uplod_image_data_source.dart';
 
 class ProfileRepostitoryImpl extends ProfileRepostitory {
   final ProfileRemoteDataSource profileRemoteDataSource;
-  final UploadImageCloudinartDataSource uploadImageCloudinartDataSource;
+
   final NetworkInfo networkInfo;
-  ProfileRepostitoryImpl(
-      {required this.profileRemoteDataSource,
-      required this.networkInfo,
-      required this.uploadImageCloudinartDataSource});
+  ProfileRepostitoryImpl({
+    required this.profileRemoteDataSource,
+    required this.networkInfo,
+  });
 
   @override
-  Future<Either<Failure, Unit>> updateUserProfile(
+  Future<Either<Failure, CurrentUser>> updateUserProfile(
       {required Map<String, dynamic> data}) async {
     if (await networkInfo.isConnected) {
       try {
         final remotePosts =
             await profileRemoteDataSource.updateUserProfile(data: data);
         return Right(remotePosts);
-      } on ServerExecption catch (e) {
-        return Left(ServerFailure(e.message ?? ""));
-      } on DioException catch (e) {
-        return Left(DioFailure.fromDiorError(e));
-      } catch (e) {
-        return Left(ServerFailure(e.toString()));
-      }
-    } else {
-      return Left(OfflineFailure());
-    }
-  }
-
-  @override
-  Future<Either<Failure, Cloudflare>> uploadImageWithCloudflare(
-      {required String newImage,
-      required String? currentImage,
-      required String mobile}) async {
-    if (await networkInfo.isConnected) {
-      try {
-        final remoteUrlImage =
-            await uploadImageCloudinartDataSource.uploadImagePofile(
-                newImage: newImage, currentImage: currentImage, mobile: mobile);
-        return Right(remoteUrlImage);
       } on ServerExecption catch (e) {
         return Left(ServerFailure(e.message ?? ""));
       } on DioException catch (e) {
@@ -80,12 +57,10 @@ class ProfileRepostitoryImpl extends ProfileRepostitory {
   }
 
   @override
-  Future<Either<Failure, Unit>> changeCodeVehicle(
-      {required String code}) async {
+  Future<Either<Failure, Unit>> deleteAccount() async {
     if (await networkInfo.isConnected) {
       try {
-        final remotePosts =
-            await profileRemoteDataSource.changeCodeVehicle(code: code);
+        final remotePosts = await profileRemoteDataSource.deleteAccount();
         return Right(remotePosts);
       } on ServerExecption catch (e) {
         return Left(ServerFailure(e.message ?? ""));
@@ -100,10 +75,29 @@ class ProfileRepostitoryImpl extends ProfileRepostitory {
   }
 
   @override
-  Future<Either<Failure, Unit>> deleteAccount() async {
+  Future<Either<Failure, Avatar>> changeAvatar({required String avater}) async {
     if (await networkInfo.isConnected) {
       try {
-        final remotePosts = await profileRemoteDataSource.deleteAccount();
+        final remote =
+            await profileRemoteDataSource.changeAvatar(avater: avater);
+        return Right(remote);
+      } on ServerExecption catch (e) {
+        return Left(ServerFailure(e.message ?? ""));
+      } on DioException catch (e) {
+        return Left(DioFailure.fromDiorError(e));
+      } catch (e) {
+        return Left(ServerFailure(e.toString()));
+      }
+    } else {
+      return Left(OfflineFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, Unit>> deleteAvatar() async {
+    if (await networkInfo.isConnected) {
+      try {
+        final remotePosts = await profileRemoteDataSource.deleteAvatar();
         return Right(remotePosts);
       } on ServerExecption catch (e) {
         return Left(ServerFailure(e.message ?? ""));

@@ -11,19 +11,17 @@ abstract class ProfileState extends Equatable {
 class ProfileInitial extends ProfileState {}
 
 //! Successful
-class ChangeStatusSuccessfulState extends ProfileState {
-  final String status;
-  const ChangeStatusSuccessfulState(this.status);
+
+class ChangeAvatarSuccessfulState extends ProfileState {
+  final Avatar avatar;
+  const ChangeAvatarSuccessfulState({required this.avatar});
 }
 
-class GetStatisticsSuccessfulState extends ProfileState {
-  final StatisticsModel statistics;
-  const GetStatisticsSuccessfulState(this.statistics);
-}
+class DeleteAvatarSuccessfulState extends ProfileState {}
 
-class UploadImageCloudinarySuccessfulState extends ProfileState {
-  final String urlImage;
-  const UploadImageCloudinarySuccessfulState({required this.urlImage});
+class UpdateUserProfileSuccessfulState extends ProfileState {
+  final CurrentUser user;
+  const UpdateUserProfileSuccessfulState({required this.user});
 }
 
 class LogoutOrDeleteAccountSuccessfulState extends ProfileState {
@@ -34,20 +32,9 @@ class LogoutOrDeleteAccountSuccessfulState extends ProfileState {
 
 class LoadingProfileState extends ProfileState {}
 
-class LoadingStatisticsState extends ProfileState {}
-
 //! Error
-class ErrorChangeStatusState extends ProfileState {
-  const ErrorChangeStatusState({required this.message});
-  final String message;
-}
 
 class ErrorProfileState extends ProfileState {
   const ErrorProfileState({required this.message});
-  final String message;
-}
-
-class ErrorStatisticsState extends ProfileState {
-  const ErrorStatisticsState({required this.message});
   final String message;
 }

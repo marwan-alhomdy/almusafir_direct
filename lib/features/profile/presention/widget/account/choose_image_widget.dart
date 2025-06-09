@@ -9,8 +9,13 @@ import '../../../../../core/utils/resource/text_style.dart';
 import '../../../../../core/widget/liner.widget.dart';
 
 class ChooseImageWidget extends StatelessWidget {
-  const ChooseImageWidget({super.key, required this.onChooseImage});
+  const ChooseImageWidget({
+    super.key,
+    required this.onChooseImage,
+    required this.onDeleteImage,
+  });
   final void Function(ImageSource) onChooseImage;
+  final VoidCallback onDeleteImage;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -29,6 +34,11 @@ class ChooseImageWidget extends StatelessWidget {
               icon: Iconsax.image,
               text: "gallery".tr,
               onTap: () => onChooseImage(ImageSource.gallery)),
+          _ButtonWidget(
+              icon: Iconsax.trash_copy,
+              text: "حدف الصوره".tr,
+              color: Colors.redAccent,
+              onTap: onDeleteImage),
           const SizedBox(height: 10),
         ],
       ),
@@ -37,8 +47,13 @@ class ChooseImageWidget extends StatelessWidget {
 }
 
 class _ButtonWidget extends StatelessWidget {
-  const _ButtonWidget(
-      {required this.onTap, required this.icon, required this.text});
+  const _ButtonWidget({
+    required this.onTap,
+    required this.icon,
+    required this.text,
+    this.color,
+  });
+  final Color? color;
   final IconData icon;
   final VoidCallback onTap;
   final String text;
@@ -48,7 +63,7 @@ class _ButtonWidget extends StatelessWidget {
     return ElevatedButton(
       onPressed: onTap,
       style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.mainOneColor,
+          backgroundColor: color ?? AppColors.mainOneColor,
           shape: RoundedRectangleBorderAttribute.all(10)),
       child: Row(
         spacing: 10,

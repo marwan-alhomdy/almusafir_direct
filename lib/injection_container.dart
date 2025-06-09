@@ -1,3 +1,4 @@
+import 'package:almusafir_direct/features/profile/domain/usecases/delete_avatar_usecases.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
@@ -23,17 +24,13 @@ import 'features/home/domain/repositories/home_repositories.dart';
 import 'features/home/domain/usecases/get_all_data_uescases.dart';
 import 'features/home/presentation/logic/bloc/home_bloc.dart';
 import 'features/profile/data/dataSourse/profile_data_sourse.dart';
-import 'features/profile/data/dataSourse/uplod_image_data_source.dart';
 import 'features/profile/data/repositories/profile_repositories_imp.dart';
 import 'features/profile/domain/repositories/profile_repositories.dart';
-import 'features/profile/domain/usecases/change_code_vehicle.usecases.dart';
+import 'features/profile/domain/usecases/change_avatar_usecases.dart';
 import 'features/profile/domain/usecases/delete_usecases.dart';
 import 'features/profile/domain/usecases/logout_usecases.dart';
 import 'features/profile/domain/usecases/update_user_profile.usecases.dart';
-import 'features/profile/domain/usecases/upload_image_cloudflare_usecases.dart';
-import 'features/profile/presention/bloc/code_vehicle/code_vehicle_cubit.dart';
 import 'features/profile/presention/bloc/profile_bloc/profile_bloc.dart';
-import 'features/profile/presention/bloc/userprofile_bloc/user_profile_bloc.dart';
 
 final sl = GetIt.instance;
 
@@ -53,12 +50,11 @@ Future<void> init() async {
   sl.registerFactory(() => HomeBloc(fetchAllData: sl()));
 
   sl.registerFactory(() => ProfileBloc(
+      updateUserProfileUseCases: sl(),
       deleteAccountUseCases: sl(),
-      uploadImageCloudflare: sl(),
+      changeAvatarUsecases: sl(),
+      deleteAvatarUsecases: sl(),
       logoutDriverUseCases: sl()));
-  sl.registerFactory(() => CodeVehicleCubit(changeCodeVehicleUsecases: sl()));
-
-  sl.registerFactory(() => UserProfileBloc(updateUserProfile: sl()));
 
   //=============================
 
@@ -73,11 +69,10 @@ Future<void> init() async {
   //Profile
 
   sl.registerLazySingleton(() => UpdateUserProfileUsecases(sl()));
-  sl.registerLazySingleton(() => UploadImageWithCloudflareUseCases(sl()));
+  sl.registerLazySingleton(() => ChangeAvatarUsecases(sl()));
   sl.registerLazySingleton(() => LogoutDriverUseCases(sl()));
   sl.registerLazySingleton(() => DeleteAccountUseCases(sl()));
-
-  sl.registerLazySingleton(() => ChangeCodeVehicleUsecases(sl()));
+  sl.registerLazySingleton(() => DeleteAvatarUsecases(sl()));
 
   //setting
   sl.registerLazySingleton(() => FetchAllDataUseCases(sl()));
@@ -90,10 +85,8 @@ Future<void> init() async {
         networkInfo: sl(),
       ));
 
-  sl.registerLazySingleton<ProfileRepostitory>(() => ProfileRepostitoryImpl(
-      profileRemoteDataSource: sl(),
-      networkInfo: sl(),
-      uploadImageCloudinartDataSource: sl()));
+  sl.registerLazySingleton<ProfileRepostitory>(() =>
+      ProfileRepostitoryImpl(profileRemoteDataSource: sl(), networkInfo: sl()));
 
   sl.registerLazySingleton<HomeRepostitory>(() => HomeRepostitoryImp(
         remoteDataSource: sl(),
@@ -107,8 +100,6 @@ Future<void> init() async {
   sl.registerLazySingleton<AuthRemoteDataSource>(
       () => AuthRemoteImplWithDio(apiService: sl()));
 
-  sl.registerLazySingleton<UploadImageCloudinartDataSource>(
-      () => UploadImageCloudinartDataSourceImpCloudinary(client: sl()));
   sl.registerLazySingleton<ProfileRemoteDataSource>(
       () => ProfileRemoteImpWithDio(client: sl()));
 

@@ -1,15 +1,14 @@
-import 'package:almusafir_direct/helper/cache_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
 import '/injection_container.dart' as di;
 import '../../../../core/Animation/animation_limiter_widget.dart';
-import '../../../../core/constants/cached/cached_name.dart';
 import '../../../../core/server/error_token.dart';
 import '../../../../core/utils/function/message_box.dart';
 import '../../../../core/utils/function/toast_box.dart';
 import '../../../../core/widget/appbar/my_appbar.dart';
+import '../../../../helper/public_infromation.dart';
 import '../bloc/profile_bloc/profile_bloc.dart';
 import '../widget/button/button_Acount.widget.dart';
 import '../widget/button/button_contactus.widget.dart';
@@ -41,7 +40,7 @@ class _ProfileVeiwState extends State<ProfileVeiw> {
             padding: const EdgeInsets.all(10),
             child: AnimationLimiterWidget(
               children: [
-                (CacheHelper.getBool(CachedAppKey.isAuth) ?? false)
+                Helper.isAuth
                     ? const ButtonAcountWidget()
                     : ButtonLoginWidget(onLogin: () => setState(() {})),
                 //  const ButtonFavoriteWidget(),
@@ -50,7 +49,7 @@ class _ProfileVeiwState extends State<ProfileVeiw> {
                 const ButtonHelpCenterWidget(),
                 const ButtonLanguageWidget(),
                 const ButtonThemeWidget(),
-                if (CacheHelper.getBool(CachedAppKey.isAuth) ?? false) ...[
+                if (Helper.isAuth) ...[
                   const ButtonDeleteAccountWidget(),
                   const ButtonLogoutWidget(),
                 ],

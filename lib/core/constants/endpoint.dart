@@ -14,6 +14,9 @@ class EndPointName {
   static const String sendVerify = "auth/verify/send";
   static const String checkVerify = "auth/verify/check";
 
+  static const String avatar = "me/avatar";
+  static const String me = "me";
+
   static const String getAllDate =
       "data/all?exclude_item=tags_types,menus,categories,products";
 }

@@ -7,13 +7,16 @@ abstract class ProfileEvent extends Equatable {
   List<Object> get props => [];
 }
 
-//! Image Cloudflare
-class UploadImageWithCloudflareEvent extends ProfileEvent {
-  final String newImage;
-  final String? currentImage;
-  final String mobile;
-  const UploadImageWithCloudflareEvent(
-      {required this.newImage, this.currentImage, required this.mobile});
+final class UpdateUserProfileEvent extends ProfileEvent {}
+
+//! Image
+class ChangeAvatarEvent extends ProfileEvent {
+  final String avater;
+  const ChangeAvatarEvent({required this.avater});
+}
+
+class DeleteAvatarEvent extends ProfileEvent {
+  const DeleteAvatarEvent();
 }
 
 //!logout

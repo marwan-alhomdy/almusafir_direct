@@ -21,7 +21,7 @@ class ButtonAcountWidget extends StatelessWidget {
           ClipOval(
             child: ImageWidget(
               Helper.user?.avatar?.original ?? "",
-              width: 50,
+               width: 50,
               height: 50,
               errorWiget: Image.asset(AppImages.avatar, fit: BoxFit.cover),
             ),
@@ -43,9 +43,11 @@ class ButtonAcountWidget extends StatelessWidget {
           ),
           const Spacer(),
           IconButton(
-              onPressed: () => Get.to(() => AccountProfileView()),
-              color: AppColors.mainOneColor,
-              icon: Icon(Iconsax.edit)),
+            onPressed: () =>
+                Get.to(() => AccountProfileView())?.then((_) => Get.back()),
+            color: AppColors.mainOneColor,
+            icon: Icon(Iconsax.edit),
+          ),
         ]),
       ),
     );

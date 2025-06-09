@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:almusafir_direct/core/constants/endpoint.dart';
 import 'package:dio/dio.dart';
@@ -42,6 +43,31 @@ class ApiService {
     }
   }
 
+  Future<dynamic> postWithGetAllResponse({
+    required String endPoint,
+    Map<String, String>? headers,
+    Map<String, dynamic>? queryParameters,
+    Object? data,
+    String baseUrl = BASE_URL,
+  }) async {
+    try {
+      var response = await _dio.post(
+        '$baseUrl$endPoint',
+        data: data,
+        queryParameters: queryParameters,
+        options: Options(headers: headers ?? HeaderServer.header),
+      );
+
+      if (response.data["status"] == false) {
+        _responseError(response, endPoint);
+      } else {
+        return _checkResponse2(response);
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<dynamic> post({
     required String endPoint,
     Map<String, String>? headers,
@@ -60,30 +86,6 @@ class ApiService {
         _responseError(response, endPoint);
       } else {
         return _checkResponse(response);
-      }
-    } catch (e) {
-      rethrow;
-    }
-  }
-
-  Future<dynamic> postWithGetAllResponse({
-    required String endPoint,
-    Map<String, String>? headers,
-    Map<String, dynamic>? queryParameters,
-    Object? data,
-    String baseUrl = BASE_URL,
-  }) async {
-    try {
-      var response = await _dio.post(
-        '$baseUrl$endPoint',
-        data: data,
-        queryParameters: queryParameters,
-        options: Options(headers: headers ?? HeaderServer.header),
-      );
-      if (response.data["status"] == false) {
-        _responseError(response, endPoint);
-      } else {
-        return _checkResponse2(response);
       }
     } catch (e) {
       rethrow;
@@ -162,6 +164,38 @@ class ApiService {
       }
     } catch (e) {
       log(e.toString());
+      rethrow;
+    }
+  }
+
+  Future<dynamic> updateFile({
+    required String endPoint,
+    required File file,
+    required String fileField,
+    Map<String, String>? headers,
+    Map<String, dynamic>? queryParameters,
+    String baseUrl = BASE_URL,
+  }) async {
+    try {
+      String fileName = file.path.split('/').last;
+
+      FormData formData = FormData.fromMap({
+        fileField: await MultipartFile.fromFile(file.path, filename: fileName),
+      });
+
+      var response = await _dio.post(
+        '$baseUrl$endPoint',
+        data: formData,
+        queryParameters: queryParameters,
+        options: Options(headers: headers ?? HeaderServer.headerFile),
+      );
+
+      if (response.data["status"] == false) {
+        _responseError(response, endPoint);
+      } else {
+        return _checkResponse(response);
+      }
+    } catch (e) {
       rethrow;
     }
   }
