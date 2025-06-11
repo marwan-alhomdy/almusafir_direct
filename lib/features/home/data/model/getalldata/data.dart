@@ -1,11 +1,11 @@
+import '../../../../../core/data/current_user/current_user.dart';
 import '../adverts/adverts.dart';
-import '../current_user/current_user.dart';
 import '../department/department.dart';
 import '../orderstypes/orderstypes.dart';
 import '../settings/settings.dart';
 
 class DataAllData {
-  Settings? settings;
+  SettingResponse? settings;
   CurrentUser? currentUser;
   Department? department;
   Adverts? adverts;
@@ -22,7 +22,8 @@ class DataAllData {
   factory DataAllData.fromJson(Map<String, dynamic> json) => DataAllData(
         settings: json['settings'] == null
             ? null
-            : Settings.fromJson(json['settings'] as Map<String, dynamic>),
+            : SettingResponse.fromJson(
+                json['settings'] as Map<String, dynamic>),
         currentUser: json['current_user'] == null
             ? null
             : CurrentUser.fromJson(

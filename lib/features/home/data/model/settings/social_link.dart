@@ -6,9 +6,9 @@ class SocialLink {
   SocialLink({this.icon, this.name, this.link});
 
   factory SocialLink.fromJson(Map<String, dynamic> json) => SocialLink(
-        icon: json['icon'] as String?,
-        name: json['name'] as String?,
-        link: json['link'] as String?,
+        icon: json['icon'],
+        name: json['name'],
+        link: json['link'],
       );
 
   Map<String, dynamic> toJson() => {

@@ -27,13 +27,10 @@ class HomeRepostitoryImp extends HomeRepostitory {
         localDataSource.cacheAllDataData(remotePosts);
         return Right(remotePosts);
       } on ServerExecption catch (e) {
-        print(e.message);
         return Left(ServerFailure(e.message ?? ""));
       } on DioException catch (e) {
-        print(e.message);
         return Left(DioFailure.fromDiorError(e));
       } catch (e) {
-        print(e);
         return Left(ServerFailure(e.toString()));
       }
     } else {

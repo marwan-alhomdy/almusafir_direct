@@ -2,10 +2,10 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/data/current_user/current_user.dart';
 import '../../../../../core/data/custom/country.dart';
 import '../../../../../core/error/faiture.dart';
 import '../../../../../core/utils/function/input_type_helper.dart';
-import '../../../../home/data/model/current_user/current_user.dart';
 import '../../../domain/usecases/login_usescases.dart';
 
 part 'auth_event.dart';

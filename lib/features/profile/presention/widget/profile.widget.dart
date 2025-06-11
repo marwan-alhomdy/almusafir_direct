@@ -1,0 +1,124 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
+
+import '../../../../core/Animation/animation_limiter_widget.dart';
+import '../../../../core/locale/locale_controller.dart';
+import '../../../../core/utils/dialoge/messagebox_dialog_widget.dart';
+import '../../../../core/utils/resource/theme_app.dart';
+import '../../../../helper/public_infromation.dart';
+import '../../../auth/persention/view/auth_view.dart';
+import '../bloc/profile_bloc/profile_bloc.dart';
+import '../view/contactus.view.dart';
+import '../view/payment.methods.view.dart';
+import 'button/button_Acount.widget.dart';
+import 'button/cardlist_profile.widget.dart';
+
+class ProfileWidget extends StatefulWidget {
+  const ProfileWidget({super.key});
+
+  @override
+  State<ProfileWidget> createState() => _ProfileWidgetState();
+}
+
+class _ProfileWidgetState extends State<ProfileWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return AnimationLimiterWidget(
+      padding: const EdgeInsets.all(10),
+      children: [
+        Helper.isAuth
+            ? const ButtonAcountWidget()
+            : CardListProfileWidget(
+                onTap: () => Get.to(() => const AuthintcationView())
+                    ?.then((value) => setState(() {})),
+                icon: Iconsax.login,
+                title: "login".tr,
+              ),
+
+        //  const ButtonFavoriteWidget(),
+        CardListProfileWidget(
+          onTap: () => Get.to(() => const PaymentMethodsWidget()),
+          icon: Iconsax.card,
+          title: "طرق الدفع".tr,
+        ),
+
+        CardListProfileWidget(
+          onTap: () => Get.to(() => ContactUsView()),
+          icon: Iconsax.message,
+          title: "تواصل معنا".tr,
+        ),
+
+        CardListProfileWidget(
+          onTap: () {},
+          icon: Iconsax.information,
+          title: "مركز المساعدة".tr,
+        ),
+
+        CardListProfileWidget(
+          onTap: chingeLanguage,
+          icon: Iconsax.translate,
+          title: "language".tr,
+        ),
+
+        CardListProfileWidget(
+          onTap: changeTheme,
+          icon: Iconsax.sun_1,
+          title: "تغيير الثيم".tr,
+        ),
+
+        if (Helper.isAuth) ...[
+          CardListProfileWidget(
+            onTap: () => deleteAccount(context),
+            icon: Iconsax.trash,
+            title: "Delete account".tr,
+          ),
+          CardListProfileWidget(
+            onTap: () => _logout(context),
+            icon: Iconsax.logout_1,
+            title: "log_out".tr,
+          )
+        ],
+      ],
+    );
+  }
+
+  void chingeLanguage() {
+    LocaleController localeController = Get.find();
+    final codeLng = localeController.languageCode == "en" ? "ar" : "en";
+    localeController.chingeLanguage(languageCode: codeLng);
+    // Get.offAll(() => const SplashView());
+  }
+
+  void changeTheme() {
+    bool isDarkMode = Get.isDarkMode;
+    Get.changeTheme(isDarkMode ? Themes.themeLight : Themes.themeDark);
+  }
+
+  void _logout(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (cxt) => MessageBoxDialogWidget(
+        message: "want_to_logout".tr,
+        onAccenpt: () {
+          Get.back();
+          context.read<ProfileBloc>().add(const LogoutProfileEvent());
+        },
+      ),
+    );
+  }
+
+  void deleteAccount(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (cxt) => MessageBoxDialogWidget(
+        message: "Delete account title".tr,
+        onAccenpt: () {
+          Get.back();
+          context.read<ProfileBloc>().add(const DeleteAccountEvent());
+        },
+      ),
+    );
+  }
+}

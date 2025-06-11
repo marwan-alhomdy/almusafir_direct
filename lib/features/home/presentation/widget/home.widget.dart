@@ -9,10 +9,10 @@ import '../../../../core/utils/style/border_radius.dart';
 import '../../../../core/widget/appbar/my_appbar.dart';
 import '../../../../core/widget/carousel_slider.widget.dart';
 import '../../../../core/widget/state/error.widget.dart';
-import '../../../../core/widget/state/loading_widget.dart';
 import '../../data/model/getalldata/data.dart';
 import '../logic/bloc/home_bloc.dart';
 import 'card_servsice.widget.dart';
+import 'state/home_loading.widget.dart';
 
 class HomeWidget extends StatelessWidget {
   const HomeWidget({super.key});
@@ -30,7 +30,7 @@ class HomeWidget extends StatelessWidget {
             onTap: () => context.read<HomeBloc>().add(FetchAllDataEvent()),
           );
         } else if (state is LoadingHomeState) {
-          return const LoadingWiget();
+          return HomeLoadingWidget();
         } else {
           return const SizedBox();
         }

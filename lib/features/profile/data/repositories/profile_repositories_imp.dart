@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
+import '../../../../core/data/current_user/avatar.dart';
+import '../../../../core/data/current_user/current_user.dart';
 import '../../../../core/error/exception.dart';
 import '../../../../core/error/faiture.dart';
 import '../../../../core/services/network_info.dart';
-import '../../../home/data/model/current_user/avatar.dart';
-import '../../../home/data/model/current_user/current_user.dart';
 import '../../domain/repositories/profile_repositories.dart';
 import '../dataSourse/profile_data_sourse.dart';
 
@@ -98,6 +98,25 @@ class ProfileRepostitoryImpl extends ProfileRepostitory {
     if (await networkInfo.isConnected) {
       try {
         final remotePosts = await profileRemoteDataSource.deleteAvatar();
+        return Right(remotePosts);
+      } on ServerExecption catch (e) {
+        return Left(ServerFailure(e.message ?? ""));
+      } on DioException catch (e) {
+        return Left(DioFailure.fromDiorError(e));
+      } catch (e) {
+        return Left(ServerFailure(e.toString()));
+      }
+    } else {
+      return Left(OfflineFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, Unit>> contactUs(
+      {required Map<String, dynamic> data}) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final remotePosts = await profileRemoteDataSource.contactUs(data: data);
         return Right(remotePosts);
       } on ServerExecption catch (e) {
         return Left(ServerFailure(e.message ?? ""));

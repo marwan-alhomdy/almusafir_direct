@@ -1,4 +1,4 @@
-import 'image.dart';
+import '../../../../../core/data/models/image.dart';
 
 class OrderType {
   int? id;
@@ -101,7 +101,7 @@ class OrderType {
   String? createdAt;
   String? updatedAt;
   String? deletedAt;
-  Image? image;
+  ImageModel? image;
   List<dynamic>? images;
   List<dynamic>? files;
   String? objectType;
@@ -329,7 +329,7 @@ class OrderType {
         deletedAt: json['deleted_at'],
         image: json['image'] == null
             ? null
-            : Image.fromJson(json['image'] as Map<String, dynamic>),
+            : ImageModel.fromJson(json['image'] as Map<String, dynamic>),
         images: json['images'] as List<dynamic>?,
         files: json['files'] as List<dynamic>?,
         objectType: json['object_type'],

@@ -1,5 +1,5 @@
+import '../../../../../core/data/models/image.dart';
 import 'config_data.dart';
-import 'image.dart';
 
 class Datum {
   int? id;
@@ -36,7 +36,7 @@ class Datum {
   int? sortOrder;
   String? createdAt;
   String? updatedAt;
-  Image? image;
+  ImageModel? image;
   List<dynamic>? images;
   List<dynamic>? files;
   int? ratingsCount;
@@ -143,7 +143,7 @@ class Datum {
         updatedAt: json['updated_at'] as String?,
         image: json['image'] == null
             ? null
-            : Image.fromJson(json['image'] as Map<String, dynamic>),
+            : ImageModel.fromJson(json['image'] as Map<String, dynamic>),
         images: json['images'] as List<dynamic>?,
         files: json['files'] as List<dynamic>?,
         ratingsCount: json['ratings_count'] as int?,

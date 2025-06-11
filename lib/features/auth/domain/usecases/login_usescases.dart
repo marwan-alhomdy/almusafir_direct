@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
+import '../../../../core/data/current_user/current_user.dart';
 import '../../../../core/error/faiture.dart';
-import '../../../home/data/model/current_user/current_user.dart';
 import '../repositories/auth_repostitorise.dart';
 
 class LoginUseCases {

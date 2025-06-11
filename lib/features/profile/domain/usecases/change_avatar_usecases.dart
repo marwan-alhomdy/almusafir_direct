@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
+import '../../../../core/data/current_user/avatar.dart';
 import '../../../../core/error/faiture.dart';
-import '../../../home/data/model/current_user/avatar.dart';
 import '../repositories/profile_repositories.dart';
 
 class ChangeAvatarUsecases {

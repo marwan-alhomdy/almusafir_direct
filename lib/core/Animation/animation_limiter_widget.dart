@@ -9,12 +9,14 @@ class AnimationLimiterWidget extends StatelessWidget {
       this.verticalOffset = 150,
       this.horizontalOffset = -150,
       this.controller,
+      this.padding,
       this.physics = const ClampingScrollPhysics()});
   final double verticalOffset;
   final double horizontalOffset;
   final List<Widget> children;
   final ScrollPhysics? physics;
   final ScrollController? controller;
+  final EdgeInsetsGeometry? padding;
   @override
   Widget build(BuildContext context) {
     return AnimationLimiter(
@@ -22,6 +24,7 @@ class AnimationLimiterWidget extends StatelessWidget {
         physics: physics,
         controller: controller,
         itemCount: children.length,
+        padding: padding,
         itemBuilder: (BuildContext context, int index) {
           return AnimationConfiguration.staggeredList(
             position: index,

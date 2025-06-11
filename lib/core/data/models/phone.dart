@@ -1,4 +1,4 @@
-class Phone {
+class PhoneModel {
   String? phoneLabel;
   String? phoneNumber;
   String? phoneType;
@@ -6,8 +6,9 @@ class Phone {
   String? isDefault;
   String? isShow;
   String? phoneNote;
+  String? group;
 
-  Phone({
+  PhoneModel({
     this.phoneLabel,
     this.phoneNumber,
     this.phoneType,
@@ -15,16 +16,18 @@ class Phone {
     this.isDefault,
     this.isShow,
     this.phoneNote,
+    this.group,
   });
 
-  factory Phone.fromJson(Map<String, dynamic> json) => Phone(
-        phoneLabel: json['phone_label'] as String?,
-        phoneNumber: json['phone_number'] as String?,
-        phoneType: json['phone_type'] as String?,
-        sortShow: json['sort_show'] as String?,
-        isDefault: json['is_default'] as String?,
-        isShow: json['is_show'] as String?,
-        phoneNote: json['phone_note'] as String?,
+  factory PhoneModel.fromJson(Map<String, dynamic> json) => PhoneModel(
+        phoneLabel: json['phone_label'],
+        phoneNumber: json['phone_number'],
+        phoneType: json['phone_type'],
+        sortShow: json['sort_show'],
+        isDefault: json['is_default'],
+        isShow: json['is_show'],
+        phoneNote: json['phone_note'],
+        group: json['_group'],
       );
 
   Map<String, dynamic> toJson() => {
@@ -35,5 +38,6 @@ class Phone {
         'is_default': isDefault,
         'is_show': isShow,
         'phone_note': phoneNote,
+        '_group': group,
       };
 }

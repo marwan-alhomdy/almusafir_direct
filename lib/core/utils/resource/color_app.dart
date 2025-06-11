@@ -92,6 +92,16 @@ class AppColorsWithTheme {
   static Color get background =>
       Get.isDarkMode ? const Color(0xFF535151) : Colors.white;
 
+  static Color get backgroundScroll =>
+      Get.isDarkMode ? const Color(0xFF2d3343) : Colors.white;
+
+  static Color get backgroundbaseShimmer =>
+      Get.isDarkMode ? const Color(0xFF2d3343) : Colors.grey.shade200;
+
+  static Color get backgroundhighlightShimmer => Get.isDarkMode
+      ? const Color.fromARGB(255, 49, 60, 89)
+      : const Color.fromARGB(255, 228, 233, 248);
+
   static Color get navigationUnSelectIcon =>
       Get.isDarkMode ? AppColors.mainOneColor : const Color(0xFF2d3343);
 }

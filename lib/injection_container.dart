@@ -27,9 +27,11 @@ import 'features/profile/data/dataSourse/profile_data_sourse.dart';
 import 'features/profile/data/repositories/profile_repositories_imp.dart';
 import 'features/profile/domain/repositories/profile_repositories.dart';
 import 'features/profile/domain/usecases/change_avatar_usecases.dart';
+import 'features/profile/domain/usecases/contactus_usecases.dart';
 import 'features/profile/domain/usecases/delete_usecases.dart';
 import 'features/profile/domain/usecases/logout_usecases.dart';
 import 'features/profile/domain/usecases/update_user_profile.usecases.dart';
+import 'features/profile/presention/bloc/contact_us_cubit/contact_us_cubit.dart';
 import 'features/profile/presention/bloc/profile_bloc/profile_bloc.dart';
 
 final sl = GetIt.instance;
@@ -56,6 +58,8 @@ Future<void> init() async {
       deleteAvatarUsecases: sl(),
       logoutDriverUseCases: sl()));
 
+  sl.registerFactory(() => ContactUsCubit(contactUsUsecases: sl()));
+
   //=============================
 
   //? UseCase
@@ -73,6 +77,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => LogoutDriverUseCases(sl()));
   sl.registerLazySingleton(() => DeleteAccountUseCases(sl()));
   sl.registerLazySingleton(() => DeleteAvatarUsecases(sl()));
+  sl.registerLazySingleton(() => ContactUsUsecases(sl()));
 
   //setting
   sl.registerLazySingleton(() => FetchAllDataUseCases(sl()));

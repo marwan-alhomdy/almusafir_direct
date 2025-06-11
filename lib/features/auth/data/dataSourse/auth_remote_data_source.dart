@@ -1,14 +1,14 @@
 import 'dart:developer';
 
-import 'package:almusafir_direct/features/home/data/model/current_user/current_user.dart';
+import 'package:almusafir_direct/core/data/current_user/current_user.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/constants/cached/cached_name.dart';
 import '../../../../core/constants/endpoint.dart';
+import '../../../../core/data/current_user/data.dart';
 import '../../../../core/error/exception.dart';
 import '../../../../core/services/api.service.dart';
 import '../../../../helper/cache_helper.dart';
-import '../../../home/data/model/current_user/data.dart';
 
 abstract class AuthRemoteDataSource {
   Future<CurrentUser> login({required Map<String, dynamic> data});

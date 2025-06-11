@@ -2,14 +2,14 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io' show File, Platform;
 
+import 'package:almusafir_direct/core/data/current_user/avatar.dart';
 import 'package:almusafir_direct/core/services/api.service.dart';
-import 'package:almusafir_direct/features/home/data/model/current_user/avatar.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/constants/endpoint.dart';
+import '../../../../core/data/current_user/current_user.dart';
+import '../../../../core/data/current_user/data.dart';
 import '../../../../core/server/header_server.dart';
-import '../../../home/data/model/current_user/current_user.dart';
-import '../../../home/data/model/current_user/data.dart';
 
 abstract class ProfileRemoteDataSource {
   Future<CurrentUser> updateUserProfile({required Map<String, dynamic> data});
@@ -17,6 +17,7 @@ abstract class ProfileRemoteDataSource {
   Future<Unit> deleteAccount();
   Future<Avatar> changeAvatar({required String avater});
   Future<Unit> deleteAvatar();
+  Future<Unit> contactUs({required Map<String, dynamic> data});
 }
 
 class ProfileRemoteImpWithDio extends ProfileRemoteDataSource {
@@ -69,13 +70,20 @@ class ProfileRemoteImpWithDio extends ProfileRemoteDataSource {
 
   @override
   Future<Unit> deleteAvatar() async {
-    final response = await client.delete(
+    await client.delete(
       endPoint: EndPointName.avatar,
       headers: HeaderServer.headerWithToken,
     );
+    return Future.value(unit);
+  }
 
-    print(response);
-
+  @override
+  Future<Unit> contactUs({required Map<String, dynamic> data}) async {
+    await client.post(
+      endPoint: EndPointName.contactUs,
+      headers: HeaderServer.headerWithToken,
+      data: data,
+    );
     return Future.value(unit);
   }
 }

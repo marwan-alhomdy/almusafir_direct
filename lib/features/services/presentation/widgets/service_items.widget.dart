@@ -12,29 +12,27 @@ class ListServiceItemsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return AnimationLimiterWidget(
       padding: const EdgeInsets.all(10),
-      child: AnimationLimiterWidget(
-        verticalOffset: 0,
-        horizontalOffset: 0,
-        physics: const ClampingScrollPhysics(),
-        children: [
-          "https://dynamicimagesae.rehlat.com/DynamicImages/DealsAndOffers/DealsPromos/1033_202505141244365789_DealsPromoImageMWeb.jpg",
-          "https://dynamicimagesae.rehlat.com/DynamicImages/DealsAndOffers/DealsPromos/1033_202505141244365789_DealsPromoImageMWeb.jpg",
-          "https://emiristanbul.com/wp-content/uploads/2020/12/ucuz-bilet.jpg",
-          "https://emiristanbul.com/wp-content/uploads/2020/12/ucuz-bilet.jpg",
-          "https://emiristanbul.com/wp-content/uploads/2020/12/ucuz-bilet.jpg",
-        ]
-            .map((image) => CardVerticalWidget(
-                  image: image,
-                  title: "خصم 50% على جميع الرحلات".tr,
-                  address: "address",
-                  price: 100,
-                  description: "description",
-                  onPressed: () => Get.to(() => const ServiceDetailsView()),
-                ))
-            .toList(),
-      ),
+      verticalOffset: 0,
+      horizontalOffset: 0,
+      physics: const ClampingScrollPhysics(),
+      children: [
+        "https://dynamicimagesae.rehlat.com/DynamicImages/DealsAndOffers/DealsPromos/1033_202505141244365789_DealsPromoImageMWeb.jpg",
+        "https://dynamicimagesae.rehlat.com/DynamicImages/DealsAndOffers/DealsPromos/1033_202505141244365789_DealsPromoImageMWeb.jpg",
+        "https://emiristanbul.com/wp-content/uploads/2020/12/ucuz-bilet.jpg",
+        "https://emiristanbul.com/wp-content/uploads/2020/12/ucuz-bilet.jpg",
+        "https://emiristanbul.com/wp-content/uploads/2020/12/ucuz-bilet.jpg",
+      ]
+          .map((image) => CardVerticalWidget(
+                image: image,
+                title: "خصم 50% على جميع الرحلات".tr,
+                address: "address",
+                price: 100,
+                description: "description",
+                onPressed: () => Get.to(() => const ServiceDetailsView()),
+              ))
+          .toList(),
     );
   }
 }

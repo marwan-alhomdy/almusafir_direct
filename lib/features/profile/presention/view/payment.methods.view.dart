@@ -12,32 +12,30 @@ class PaymentMethodsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const MyAppBarWithLogo(),
-      body: Padding(
+      body: AnimationLimiterWidget(
         padding: const EdgeInsets.all(10),
-        child: AnimationLimiterWidget(
-          children: [
-            CardPaymentWidget(
-                image:
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNM-fF5JAlTYp_vWZ-rA2zcZkgfNcJZIsGVQ&s",
-                title: "الكريمي",
-                description: "1234567890"),
-            CardPaymentWidget(
-                image:
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaKA7zXtFzrTp6lW2_NBISJ-EzHJuqs87qdAbaDjdZiEpA11OeagzZM1CoRkCOI8duymg&usqp=CAU",
-                title: "محفظة جيب",
-                description: "1234567890"),
-            CardPaymentWidget(
-                image:
-                    "https://play-lh.googleusercontent.com/MJGb3rEIRGyFqnvE6C0TDm097FrLFcXmz3wi2xxwCdm-YKb3sf_CQO4zfHGtNqLfn10",
-                title: "محفظة كاش",
-                description: "1234567890"),
-            CardPaymentWidget(
-                image:
-                    "https://play-lh.googleusercontent.com/DaZdX1qJynxsMa0ktpZAqdLDCgilj3sMT2gEKnFLLmu03L_YDqkxQrktXfTQOyy8MmCP",
-                title: "محفظة ون كاش",
-                description: "1234567890"),
-          ],
-        ),
+        children: [
+          CardPaymentWidget(
+              image:
+                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNM-fF5JAlTYp_vWZ-rA2zcZkgfNcJZIsGVQ&s",
+              title: "الكريمي",
+              description: "1234567890"),
+          CardPaymentWidget(
+              image:
+                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaKA7zXtFzrTp6lW2_NBISJ-EzHJuqs87qdAbaDjdZiEpA11OeagzZM1CoRkCOI8duymg&usqp=CAU",
+              title: "محفظة جيب",
+              description: "1234567890"),
+          CardPaymentWidget(
+              image:
+                  "https://play-lh.googleusercontent.com/MJGb3rEIRGyFqnvE6C0TDm097FrLFcXmz3wi2xxwCdm-YKb3sf_CQO4zfHGtNqLfn10",
+              title: "محفظة كاش",
+              description: "1234567890"),
+          CardPaymentWidget(
+              image:
+                  "https://play-lh.googleusercontent.com/DaZdX1qJynxsMa0ktpZAqdLDCgilj3sMT2gEKnFLLmu03L_YDqkxQrktXfTQOyy8MmCP",
+              title: "محفظة ون كاش",
+              description: "1234567890"),
+        ],
       ),
     );
   }

@@ -19,10 +19,10 @@ class Department {
 
   factory Department.fromJson(Map<String, dynamic> json) => Department(
         status: json['status'] as bool?,
-        name: json['name'] as String?,
-        message: json['message'] as String?,
-        error: json['error'] as dynamic,
-        errors: json['errors'] as dynamic,
+        name: json['name'],
+        message: json['message'],
+        error: json['error'],
+        errors: json['errors'],
         data: json['data'] == null
             ? null
             : Data.fromJson(json['data'] as Map<String, dynamic>),

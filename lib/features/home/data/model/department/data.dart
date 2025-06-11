@@ -1,6 +1,6 @@
-import 'email.dart';
-import 'image.dart';
-import 'phone.dart';
+import '../../../../../core/data/models/email.dart';
+import '../../../../../core/data/models/image.dart';
+import '../../../../../core/data/models/phone.dart';
 import 'website.dart';
 
 class Data {
@@ -15,8 +15,8 @@ class Data {
   String? businessNumber;
   String? vatNumber;
   String? mobile;
-  List<Phone>? phone;
-  List<Email>? email;
+  List<PhoneModel>? phone;
+  List<EmailModel>? email;
   List<Website>? website;
   String? companysId;
   String? address;
@@ -52,7 +52,7 @@ class Data {
   int? sortOrder;
   String? createdAt;
   String? updatedAt;
-  Image? image;
+  ImageModel? image;
   List<dynamic>? images;
   List<dynamic>? files;
   int? isFreeShipping;
@@ -165,10 +165,10 @@ class Data {
         vatNumber: json['vat_number'] as String?,
         mobile: json['mobile'] as String?,
         phone: (json['phone'] as List<dynamic>?)
-            ?.map((e) => Phone.fromJson(e as Map<String, dynamic>))
+            ?.map((e) => PhoneModel.fromJson(e as Map<String, dynamic>))
             .toList(),
         email: (json['email'] as List<dynamic>?)
-            ?.map((e) => Email.fromJson(e as Map<String, dynamic>))
+            ?.map((e) => EmailModel.fromJson(e as Map<String, dynamic>))
             .toList(),
         website: (json['website'] as List<dynamic>?)
             ?.map((e) => Website.fromJson(e as Map<String, dynamic>))
@@ -209,7 +209,7 @@ class Data {
         updatedAt: json['updated_at'] as String?,
         image: json['image'] == null
             ? null
-            : Image.fromJson(json['image'] as Map<String, dynamic>),
+            : ImageModel.fromJson(json['image'] as Map<String, dynamic>),
         images: json['images'] as List<dynamic>?,
         files: json['files'] as List<dynamic>?,
         isFreeShipping: json['is_free_shipping'] as int?,

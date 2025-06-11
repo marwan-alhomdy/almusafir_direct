@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 
+import '../../../../core/data/current_user/avatar.dart';
+import '../../../../core/data/current_user/current_user.dart';
 import '../../../../core/error/faiture.dart';
-import '../../../home/data/model/current_user/avatar.dart';
-import '../../../home/data/model/current_user/current_user.dart';
 
 abstract class ProfileRepostitory {
   Future<Either<Failure, CurrentUser>> updateUserProfile(
@@ -15,4 +15,6 @@ abstract class ProfileRepostitory {
   Future<Either<Failure, Avatar>> changeAvatar({required String avater});
 
   Future<Either<Failure, Unit>> deleteAvatar();
+
+  Future<Either<Failure, Unit>> contactUs({required Map<String, dynamic> data});
 }

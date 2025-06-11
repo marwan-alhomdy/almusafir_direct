@@ -2,9 +2,9 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/data/current_user/current_user.dart';
 import '../../../../../core/data/custom/country.dart';
 import '../../../../../core/error/faiture.dart';
-import '../../../../home/data/model/current_user/current_user.dart';
 import '../../../domain/usecases/register.usecases.dart';
 
 part 'register_state.dart';

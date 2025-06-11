@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 
 import '/injection_container.dart' as di;
 import '../../../../core/constants/enum/field_name.auht.dart';
-import '../../../home/data/model/current_user/current_user.dart';
+import '../../../../core/data/current_user/current_user.dart';
 import '../logic/verify_cubit/verify_cubit.dart';
 import '../widget/custom/auth.appber.dart';
 import '../widget/verifyotp_widget.dart';

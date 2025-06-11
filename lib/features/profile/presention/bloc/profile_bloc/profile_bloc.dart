@@ -1,12 +1,12 @@
-import 'package:almusafir_direct/features/home/data/model/current_user/current_user.dart';
+import 'package:almusafir_direct/core/data/current_user/current_user.dart';
 import 'package:almusafir_direct/features/profile/domain/usecases/change_avatar_usecases.dart';
 import 'package:almusafir_direct/features/profile/domain/usecases/delete_avatar_usecases.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/data/current_user/avatar.dart';
 import '../../../../../helper/public_infromation.dart';
-import '../../../../home/data/model/current_user/avatar.dart';
 import '../../../domain/usecases/delete_usecases.dart';
 import '../../../domain/usecases/logout_usecases.dart';
 import '../../../domain/usecases/update_user_profile.usecases.dart';

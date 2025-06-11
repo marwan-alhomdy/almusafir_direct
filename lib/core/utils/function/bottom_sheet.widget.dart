@@ -8,14 +8,14 @@ class BottomSheetWidget {
   static void show(Widget bottomsheet) {
     Get.bottomSheet(bottomsheet,
         isScrollControlled: false,
-        backgroundColor: AppColorsWithTheme.background,
+        backgroundColor: AppColorsWithTheme.backgroundScroll,
         shape: RoundedRectangleBorderAttribute.top(30));
   }
 
   static void showIsScroll(Widget bottomsheet) {
     Get.bottomSheet(bottomsheet,
         isScrollControlled: true,
-        backgroundColor: AppColorsWithTheme.background,
+        backgroundColor: AppColorsWithTheme.backgroundScroll,
         shape: RoundedRectangleBorderAttribute.top(30));
   }
 }

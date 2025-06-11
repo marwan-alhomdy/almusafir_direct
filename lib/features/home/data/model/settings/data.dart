@@ -1,11 +1,9 @@
-import 'email.dart';
-import 'phone.dart';
+import '../../../../../core/data/models/email.dart';
+import '../../../../../core/data/models/image.dart';
+import '../../../../../core/data/models/phone.dart';
 import 'social_link.dart';
-import 'website_icon.dart';
-import 'website_logo.dart';
-import 'website_logo192.dart';
 
-class Data {
+class Setting {
   String? updatedAt;
   String? websiteName;
   String? websiteUrl;
@@ -49,8 +47,8 @@ class Data {
   String? websiteBanerAbout;
   String? websiteBanerStory;
   String? websiteBanerGoles;
-  List<Phone>? phone;
-  List<Email>? email;
+  List<PhoneModel>? phone;
+  List<EmailModel>? email;
   dynamic accounts;
   String? isAllowLocalePicker;
   String? isAllowHeaderSearch;
@@ -71,13 +69,13 @@ class Data {
   String? isShowTagsType;
   String? isShowCategories;
   String? isShowCategoriesTree;
-  WebsiteIcon? websiteIcon;
-  WebsiteLogo? websiteLogo;
+  ImageModel? websiteIcon;
+  ImageModel? websiteLogo;
   dynamic websiteLogo128;
-  WebsiteLogo192? websiteLogo192;
+  ImageModel? websiteLogo192;
   List<SocialLink>? socialLinks;
 
-  Data({
+  Setting({
     this.updatedAt,
     this.websiteName,
     this.websiteUrl,
@@ -150,88 +148,86 @@ class Data {
     this.socialLinks,
   });
 
-  factory Data.fromJson(Map<String, dynamic> json) => Data(
-        updatedAt: json['updated_at'] as String?,
-        websiteName: json['website_name'] as String?,
-        websiteUrl: json['website_url'] as String?,
-        metaTitle: json['meta_title'] as String?,
-        metaDescription: json['meta_description'] as String?,
-        metaKeywords: json['meta_keywords'] as String?,
-        websiteBanerType: json['website_baner_type'] as String?,
-        address: json['address'] as String?,
-        workTime: json['work_time'] as String?,
-        mapType: json['map_type'] as String?,
-        mapLink: json['map_link'] as String?,
-        mapContent: json['map_content'] as String?,
-        websiteAuthor: json['website_author'] as String?,
-        websiteAuthorName: json['website_author_name'] as String?,
-        authorWeb: json['author_web'] as String?,
-        authorPhone: json['author_phone'] as String?,
-        authorEmail: json['author_email'] as String?,
-        authorAddress: json['author_address'] as String?,
-        loadGoogleFonts: json['load_google_fonts'] as String?,
-        googleFontFamily: json['google_font_family'] as String?,
-        loadFontawesome: json['load_fontawesome'] as String?,
-        loadMaterialIcons: json['load_material_icons'] as String?,
-        loadStroke7Icons: json['load_stroke7_icons'] as String?,
-        loadJQuery: json['load_jQuery'] as String?,
-        jQueryVersion: json['jQuery_version'] as String?,
-        mainContentLayout: json['main_content_layout'] as String?,
-        pageHeaderStyle: json['page_header_style'] as String?,
-        websiteTheme: json['website_theme'] as String?,
-        pageHeaderFixed: json['page_header_fixed'] as String?,
-        brandPrimary: json['brand_primary'] as String?,
-        brandSecondary: json['brand_secondary'] as String?,
-        bodyBg: json['body_bg'] as String?,
-        bodyColor: json['body_color'] as String?,
-        bodyColorDark: json['body_color_dark'] as String?,
-        headerBg: json['header_bg'] as String?,
-        sidebarBg: json['sidebar_bg'] as String?,
-        loadAnimateCss: json['load_animate_css'] as String?,
-        loadWowJs: json['load_wow_js'] as String?,
-        loadOwlCarousel: json['load_owl_carousel'] as String?,
-        websiteBaner: json['website_baner'] as String?,
-        websiteBanerAbout: json['website_baner_about'] as String?,
-        websiteBanerStory: json['website_baner_story'] as String?,
-        websiteBanerGoles: json['website_baner_goles'] as String?,
+  factory Setting.fromJson(Map<String, dynamic> json) => Setting(
+        updatedAt: json['updated_at'],
+        websiteName: json['website_name'],
+        websiteUrl: json['website_url'],
+        metaTitle: json['meta_title'],
+        metaDescription: json['meta_description'],
+        metaKeywords: json['meta_keywords'],
+        websiteBanerType: json['website_baner_type'],
+        address: json['address'],
+        workTime: json['work_time'],
+        mapType: json['map_type'],
+        mapLink: json['map_link'],
+        mapContent: json['map_content'],
+        websiteAuthor: json['website_author'],
+        websiteAuthorName: json['website_author_name'],
+        authorWeb: json['author_web'],
+        authorPhone: json['author_phone'],
+        authorEmail: json['author_email'],
+        authorAddress: json['author_address'],
+        loadGoogleFonts: json['load_google_fonts'],
+        googleFontFamily: json['google_font_family'],
+        loadFontawesome: json['load_fontawesome'],
+        loadMaterialIcons: json['load_material_icons'],
+        loadStroke7Icons: json['load_stroke7_icons'],
+        loadJQuery: json['load_jQuery'],
+        jQueryVersion: json['jQuery_version'],
+        mainContentLayout: json['main_content_layout'],
+        pageHeaderStyle: json['page_header_style'],
+        websiteTheme: json['website_theme'],
+        pageHeaderFixed: json['page_header_fixed'],
+        brandPrimary: json['brand_primary'],
+        brandSecondary: json['brand_secondary'],
+        bodyBg: json['body_bg'],
+        bodyColor: json['body_color'],
+        bodyColorDark: json['body_color_dark'],
+        headerBg: json['header_bg'],
+        sidebarBg: json['sidebar_bg'],
+        loadAnimateCss: json['load_animate_css'],
+        loadWowJs: json['load_wow_js'],
+        loadOwlCarousel: json['load_owl_carousel'],
+        websiteBaner: json['website_baner'],
+        websiteBanerAbout: json['website_baner_about'],
+        websiteBanerStory: json['website_baner_story'],
+        websiteBanerGoles: json['website_baner_goles'],
         phone: (json['phone'] as List<dynamic>?)
-            ?.map((e) => Phone.fromJson(e as Map<String, dynamic>))
+            ?.map((e) => PhoneModel.fromJson(e as Map<String, dynamic>))
             .toList(),
         email: (json['email'] as List<dynamic>?)
-            ?.map((e) => Email.fromJson(e as Map<String, dynamic>))
+            ?.map((e) => EmailModel.fromJson(e as Map<String, dynamic>))
             .toList(),
         accounts: json['accounts'] as dynamic,
-        isAllowLocalePicker: json['is_allow_locale_picker'] as String?,
-        isAllowHeaderSearch: json['is_allow_header_search'] as String?,
-        isAllowUserNav: json['is_allow_user_nav'] as String?,
-        isAllowHeader: json['is_allow_header'] as String?,
-        isAllowHero: json['is_allow_hero'] as String?,
-        isAllowSidebar: json['is_allow_sidebar'] as String?,
-        isAllowIconShare: json['is_allow_icon_share'] as String?,
-        isAllowScrollCall: json['is_allow_scroll_call'] as String?,
-        isAllowFloatingWhatsapp: json['is_allow_floating_whatsapp'] as String?,
-        isAllowScrollTop: json['is_allow_scroll_top'] as String?,
-        isAllowLoader: json['is_allow_loader'] as String?,
-        isAllowSubscribe: json['is_allow_subscribe'] as String?,
-        isAllowUnsubscribe: json['is_allow_unsubscribe'] as String?,
-        isShowBtnPrivacy: json['is_show_btn_privacy'] as String?,
-        isShowBtnDeleteaccount: json['is_show_btn_deleteaccount'] as String?,
-        isShowBtnBackend: json['is_show_btn_backend'] as String?,
-        isShowTagsType: json['is_show_tags_type'] as String?,
-        isShowCategories: json['is_show_categories'] as String?,
-        isShowCategoriesTree: json['is_show_categories_tree'] as String?,
+        isAllowLocalePicker: json['is_allow_locale_picker'],
+        isAllowHeaderSearch: json['is_allow_header_search'],
+        isAllowUserNav: json['is_allow_user_nav'],
+        isAllowHeader: json['is_allow_header'],
+        isAllowHero: json['is_allow_hero'],
+        isAllowSidebar: json['is_allow_sidebar'],
+        isAllowIconShare: json['is_allow_icon_share'],
+        isAllowScrollCall: json['is_allow_scroll_call'],
+        isAllowFloatingWhatsapp: json['is_allow_floating_whatsapp'],
+        isAllowScrollTop: json['is_allow_scroll_top'],
+        isAllowLoader: json['is_allow_loader'],
+        isAllowSubscribe: json['is_allow_subscribe'],
+        isAllowUnsubscribe: json['is_allow_unsubscribe'],
+        isShowBtnPrivacy: json['is_show_btn_privacy'],
+        isShowBtnDeleteaccount: json['is_show_btn_deleteaccount'],
+        isShowBtnBackend: json['is_show_btn_backend'],
+        isShowTagsType: json['is_show_tags_type'],
+        isShowCategories: json['is_show_categories'],
+        isShowCategoriesTree: json['is_show_categories_tree'],
         websiteIcon: json['website_icon'] == null
             ? null
-            : WebsiteIcon.fromJson(
-                json['website_icon'] as Map<String, dynamic>),
+            : ImageModel.fromJson(json['website_icon'] as Map<String, dynamic>),
         websiteLogo: json['website_logo'] == null
             ? null
-            : WebsiteLogo.fromJson(
-                json['website_logo'] as Map<String, dynamic>),
+            : ImageModel.fromJson(json['website_logo'] as Map<String, dynamic>),
         websiteLogo128: json['website_logo128'] as dynamic,
         websiteLogo192: json['website_logo192'] == null
             ? null
-            : WebsiteLogo192.fromJson(
+            : ImageModel.fromJson(
                 json['website_logo192'] as Map<String, dynamic>),
         socialLinks: (json['social_links'] as List<dynamic>?)
             ?.map((e) => SocialLink.fromJson(e as Map<String, dynamic>))

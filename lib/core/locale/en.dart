@@ -1,4 +1,5 @@
 const Map<String, String> _almusafirEn = {
+  "website": "Website",
   "youDon'tHaveAnAccount": "You don't have an account?",
   "createAccount": "Sign Up",
   "forgotPassword": "Forgot Password",

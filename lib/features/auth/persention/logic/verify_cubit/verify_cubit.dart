@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/constants/enum/field_name.auht.dart';
+import '../../../../../core/data/current_user/current_user.dart';
 import '../../../../../core/data/custom/country.dart';
 import '../../../../../core/utils/function/input_type_helper.dart';
-import '../../../../home/data/model/current_user/current_user.dart';
 import '../../../domain/usecases/check_activation.usescases.dart';
 import '../../../domain/usecases/send_activation.usecases.dart';
 
