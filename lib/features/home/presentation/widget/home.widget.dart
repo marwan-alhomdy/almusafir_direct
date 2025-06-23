@@ -26,7 +26,7 @@ class HomeWidget extends StatelessWidget {
           return _HomeWidget(state.data.data);
         } else if (state is ErrorFetchAllDataState) {
           return ErrorCustomWidget(
-            message: state.message,
+            state.message,
             onTap: () => context.read<HomeBloc>().add(FetchAllDataEvent()),
           );
         } else if (state is LoadingHomeState) {

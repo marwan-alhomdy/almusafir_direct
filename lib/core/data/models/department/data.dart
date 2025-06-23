@@ -4,7 +4,7 @@ import '../phone.dart';
 import 'website.dart';
 
 class ShoppingDepartments {
-  int? id;
+  num? id;
   String? code;
   String? name;
   String? shortDescription;
@@ -36,45 +36,45 @@ class ShoppingDepartments {
   String? directorateId;
   String? formataddress;
   String? vicinity;
-  int? isDefault;
-  int? isHidden;
-  int? isActive;
+  num? isDefault;
+  num? isHidden;
+  num? isActive;
   String? mainSub;
   String? parentId;
-  int? level;
+  num? level;
   String? tagsTypeId;
   String? sector;
   String? facilitySize;
-  int? employeesFrom;
-  int? employeesTo;
+  num? employeesFrom;
+  num? employeesTo;
   dynamic links;
   dynamic properties;
-  int? sortOrder;
+  num? sortOrder;
   String? createdAt;
   String? updatedAt;
   ImageModel? image;
   List<ImageModel>? images;
   List<dynamic>? files;
-  int? isFreeShipping;
-  int? customShippingInShop;
-  int? isFirstOrderShopFree;
-  int? isStopDelivery;
-  int? isExtentOfDelivery;
-  int? extentOfDelivery;
+  num? isFreeShipping;
+  num? customShippingInShop;
+  num? isFirstOrderShopFree;
+  num? isStopDelivery;
+  num? isExtentOfDelivery;
+  num? extentOfDelivery;
   String? deliveryFromAt;
   String? deliveryToAt;
   String? deliveryAt;
-  int? ratingsCount;
-  int? countRating;
-  int? sumRating;
-  int? averageRating;
-  int? userIsRating;
+  num? ratingsCount;
+  num? countRating;
+  num? sumRating;
+  num? averageRating;
+  num? userIsRating;
   dynamic userObjectRating;
-  int? favoritesCount;
-  int? userIsFavorite;
-  int? likesCount;
-  int? bookmarksCount;
-  int? reactionsCount;
+  num? favoritesCount;
+  num? userIsFavorite;
+  num? likesCount;
+  num? bookmarksCount;
+  num? reactionsCount;
   String? objectType;
 
   ShoppingDepartments({
@@ -203,16 +203,18 @@ class ShoppingDepartments {
         facilitySize: json['facility_size'],
         employeesFrom: json['employees_from'],
         employeesTo: json['employees_to'],
-        links: json['links'] as dynamic,
-        properties: json['properties'] as dynamic,
+        // links: json['links'] as dynamic,
+        // properties: json['properties'] as dynamic,
         sortOrder: json['sort_order'],
         createdAt: json['created_at'],
         updatedAt: json['updated_at'],
-        image: ImageModel.fromJson(json['image'] as Map<String, dynamic>),
+        image: json['image'] == null
+            ? null
+            : ImageModel.fromJson(json['image'] as Map<String, dynamic>),
         images: (json['images'] as List<dynamic>?)
             ?.map((e) => ImageModel.fromJson(e as Map<String, dynamic>))
             .toList(),
-        files: json['files'] as List<dynamic>?,
+        // files: json['files'] as List<dynamic>?,
         isFreeShipping: json['is_free_shipping'],
         customShippingInShop: json['custom_shipping_in_shop'],
         isFirstOrderShopFree: json['is_first_order_shop_free'],
@@ -227,13 +229,13 @@ class ShoppingDepartments {
         sumRating: json['sumRating'],
         averageRating: json['averageRating'],
         userIsRating: json['user_is_rating'],
-        userObjectRating: json['user_object_rating'] as dynamic,
+        // userObjectRating: json['user_object_rating'] as dynamic,
         favoritesCount: json['favorites_count'],
         userIsFavorite: json['user_is_favorite'],
         likesCount: json['likes_count'],
         bookmarksCount: json['bookmarks_count'],
         reactionsCount: json['reactions_count'],
-        objectType: json['object_type'],
+        // objectType: json['object_type'],
       );
 
   Map<String, dynamic> toJson() => {

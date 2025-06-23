@@ -8,3 +8,15 @@ sealed class DepartmentTypeState extends Equatable {
 }
 
 final class DepartmentTypeInitial extends DepartmentTypeState {}
+
+final class DepartmentTypeLoadingState extends DepartmentTypeState {}
+
+final class DepartmentTypeErrorState extends DepartmentTypeState {
+  final String message;
+  const DepartmentTypeErrorState({required this.message});
+}
+
+final class GetDepartmentTypeSuccessfullyState extends DepartmentTypeState {
+  final List<DepartmentType> departmentTypes;
+  const GetDepartmentTypeSuccessfullyState(this.departmentTypes);
+}

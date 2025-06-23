@@ -29,5 +29,6 @@ class EndPointName {
   static const String paymentMethods = 'orders/paymentmethods';
   static const String flights = 'deliverys/flights';
 
-  static const String tagsTypes = ' tags/types';
+  static const String tagsTypes = 'tags/types';
+  static const String basicDepartments = 'basic/departments';
 }

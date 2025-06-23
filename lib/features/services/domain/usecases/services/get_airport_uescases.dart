@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../../core/error/faiture.dart';
-import '../../data/models/service.module.dart';
-import '../repositories/services_repositories.dart';
+import '../../../../../../core/error/faiture.dart';
+import '../../../data/models/service.module.dart';
+import '../../repositories/services_repositories.dart';
 
 class GetAirportUescases {
   final ServicesRepostitory reostitory;

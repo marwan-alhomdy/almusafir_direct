@@ -2,11 +2,11 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../data/models/service.module.dart';
-import '../../../domain/usecases/get_airport_uescases.dart';
-import '../../../domain/usecases/get_flights_uescases.dart';
-import '../../../domain/usecases/get_loads_types_uescases.dart';
-import '../../../domain/usecases/get_payment_methods_uescases.dart';
-import '../../../domain/usecases/get_vehicle_type_uescases.dart';
+import '../../../domain/usecases/services/get_airport_uescases.dart';
+import '../../../domain/usecases/services/get_flights_uescases.dart';
+import '../../../domain/usecases/services/get_loads_types_uescases.dart';
+import '../../../domain/usecases/services/get_payment_methods_uescases.dart';
+import '../../../domain/usecases/services/get_vehicle_type_uescases.dart';
 import '../../manager/form_input.manager.dart';
 
 part 'form_service_state.dart';

@@ -52,12 +52,14 @@ class MyAppbar extends StatelessWidget implements PreferredSizeWidget {
 }
 
 class MyAppBarWithLogo extends StatelessWidget implements PreferredSizeWidget {
-  const MyAppBarWithLogo({super.key, this.actions});
+  const MyAppBarWithLogo({super.key, this.actions, this.backgroundColor});
   final List<Widget>? actions;
+  final Color? backgroundColor;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: backgroundColor,
       scrolledUnderElevation: 0,
       centerTitle: true,
       title: Hero(

@@ -1,5 +1,5 @@
 import 'package:almusafir_direct/features/profile/domain/usecases/delete_avatar_usecases.dart';
-import 'package:almusafir_direct/features/services/domain/usecases/get_flights_uescases.dart';
+import 'package:almusafir_direct/features/services/domain/usecases/services/get_flights_uescases.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
@@ -34,14 +34,21 @@ import 'features/profile/domain/usecases/logout_usecases.dart';
 import 'features/profile/domain/usecases/update_user_profile.usecases.dart';
 import 'features/profile/presention/bloc/contact_us_cubit/contact_us_cubit.dart';
 import 'features/profile/presention/bloc/profile_bloc/profile_bloc.dart';
+import 'features/services/data/datasources/department_remote_datasources.dart';
 import 'features/services/data/datasources/services_remote_datasources.dart';
+import 'features/services/data/repositories/department_repositories_imp.dart';
 import 'features/services/data/repositories/services_repositories_imp.dart';
+import 'features/services/domain/repositories/department_repositories.dart';
 import 'features/services/domain/repositories/services_repositories.dart';
-import 'features/services/domain/usecases/checkout2_uescases.dart';
-import 'features/services/domain/usecases/get_airport_uescases.dart';
-import 'features/services/domain/usecases/get_loads_types_uescases.dart';
-import 'features/services/domain/usecases/get_payment_methods_uescases.dart';
-import 'features/services/domain/usecases/get_vehicle_type_uescases.dart';
+import 'features/services/domain/usecases/department/get_departments_uescases.dart';
+import 'features/services/domain/usecases/department/get_type_departments_uescases.dart';
+import 'features/services/domain/usecases/services/checkout2_uescases.dart';
+import 'features/services/domain/usecases/services/get_airport_uescases.dart';
+import 'features/services/domain/usecases/services/get_loads_types_uescases.dart';
+import 'features/services/domain/usecases/services/get_payment_methods_uescases.dart';
+import 'features/services/domain/usecases/services/get_vehicle_type_uescases.dart';
+import 'features/services/presentation/logic/department_cubit/department_cubit.dart';
+import 'features/services/presentation/logic/department_type_cubit/department_type_cubit.dart';
 import 'features/services/presentation/logic/form_service_cubit/form_service_cubit.dart';
 import 'features/services/presentation/logic/services_cubit/services_cubit.dart';
 
@@ -79,6 +86,11 @@ Future<void> init() async {
       getFlightsUescases: sl(),
       getVehicleTypeUescases: sl()));
 
+  //Departments
+  sl.registerFactory(
+      () => DepartmentTypeCubit(getTypeDepartmentsUescases: sl()));
+  sl.registerFactory(() => DepartmentCubit(getDepartmentsUescases: sl()));
+
   //=============================
 
   //? UseCase
@@ -109,6 +121,10 @@ Future<void> init() async {
   sl.registerLazySingleton(() => GetPaymentMethodsUescases(sl()));
   sl.registerLazySingleton(() => GetFlightsUescases(sl()));
 
+  //Departments
+  sl.registerLazySingleton(() => GetTypeDepartmentsUescases(sl()));
+  sl.registerLazySingleton(() => GetDepartmentsUescases(sl()));
+
   //===========================================================
 
   //? Repository
@@ -132,6 +148,12 @@ Future<void> init() async {
         networkInfo: sl(),
       ));
 
+  //Departments
+  sl.registerLazySingleton<DepartmentRepostitory>(
+      () => DepartmentRepostitoryImp(
+            remoteDataSource: sl(),
+            networkInfo: sl(),
+          ));
   //=============================
 
   //? Datasources
@@ -148,6 +170,9 @@ Future<void> init() async {
   sl.registerLazySingleton<ServicesRemoteDataSource>(
       () => ServicesRemoteDataSourceImplWithDio(apiService: sl()));
 
+  //Departments
+  sl.registerLazySingleton<DepartmentRemoteDataSource>(
+      () => DepartmentRemoteDataSourceImplWithDio(apiService: sl()));
   //=============================
 
   //? LocalDataSource

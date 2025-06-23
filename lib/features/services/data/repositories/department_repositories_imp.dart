@@ -19,10 +19,11 @@ class DepartmentRepostitoryImp extends DepartmentRepostitory {
 
   @override
   Future<Either<Failure, List<ShoppingDepartments>>> getDepartments(
-      String orderType) async {
+      String orderType, String tagsTypeId) async {
     if (await networkInfo.isConnected) {
       try {
-        final remotePosts = await remoteDataSource.getDepartments(orderType);
+        final remotePosts =
+            await remoteDataSource.getDepartments(orderType, tagsTypeId);
         return Right(remotePosts);
       } on ServerExecption catch (e) {
         return Left(ServerFailure(e.message ?? ""));

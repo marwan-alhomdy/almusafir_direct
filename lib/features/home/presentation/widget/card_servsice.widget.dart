@@ -74,7 +74,7 @@ class CardServsiceWidget extends StatelessWidget {
     } else if (orderType?.isRequiredCart == 1 &&
         orderType?.isRequiredShopId == 0) {
       print("ServiceItemsView");
-
+      print(orderType?.refType);
       Get.to(() => ServiceItemsView());
     } else if (orderType?.isRequiredCart == 0) {
       print("FormServiceInputView");

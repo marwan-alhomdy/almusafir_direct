@@ -6,9 +6,9 @@ import '../../utils/resource/text_style.dart';
 import '../button/button.widget.dart';
 
 class ErrorCustomWidget extends StatelessWidget {
-  const ErrorCustomWidget({
+  const ErrorCustomWidget(
+    this.message, {
     super.key,
-    required this.message,
     required this.onTap,
   });
 

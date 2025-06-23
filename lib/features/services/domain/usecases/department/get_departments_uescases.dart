@@ -8,7 +8,7 @@ class GetDepartmentsUescases {
   final DepartmentRepostitory reostitory;
   GetDepartmentsUescases(this.reostitory);
   Future<Either<Failure, List<ShoppingDepartments>>> call(
-      {required String orderType}) async {
-    return await reostitory.getDepartments(orderType);
+      {required String orderType, required String tagsTypeId}) async {
+    return await reostitory.getDepartments(orderType, tagsTypeId);
   }
 }

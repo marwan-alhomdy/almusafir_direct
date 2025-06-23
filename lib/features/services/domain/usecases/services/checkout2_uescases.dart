@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../../core/error/faiture.dart';
-import '../repositories/services_repositories.dart';
+import '../../../../../../core/error/faiture.dart';
+import '../../repositories/services_repositories.dart';
 
 class Checkout2Uescases {
   final ServicesRepostitory reostitory;

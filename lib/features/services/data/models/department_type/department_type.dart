@@ -88,10 +88,13 @@ class DepartmentType {
       isPublished: json['is_published'],
       publishedAt: json['published_at'],
       unpublishedAt: json['unpublished_at'],
-      properties: json['properties'] as dynamic,
-      configData: json['config_data'] == null
-          ? null
-          : ConfigData.fromJson(json['config_data'] as Map<String, dynamic>),
+
+      //TODO:
+      // properties: json['properties'] as dynamic,
+      // configData: json['config_data'] == null
+      //     ? null
+      //     : ConfigData.fromJson(json['config_data'] as Map<String, dynamic>),
+      //objectType: json['object_type'],
       sortOrder: json['sort_order'],
       createdAt: json['created_at'],
       updatedAt: json['updated_at'],
@@ -99,7 +102,6 @@ class DepartmentType {
           ? null
           : ImageModel.fromJson(json['image'] as Map<String, dynamic>),
       images: json['images'] as List<dynamic>?,
-      objectType: json['object_type'],
     );
   }
 

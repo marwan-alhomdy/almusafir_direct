@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../helper/public_infromation.dart';
 import '../../../data/models/service.module.dart';
-import '../../../domain/usecases/checkout2_uescases.dart';
+import '../../../domain/usecases/services/checkout2_uescases.dart';
 
 part 'services_state.dart';
 
