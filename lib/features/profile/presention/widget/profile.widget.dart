@@ -31,7 +31,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
         Helper.isAuth
             ? const ButtonAcountWidget()
             : CardListProfileWidget(
-                onTap: () => Get.to(() => const AuthintcationView())
+                onTap: () => Get.to(() => const AuthView())
                     ?.then((value) => setState(() {})),
                 icon: Iconsax.login,
                 title: "login".tr,

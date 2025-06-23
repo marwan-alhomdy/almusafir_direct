@@ -11,8 +11,8 @@ import '../widget/custom/auth.appber.dart';
 import '../widget/login_widget.dart';
 import 'verifyotp.view.dart';
 
-class AuthintcationView extends StatelessWidget {
-  const AuthintcationView({super.key});
+class AuthView extends StatelessWidget {
+  const AuthView({super.key});
 
   @override
   Widget build(BuildContext context) {

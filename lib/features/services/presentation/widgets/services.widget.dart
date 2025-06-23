@@ -8,9 +8,9 @@ import 'bottomsheet_services.widget.dart';
 
 class ListServicesWidget extends StatelessWidget {
   const ListServicesWidget({super.key, required this.services});
-  final List<ServiceMoele> services;
+  final List<OtherServiceMoele> services;
 
-  void _showServiceDetails(ServiceMoele service) {
+  void _showServiceDetails(OtherServiceMoele service) {
     BottomSheetWidget.show(BottomSheetServicesWidget(service: service));
   }
 
@@ -45,9 +45,9 @@ class ListServicesWidget extends StatelessWidget {
 
 class GridServicesWidget extends StatelessWidget {
   const GridServicesWidget({super.key, required this.services});
-  final List<ServiceMoele> services;
+  final List<OtherServiceMoele> services;
 
-  void _showServiceDetails(ServiceMoele service) {
+  void _showServiceDetails(OtherServiceMoele service) {
     BottomSheetWidget.show(BottomSheetServicesWidget(service: service));
   }
 

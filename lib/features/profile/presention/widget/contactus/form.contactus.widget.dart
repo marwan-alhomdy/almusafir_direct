@@ -18,11 +18,11 @@ class FormContactUsWidget extends StatefulWidget {
 }
 
 class _FormContactUsWidgetState extends State<FormContactUsWidget> {
-  late final ContactUsCubit contactUsCubit;
+  late final ContactUsCubit contactCubit;
 
   @override
   void initState() {
-    contactUsCubit = context.read<ContactUsCubit>();
+    contactCubit = context.read<ContactUsCubit>();
     super.initState();
   }
 
@@ -31,7 +31,7 @@ class _FormContactUsWidgetState extends State<FormContactUsWidget> {
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Form(
-        key: contactUsCubit.formState,
+        key: contactCubit.formState,
         child: Column(
           spacing: 10,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,22 +50,28 @@ class _FormContactUsWidgetState extends State<FormContactUsWidget> {
             ),
             Text("name".tr, style: AppTextStyles.getRegularStyle()),
             TextFieldWidget(
-                validator: "".validator(),
-                isReadOnly: contactUsCubit.isReadOnly,
-                controller: contactUsCubit.nameController),
+              validator: "".validator(),
+              controller: contactCubit.nameController,
+              isReadOnly: contactCubit.isReadOnly &&
+                  contactCubit.nameController.text.isNotEmpty,
+            ),
             Text("email".tr, style: AppTextStyles.getRegularStyle()),
             TextFieldWidget(
-                isReadOnly: contactUsCubit.isReadOnly,
-                controller: contactUsCubit.emailController),
+              controller: contactCubit.emailController,
+              isReadOnly: contactCubit.isReadOnly &&
+                  contactCubit.emailController.text.isNotEmpty,
+            ),
             Text("mobile".tr, style: AppTextStyles.getRegularStyle()),
             TextFieldWidget(
-                validator: "".validator(),
-                isReadOnly: contactUsCubit.isReadOnly,
-                controller: contactUsCubit.mobileController),
+              validator: "".validator(),
+              controller: contactCubit.mobileController,
+              isReadOnly: contactCubit.isReadOnly &&
+                  contactCubit.mobileController.text.isNotEmpty,
+            ),
             Text("message".tr, style: AppTextStyles.getRegularStyle()),
             TextFieldWidget(
                 validator: "".validator(),
-                controller: contactUsCubit.messageController,
+                controller: contactCubit.messageController,
                 maxLines: 3),
             SizedBox(),
             BlocBuilder<ContactUsCubit, ContactUsState>(
@@ -74,7 +80,7 @@ class _FormContactUsWidgetState extends State<FormContactUsWidget> {
                     ? ButtonLoadingWidget(text: "", isLoading: true)
                     : ButtonLoadingWidget(
                         text: "OK".tr,
-                        onTap: () => contactUsCubit.contactUs(),
+                        onTap: () => contactCubit.contactUs(),
                       );
               },
             ),

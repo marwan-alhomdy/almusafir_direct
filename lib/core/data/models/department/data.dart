@@ -1,9 +1,9 @@
-import '../../../../../core/data/models/email.dart';
-import '../../../../../core/data/models/image.dart';
-import '../../../../../core/data/models/phone.dart';
+import '../email.dart';
+import '../image.dart';
+import '../phone.dart';
 import 'website.dart';
 
-class Data {
+class ShoppingDepartments {
   int? id;
   String? code;
   String? name;
@@ -53,7 +53,7 @@ class Data {
   String? createdAt;
   String? updatedAt;
   ImageModel? image;
-  List<dynamic>? images;
+  List<ImageModel>? images;
   List<dynamic>? files;
   int? isFreeShipping;
   int? customShippingInShop;
@@ -77,7 +77,7 @@ class Data {
   int? reactionsCount;
   String? objectType;
 
-  Data({
+  ShoppingDepartments({
     this.id,
     this.code,
     this.name,
@@ -152,18 +152,19 @@ class Data {
     this.objectType,
   });
 
-  factory Data.fromJson(Map<String, dynamic> json) => Data(
-        id: json['id'] as int?,
-        code: json['code'] as String?,
-        name: json['name'] as String?,
-        shortDescription: json['short_description'] as String?,
-        description: json['description'] as String?,
-        metaTitle: json['meta_title'] as String?,
-        metaDescription: json['meta_description'] as String?,
-        keywords: json['keywords'] as String?,
-        businessNumber: json['business_number'] as String?,
-        vatNumber: json['vat_number'] as String?,
-        mobile: json['mobile'] as String?,
+  factory ShoppingDepartments.fromJson(Map<String, dynamic> json) =>
+      ShoppingDepartments(
+        id: json['id'],
+        code: json['code'],
+        name: json['name'],
+        shortDescription: json['short_description'],
+        description: json['description'],
+        metaTitle: json['meta_title'],
+        metaDescription: json['meta_description'],
+        keywords: json['keywords'],
+        businessNumber: json['business_number'],
+        vatNumber: json['vat_number'],
+        mobile: json['mobile'],
         phone: (json['phone'] as List<dynamic>?)
             ?.map((e) => PhoneModel.fromJson(e as Map<String, dynamic>))
             .toList(),
@@ -173,66 +174,66 @@ class Data {
         website: (json['website'] as List<dynamic>?)
             ?.map((e) => Website.fromJson(e as Map<String, dynamic>))
             .toList(),
-        companysId: json['companys_id'] as String?,
-        address: json['address'] as String?,
-        address1: json['address_1'] as String?,
-        address2: json['address_2'] as String?,
-        streetName: json['street_name'] as String?,
-        streetNumber: json['street_number'] as String?,
+        companysId: json['companys_id'],
+        address: json['address'],
+        address1: json['address_1'],
+        address2: json['address_2'],
+        streetName: json['street_name'],
+        streetNumber: json['street_number'],
         latitude: (json['latitude'] as num?)?.toDouble(),
         longitude: (json['longitude'] as num?)?.toDouble(),
         geoComponents: json['geo_components'] as List<dynamic>?,
-        city: json['city'] as String?,
-        zip: json['zip'] as String?,
-        postcode: json['postcode'] as String?,
-        countryLong: json['country_long'] as String?,
-        countryId: json['country_id'] as String?,
-        stateId: json['state_id'] as String?,
-        directorateId: json['directorate_id'] as String?,
-        formataddress: json['formataddress'] as String?,
-        vicinity: json['vicinity'] as String?,
-        isDefault: json['is_default'] as int?,
-        isHidden: json['is_hidden'] as int?,
-        isActive: json['is_active'] as int?,
-        mainSub: json['main_sub'] as String?,
-        parentId: json['parent_id'] as String?,
-        level: json['level'] as int?,
-        tagsTypeId: json['tags_type_id'] as String?,
-        sector: json['sector'] as String?,
-        facilitySize: json['facility_size'] as String?,
-        employeesFrom: json['employees_from'] as int?,
-        employeesTo: json['employees_to'] as int?,
+        city: json['city'],
+        zip: json['zip'],
+        postcode: json['postcode'],
+        countryLong: json['country_long'],
+        countryId: json['country_id'],
+        stateId: json['state_id'],
+        directorateId: json['directorate_id'],
+        formataddress: json['formataddress'],
+        vicinity: json['vicinity'],
+        isDefault: json['is_default'],
+        isHidden: json['is_hidden'],
+        isActive: json['is_active'],
+        mainSub: json['main_sub'],
+        parentId: json['parent_id'],
+        level: json['level'],
+        tagsTypeId: json['tags_type_id'],
+        sector: json['sector'],
+        facilitySize: json['facility_size'],
+        employeesFrom: json['employees_from'],
+        employeesTo: json['employees_to'],
         links: json['links'] as dynamic,
         properties: json['properties'] as dynamic,
-        sortOrder: json['sort_order'] as int?,
-        createdAt: json['created_at'] as String?,
-        updatedAt: json['updated_at'] as String?,
-        image: json['image'] == null
-            ? null
-            : ImageModel.fromJson(json['image'] as Map<String, dynamic>),
-        images: json['images'] as List<dynamic>?,
+        sortOrder: json['sort_order'],
+        createdAt: json['created_at'],
+        updatedAt: json['updated_at'],
+        image: ImageModel.fromJson(json['image'] as Map<String, dynamic>),
+        images: (json['images'] as List<dynamic>?)
+            ?.map((e) => ImageModel.fromJson(e as Map<String, dynamic>))
+            .toList(),
         files: json['files'] as List<dynamic>?,
-        isFreeShipping: json['is_free_shipping'] as int?,
-        customShippingInShop: json['custom_shipping_in_shop'] as int?,
-        isFirstOrderShopFree: json['is_first_order_shop_free'] as int?,
-        isStopDelivery: json['is_stop_delivery'] as int?,
-        isExtentOfDelivery: json['is_extent_of_delivery'] as int?,
-        extentOfDelivery: json['extent_of_delivery'] as int?,
-        deliveryFromAt: json['delivery_from_at'] as String?,
-        deliveryToAt: json['delivery_to_at'] as String?,
-        deliveryAt: json['delivery_at'] as String?,
-        ratingsCount: json['ratings_count'] as int?,
-        countRating: json['countRating'] as int?,
-        sumRating: json['sumRating'] as int?,
-        averageRating: json['averageRating'] as int?,
-        userIsRating: json['user_is_rating'] as int?,
+        isFreeShipping: json['is_free_shipping'],
+        customShippingInShop: json['custom_shipping_in_shop'],
+        isFirstOrderShopFree: json['is_first_order_shop_free'],
+        isStopDelivery: json['is_stop_delivery'],
+        isExtentOfDelivery: json['is_extent_of_delivery'],
+        extentOfDelivery: json['extent_of_delivery'],
+        deliveryFromAt: json['delivery_from_at'],
+        deliveryToAt: json['delivery_to_at'],
+        deliveryAt: json['delivery_at'],
+        ratingsCount: json['ratings_count'],
+        countRating: json['countRating'],
+        sumRating: json['sumRating'],
+        averageRating: json['averageRating'],
+        userIsRating: json['user_is_rating'],
         userObjectRating: json['user_object_rating'] as dynamic,
-        favoritesCount: json['favorites_count'] as int?,
-        userIsFavorite: json['user_is_favorite'] as int?,
-        likesCount: json['likes_count'] as int?,
-        bookmarksCount: json['bookmarks_count'] as int?,
-        reactionsCount: json['reactions_count'] as int?,
-        objectType: json['object_type'] as String?,
+        favoritesCount: json['favorites_count'],
+        userIsFavorite: json['user_is_favorite'],
+        likesCount: json['likes_count'],
+        bookmarksCount: json['bookmarks_count'],
+        reactionsCount: json['reactions_count'],
+        objectType: json['object_type'],
       );
 
   Map<String, dynamic> toJson() => {
@@ -285,7 +286,7 @@ class Data {
         'created_at': createdAt,
         'updated_at': updatedAt,
         'image': image?.toJson(),
-        'images': images,
+        'images': images?.map((e) => e.toJson()).toList(),
         'files': files,
         'is_free_shipping': isFreeShipping,
         'custom_shipping_in_shop': customShippingInShop,

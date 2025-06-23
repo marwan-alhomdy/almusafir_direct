@@ -27,9 +27,11 @@ class VerifyCubit extends Cubit<VerifyState> {
 
   String? _mobileOrEmail;
 
+  bool get isMobile => InputTypeHelper.isPhone(mobileOrEmailController.text);
+
   String get mobileOrEmail =>
       _mobileOrEmail ??
-      (InputTypeHelper.isPhone(mobileOrEmailController.text)
+      (isMobile
           ? country.code + mobileOrEmailController.text
           : mobileOrEmailController.text);
 
@@ -43,6 +45,7 @@ class VerifyCubit extends Cubit<VerifyState> {
       "field_name": fieldNameAuth.name,
       "api_version": "v2",
       'channel': 'otp_whatsapp',
+      "activate_type": isMobile ? "sms" : "email",
     };
     final failureOrSuccess = await sendActivationUseCases(data: data);
 
@@ -61,6 +64,7 @@ class VerifyCubit extends Cubit<VerifyState> {
       "api_version": "v2",
       'profile': true,
       'channel': 'otp_whatsapp',
+      "activate_type": isMobile ? "sms" : "email",
     };
     final failureOrSuccess = await checkActivationUseCases(data: data);
 

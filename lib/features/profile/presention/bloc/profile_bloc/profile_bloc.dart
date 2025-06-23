@@ -1,4 +1,5 @@
 import 'package:almusafir_direct/core/data/current_user/current_user.dart';
+import 'package:almusafir_direct/core/utils/handler/handler.dart';
 import 'package:almusafir_direct/features/profile/domain/usecases/change_avatar_usecases.dart';
 import 'package:almusafir_direct/features/profile/domain/usecases/delete_avatar_usecases.dart';
 import 'package:equatable/equatable.dart';
@@ -45,7 +46,9 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     mobileController.text = user?.mobile ?? "";
     emailController.text = user?.email ?? "";
     nameController.text = user?.name ?? "";
-    dateOfBirthController.text = user?.dateOfBirth ?? "";
+    dateOfBirthController.text = user?.dateOfBirth == null
+        ? ""
+        : DateTimeHandler.formatDateFromString(user?.dateOfBirth);
   }
 
   Future<void> _changeAvatarEvent(
@@ -63,7 +66,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     final failureOrSuccess = await deleteAvatarUsecases();
     emit(failureOrSuccess.fold(
         (failuer) => ErrorProfileState(message: failuer.message),
-        (avater) => DeleteAvatarSuccessfulState()));
+        (_) => ChangeAvatarSuccessfulState(avatar: null)));
   }
 
   Future<void> _logoutEvent(

@@ -27,7 +27,11 @@ class SplashViewBodyState extends State<SplashViewBody>
     return Column(
       children: [
         const Spacer(),
-        Center(child: Image.asset(AppImages.logo, height: 150, width: 150)),
+        Center(
+          child: Hero(
+              tag: AppImages.logo,
+              child: Image.asset(AppImages.logo, height: 150, width: 150)),
+        ),
         const Spacer(),
       ],
     );

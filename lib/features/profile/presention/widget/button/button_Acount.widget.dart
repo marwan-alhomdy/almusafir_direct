@@ -9,9 +9,14 @@ import '../../../../../core/utils/resource/images.dart';
 import '../../../../../core/utils/resource/text_style.dart';
 import '../../view/account_profile_view.dart';
 
-class ButtonAcountWidget extends StatelessWidget {
+class ButtonAcountWidget extends StatefulWidget {
   const ButtonAcountWidget({super.key});
 
+  @override
+  State<ButtonAcountWidget> createState() => _ButtonAcountWidgetState();
+}
+
+class _ButtonAcountWidgetState extends State<ButtonAcountWidget> {
   @override
   Widget build(BuildContext context) {
     return Card.filled(
@@ -21,7 +26,7 @@ class ButtonAcountWidget extends StatelessWidget {
           ClipOval(
             child: ImageWidget(
               Helper.user?.avatar?.original ?? "",
-               width: 50,
+              width: 50,
               height: 50,
               errorWiget: Image.asset(AppImages.avatar, fit: BoxFit.cover),
             ),
@@ -43,8 +48,8 @@ class ButtonAcountWidget extends StatelessWidget {
           ),
           const Spacer(),
           IconButton(
-            onPressed: () =>
-                Get.to(() => AccountProfileView())?.then((_) => Get.back()),
+            onPressed: () => Get.to(() => AccountProfileView())
+                ?.then((_) => setState(() {})),
             color: AppColors.mainOneColor,
             icon: Icon(Iconsax.edit),
           ),

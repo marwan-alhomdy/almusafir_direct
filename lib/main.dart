@@ -58,7 +58,9 @@ class _MyAppState extends State<MyApp> {
       home: const SplashView(),
       locale: localeController.initLocale,
       translations: DataLoacleTranslations(),
-      theme: Themes.themeDark,
+      theme: Themes.themeLight,
+      darkTheme: Themes.themeDark,
+      themeMode: ThemeMode.light,
     );
   }
 }

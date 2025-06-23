@@ -29,6 +29,10 @@ class _ServiceItemsViewState extends State<ServiceItemsView> {
             SizedBox(width: 20),
           ],
         ),
-        body: isGridView ? ListServiceItemsWidget() : GridServiceItemsWidget());
+        body: SingleChildScrollView(
+            physics: ClampingScrollPhysics(),
+            child: isGridView
+                ? ListServiceItemsWidget()
+                : GridServiceItemsWidget()));
   }
 }

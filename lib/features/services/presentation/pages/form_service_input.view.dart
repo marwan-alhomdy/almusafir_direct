@@ -1,229 +1,83 @@
-import 'package:almusafir_direct/core/utils/resource/text_style.dart';
-import 'package:almusafir_direct/core/utils/validator/validator.dart';
-import 'package:almusafir_direct/core/widget/button/button.widget.dart';
-import 'package:almusafir_direct/core/widget/field/date_picker_fild_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
 
+import '/injection_container.dart' as di;
+import '../../../../core/utils/function/message_box.dart';
 import '../../../../core/widget/appbar/my_appbar.dart';
-import '../../../../core/widget/field/text_field.widget.dart';
+import '../../../../core/widget/button/button.widget.dart';
+import '../../../../helper/public_infromation.dart';
+import '../../../auth/persention/view/auth_view.dart';
 import '../../../home/data/model/orderstypes/datum.dart';
+import '../logic/form_service_cubit/form_service_cubit.dart';
+import '../logic/services_cubit/services_cubit.dart';
+import '../widgets/form_service/form_service_input.widget.dart';
 
-class FormServiceInputView extends StatefulWidget {
+class FormServiceInputView extends StatelessWidget {
   const FormServiceInputView({super.key, required this.orderType});
 
   final OrderType? orderType;
 
   @override
-  State<FormServiceInputView> createState() => _FormServiceInputViewState();
-}
-
-class _FormServiceInputViewState extends State<FormServiceInputView> {
-  final orderDateController = TextEditingController();
-  final returnDateController = TextEditingController();
-  final fromAddressController = TextEditingController();
-  final toAddressController = TextEditingController();
-  bool isRoundTrip = true;
-
-  GlobalKey<FormState> formKey = GlobalKey();
-
-  @override
-  void dispose() {
-    orderDateController.dispose();
-    returnDateController.dispose();
-    fromAddressController.dispose();
-    toAddressController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: MyAppBarWithLogo(),
-      body: SingleChildScrollView(
-        physics: ClampingScrollPhysics(),
-        padding: EdgeInsets.all(10),
-        child: Form(
-          key: formKey,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+            create: (_) => di.sl<ServicesCubit>()..setOrderType(orderType)),
+        BlocProvider(create: (_) => di.sl<FormServiceCubit>()),
+      ],
+      child: Scaffold(
+        appBar: MyAppBarWithLogo(),
+        body: Padding(
+          padding: EdgeInsets.all(10),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             spacing: 10,
             children: [
-              CardInputWidget(children: [
-                CheckboxListTile(
-                  contentPadding: EdgeInsetsDirectional.only(start: 10),
-                  value: isRoundTrip,
-                  title: Text("هل الرحلة ذهاب وعود؟"),
-                  secondary: Icon(Iconsax.arrow_swap_horizontal_copy),
-                  onChanged: (value) =>
-                      setState(() => isRoundTrip = value ?? true),
+              Expanded(
+                child: SingleChildScrollView(
+                  physics: ClampingScrollPhysics(),
+                  child: FormServiceInputWidget(orderType: orderType),
                 ),
-              ]),
-              CardInputWidget(
-                children: [
-                  RouteInputWidget(title: "الرحلة من ", icon: Iconsax.location),
-                  TextFieldWidget(
-                      validator: "هذا الحقل مطلوب".validator(),
-                      controller: fromAddressController),
-                ],
               ),
-              CardInputWidget(
-                children: [
-                  RouteInputWidget(title: "الرحلة الى", icon: Iconsax.location),
-                  TextFieldWidget(
-                      validator: "هذا الحقل مطلوب".validator(),
-                      controller: toAddressController),
-                ],
+              BlocListener<ServicesCubit, ServicesState>(
+                listener: _listenerServicesCubit,
+                child: Builder(builder: (context) {
+                  return ButtonWidget(
+                    text: "OK".tr,
+                    onTap: () => checkout2(context),
+                  );
+                }),
               ),
-
-              CardInputWidget(
-                children: [
-                  RouteInputWidget(
-                      title: "تاريخ الذهاب", icon: Iconsax.calendar),
-                  DatePickerFieldWidget(
-                      validator: "هذا الحقل مطلوب".validator(),
-                      controller: orderDateController),
-                ],
-              ),
-
-              // TODO: add  widget.orderType?.isRoundTrip == 1 &&
-              if (isRoundTrip)
-                CardInputWidget(
-                  children: [
-                    RouteInputWidget(
-                        title: "تاريخ العودة", icon: Iconsax.calendar),
-                    DatePickerFieldWidget(
-                        validator: "هذا الحقل مطلوب".validator(),
-                        controller: returnDateController),
-                  ],
-                ),
-              CardInputWidget(children: [
-                CheckboxListTile(
-                  contentPadding: EdgeInsetsDirectional.only(start: 10),
-                  value: isRoundTrip,
-                  title: Text("هل قابل للكسر ؟"),
-                  secondary: Icon(Iconsax.dcube),
-                  onChanged: (value) =>
-                      setState(() => isRoundTrip = value ?? true),
-                ),
-              ]),
-
-              CardInputWidget(
-                children: [
-                  RouteInputWidget(title: "نوع الحمولة", icon: Iconsax.box),
-                  TextFieldWidget(
-                      validator: "هذا الحقل مطلوب".validator(),
-                      controller: returnDateController),
-                ],
-              ),
-
-              CardInputWidget(
-                children: [
-                  RouteInputWidget(
-                      title: "اوزان الحمولة", icon: Iconsax.align_vertically),
-                  TextFieldWidget(
-                      validator: "هذا الحقل مطلوب".validator(),
-                      controller: returnDateController),
-                ],
-              ),
-
-              CardInputWidget(
-                children: [
-                  RouteInputWidget(
-                      title: "عدد الاشخاص", icon: Iconsax.profile_2user),
-                  TextFieldWidget(
-                      validator: "هذا الحقل مطلوب".validator(),
-                      controller: returnDateController),
-                ],
-              ),
-
-              CardInputWidget(
-                children: [
-                  RouteInputWidget(
-                      title: "وسيلة التوصيل", icon: Iconsax.truck_fast),
-                  TextFieldWidget(
-                      validator: "هذا الحقل مطلوب".validator(),
-                      controller: returnDateController),
-                ],
-              ),
-
-              CardInputWidget(
-                children: [
-                  RouteInputWidget(title: "طريقة الدفع", icon: Iconsax.card),
-                  TextFieldWidget(
-                      validator: "هذا الحقل مطلوب".validator(),
-                      controller: returnDateController),
-                ],
-              ),
-
-              CardInputWidget(
-                children: [
-                  RouteInputWidget(title: "كود الخصم", icon: Iconsax.gift),
-                  TextFieldWidget(controller: returnDateController)
-                ],
-              ),
-
-              CardInputWidget(
-                children: [
-                  RouteInputWidget(title: "إكرامية السائق", icon: Iconsax.car),
-                  TextFieldWidget(controller: returnDateController),
-                ],
-              ),
-
-              CardInputWidget(
-                children: [
-                  RouteInputWidget(title: "الملاحظات", icon: Iconsax.note),
-                  TextFieldWidget(
-                      validator: "هذا الحقل مطلوب".validator(),
-                      controller: returnDateController,
-                      maxLines: 3),
-                ],
-              ),
-
-              ButtonWidget(
-                  onTap: () {
-                    formKey.currentState?.validate();
-                  },
-                  text: "OK".tr),
-              SizedBox(height: 30),
+              SizedBox(height: 20),
             ],
           ),
         ),
       ),
     );
   }
-}
 
-class CardInputWidget extends StatelessWidget {
-  const CardInputWidget({super.key, required this.children});
-  final List<Widget> children;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card.filled(
-      child: Column(
-        spacing: 5,
-        children: children,
-      ),
-    );
+  void checkout2(BuildContext context) {
+    if (Helper.isAuth) {
+      context.read<ServicesCubit>().checkout2();
+    } else {
+      Get.to(() => AuthView())?.then((_) {
+        if (Helper.isAuth && context.mounted) {
+          context.read<ServicesCubit>().checkout2();
+        }
+      });
+    }
   }
-}
 
-class RouteInputWidget extends StatelessWidget {
-  const RouteInputWidget({super.key, required this.title, required this.icon});
-  final String title;
-  final IconData icon;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      spacing: 5,
-      children: [
-        SizedBox(),
-        Icon(icon, size: 15),
-        Text(title, style: AppTextStyles.getMediumStyle()),
-      ],
-    );
+  void _listenerServicesCubit(BuildContext context, ServicesState state) {
+    if (state is ServicesStateLoadingState) {
+      MessageBox.showProgress(context, "loading".tr);
+    } else if (state is ServicesStateErrorState) {
+      Get.back();
+      MessageBox.showError(context, state.message);
+    } else if (state is CheckoutSuccessfullyState) {
+      Get.back();
+      final message = "operation_was_completed_successfully".tr;
+      MessageBox.showSuccess(context, message);
+    }
   }
 }

@@ -6,6 +6,7 @@ import '../../../../core/utils/style/border_radius.dart';
 import '../../../../core/widget/image/image_widget.dart';
 import '../../../services/presentation/pages/form_service_input.view.dart';
 import '../../../services/presentation/pages/service.view.dart';
+import '../../../services/presentation/pages/service_category.view.dart';
 import '../../../services/presentation/pages/service_items.view.dart';
 import '../../data/model/orderstypes/datum.dart';
 
@@ -69,9 +70,11 @@ class CardServsiceWidget extends StatelessWidget {
   void _moveToServiceDetails() {
     if (orderType?.isRequiredCart == 1 && orderType?.isRequiredShopId == 1) {
       //TODO : add Category Department Daily screen
+      Get.to(() => ServiceCategoryView(orderType: orderType));
     } else if (orderType?.isRequiredCart == 1 &&
         orderType?.isRequiredShopId == 0) {
       print("ServiceItemsView");
+
       Get.to(() => ServiceItemsView());
     } else if (orderType?.isRequiredCart == 0) {
       print("FormServiceInputView");

@@ -1,7 +1,9 @@
 import 'dart:io';
+
 import 'package:flutter/material.dart';
-import '../widget/image/image_widget.dart';
+
 import '../widget/appbar/my_appbar.dart';
+import '../widget/image/image_widget.dart';
 
 class ShowImageView extends StatelessWidget {
   const ShowImageView({super.key, required this.image});
@@ -12,7 +14,9 @@ class ShowImageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const MyAppBarWithLogo(),
-      body: Center(child: ImageWidget(image, fit: BoxFit.fitWidth)),
+      body: Center(
+          child: Hero(
+              tag: image, child: ImageWidget(image, fit: BoxFit.fitWidth))),
     );
   }
 }

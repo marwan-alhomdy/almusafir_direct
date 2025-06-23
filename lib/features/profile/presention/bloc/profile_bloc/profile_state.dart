@@ -13,11 +13,9 @@ class ProfileInitial extends ProfileState {}
 //! Successful
 
 class ChangeAvatarSuccessfulState extends ProfileState {
-  final Avatar avatar;
+  final Avatar? avatar;
   const ChangeAvatarSuccessfulState({required this.avatar});
 }
-
-class DeleteAvatarSuccessfulState extends ProfileState {}
 
 class UpdateUserProfileSuccessfulState extends ProfileState {
   final CurrentUser user;

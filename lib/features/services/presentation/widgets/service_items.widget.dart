@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/Animation/animation_limiter_widget.dart';
+import '../../../../core/Animation/animation_column_widget.dart';
 import '../../../../core/Animation/scale_animation_widget.dart';
 import '../../../../core/widget/card/card_category.widget.dart';
 import '../../../../core/widget/card/card_vertical.widget.dart';
@@ -12,12 +12,17 @@ class ListServiceItemsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimationLimiterWidget(
-      padding: const EdgeInsets.all(10),
-      verticalOffset: 0,
-      horizontalOffset: 0,
-      physics: const ClampingScrollPhysics(),
+    return AnimationColumnWidget(
+      // padding: const EdgeInsets.all(10),
+      // verticalOffset: 0,
+      // horizontalOffset: 0,
+      // physics: const ClampingScrollPhysics(),
       children: [
+        "https://dynamicimagesae.rehlat.com/DynamicImages/DealsAndOffers/DealsPromos/1033_202505141244365789_DealsPromoImageMWeb.jpg",
+        "https://dynamicimagesae.rehlat.com/DynamicImages/DealsAndOffers/DealsPromos/1033_202505141244365789_DealsPromoImageMWeb.jpg",
+        "https://emiristanbul.com/wp-content/uploads/2020/12/ucuz-bilet.jpg",
+        "https://emiristanbul.com/wp-content/uploads/2020/12/ucuz-bilet.jpg",
+        "https://emiristanbul.com/wp-content/uploads/2020/12/ucuz-bilet.jpg",
         "https://dynamicimagesae.rehlat.com/DynamicImages/DealsAndOffers/DealsPromos/1033_202505141244365789_DealsPromoImageMWeb.jpg",
         "https://dynamicimagesae.rehlat.com/DynamicImages/DealsAndOffers/DealsPromos/1033_202505141244365789_DealsPromoImageMWeb.jpg",
         "https://emiristanbul.com/wp-content/uploads/2020/12/ucuz-bilet.jpg",

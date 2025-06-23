@@ -8,18 +8,20 @@ class TextFieldWidget extends StatelessWidget {
     this.maxLines = 1,
     this.onTap,
     this.isReadOnly = false,
+    this.keyboardType = TextInputType.text,
   });
   final String? Function(String?)? validator;
   final TextEditingController controller;
   final int maxLines;
   final VoidCallback? onTap;
   final bool isReadOnly;
+  final TextInputType keyboardType;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
-      keyboardType: TextInputType.text,
+      keyboardType: keyboardType,
       validator: validator,
       maxLines: maxLines,
       onTap: onTap,

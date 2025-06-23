@@ -6,7 +6,7 @@ class Department {
   String? message;
   dynamic error;
   dynamic errors;
-  Data? data;
+  ShoppingDepartments? data;
 
   Department({
     this.status,
@@ -25,7 +25,8 @@ class Department {
         errors: json['errors'],
         data: json['data'] == null
             ? null
-            : Data.fromJson(json['data'] as Map<String, dynamic>),
+            : ShoppingDepartments.fromJson(
+                json['data'] as Map<String, dynamic>),
       );
 
   Map<String, dynamic> toJson() => {

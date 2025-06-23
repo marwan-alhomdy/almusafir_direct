@@ -8,7 +8,7 @@ import '../../data/models/service.models.dart';
 
 class BottomSheetServicesWidget extends StatelessWidget {
   const BottomSheetServicesWidget({super.key, required this.service});
-  final ServiceMoele service;
+  final OtherServiceMoele service;
 
   @override
   Widget build(BuildContext context) {

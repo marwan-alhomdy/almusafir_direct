@@ -82,6 +82,7 @@ class ApiService {
         queryParameters: queryParameters,
         options: Options(headers: headers ?? HeaderServer.header),
       );
+
       if (response.data["status"] == false) {
         _responseError(response, endPoint);
       } else {

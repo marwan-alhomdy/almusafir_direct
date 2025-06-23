@@ -21,4 +21,13 @@ class EndPointName {
 
   static const String getAllDate =
       "data/all?exclude_item=tags_types,menus,categories,products";
+
+  static const String checkout2 = "shop/checkout2";
+  static const String airport = "deliverys/airports";
+  static const String vehicletypes = "deliverys/vehicletypes";
+  static const String loadtypes = "orders/loadtypes";
+  static const String paymentMethods = 'orders/paymentmethods';
+  static const String flights = 'deliverys/flights';
+
+  static const String tagsTypes = ' tags/types';
 }

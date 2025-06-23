@@ -8,7 +8,6 @@ import 'package:get/get.dart';
 
 import '/injection_container.dart' as di;
 import '../../../../core/Animation/animation_column_widget.dart';
-import '../../../../core/server/error_token.dart';
 import '../../../../core/utils/function/message_box.dart';
 import '../../../../core/utils/function/toast_box.dart';
 import '../../../../core/utils/resource/text_style.dart';
@@ -44,8 +43,12 @@ class _AccountProfileViewState extends State<AccountProfileView> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Center(
-                    child: ImageProfileWidget(
-                        image: Helper.user?.avatar?.original ?? ""),
+                    child: BlocBuilder<ProfileBloc, ProfileState>(
+                      builder: (context, state) {
+                        return ImageProfileWidget(
+                            image: Helper.user?.avatar?.original ?? "");
+                      },
+                    ),
                   ),
                   const SizedBox(),
                   Text("name".tr, style: AppTextStyles.getMediumStyle()),
@@ -76,7 +79,11 @@ class _AccountProfileViewState extends State<AccountProfileView> {
                     validator: "".validator(),
                   ),
                   const SizedBox(height: 5),
-                  ButtonWidget(text: "save".tr, onTap: () {}),
+                  ButtonWidget(
+                      text: "save".tr,
+                      onTap: () => context
+                          .read<ProfileBloc>()
+                          .add((UpdateUserProfileEvent()))),
                 ],
               ),
             ),
@@ -92,19 +99,18 @@ class _AccountProfileViewState extends State<AccountProfileView> {
     } else if (state is ErrorProfileState) {
       Get.back();
       ToastBox.show(message: state.message);
-    } else if (state is LogoutOrDeleteAccountSuccessfulState) {
-      Get.back();
-      setState(() => ErrorTokenAuth.logoutApp());
     } else if (state is ChangeAvatarSuccessfulState) {
       Get.back();
       Helper.primaryData?.data?.currentUser?.data?.avatar = state.avatar;
-    } else if (state is DeleteAvatarSuccessfulState) {
-      Get.back();
-      Helper.primaryData?.data?.currentUser?.data?.avatar = null;
+      setState(() {});
+      final message = "operation_was_completed_successfully".tr;
+      MessageBox.showSuccess(context, message);
     } else if (state is UpdateUserProfileSuccessfulState) {
       Get.back();
       Helper.primaryData?.data?.currentUser = state.user;
       context.read<ProfileBloc>().setDataUserToField();
+      final message = "operation_was_completed_successfully".tr;
+      MessageBox.showSuccess(context, message);
     }
   }
 }

@@ -45,6 +45,70 @@ class Themes {
       errorBorder: BorderTextFiled.errorBorder(true, 12),
       contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
     ),
+    textTheme: const TextTheme(
+      titleMedium: TextStyle(
+        fontFamily: FontFamilyNames.shamelBold,
+        fontWeight: FontWeightManager.regular,
+        color: Colors.white,
+        fontSize: 12,
+      ),
+      bodyMedium: TextStyle(
+        fontFamily: FontFamilyNames.dINNextLTArabicRegular,
+        fontWeight: FontWeightManager.regular,
+        fontSize: FontSizeManager.s14,
+        color: Colors.white,
+      ),
+      labelSmall: TextStyle(
+        fontFamily: FontFamilyNames.shamelBook,
+        fontWeight: FontWeightManager.regular,
+        color: Colors.white,
+        fontSize: 12,
+      ),
+      labelMedium: TextStyle(
+        fontFamily: FontFamilyNames.dINNextLTArabicMedium,
+        fontWeight: FontWeightManager.regular,
+        fontSize: FontSizeManager.s14,
+        color: Colors.white,
+      ),
+      labelLarge: TextStyle(
+        fontFamily: FontFamilyNames.dINNextLTArabicBold,
+        fontWeight: FontWeightManager.regular,
+        fontSize: FontSizeManager.s14,
+        color: Colors.white,
+      ),
+    ),
+    primaryTextTheme: const TextTheme(
+      titleMedium: TextStyle(
+        fontFamily: FontFamilyNames.shamelBold,
+        fontWeight: FontWeightManager.regular,
+        color: Colors.white,
+        fontSize: 12,
+      ),
+      bodyMedium: TextStyle(
+        fontFamily: FontFamilyNames.dINNextLTArabicRegular,
+        fontWeight: FontWeightManager.regular,
+        fontSize: FontSizeManager.s14,
+        color: Colors.white,
+      ),
+      labelSmall: TextStyle(
+        fontFamily: FontFamilyNames.shamelBook,
+        fontWeight: FontWeightManager.regular,
+        color: Colors.white,
+        fontSize: 12,
+      ),
+      labelMedium: TextStyle(
+        fontFamily: FontFamilyNames.dINNextLTArabicMedium,
+        fontWeight: FontWeightManager.regular,
+        fontSize: FontSizeManager.s14,
+        color: Colors.white,
+      ),
+      labelLarge: TextStyle(
+        fontFamily: FontFamilyNames.dINNextLTArabicBold,
+        fontWeight: FontWeightManager.regular,
+        fontSize: FontSizeManager.s14,
+        color: Colors.white,
+      ),
+    ),
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.transparent,
     ),

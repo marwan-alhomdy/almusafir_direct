@@ -77,6 +77,18 @@ class OrderType {
   int? isRequiredFromAddress;
   int? isAllowShippingAddress;
   int? isRequiredShippingAddress;
+  int? isAllowOrderDate;
+  int? isRequiredOrderDate;
+  int? isAllowReturnDate;
+  int? isRequiredReturnDate;
+  int? isAllowFlightNumber;
+  int? isRequiredFlightNumber;
+  int? isAllowDepartureDestination;
+  int? isRequiredDepartureDestination;
+  int? isAllowArrivalDestination;
+  int? isRequiredArrivalDestination;
+  int? isAllowRoundTrip;
+  int? isRequiredRoundTrip;
   int? isAllowBillingAddress;
   int? isRequiredBillingAddress;
   int? isRequiredImage;
@@ -105,11 +117,6 @@ class OrderType {
   List<dynamic>? images;
   List<dynamic>? files;
   String? objectType;
-
-  int? isBooking;
-  String? orderDate;
-  String? returnDate;
-  int? isRoundTrip;
 
   OrderType({
     this.id,
@@ -188,6 +195,18 @@ class OrderType {
     this.isRequiredFromAddress,
     this.isAllowShippingAddress,
     this.isRequiredShippingAddress,
+    this.isAllowOrderDate,
+    this.isRequiredOrderDate,
+    this.isAllowReturnDate,
+    this.isRequiredReturnDate,
+    this.isAllowFlightNumber,
+    this.isRequiredFlightNumber,
+    this.isAllowDepartureDestination,
+    this.isRequiredDepartureDestination,
+    this.isAllowArrivalDestination,
+    this.isRequiredArrivalDestination,
+    this.isAllowRoundTrip,
+    this.isRequiredRoundTrip,
     this.isAllowBillingAddress,
     this.isRequiredBillingAddress,
     this.isRequiredImage,
@@ -216,10 +235,6 @@ class OrderType {
     this.images,
     this.files,
     this.objectType,
-    this.orderDate,
-    this.returnDate,
-    this.isRoundTrip,
-    this.isBooking,
   });
 
   factory OrderType.fromJson(Map<String, dynamic> json) => OrderType(
@@ -303,6 +318,19 @@ class OrderType {
         isRequiredFromAddress: json['is_required_from_address'],
         isAllowShippingAddress: json['is_allow_shipping_address'],
         isRequiredShippingAddress: json['is_required_shipping_address'],
+        isAllowOrderDate: json['is_allow_order_date'],
+        isRequiredOrderDate: json['is_required_order_date'],
+        isAllowReturnDate: json['is_allow_return_date'],
+        isRequiredReturnDate: json['is_required_return_date'],
+        isAllowFlightNumber: json['is_allow_flight_number'],
+        isRequiredFlightNumber: json['is_required_flight_number'],
+        isAllowDepartureDestination: json['is_allow_departure_destination'],
+        isRequiredDepartureDestination:
+            json['is_required_departure_destination'],
+        isAllowArrivalDestination: json['is_allow_arrival_destination'],
+        isRequiredArrivalDestination: json['is_required_arrival_destination'],
+        isAllowRoundTrip: json['is_allow_round_trip'],
+        isRequiredRoundTrip: json['is_required_round_trip'],
         isAllowBillingAddress: json['is_allow_billing_address'],
         isRequiredBillingAddress: json['is_required_billing_address'],
         isRequiredImage: json['is_required_image'],
@@ -333,10 +361,6 @@ class OrderType {
         images: json['images'] as List<dynamic>?,
         files: json['files'] as List<dynamic>?,
         objectType: json['object_type'],
-        isBooking: json['is_booking'],
-        orderDate: json['date_order'],
-        returnDate: json['return_date'],
-        isRoundTrip: json['is_round_trip'],
       );
 
   Map<String, dynamic> toJson() => {
@@ -417,6 +441,18 @@ class OrderType {
         'is_required_from_address': isRequiredFromAddress,
         'is_allow_shipping_address': isAllowShippingAddress,
         'is_required_shipping_address': isRequiredShippingAddress,
+        'is_allow_order_date': isAllowOrderDate,
+        'is_required_order_date': isRequiredOrderDate,
+        'is_allow_return_date': isAllowReturnDate,
+        'is_required_return_date': isRequiredReturnDate,
+        'is_allow_flight_number': isAllowFlightNumber,
+        'is_required_flight_number': isRequiredFlightNumber,
+        'is_allow_departure_destination': isAllowDepartureDestination,
+        'is_required_departure_destination': isRequiredDepartureDestination,
+        'is_allow_arrival_destination': isAllowArrivalDestination,
+        'is_required_arrival_destination': isRequiredArrivalDestination,
+        'is_allow_round_trip': isAllowRoundTrip,
+        'is_required_round_trip': isRequiredRoundTrip,
         'is_allow_billing_address': isAllowBillingAddress,
         'is_required_billing_address': isRequiredBillingAddress,
         'is_required_image': isRequiredImage,
@@ -445,10 +481,5 @@ class OrderType {
         'images': images,
         'files': files,
         'object_type': objectType,
-        'date_order': orderDate,
-        "order_date": orderDate,
-        "return_date": returnDate,
-        "is_booking": isBooking,
-        "is_round_trip": isRoundTrip,
       };
 }

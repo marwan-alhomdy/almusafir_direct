@@ -30,9 +30,22 @@ class ImageProfileWidget extends StatelessWidget {
           elevation: 1,
           shape: RoundedRectangleBorderAttribute.all(12),
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: _imageWidget(image),
-          ),
+              borderRadius: BorderRadius.circular(10),
+              child: InkWell(
+                onTap: () => Get.to(() => ShowImageView(image: image)),
+                borderRadius: BorderRadiusAttribute.all(12),
+                child: Hero(
+                  tag: image,
+                  child: ImageWidget(
+                    image,
+                    width: 110,
+                    height: 110,
+                    errorWiget: Center(
+                      child: Image.asset(AppImages.avatar, fit: BoxFit.cover),
+                    ),
+                  ),
+                ),
+              )),
         ),
         const SizedBox(height: 140),
         Positioned(
@@ -48,19 +61,6 @@ class ImageProfileWidget extends StatelessWidget {
       ],
     );
   }
-
-  Widget _imageWidget(String image) {
-    return InkWell(
-        onTap: () => _dispalyImage(image),
-        borderRadius: BorderRadiusAttribute.all(12),
-        child: ImageWidget(image,
-            width: 110, height: 110, errorWiget: _errorImage));
-  }
-
-  Widget get _errorImage =>
-      Center(child: Image.asset(AppImages.avatar, fit: BoxFit.cover));
-
-  void _dispalyImage(String image) => Get.to(() => ShowImageView(image: image));
 
   void _showDialugeImagePaicker(BuildContext context) {
     final ImagePicker picker = ImagePicker();
@@ -80,9 +80,6 @@ class ImageProfileWidget extends StatelessWidget {
   }
 
   void _onChooseImage(BuildContext context, File image) async {
-    // final imageEncoded64 =
-    //     await ImageEncodeHandler.getEncoded64CompressedImageString(image);
-
     if (context.mounted) {
       context.read<ProfileBloc>().add((ChangeAvatarEvent(avater: image.path)));
     }

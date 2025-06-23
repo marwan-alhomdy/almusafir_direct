@@ -1,6 +1,6 @@
 import '../../../../../core/data/current_user/current_user.dart';
+import '../../../../../core/data/models/department/department.dart';
 import '../adverts/adverts.dart';
-import '../department/department.dart';
 import '../orderstypes/orderstypes.dart';
 import '../settings/settings.dart';
 
