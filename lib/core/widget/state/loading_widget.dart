@@ -12,7 +12,7 @@ class LoadingWiget extends StatelessWidget {
       child: SizedBox(
         height: 150,
         width: 150,
-        child: Lottie.asset(AppLottie.LOADING_DATA),
+        child: Lottie.asset(AppLottie.loading),
       ),
     );
   }

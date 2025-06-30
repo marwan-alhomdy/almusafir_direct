@@ -6,7 +6,7 @@ class CurrentUser {
   String? message;
   dynamic error;
   dynamic errors;
-  DataCurrentUser? data;
+  User? data;
 
   CurrentUser({
     this.status,
@@ -26,7 +26,7 @@ class CurrentUser {
       errors: json['errors'] as dynamic,
       data: json['data'] == null || json['data'] is List
           ? null
-          : DataCurrentUser.fromJson(json['data'] as Map<String, dynamic>),
+          : User.fromJson(json['data'] as Map<String, dynamic>),
     );
   }
   Map<String, dynamic> toJson() => {

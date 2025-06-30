@@ -3,14 +3,12 @@ import 'dart:developer';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
 
 import '/injection_container.dart' as di;
 import '../../../../core/widget/upgrade/upgrade.widget.dart';
-import '../../../booking/presentation/pages/mybooking.view.dart';
 import '../../../chat/presentation/pages/chat.view.dart';
+import '../../../order/presentation/pages/mybooking.view.dart';
 import '../../../profile/presention/view/profile.view.dart';
-import '../../../services/presentation/pages/service.view.dart';
 import '../logic/bloc/home_bloc.dart';
 import '../widget/home.widget.dart';
 import '../widget/navigation.widget.dart';
@@ -34,7 +32,6 @@ class _HomeViewState extends State<HomeView> {
   int currentIndex = 0;
   void chingeScreen(int index) {
     currentIndex = index;
-
     setState(() {});
   }
 
@@ -43,7 +40,7 @@ class _HomeViewState extends State<HomeView> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-            create: (context) => di.sl<HomeBloc>()..add(FetchAllDataEvent())),
+            create: (_) => di.sl<HomeBloc>()..add(FetchAllDataEvent())),
       ],
       child: UpgradeWidget(
         child: Scaffold(
@@ -51,9 +48,6 @@ class _HomeViewState extends State<HomeView> {
               currentIndex: currentIndex,
               chingeScreen: chingeScreen,
             ),
-            floatingActionButton: FloatingActionButton(onPressed: () {
-              Get.to(() => ServicesView());
-            }),
             body: [
               const HomeWidget(),
               const MyBookingView(),

@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../data/models/service.module.dart';
+import '../../../../../core/data/service.module.dart';
 import '../../../domain/usecases/services/get_airport_uescases.dart';
 import '../../../domain/usecases/services/get_flights_uescases.dart';
 import '../../../domain/usecases/services/get_loads_types_uescases.dart';

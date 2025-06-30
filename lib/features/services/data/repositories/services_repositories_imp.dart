@@ -1,4 +1,4 @@
-import 'package:almusafir_direct/features/services/data/models/service.module.dart';
+import 'package:almusafir_direct/core/data/service.module.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 

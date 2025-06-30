@@ -1,6 +1,6 @@
 import 'avatar.dart';
 
-class DataCurrentUser {
+class User {
   int? id;
   String? name;
   String? surname;
@@ -70,7 +70,7 @@ class DataCurrentUser {
   String? referralLink;
   String? objectType;
 
-  DataCurrentUser({
+  User({
     this.id,
     this.name,
     this.surname,
@@ -141,8 +141,7 @@ class DataCurrentUser {
     this.objectType,
   });
 
-  factory DataCurrentUser.fromJson(Map<String, dynamic> json) =>
-      DataCurrentUser(
+  factory User.fromJson(Map<String, dynamic> json) => User(
         id: json['id'],
         name: json['name'],
         surname: json['surname'],

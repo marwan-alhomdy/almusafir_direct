@@ -1,5 +1,7 @@
 import 'package:almusafir_direct/features/profile/domain/usecases/delete_avatar_usecases.dart';
+import 'package:almusafir_direct/features/profile/domain/usecases/get_paymens_available.usecases.dart';
 import 'package:almusafir_direct/features/services/domain/usecases/services/get_flights_uescases.dart';
+import 'package:almusafir_direct/features/shopping/presentation/logic/shop_products_cubit/shop_products_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
@@ -18,6 +20,11 @@ import 'features/auth/domain/usecases/send_activation.usecases.dart';
 import 'features/auth/persention/logic/auth_bloc/auth_bloc.dart';
 import 'features/auth/persention/logic/register_cubit/register_cubit.dart';
 import 'features/auth/persention/logic/verify_cubit/verify_cubit.dart';
+import 'features/chat/data/datasources/chat_remote_datasources.dart';
+import 'features/chat/data/repositories/chat_repositories_imp.dart';
+import 'features/chat/domain/repositories/chat_repositories.dart';
+import 'features/chat/domain/usecases/chat_with_openai.usecases.dart';
+import 'features/chat/presentation/logic/chat_with_openai_cubit/chat_with_openai_cubit.dart';
 import 'features/home/data/datasources/home_local_datasource.dart';
 import 'features/home/data/datasources/home_remote_datasources.dart';
 import 'features/home/data/repositories/home_repositories_imp.dart';
@@ -30,27 +37,34 @@ import 'features/profile/domain/repositories/profile_repositories.dart';
 import 'features/profile/domain/usecases/change_avatar_usecases.dart';
 import 'features/profile/domain/usecases/contactus_usecases.dart';
 import 'features/profile/domain/usecases/delete_usecases.dart';
+import 'features/profile/domain/usecases/get_points.usecases.dart';
+import 'features/profile/domain/usecases/get_referral.usecase.dart';
+import 'features/profile/domain/usecases/get_statistical_points.usecases.dart';
 import 'features/profile/domain/usecases/logout_usecases.dart';
 import 'features/profile/domain/usecases/update_user_profile.usecases.dart';
 import 'features/profile/presention/bloc/contact_us_cubit/contact_us_cubit.dart';
+import 'features/profile/presention/bloc/payment_methods_cubit/payment_methods_cubit.dart';
+import 'features/profile/presention/bloc/point_cubit/point_cubit.dart';
 import 'features/profile/presention/bloc/profile_bloc/profile_bloc.dart';
-import 'features/services/data/datasources/department_remote_datasources.dart';
+import 'features/profile/presention/bloc/referral_bloc/referral_bloc.dart';
 import 'features/services/data/datasources/services_remote_datasources.dart';
-import 'features/services/data/repositories/department_repositories_imp.dart';
 import 'features/services/data/repositories/services_repositories_imp.dart';
-import 'features/services/domain/repositories/department_repositories.dart';
 import 'features/services/domain/repositories/services_repositories.dart';
-import 'features/services/domain/usecases/department/get_departments_uescases.dart';
-import 'features/services/domain/usecases/department/get_type_departments_uescases.dart';
 import 'features/services/domain/usecases/services/checkout2_uescases.dart';
 import 'features/services/domain/usecases/services/get_airport_uescases.dart';
 import 'features/services/domain/usecases/services/get_loads_types_uescases.dart';
 import 'features/services/domain/usecases/services/get_payment_methods_uescases.dart';
 import 'features/services/domain/usecases/services/get_vehicle_type_uescases.dart';
-import 'features/services/presentation/logic/department_cubit/department_cubit.dart';
-import 'features/services/presentation/logic/department_type_cubit/department_type_cubit.dart';
 import 'features/services/presentation/logic/form_service_cubit/form_service_cubit.dart';
 import 'features/services/presentation/logic/services_cubit/services_cubit.dart';
+import 'features/shopping/data/datasources/department_remote_datasources.dart';
+import 'features/shopping/data/repositories/department_repositories_imp.dart';
+import 'features/shopping/domain/repositories/department_repositories.dart';
+import 'features/shopping/domain/usecases/get_departments_uescases.dart';
+import 'features/shopping/domain/usecases/get_shop_products_uescases.dart';
+import 'features/shopping/domain/usecases/get_type_departments_uescases.dart';
+import 'features/shopping/presentation/logic/department_cubit/department_cubit.dart';
+import 'features/shopping/presentation/logic/department_type_cubit/department_type_cubit.dart';
 
 final sl = GetIt.instance;
 
@@ -76,6 +90,14 @@ Future<void> init() async {
       deleteAvatarUsecases: sl(),
       logoutDriverUseCases: sl()));
 
+  sl.registerFactory(
+      () => PaymentMethodsCubit(getPaymentMethodsAvailablesUsecases: sl()));
+
+  sl.registerFactory(() =>
+      PointCubit(getPointsUseCases: sl(), getStatisticalPointsUseCases: sl()));
+
+  sl.registerFactory(() => ReferralBloc(getReferralUseCase: sl()));
+
   sl.registerFactory(() => ContactUsCubit(contactUsUsecases: sl()));
 
   sl.registerFactory(() => ServicesCubit(checkout2Uescases: sl()));
@@ -89,7 +111,13 @@ Future<void> init() async {
   //Departments
   sl.registerFactory(
       () => DepartmentTypeCubit(getTypeDepartmentsUescases: sl()));
+
   sl.registerFactory(() => DepartmentCubit(getDepartmentsUescases: sl()));
+
+  sl.registerFactory(() => ShopProductsCubit(getShopProductsUescases: sl()));
+
+  sl.registerFactory(
+      () => ChatWithOpenaiCubit(chatWithOpenaiDataUsecases: sl()));
 
   //=============================
 
@@ -109,6 +137,10 @@ Future<void> init() async {
   sl.registerLazySingleton(() => DeleteAccountUseCases(sl()));
   sl.registerLazySingleton(() => DeleteAvatarUsecases(sl()));
   sl.registerLazySingleton(() => ContactUsUsecases(sl()));
+  sl.registerLazySingleton(() => GetReferralUseCase(sl()));
+  sl.registerLazySingleton(() => GetPointsUseCases(sl()));
+  sl.registerLazySingleton(() => GetStatisticalPointsUseCases(sl()));
+  sl.registerLazySingleton(() => GetPaymentMethodsAvailablesUsecases(sl()));
 
   //setting
   sl.registerLazySingleton(() => FetchAllDataUseCases(sl()));
@@ -124,6 +156,10 @@ Future<void> init() async {
   //Departments
   sl.registerLazySingleton(() => GetTypeDepartmentsUescases(sl()));
   sl.registerLazySingleton(() => GetDepartmentsUescases(sl()));
+  sl.registerLazySingleton(() => GetShopProductsUescases(sl()));
+
+//chat
+  sl.registerLazySingleton(() => ChatWithOpenaiDataUsecases(sl()));
 
   //===========================================================
 
@@ -154,6 +190,13 @@ Future<void> init() async {
             remoteDataSource: sl(),
             networkInfo: sl(),
           ));
+
+  //chat
+  sl.registerLazySingleton<ChatRepostitory>(() => ChatRepostitoryImp(
+        remoteDataSource: sl(),
+        networkInfo: sl(),
+      ));
+
   //=============================
 
   //? Datasources
@@ -173,6 +216,11 @@ Future<void> init() async {
   //Departments
   sl.registerLazySingleton<DepartmentRemoteDataSource>(
       () => DepartmentRemoteDataSourceImplWithDio(apiService: sl()));
+
+  //chat
+  sl.registerLazySingleton<ChatRemoteDataSource>(
+      () => ChatRemoteDataSourceeImplWithDio(apiService: sl()));
+
   //=============================
 
   //? LocalDataSource

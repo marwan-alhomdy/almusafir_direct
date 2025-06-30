@@ -15,7 +15,7 @@ class Helper {
 
   static AppFirebaseMessage? firebaseMessage;
 
-  static DataCurrentUser? get user => primaryData?.data?.currentUser?.data;
+  static User? get user => primaryData?.data?.currentUser?.data;
 
   static void init() async {
     await CacheHelper.init();

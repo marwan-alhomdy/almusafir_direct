@@ -18,6 +18,10 @@ class EndPointName {
 
   static const String avatar = "me/avatar";
   static const String me = "me";
+  static const String referral = "referral/alias/me";
+
+  static const String points = "gamify/points";
+  static const String statisticalPoints = 'gamify/points/statistical';
 
   static const String getAllDate =
       "data/all?exclude_item=tags_types,menus,categories,products";
@@ -31,4 +35,11 @@ class EndPointName {
 
   static const String tagsTypes = 'tags/types';
   static const String basicDepartments = 'basic/departments';
+  static const String shopProducts = "shop/products";
+
+  //order
+  static const String customerOrders =
+      'orders/orders?include=order_types&per_page=60';
+
+  static const chatWithGPT = 'chat/completions';
 }

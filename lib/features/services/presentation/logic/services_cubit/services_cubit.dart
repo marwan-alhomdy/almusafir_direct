@@ -3,8 +3,8 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/data/service.module.dart';
 import '../../../../../helper/public_infromation.dart';
-import '../../../data/models/service.module.dart';
 import '../../../domain/usecases/services/checkout2_uescases.dart';
 
 part 'services_state.dart';

@@ -3,8 +3,8 @@ import 'dart:developer';
 import 'package:almusafir_direct/core/server/header_server.dart';
 
 import '../../../../core/constants/endpoint.dart';
+import '../../../../core/data/service.module.dart';
 import '../../../../core/services/api.service.dart';
-import '../models/service.module.dart';
 
 abstract class ServicesRemoteDataSource {
   Future<dynamic> checkout2(Map<String, dynamic> data);

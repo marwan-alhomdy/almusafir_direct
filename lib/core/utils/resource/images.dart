@@ -9,9 +9,11 @@ mixin AppImages {
 }
 
 mixin AppLottie {
-  static const String LOADING_DATA = 'assets/lottie/loadingFlower.json';
+  static const String loading = 'assets/lottie/loading.json';
 
-  static const String LOADING_IMAGE = "assets/lottie/download_image.json";
+  static const String downloadImage = "assets/lottie/download_image.json";
 
-  static const String SUCCESS_IMAGE = "assets/lottie/success.json";
+  static const String success = "assets/lottie/success.json";
+
+  static const String loadingChat = "assets/lottie/chat.json";
 }

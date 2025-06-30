@@ -68,7 +68,7 @@ class AuthRemoteImplWithDio extends AuthRemoteDataSource {
       CacheHelper.setBool(CachedAppKey.isAuth, true);
     }
 
-    final user = DataCurrentUser.fromJson(response["profile"]);
+    final user = User.fromJson(response["profile"]);
     return CurrentUser(data: user);
   }
 }

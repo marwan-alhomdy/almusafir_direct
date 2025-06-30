@@ -3,8 +3,8 @@ import '../image.dart';
 import '../phone.dart';
 import 'website.dart';
 
-class ShoppingDepartments {
-  num? id;
+class ShoppingDepartment {
+  int? id;
   String? code;
   String? name;
   String? shortDescription;
@@ -76,8 +76,9 @@ class ShoppingDepartments {
   num? bookmarksCount;
   num? reactionsCount;
   String? objectType;
+  int? isOpen;
 
-  ShoppingDepartments({
+  ShoppingDepartment({
     this.id,
     this.code,
     this.name,
@@ -150,10 +151,11 @@ class ShoppingDepartments {
     this.bookmarksCount,
     this.reactionsCount,
     this.objectType,
+    this.isOpen,
   });
 
-  factory ShoppingDepartments.fromJson(Map<String, dynamic> json) =>
-      ShoppingDepartments(
+  factory ShoppingDepartment.fromJson(Map<String, dynamic> json) =>
+      ShoppingDepartment(
         id: json['id'],
         code: json['code'],
         name: json['name'],
@@ -235,6 +237,7 @@ class ShoppingDepartments {
         likesCount: json['likes_count'],
         bookmarksCount: json['bookmarks_count'],
         reactionsCount: json['reactions_count'],
+        isOpen: json['is_opened'],
         // objectType: json['object_type'],
       );
 
@@ -311,5 +314,6 @@ class ShoppingDepartments {
         'bookmarks_count': bookmarksCount,
         'reactions_count': reactionsCount,
         'object_type': objectType,
+        'is_opened': isOpen,
       };
 }

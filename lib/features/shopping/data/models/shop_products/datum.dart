@@ -3,24 +3,24 @@ class Datum {
   String? productsId;
   String? unitsId;
   String? unitsName;
-  int? isMain;
-  int? rate;
+  num? isMain;
+  num? rate;
   String? pricesId;
   String? pricesName;
-  int? isShowOldPrice;
-  int? oldPrice;
-  int? price;
-  int? costedAmount;
-  int? isParleying;
-  int? manageStock;
-  int? shopStock;
-  int? calories;
+  num? isShowOldPrice;
+  num? oldPrice;
+  num? price;
+  num? costedAmount;
+  num? isParleying;
+  num? manageStock;
+  num? shopStock;
+  num? calories;
   String? currencysId;
   String? mainCurrencysId;
   String? currencysIdName;
-  int? isDefault;
-  int? isActive;
-  int? qty;
+  num? isDefault;
+  num? isActive;
+  num? qty;
 
   Datum({
     this.id,
@@ -48,28 +48,28 @@ class Datum {
   });
 
   factory Datum.fromJson(Map<String, dynamic> json) => Datum(
-        id: json['id'] as int?,
-        productsId: json['products_id'] as String?,
-        unitsId: json['units_id'] as String?,
-        unitsName: json['units_name'] as String?,
-        isMain: json['is_main'] as int?,
-        rate: json['rate'] as int?,
-        pricesId: json['prices_id'] as String?,
-        pricesName: json['prices_name'] as String?,
-        isShowOldPrice: json['is_show_old_price'] as int?,
-        oldPrice: json['old_price'] as int?,
-        price: json['price'] as int?,
-        costedAmount: json['costed_amount'] as int?,
-        isParleying: json['is_parleying'] as int?,
-        manageStock: json['manage_stock'] as int?,
-        shopStock: json['shop_stock'] as int?,
-        calories: json['calories'] as int?,
-        currencysId: json['currencys_id'] as String?,
-        mainCurrencysId: json['main_currencys_id'] as String?,
-        currencysIdName: json['currencys_id_name'] as String?,
-        isDefault: json['is_default'] as int?,
-        isActive: json['is_active'] as int?,
-        qty: json['qty'] as int?,
+        id: json['id'],
+        productsId: json['products_id'],
+        unitsId: json['units_id'],
+        unitsName: json['units_name'],
+        isMain: json['is_main'],
+        rate: json['rate'],
+        pricesId: json['prices_id'],
+        pricesName: json['prices_name'],
+        isShowOldPrice: json['is_show_old_price'],
+        oldPrice: json['old_price'],
+        price: json['price'],
+        costedAmount: json['costed_amount'],
+        isParleying: json['is_parleying'],
+        manageStock: json['manage_stock'],
+        shopStock: json['shop_stock'],
+        calories: json['calories'],
+        currencysId: json['currencys_id'],
+        mainCurrencysId: json['main_currencys_id'],
+        currencysIdName: json['currencys_id_name'],
+        isDefault: json['is_default'],
+        isActive: json['is_active'],
+        qty: json['qty'],
       );
 
   Map<String, dynamic> toJson() => {

@@ -1,6 +1,6 @@
+import 'package:almusafir_direct/core/data/service.module.dart';
 import 'package:almusafir_direct/core/utils/resource/text_style.dart';
 import 'package:almusafir_direct/core/widget/button/button.widget.dart';
-import 'package:almusafir_direct/features/services/data/models/service.module.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';

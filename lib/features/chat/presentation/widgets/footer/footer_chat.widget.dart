@@ -1,7 +1,5 @@
 // ignore_for_file: must_be_immutable
 
-import 'dart:math';
-
 import 'package:almusafir_direct/helper/language.helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,13 +7,10 @@ import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../../../core/utils/resource/color_app.dart';
-import '../../../data/models/message.dart';
-import '../../cubit/chat_cubit.dart';
+import '../../logic/chat_with_openai_cubit/chat_with_openai_cubit.dart';
 
 class FooterChatWidget extends StatelessWidget {
   const FooterChatWidget({super.key});
-
-  ChatCubit chatCubit(BuildContext context) => context.read<ChatCubit>();
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +24,7 @@ class FooterChatWidget extends StatelessWidget {
               elevation: 0.5,
               margin: EdgeInsets.zero,
               child: TextField(
-                controller: chatCubit(context).textController,
+                controller: context.read<ChatWithOpenaiCubit>().textController,
                 maxLines: 5,
                 minLines: 1,
                 textInputAction: TextInputAction.done,
@@ -61,16 +56,19 @@ class FooterChatWidget extends StatelessWidget {
   }
 
   void _sendMessage(BuildContext context) {
-    final controller = chatCubit(context);
-    if (controller.textController.text.trim().isNotEmpty) {
-      controller.sendMessage(Message(
-        seen: false,
-        createdAt: DateTime.now(),
-        content: controller.textController.text.trim(),
-        direction: Random().nextBool() ? "IN" : "OUT",
-        threadName: "",
-      ));
-    }
-    controller.textController.text = "";
+    final chatWithOpenaiCubit = context.read<ChatWithOpenaiCubit>();
+    chatWithOpenaiCubit.chatWithOpenai();
+
+    // final controller = chatCubit(context);
+    // if (controller.textController.text.trim().isNotEmpty) {
+    //   controller.sendMessage(Message(
+    //     seen: false,
+    //     createdAt: DateTime.now(),
+    //     content: controller.textController.text.trim(),
+    //     direction: Random().nextBool() ? "IN" : "OUT",
+    //     threadName: "",
+    //   ));
+    // }
+    // controller.textController.text = "";
   }
 }

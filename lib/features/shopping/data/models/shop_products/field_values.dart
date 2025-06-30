@@ -20,14 +20,14 @@ class FieldValues {
   });
 
   factory FieldValues.fromJson(Map<String, dynamic> json) => FieldValues(
-        almsaf: json['almsaf'] as String?,
-        almsaf2: json['almsaf_2'] as String?,
-        almsaf22: json['almsaf_2_2'] as String?,
-        aldoam: json['aldoam'] as String?,
-        hhhhh: json['hhhhh'] as String?,
-        altol: json['altol'] as String?,
-        alon: json['alon'] as dynamic,
-        alozn: json['alozn'] as String?,
+        almsaf: json['almsaf'],
+        almsaf2: json['almsaf_2'],
+        almsaf22: json['almsaf_2_2'],
+        aldoam: json['aldoam'],
+        hhhhh: json['hhhhh'],
+        altol: json['altol'],
+        alon: json['alon'],
+        alozn: json['alozn'],
       );
 
   Map<String, dynamic> toJson() => {

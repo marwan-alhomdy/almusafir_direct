@@ -1,11 +1,11 @@
 import 'links.dart';
 
 class Pagination {
-  int? total;
-  int? count;
-  int? perPage;
-  int? currentPage;
-  int? totalPages;
+  num? total;
+  num? count;
+  num? perPage;
+  num? currentPage;
+  num? totalPages;
   Links? links;
 
   Pagination({
@@ -18,14 +18,14 @@ class Pagination {
   });
 
   factory Pagination.fromJson(Map<String, dynamic> json) => Pagination(
-        total: json['total'] as int?,
-        count: json['count'] as int?,
-        perPage: json['per_page'] as int?,
-        currentPage: json['current_page'] as int?,
-        totalPages: json['total_pages'] as int?,
-        links: json['links'] == null
-            ? null
-            : Links.fromJson(json['links'] as Map<String, dynamic>),
+        total: json['total'],
+        count: json['count'],
+        perPage: json['per_page'],
+        currentPage: json['current_page'],
+        totalPages: json['total_pages'],
+        // links: json['links'] == null
+        //     ? null
+        //     : Links.fromJson(json['links'] as Map<String, dynamic>),
       );
 
   Map<String, dynamic> toJson() => {

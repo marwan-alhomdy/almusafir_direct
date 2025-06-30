@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
+import '../../../../core/data/service.module.dart';
 import '../../../../core/error/faiture.dart';
-import '../../data/models/service.module.dart';
 
 abstract class ServicesRepostitory {
   Future<Either<Failure, dynamic>> checkout2(Map<String, dynamic> data);

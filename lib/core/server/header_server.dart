@@ -39,4 +39,9 @@ class HeaderServer {
       'User-Agent': Platform.isIOS ? 'ios' : 'android',
     };
   }
+
+  static Map<String, String> headerWithOpenAIToken = {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer YOUR_OPENAI_API_KEY',
+  };
 }

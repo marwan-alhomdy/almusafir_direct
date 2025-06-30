@@ -2,13 +2,15 @@ import 'package:almusafir_direct/core/widget/button/button.widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/resource/images.dart';
+import '../../../shopping/data/models/shop_products/shop_products.dart';
 import '../widgets/booking_requirements.widget.dart';
 import '../widgets/image_service.widget.dart';
 import '../widgets/routes_row_widget.dart';
 import '../widgets/terms_list.widget.dart';
 
 class ServiceDetailsView extends StatelessWidget {
-  const ServiceDetailsView({super.key});
+  const ServiceDetailsView({super.key, required this.product});
+  final ShopProduct product;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,17 +24,15 @@ class ServiceDetailsView extends StatelessWidget {
             centerTitle: true,
             title: Image.asset(AppImages.logo, height: 30),
             flexibleSpace: FlexibleSpaceBar(
-              collapseMode: CollapseMode.parallax,
-              background: ImageServiceWidget(
-                images: [
-                  "https://dynamicimagesae.rehlat.com/DynamicImages/DealsAndOffers/DealsPromos/1035_202505141305230050_PromoBannerImage.jpg",
-                  "https://dynamicimagesae.rehlat.com/DynamicImages/DealsAndOffers/DealsPromos/1033_202505141244365789_DealsPromoImageMWeb.jpg",
-                  "https://cdn.almatar.com/widgets/XCzGJGrnzL9PJxB4LK2n3Dj3pbnwZl1C5Y91ZU8N.jpg",
-                ],
-              ),
-            ),
+                collapseMode: CollapseMode.parallax,
+                background: ImageServiceWidget(
+                    images: (product.images?.isEmpty ?? true)
+                        ? ([product.image?.original ?? ""])
+                        : product.images
+                                ?.map((image) => image.original ?? "")
+                                .toList() ??
+                            [])),
           ),
-
           // Content
           SliverToBoxAdapter(
             child: Padding(
@@ -40,12 +40,18 @@ class ServiceDetailsView extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Text(product.name ?? "-----",
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 10),
                   // Rating
                   Row(
-                    children: const [
-                      Icon(Icons.star, color: Colors.amber),
-                      SizedBox(width: 4),
-                      Text('4.5 (275 reviews)', style: TextStyle(fontSize: 16)),
+                    spacing: 4,
+                    children: [
+                      Icon(Icons.star, color: Colors.orange, size: 16),
+                      Text(
+                          '${product.averageRating ?? 0} (${product.countRating ?? 0} reviews)',
+                          style: TextStyle(fontSize: 12)),
                     ],
                   ),
                   const SizedBox(height: 16),
@@ -54,9 +60,7 @@ class ServiceDetailsView extends StatelessWidget {
                   const Text('Company Information',
                       style: TextStyle(fontWeight: FontWeight.bold)),
                   const SizedBox(height: 8),
-                  const Text(
-                    'Yemen Express Transport provides premium transportation services with a focus on comfort and punctuality. Our modern fleet includes VIP buses with spacious seating and entertainment options for a pleasant journey experience.',
-                  ),
+                  Text(product.description ?? "----"),
                   const SizedBox(height: 20),
 
                   // Popular Routes

@@ -2,8 +2,8 @@ import 'package:almusafir_direct/core/widget/image/image_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
+import '../../../../../core/data/service.module.dart';
 import '../../../../../core/utils/resource/text_style.dart';
-import '../../../data/models/service.module.dart';
 
 class CheckListServicesWidget extends StatelessWidget {
   const CheckListServicesWidget(

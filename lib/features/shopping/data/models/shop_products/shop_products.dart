@@ -1,9 +1,11 @@
+import 'package:almusafir_direct/core/data/models/image.dart';
+
 import 'children.dart';
 import 'field_values.dart';
 import 'prices_units.dart';
 import 'product_options.dart';
 
-class ShopProducts {
+class ShopProduct {
   int? id;
   String? code;
   String? barcode;
@@ -19,62 +21,62 @@ class ShopProducts {
   String? keywords;
   String? refTypeClass;
   String? refKeyValuesClass;
-  int? isOffer;
+  num? isOffer;
   String? groupsProductsId;
   String? companysId;
   String? departmentsId;
   String? homeCountryId;
   String? typingCountryId;
   String? companysProductsId;
-  int? isEffective;
-  int? isDefault;
-  int? isActive;
-  int? isPublished;
+  num? isEffective;
+  num? isDefault;
+  num? isActive;
+  num? isPublished;
   String? publishedAt;
   String? unpublishedAt;
-  int? manageStock;
-  int? shopStock;
-  int? calories;
-  int? minQty;
-  int? maxQty;
-  int? minQtyInStock;
-  int? maxQtyInStock;
-  int? defaultQty;
-  int? oldPrice;
-  int? price;
+  num? manageStock;
+  num? shopStock;
+  num? calories;
+  num? minQty;
+  num? maxQty;
+  num? minQtyInStock;
+  num? maxQtyInStock;
+  num? defaultQty;
+  num? oldPrice;
+  num? price;
   String? currencysId;
   String? mainCurrencysId;
-  int? isShowOldPrice;
-  int? isParleying;
-  int? isSold;
-  int? isPurchased;
-  int? isComposite;
-  int? isUnits;
-  int? isDownloadable;
+  num? isShowOldPrice;
+  num? isParleying;
+  num? isSold;
+  num? isPurchased;
+  num? isComposite;
+  num? isUnits;
+  num? isDownloadable;
   dynamic properties;
   dynamic links;
   dynamic otherData;
   dynamic configData;
   String? status;
-  int? sortOrder;
+  num? sortOrder;
   String? userType;
   String? userId;
   String? createdAt;
   String? updatedAt;
-  dynamic image;
-  List<dynamic>? images;
+  ImageModel? image;
+  List<ImageModel>? images;
   List<dynamic>? files;
-  int? tagsTypeId;
+  num? tagsTypeId;
   String? displayType;
   String? typeProcess;
   String? useCase;
-  int? isShowPrice;
-  int? isShowMobile;
+  num? isShowPrice;
+  num? isShowMobile;
   String? mobile;
-  int? isShowWhatsapp;
-  int? isShowChat;
-  int? isShowLocation;
-  int? isNeedShipping;
+  num? isShowWhatsapp;
+  num? isShowChat;
+  num? isShowLocation;
+  num? isNeedShipping;
   String? address1;
   String? address2;
   String? countryId;
@@ -85,8 +87,8 @@ class ShopProducts {
   String? streetName;
   String? streetNumber;
   String? radius;
-  int? latitude;
-  int? longitude;
+  num? latitude;
+  num? longitude;
   String? zip;
   String? postcode;
   String? formataddress;
@@ -100,25 +102,25 @@ class ShopProducts {
   String? advertLicenseNumber;
   String? fromDateAt;
   String? toDateAt;
-  int? qty;
-  int? ratingsCount;
-  int? countRating;
-  int? sumRating;
-  int? averageRating;
-  int? userIsRating;
+  num? qty;
+  num? ratingsCount;
+  num? countRating;
+  num? sumRating;
+  num? averageRating;
+  num? userIsRating;
   dynamic userObjectRating;
-  int? favoritesCount;
-  int? userIsFavorite;
-  int? likesCount;
-  int? bookmarksCount;
-  int? reactionsCount;
+  num? favoritesCount;
+  num? userIsFavorite;
+  num? likesCount;
+  num? bookmarksCount;
+  num? reactionsCount;
   FieldValues? fieldValues;
   String? objectType;
   Children? children;
   PricesUnits? pricesUnits;
   ProductOptions? productOptions;
 
-  ShopProducts({
+  ShopProduct({
     this.id,
     this.code,
     this.barcode,
@@ -234,120 +236,124 @@ class ShopProducts {
     this.productOptions,
   });
 
-  factory ShopProducts.fromJson(Map<String, dynamic> json) => ShopProducts(
-        id: json['id'] as int?,
-        code: json['code'] as String?,
-        barcode: json['barcode'] as String?,
-        name: json['name'] as String?,
-        emblem: json['emblem'] as String?,
-        shortDescription: json['short_description'] as String?,
-        description: json['description'] as String?,
-        usersManual: json['users_manual'] as String?,
-        composition: json['composition'] as String?,
-        indication: json['indication'] as String?,
-        metaTitle: json['meta_title'] as String?,
-        metaDescription: json['meta_description'] as String?,
-        keywords: json['keywords'] as String?,
-        refTypeClass: json['ref_type_class'] as String?,
-        refKeyValuesClass: json['ref_key_values_class'] as String?,
-        isOffer: json['is_offer'] as int?,
-        groupsProductsId: json['groups_products_id'] as String?,
-        companysId: json['companys_id'] as String?,
-        departmentsId: json['departments_id'] as String?,
-        homeCountryId: json['home_country_id'] as String?,
-        typingCountryId: json['typing_country_id'] as String?,
-        companysProductsId: json['companys_products_id'] as String?,
-        isEffective: json['is_effective'] as int?,
-        isDefault: json['is_default'] as int?,
-        isActive: json['is_active'] as int?,
-        isPublished: json['is_published'] as int?,
-        publishedAt: json['published_at'] as String?,
-        unpublishedAt: json['unpublished_at'] as String?,
-        manageStock: json['manage_stock'] as int?,
-        shopStock: json['shop_stock'] as int?,
-        calories: json['calories'] as int?,
-        minQty: json['min_qty'] as int?,
-        maxQty: json['max_qty'] as int?,
-        minQtyInStock: json['min_qty_in_stock'] as int?,
-        maxQtyInStock: json['max_qty_in_stock'] as int?,
-        defaultQty: json['default_qty'] as int?,
-        oldPrice: json['old_price'] as int?,
-        price: json['price'] as int?,
-        currencysId: json['currencys_id'] as String?,
-        mainCurrencysId: json['main_currencys_id'] as String?,
-        isShowOldPrice: json['is_show_old_price'] as int?,
-        isParleying: json['is_parleying'] as int?,
-        isSold: json['is_sold'] as int?,
-        isPurchased: json['is_purchased'] as int?,
-        isComposite: json['is_composite'] as int?,
-        isUnits: json['is_units'] as int?,
-        isDownloadable: json['is_downloadable'] as int?,
-        properties: json['properties'] as dynamic,
-        links: json['links'] as dynamic,
-        otherData: json['other_data'] as dynamic,
-        configData: json['config_data'] as dynamic,
-        status: json['status'] as String?,
-        sortOrder: json['sort_order'] as int?,
-        userType: json['user_type'] as String?,
-        userId: json['user_id'] as String?,
-        createdAt: json['created_at'] as String?,
-        updatedAt: json['updated_at'] as String?,
-        image: json['image'] as dynamic,
-        images: json['images'] as List<dynamic>?,
+  factory ShopProduct.fromJson(Map<String, dynamic> json) => ShopProduct(
+        id: json['id'],
+        code: json['code'],
+        barcode: json['barcode'],
+        name: json['name'],
+        emblem: json['emblem'],
+        shortDescription: json['short_description'],
+        description: json['description'],
+        usersManual: json['users_manual'],
+        composition: json['composition'],
+        indication: json['indication'],
+        metaTitle: json['meta_title'],
+        metaDescription: json['meta_description'],
+        keywords: json['keywords'],
+        refTypeClass: json['ref_type_class'],
+        refKeyValuesClass: json['ref_key_values_class'],
+        isOffer: json['is_offer'],
+        groupsProductsId: json['groups_products_id'],
+        companysId: json['companys_id'],
+        departmentsId: json['departments_id'],
+        homeCountryId: json['home_country_id'],
+        typingCountryId: json['typing_country_id'],
+        companysProductsId: json['companys_products_id'],
+        isEffective: json['is_effective'],
+        isDefault: json['is_default'],
+        isActive: json['is_active'],
+        isPublished: json['is_published'],
+        publishedAt: json['published_at'],
+        unpublishedAt: json['unpublished_at'],
+        manageStock: json['manage_stock'],
+        shopStock: json['shop_stock'],
+        calories: json['calories'],
+        minQty: json['min_qty'],
+        maxQty: json['max_qty'],
+        minQtyInStock: json['min_qty_in_stock'],
+        maxQtyInStock: json['max_qty_in_stock'],
+        defaultQty: json['default_qty'],
+        oldPrice: json['old_price'],
+        price: json['price'],
+        currencysId: json['currencys_id'],
+        mainCurrencysId: json['main_currencys_id'],
+        isShowOldPrice: json['is_show_old_price'],
+        isParleying: json['is_parleying'],
+        isSold: json['is_sold'],
+        isPurchased: json['is_purchased'],
+        isComposite: json['is_composite'],
+        isUnits: json['is_units'],
+        isDownloadable: json['is_downloadable'],
+        properties: json['properties'],
+        links: json['links'],
+        otherData: json['other_data'],
+        configData: json['config_data'],
+        status: json['status'],
+        sortOrder: json['sort_order'],
+        userType: json['user_type'],
+        userId: json['user_id'],
+        createdAt: json['created_at'],
+        updatedAt: json['updated_at'],
+        image: json['image'] == null
+            ? null
+            : ImageModel.fromJson(json['image'] as Map<String, dynamic>),
+        images: (json['images'] as List<dynamic>?)
+            ?.map((e) => ImageModel.fromJson(e as Map<String, dynamic>))
+            .toList(),
         files: json['files'] as List<dynamic>?,
-        tagsTypeId: json['tags_type_id'] as int?,
-        displayType: json['display_type'] as String?,
-        typeProcess: json['type_process'] as String?,
-        useCase: json['use_case'] as String?,
-        isShowPrice: json['is_show_price'] as int?,
-        isShowMobile: json['is_show_mobile'] as int?,
-        mobile: json['mobile'] as String?,
-        isShowWhatsapp: json['is_show_whatsapp'] as int?,
-        isShowChat: json['is_show_chat'] as int?,
-        isShowLocation: json['is_show_location'] as int?,
-        isNeedShipping: json['is_need_shipping'] as int?,
-        address1: json['address_1'] as String?,
-        address2: json['address_2'] as String?,
-        countryId: json['country_id'] as String?,
-        countryLong: json['country_long'] as String?,
-        city: json['city'] as String?,
-        stateId: json['state_id'] as String?,
-        directorateId: json['directorate_id'] as String?,
-        streetName: json['street_name'] as String?,
-        streetNumber: json['street_number'] as String?,
-        radius: json['radius'] as String?,
-        latitude: json['latitude'] as int?,
-        longitude: json['longitude'] as int?,
-        zip: json['zip'] as String?,
-        postcode: json['postcode'] as String?,
-        formataddress: json['formataddress'] as String?,
-        vicinity: json['vicinity'] as String?,
-        geoComponents: json['geo_components'] as dynamic,
-        passportType: json['passport_type'] as String?,
-        passportNumber: json['passport_number'] as String?,
-        passportReleaseAt: json['passport_release_at'] as String?,
-        passportExpiryAt: json['passport_expiry_at'] as String?,
-        instrumentNumber: json['instrument_number'] as String?,
-        advertLicenseNumber: json['advert_license_number'] as String?,
-        fromDateAt: json['from_date_at'] as String?,
-        toDateAt: json['to_date_at'] as String?,
-        qty: json['qty'] as int?,
-        ratingsCount: json['ratings_count'] as int?,
-        countRating: json['countRating'] as int?,
-        sumRating: json['sumRating'] as int?,
-        averageRating: json['averageRating'] as int?,
-        userIsRating: json['user_is_rating'] as int?,
-        userObjectRating: json['user_object_rating'] as dynamic,
-        favoritesCount: json['favorites_count'] as int?,
-        userIsFavorite: json['user_is_favorite'] as int?,
-        likesCount: json['likes_count'] as int?,
-        bookmarksCount: json['bookmarks_count'] as int?,
-        reactionsCount: json['reactions_count'] as int?,
+        tagsTypeId: json['tags_type_id'],
+        displayType: json['display_type'],
+        typeProcess: json['type_process'],
+        useCase: json['use_case'],
+        isShowPrice: json['is_show_price'],
+        isShowMobile: json['is_show_mobile'],
+        mobile: json['mobile'],
+        isShowWhatsapp: json['is_show_whatsapp'],
+        isShowChat: json['is_show_chat'],
+        isShowLocation: json['is_show_location'],
+        isNeedShipping: json['is_need_shipping'],
+        address1: json['address_1'],
+        address2: json['address_2'],
+        countryId: json['country_id'],
+        countryLong: json['country_long'],
+        city: json['city'],
+        stateId: json['state_id'],
+        directorateId: json['directorate_id'],
+        streetName: json['street_name'],
+        streetNumber: json['street_number'],
+        radius: json['radius'],
+        latitude: json['latitude'],
+        longitude: json['longitude'],
+        zip: json['zip'],
+        postcode: json['postcode'],
+        formataddress: json['formataddress'],
+        vicinity: json['vicinity'],
+        geoComponents: json['geo_components'],
+        passportType: json['passport_type'],
+        passportNumber: json['passport_number'],
+        passportReleaseAt: json['passport_release_at'],
+        passportExpiryAt: json['passport_expiry_at'],
+        instrumentNumber: json['instrument_number'],
+        advertLicenseNumber: json['advert_license_number'],
+        fromDateAt: json['from_date_at'],
+        toDateAt: json['to_date_at'],
+        qty: json['qty'],
+        ratingsCount: json['ratings_count'],
+        countRating: json['countRating'],
+        sumRating: json['sumRating'],
+        averageRating: json['averageRating'],
+        userIsRating: json['user_is_rating'],
+        userObjectRating: json['user_object_rating'],
+        favoritesCount: json['favorites_count'],
+        userIsFavorite: json['user_is_favorite'],
+        likesCount: json['likes_count'],
+        bookmarksCount: json['bookmarks_count'],
+        reactionsCount: json['reactions_count'],
         fieldValues: json['field_values'] == null
             ? null
             : FieldValues.fromJson(
                 json['field_values'] as Map<String, dynamic>),
-        objectType: json['object_type'] as String?,
+        objectType: json['object_type'],
         children: json['children'] == null
             ? null
             : Children.fromJson(json['children'] as Map<String, dynamic>),
@@ -419,8 +425,8 @@ class ShopProducts {
         'user_id': userId,
         'created_at': createdAt,
         'updated_at': updatedAt,
-        'image': image,
-        'images': images,
+        'image': image?.toJson(),
+        'images': images?.map((e) => e.toJson()).toList(),
         'files': files,
         'tags_type_id': tagsTypeId,
         'display_type': displayType,

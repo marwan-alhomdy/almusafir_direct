@@ -57,7 +57,7 @@ class ImageWidget extends StatelessWidget {
                     ),
                   ),
               placeholder: (context, url) => Center(
-                    child: Lottie.asset(AppLottie.LOADING_IMAGE),
+                    child: Lottie.asset(AppLottie.downloadImage),
                   ),
               errorWidget: (context, url, error) =>
                   errorWiget ??

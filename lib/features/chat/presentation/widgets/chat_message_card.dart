@@ -1,15 +1,22 @@
 import 'package:almusafir_direct/helper/language.helper.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../../../core/constants/enum/direction_message.dart';
 import '../../../../core/utils/resource/color_app.dart';
+import '../../../../core/utils/resource/images.dart';
 import '../../../../core/utils/resource/text_style.dart';
 import '../../data/models/message.dart';
 
 class ChatMessageCard extends StatelessWidget {
   final Message message;
-  const ChatMessageCard({super.key, required this.message});
+  final bool isLoading;
+  const ChatMessageCard({
+    super.key,
+    required this.message,
+    this.isLoading = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +36,13 @@ class ChatMessageCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(message.content ?? "",
-                    style: AppTextStyles.getRegularStyle()),
+                (isLoading)
+                    ? SizedBox(
+                        height: 30,
+                        width: 30,
+                        child: Lottie.asset(AppLottie.loadingChat))
+                    : Text(message.content ?? "",
+                        style: AppTextStyles.getRegularStyle()),
                 const SizedBox(height: 5),
                 _DateTimeMessageWidget(message, isIN)
               ],

@@ -9,7 +9,11 @@ import 'package:dartz/dartz.dart';
 import '../../../../core/constants/endpoint.dart';
 import '../../../../core/data/current_user/current_user.dart';
 import '../../../../core/data/current_user/data.dart';
+import '../../../../core/data/service.module.dart';
 import '../../../../core/server/header_server.dart';
+import '../model/point_module.dart';
+import '../model/referral.dart';
+import '../model/statistical_point_module.dart';
 
 abstract class ProfileRemoteDataSource {
   Future<CurrentUser> updateUserProfile({required Map<String, dynamic> data});
@@ -18,6 +22,10 @@ abstract class ProfileRemoteDataSource {
   Future<Avatar> changeAvatar({required String avater});
   Future<Unit> deleteAvatar();
   Future<Unit> contactUs({required Map<String, dynamic> data});
+  Future<Referral> getReferral();
+  Future<List<PointModule>> getPoints();
+  Future<StatisticalPointModule> getStatisticalPoints();
+  Future<List<ServiceModul>> getPaymentMethodsAvailable();
 }
 
 class ProfileRemoteImpWithDio extends ProfileRemoteDataSource {
@@ -32,7 +40,7 @@ class ProfileRemoteImpWithDio extends ProfileRemoteDataSource {
         headers: HeaderServer.headerWithToken,
         data: data);
 
-    final user = DataCurrentUser.fromJson(response);
+    final user = User.fromJson(response);
     return CurrentUser(data: user);
   }
 
@@ -85,5 +93,47 @@ class ProfileRemoteImpWithDio extends ProfileRemoteDataSource {
       data: data,
     );
     return Future.value(unit);
+  }
+
+  @override
+  Future<Referral> getReferral() async {
+    final response = await client.get(
+        endPoint: EndPointName.referral, headers: HeaderServer.headerWithToken);
+    log(response.toString());
+
+    return Referral.fromJson(response);
+  }
+
+  @override
+  Future<List<PointModule>> getPoints() async {
+    final response = await client.get(
+        endPoint: EndPointName.points, headers: HeaderServer.headerWithToken);
+    log(response.toString());
+
+    return (response["data"] as List?)
+            ?.map((e) => PointModule.fromJson(e))
+            .toList() ??
+        [];
+  }
+
+  @override
+  Future<StatisticalPointModule> getStatisticalPoints() async {
+    final response = await client.get(
+        endPoint: EndPointName.statisticalPoints,
+        headers: HeaderServer.headerWithToken);
+    log(response.toString());
+
+    return StatisticalPointModule.fromJson(response["data"]);
+  }
+
+  @override
+  Future<List<ServiceModul>> getPaymentMethodsAvailable() async {
+    final response = await client.get(endPoint: EndPointName.paymentMethods);
+    log(response.toString());
+
+    return (response["data"] as List?)
+            ?.map((e) => ServiceModul.fromJson(e))
+            .toList() ??
+        [];
   }
 }

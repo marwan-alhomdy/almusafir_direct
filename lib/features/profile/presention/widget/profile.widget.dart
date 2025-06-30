@@ -1,7 +1,9 @@
+import 'package:almusafir_direct/features/profile/presention/view/point/mypoint.view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/Animation/animation_limiter_widget.dart';
 import '../../../../core/locale/locale_controller.dart';
@@ -12,6 +14,7 @@ import '../../../auth/persention/view/auth_view.dart';
 import '../bloc/profile_bloc/profile_bloc.dart';
 import '../view/contactus.view.dart';
 import '../view/payment.methods.view.dart';
+import '../view/referral.view.dart';
 import 'button/button_Acount.widget.dart';
 import 'button/cardlist_profile.widget.dart';
 
@@ -50,18 +53,37 @@ class _ProfileWidgetState extends State<ProfileWidget> {
           title: "تواصل معنا".tr,
         ),
 
-        CardListProfileWidget(
-          onTap: () {},
-          icon: Iconsax.information,
-          title: "مركز المساعدة".tr,
-        ),
+        // CardListProfileWidget(
+        //   onTap: () {},
+        //   icon: Iconsax.information,
+        //   title: "مركز المساعدة".tr,
+        // ),
+        if (Helper.isAuth)
+          CardListProfileWidget(
+            onTap: () => Get.to(() => const MyPointsView()),
+            icon: Iconsax.wallet,
+            title: "نقاطي".tr,
+          ),
+        if (Helper.isAuth)
+          CardListProfileWidget(
+            onTap: () => Get.to(() => const ReferralView()),
+            icon: Iconsax.share,
+            title: "الإحالة".tr,
+          ),
 
+        CardListProfileWidget(
+          onTap: () {
+            final privacy = 'https://dev.rydan-res.com/ar/privacy';
+            launchUrl(Uri.parse(privacy), mode: LaunchMode.externalApplication);
+          },
+          icon: Iconsax.information,
+          title: "سياسة الخصوصية".tr,
+        ),
         CardListProfileWidget(
           onTap: chingeLanguage,
           icon: Iconsax.translate,
           title: "language".tr,
         ),
-
         CardListProfileWidget(
           onTap: changeTheme,
           icon: Iconsax.sun_1,

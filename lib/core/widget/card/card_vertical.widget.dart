@@ -39,7 +39,7 @@ class CardVerticalWidget extends StatelessWidget {
               ClipRRect(
                   borderRadius: BorderRadiusAttribute.all(5),
                   child: ImageWidget(image,
-                      width: 80, height: 80, fit: BoxFit.cover)),
+                      width: 70, height: 70, fit: BoxFit.cover)),
               Expanded(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,

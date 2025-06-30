@@ -6,8 +6,8 @@ import '../../../../core/utils/style/border_radius.dart';
 import '../../../../core/widget/image/image_widget.dart';
 import '../../../services/presentation/pages/form_service_input.view.dart';
 import '../../../services/presentation/pages/service.view.dart';
-import '../../../services/presentation/pages/service_category.view.dart';
-import '../../../services/presentation/pages/service_items.view.dart';
+import '../../../shopping/presentation/pages/service_category.view.dart';
+import '../../../shopping/presentation/pages/service_items.view.dart';
 import '../../data/model/orderstypes/datum.dart';
 
 class CardServsiceWidget extends StatelessWidget {
