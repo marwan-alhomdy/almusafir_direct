@@ -1,4 +1,4 @@
-class Datum {
+class TotalOrder {
   int? id;
   String? code;
   int? ordersId;
@@ -16,7 +16,7 @@ class Datum {
   String? createdAt;
   String? updatedAt;
 
-  Datum({
+  TotalOrder({
     this.id,
     this.code,
     this.ordersId,
@@ -35,7 +35,7 @@ class Datum {
     this.updatedAt,
   });
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory TotalOrder.fromJson(Map<String, dynamic> json) => TotalOrder(
         id: json['id'] as int?,
         code: json['code'] as String?,
         ordersId: json['orders_id'] as int?,

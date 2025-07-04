@@ -75,7 +75,7 @@ class _ServiceCategoryViewState extends State<ServiceCategoryView> {
         physics: const AlwaysScrollableScrollPhysics(),
         slivers: [
           ServiceCategoryFilterbar(),
-          ShoppingWidget(isGridView: isGridView),
+          ShoppingWidget(isGridView: isGridView, orderType: widget.orderType),
         ],
       );
     } else {

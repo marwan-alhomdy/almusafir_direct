@@ -1,23 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
+import '../../../helper/public_infromation.dart';
+import '../../api/favorite.api.dart';
 import '../../data/models/department/data.dart';
 import '../../utils/resource/text_style.dart';
 import '../../utils/style/border_radius.dart';
 import '../image/image_widget.dart';
 
-class CardShopVerticalWidget extends StatelessWidget {
+class CardShopVerticalWidget extends StatefulWidget {
   const CardShopVerticalWidget({super.key, required this.shop, this.onPressed});
   final ShoppingDepartment shop;
   final VoidCallback? onPressed;
 
+  @override
+  State<CardShopVerticalWidget> createState() => _CardShopVerticalWidgetState();
+}
+
+class _CardShopVerticalWidgetState extends State<CardShopVerticalWidget> {
   @override
   Widget build(BuildContext context) {
     return Card(
       elevation: 0.3,
       margin: EdgeInsets.all(5),
       child: InkWell(
-        onTap: onPressed,
+        onTap: widget.onPressed,
         customBorder: RoundedRectangleBorderAttribute.all(12),
         child: Padding(
           padding: const EdgeInsets.all(10),
@@ -28,7 +35,7 @@ class CardShopVerticalWidget extends StatelessWidget {
             children: [
               ClipRRect(
                   borderRadius: BorderRadiusAttribute.all(5),
-                  child: ImageWidget(shop.image?.small ?? "",
+                  child: ImageWidget(widget.shop.image?.small ?? "",
                       width: 70, height: 70, fit: BoxFit.cover)),
               Expanded(
                 child: Column(
@@ -42,16 +49,30 @@ class CardShopVerticalWidget extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Text(
-                            shop.name ?? "----",
+                            widget.shop.name ?? "----",
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: AppTextStyles.getMediumStyle(),
                           ),
                         ),
-                        Icon(
-                          Iconsax.heart_copy,
-                          color: Colors.redAccent,
-                        ),
+                        if (Helper.isAuth)
+                          InkWell(
+                            onTap: () {
+                              bool isFavorite = widget.shop.userIsFavorite == 1;
+                              widget.shop.userIsFavorite = isFavorite ? 0 : 1;
+
+                              FavoriteApi.toggleFavorite(
+                                  objectId: widget.shop.id,
+                                  objectType: widget.shop.objectType);
+                              setState(() {});
+                            },
+                            child: Icon(
+                              widget.shop.userIsFavorite == 1
+                                  ? Iconsax.heart
+                                  : Iconsax.heart_copy,
+                              color: Colors.redAccent,
+                            ),
+                          ),
                       ],
                     ),
                     Row(
@@ -61,7 +82,7 @@ class CardShopVerticalWidget extends StatelessWidget {
                         Icon(Iconsax.location,
                             size: 12, color: Colors.blueAccent),
                         Text(
-                          shop.address ?? "---",
+                          widget.shop.address ?? "---",
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: AppTextStyles.getMediumStyle(
@@ -74,18 +95,21 @@ class CardShopVerticalWidget extends StatelessWidget {
                       children: [
                         Icon(Iconsax.star_1, color: Colors.orange, size: 15),
                         Text(
-                          shop.averageRating?.toString() ?? "---",
+                          widget.shop.averageRating?.toString() ?? "---",
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: AppTextStyles.getRegularStyle(fontSize: 12),
                         ),
                         Spacer(),
                         Text(
-                          'kkk',
-                          //shop.isOpen == 1 ? "dd" : "mm",
+                          widget.shop.isOpen == 1 ? "مفتوح" : "مغلق",
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: AppTextStyles.getRegularStyle(fontSize: 12),
+                          style: AppTextStyles.getRegularStyle(
+                              color: widget.shop.isOpen == 1
+                                  ? Colors.green
+                                  : Colors.redAccent,
+                              fontSize: 13),
                         ),
                       ],
                     ),

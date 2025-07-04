@@ -8,12 +8,16 @@ import '../../../../../core/data/models/department/data.dart';
 import '../../../../../core/widget/card/card_shop_category.widget.dart';
 import '../../../../../core/widget/card/card_shop_vertical.widget.dart';
 import '../../../../../core/widget/state/error.widget.dart';
+import '../../../../home/data/model/orderstypes/datum.dart';
 import '../../logic/department_cubit/department_cubit.dart';
+import '../../logic/department_type_cubit/department_type_cubit.dart';
 import '../../pages/service_items.view.dart';
 import 'loading_service_category.widget.dart';
 
 class ShoppingWidget extends StatelessWidget {
-  const ShoppingWidget({super.key, required this.isGridView});
+  const ShoppingWidget(
+      {super.key, required this.isGridView, required this.orderType});
+  final OrderType? orderType;
   final bool isGridView;
 
   @override
@@ -22,7 +26,8 @@ class ShoppingWidget extends StatelessWidget {
       builder: (context, state) {
         if (state is DepartmentErrorState) {
           return SliverFillRemaining(
-              child: ErrorCustomWidget(state.message, onTap: () {}));
+              child: ErrorCustomWidget(state.message,
+                  onTap: () => getShopping(context)));
         } else if (state is DepartmentLoadingState) {
           return SliverFillRemaining(
               child: LoadingServiceCategoryWidget(
@@ -47,6 +52,13 @@ class ShoppingWidget extends StatelessWidget {
       },
     );
   }
+
+  void getShopping(BuildContext context) {
+    final type = context.read<DepartmentTypeCubit>().selectedDepartmentType;
+    context
+        .read<DepartmentCubit>()
+        .getShoppingDepartment(orderType?.refType, type?.id);
+  }
 }
 
 class ListShoppingItemsWidget extends StatelessWidget {
@@ -60,7 +72,7 @@ class ListShoppingItemsWidget extends StatelessWidget {
           .map((shop) => CardShopVerticalWidget(
                 shop: shop,
                 onPressed: () => Get.to(() => ServiceItemsView(
-                      departmentsId: shop.id,
+                      shop: shop,
                     )),
               ))
           .toList(),
@@ -83,7 +95,7 @@ class GridShoppingItemsWidget extends StatelessWidget {
               child: CardShopCategoryWidget(
                 shop: shop,
                 onPressed: () => Get.to(() => ServiceItemsView(
-                      departmentsId: shop.id,
+                      shop: shop,
                     )),
               )))
           .toList(),

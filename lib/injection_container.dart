@@ -31,6 +31,11 @@ import 'features/home/data/repositories/home_repositories_imp.dart';
 import 'features/home/domain/repositories/home_repositories.dart';
 import 'features/home/domain/usecases/get_all_data_uescases.dart';
 import 'features/home/presentation/logic/bloc/home_bloc.dart';
+import 'features/order/data/datasources/order_remote_datasources.dart';
+import 'features/order/data/repositories/order_repositories_imp.dart';
+import 'features/order/domain/repositories/order_repositories.dart';
+import 'features/order/domain/usecases/get_orders.usecases.dart';
+import 'features/order/presentation/logic/order_cubit/order_cubit.dart';
 import 'features/profile/data/dataSourse/profile_data_sourse.dart';
 import 'features/profile/data/repositories/profile_repositories_imp.dart';
 import 'features/profile/domain/repositories/profile_repositories.dart';
@@ -119,6 +124,9 @@ Future<void> init() async {
   sl.registerFactory(
       () => ChatWithOpenaiCubit(chatWithOpenaiDataUsecases: sl()));
 
+//order
+  sl.registerFactory(() => OrderCubit(getOrdersUescases: sl()));
+
   //=============================
 
   //? UseCase
@@ -158,8 +166,11 @@ Future<void> init() async {
   sl.registerLazySingleton(() => GetDepartmentsUescases(sl()));
   sl.registerLazySingleton(() => GetShopProductsUescases(sl()));
 
-//chat
+  //chat
   sl.registerLazySingleton(() => ChatWithOpenaiDataUsecases(sl()));
+
+  //order
+  sl.registerLazySingleton(() => GetOrdersUescases(sl()));
 
   //===========================================================
 
@@ -196,6 +207,11 @@ Future<void> init() async {
         remoteDataSource: sl(),
         networkInfo: sl(),
       ));
+  //order
+  sl.registerLazySingleton<OrderRepostitory>(() => OrderRepostitoryImp(
+        remoteDataSource: sl(),
+        networkInfo: sl(),
+      ));
 
   //=============================
 
@@ -221,6 +237,9 @@ Future<void> init() async {
   sl.registerLazySingleton<ChatRemoteDataSource>(
       () => ChatRemoteDataSourceeImplWithDio(apiService: sl()));
 
+  //order
+  sl.registerLazySingleton<OrderRemoteDataSource>(
+      () => OrderRemoteDataSourceeImplWithDio(apiService: sl()));
   //=============================
 
   //? LocalDataSource

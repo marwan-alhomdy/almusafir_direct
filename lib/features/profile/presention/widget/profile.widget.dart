@@ -58,6 +58,12 @@ class _ProfileWidgetState extends State<ProfileWidget> {
         //   icon: Iconsax.information,
         //   title: "مركز المساعدة".tr,
         // ),
+        // if (Helper.isAuth)
+        //   CardListProfileWidget(
+        //     onTap: () => Get.to(() => MyFavoritesView()),
+        //     icon: Iconsax.heart,
+        //     title: "المفضلة".tr,
+        //   ),
         if (Helper.isAuth)
           CardListProfileWidget(
             onTap: () => Get.to(() => const MyPointsView()),

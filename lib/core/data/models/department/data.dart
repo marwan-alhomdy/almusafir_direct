@@ -238,7 +238,7 @@ class ShoppingDepartment {
         bookmarksCount: json['bookmarks_count'],
         reactionsCount: json['reactions_count'],
         isOpen: json['is_opened'],
-        // objectType: json['object_type'],
+        objectType: json['object_type'],
       );
 
   Map<String, dynamic> toJson() => {

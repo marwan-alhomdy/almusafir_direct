@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '/injection_container.dart' as di;
+import '../../../../core/data/models/department/data.dart';
 import '../../../../core/widget/appbar/my_appbar.dart';
 import '../../../../core/widget/state/error.widget.dart';
 import '../../../home/data/model/orderstypes/datum.dart';
@@ -14,10 +15,10 @@ class ServiceItemsView extends StatefulWidget {
   const ServiceItemsView({
     super.key,
     this.orderType,
-    this.departmentsId,
+    this.shop,
   });
   final OrderType? orderType;
-  final int? departmentsId;
+  final ShoppingDepartment? shop;
 
   @override
   State<ServiceItemsView> createState() => _ServiceItemsViewState();
@@ -31,7 +32,7 @@ class _ServiceItemsViewState extends State<ServiceItemsView> {
       create: (context) => di.sl<ShopProductsCubit>()
         ..getShopProducts(
           orderType: widget.orderType?.refType,
-          departmentsId: widget.departmentsId,
+          departmentsId: widget.shop?.id,
         ),
       child: Scaffold(
         appBar: MyAppBarWithLogo(
@@ -56,7 +57,12 @@ class _ServiceItemsViewState extends State<ServiceItemsView> {
 
   Widget _builderShopProducts(BuildContext context, ShopProductsState state) {
     if (state is ShopProductsErrorState) {
-      return ErrorCustomWidget(state.message, onTap: () {});
+      return ErrorCustomWidget(state.message,
+          onTap: () => context.read<ShopProductsCubit>()
+            ..getShopProducts(
+              orderType: widget.orderType?.refType,
+              departmentsId: widget.shop?.id,
+            ));
     } else if (state is ShopProductsLoadingState) {
       return LoadingServiceCategoryWidget(
         isGridView: isGridView,
@@ -64,7 +70,7 @@ class _ServiceItemsViewState extends State<ServiceItemsView> {
       );
     } else if (state is ShopProductsSuccessfullyState) {
       return ShopProductsWidget(
-          isGridView: isGridView, products: state.products);
+          shop: widget.shop, isGridView: isGridView, products: state.products);
     } else {
       return const SizedBox();
     }

@@ -39,7 +39,10 @@ class EndPointName {
 
   //order
   static const String customerOrders =
-      'orders/orders?include=order_types&per_page=60';
+      'orders/orders?include=department,order_types,items,totals,payment_method,shipping_method,user,delivery_user';
 
   static const chatWithGPT = 'chat/completions';
+
+  //Favorite
+  static const favoriteToggle = 'favorites/favorites/toggle';
 }

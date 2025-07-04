@@ -1,26 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
+import '../../../features/shopping/data/models/shop_products/shop_products.dart';
+import '../../../helper/public_infromation.dart';
+import '../../api/favorite.api.dart';
 import '../../utils/resource/text_style.dart';
 import '../../utils/style/border_radius.dart';
 import '../image/image_widget.dart';
 
-class CardProductCategoryWidget extends StatelessWidget {
+class CardProductCategoryWidget extends StatefulWidget {
   const CardProductCategoryWidget(
-      {super.key,
-      required this.image,
-      required this.title,
-      this.price,
-      this.address,
-      this.description,
-      this.onPressed});
-  final String image;
-  final String title;
-  final num? price;
-  final String? address;
-  final String? description;
+      {super.key, required this.product, this.onPressed});
+  final ShopProduct product;
   final VoidCallback? onPressed;
 
+  @override
+  State<CardProductCategoryWidget> createState() =>
+      _CardProductCategoryWidgetState();
+}
+
+class _CardProductCategoryWidgetState extends State<CardProductCategoryWidget> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -29,54 +28,81 @@ class CardProductCategoryWidget extends StatelessWidget {
         elevation: 0.3,
         margin: EdgeInsets.all(5),
         child: InkWell(
-          onTap: onPressed,
+          onTap: widget.onPressed,
           child: Column(
             spacing: 5,
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              ClipRRect(
-                  borderRadius: BorderRadiusAttribute.top(12),
-                  child: ImageWidget(image,
-                      width: 200, height: 150, fit: BoxFit.cover)),
+              Stack(
+                alignment: AlignmentDirectional.topEnd,
+                children: [
+                  ClipRRect(
+                      borderRadius: BorderRadiusAttribute.top(12),
+                      child: ImageWidget(widget.product.image?.small ?? "",
+                          width: 200, height: 120, fit: BoxFit.cover)),
+                  if (Helper.isAuth)
+                    IconButton.filled(
+                      onPressed: () {
+                        bool isFavorite = widget.product.userIsFavorite == 1;
+                        widget.product.userIsFavorite = isFavorite ? 0 : 1;
+                        FavoriteApi.toggleFavorite(
+                            objectId: widget.product.id,
+                            objectType: widget.product.objectType);
+                        setState(() {});
+                      },
+                      style: ButtonStyle(
+                        backgroundColor: WidgetStateProperty.all<Color>(
+                            Colors.white.withAlpha(120)), // غير اللون هنا
+                      ),
+                      icon: Icon(
+                        color: Colors.redAccent,
+                        widget.product.userIsFavorite == 1
+                            ? Iconsax.heart
+                            : Iconsax.heart_copy,
+                        size: 20,
+                      ),
+                    ),
+                ],
+              ),
+              Row(spacing: 10, children: [
+                Icon(Iconsax.star_1, color: Colors.orange, size: 15),
+                Text(
+                  widget.product.averageRating?.toString() ?? "---",
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppTextStyles.getRegularStyle(fontSize: 12),
+                ),
+              ]),
               Text(
-                title,
+                widget.product.name ?? "----",
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: AppTextStyles.getMediumStyle(),
               ),
-              if (address != null)
-                Row(
-                  spacing: 4,
-                  children: [
-                    Icon(Iconsax.location_copy, size: 12),
-                    Text(
-                      address!,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: AppTextStyles.getMediumStyle(fontSize: 12),
-                    ),
-                  ],
-                ),
-              if (price != null)
+              Row(spacing: 10, children: [
                 Text(
-                  "$price\$",
+                  "${widget.product.price}\$",
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: AppTextStyles.getBoldStyle(
-                    color: Colors.orange,
-                    fontSize: 18,
+                    color: Colors.blueAccent,
+                    fontSize: 16,
                   ),
                 ),
-              if (description != null)
-                Text(
-                  description!,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: AppTextStyles.getMediumStyle(fontSize: 10),
-                ),
-              SizedBox(height: 20),
+                if ((widget.product.oldPrice ?? 0) > 0)
+                  Text(
+                    "${widget.product.oldPrice}\$",
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: AppTextStyles.getBoldStyle(
+                      color: Colors.orange,
+                      fontSize: 14,
+                    ),
+                  ),
+              ]),
+              SizedBox(height: 10),
             ],
           ),
         ),

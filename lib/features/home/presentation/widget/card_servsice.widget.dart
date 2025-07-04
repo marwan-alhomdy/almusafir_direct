@@ -69,18 +69,13 @@ class CardServsiceWidget extends StatelessWidget {
 
   void _moveToServiceDetails() {
     if (orderType?.isRequiredCart == 1 && orderType?.isRequiredShopId == 1) {
-      //TODO : add Category Department Daily screen
       Get.to(() => ServiceCategoryView(orderType: orderType));
     } else if (orderType?.isRequiredCart == 1 &&
         orderType?.isRequiredShopId == 0) {
-      print("ServiceItemsView");
-      print(orderType?.refType);
-      Get.to(() => ServiceItemsView());
+      Get.to(() => ServiceItemsView(orderType: orderType));
     } else if (orderType?.isRequiredCart == 0) {
-      print("FormServiceInputView");
       Get.to(() => FormServiceInputView(orderType: orderType));
     } else {
-      print("ServicesView");
       Get.to(() => ServicesView());
     }
   }

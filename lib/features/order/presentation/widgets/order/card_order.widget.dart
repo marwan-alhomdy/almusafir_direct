@@ -1,18 +1,18 @@
-import 'package:almusafir_direct/core/utils/function/bottom_sheet.widget.dart';
 import 'package:almusafir_direct/core/utils/handler/handler.dart';
 import 'package:almusafir_direct/core/utils/resource/color_app.dart';
 import 'package:almusafir_direct/core/utils/resource/text_style.dart';
-import 'package:almusafir_direct/helper/language.helper.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
-import '../../../../../core/constants/enum/booking_type.dart';
-import 'booking_info.widget.dart';
-import 'details_booking.dart';
+import '../../../../../core/constants/enum/order_statues.dart';
+import '../../../data/models/order_module/order_module.dart';
+import '../../pages/details_order.dart';
+import 'order_info.widget.dart';
 
-class CardBookingWidget extends StatelessWidget {
-  const CardBookingWidget({super.key, required this.booking});
-  final BookingType booking;
+class CardOrderWidget extends StatelessWidget {
+  const CardOrderWidget({super.key, required this.order});
+  final OrderModule order;
 
   @override
   Widget build(BuildContext context) {
@@ -23,40 +23,42 @@ class CardBookingWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            HeaderBookingWidget(booking: booking),
+            HeaderOrderWidget(order: order),
             Divider(),
             Text(
-              "فندق الرياض",
-              style: AppTextStyles.getBoldStyle(fontSize: 18),
+              order.department?.name ?? "---",
+              style: AppTextStyles.getMediumStyle(fontSize: 17),
             ),
             Text(
-              "إقامة فاخرة في وسط المدينة",
+              order.department?.address ?? "----",
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: AppTextStyles.getRegularStyle(),
             ),
             SizedBox(height: 10),
-            BookingInfoWidget(
+            OrderInfoWidget(
               icon: Iconsax.ticket_copy,
-              label: "رقم الحجز :",
-              value: "12346",
+              label: "رقم الطلب :",
+              value: "${order.id ?? "---"}#",
             ),
-            BookingInfoWidget(
+            OrderInfoWidget(
               icon: Iconsax.calendar_2_copy,
               label: "التاريخ :",
-              value: DateTimeHandler.formatDate(DateTime.now()),
+              value: DateTimeHandler.formatDateFromString(order.createdAt),
             ),
-            BookingInfoWidget(
+            OrderInfoWidget(
               icon: Iconsax.timer_1_copy,
               label: "الوقت :",
-              value: DateTimeHandler.formatTime(DateTime.now()),
+              value: DateTimeHandler.formatTimeFromString(order.createdAt),
             ),
-            BookingInfoWidget(
+            OrderInfoWidget(
               icon: Iconsax.money_copy,
               label: "المبلغ :",
-              value: "1000 ر.س",
+              value: "${order.orderTotal ?? "0"}",
             ),
             Divider(height: 20),
             ElevatedButton(
-              onPressed: _onShowInvoice,
+              onPressed: () => Get.to(() => DetailsOrderView(order: order)),
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.mainOneColor,
                 foregroundColor: Colors.white,
@@ -82,35 +84,33 @@ class CardBookingWidget extends StatelessWidget {
       ),
     );
   }
-
-  void _onShowInvoice() {
-    BottomSheetWidget.show(DetailsBookingWidget(booking: booking));
-  }
 }
 
-class HeaderBookingWidget extends StatelessWidget {
-  const HeaderBookingWidget({super.key, required this.booking});
-  final BookingType booking;
+class HeaderOrderWidget extends StatelessWidget {
+  const HeaderOrderWidget({super.key, required this.order});
+  final OrderModule order;
 
   @override
   Widget build(BuildContext context) {
+    final orderStates = order.orderStatesRefType?.toOrderStatues();
+
     return Row(
       children: [
-        Icon(booking.icon, size: 18, color: AppColors.mainOneColor),
+        Icon(Iconsax.bookmark_2_copy, size: 18, color: AppColors.mainOneColor),
         SizedBox(width: 10),
         Text(
-          LanguageHelper.isArabic ? booking.labelAr : booking.labelEn,
+          order.orderTypes?.name ?? "---",
           style: AppTextStyles.getMediumStyle(fontSize: 16),
         ),
         Spacer(),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 5),
           decoration: BoxDecoration(
-            color: Colors.green,
+            color: orderStates?.color ?? Colors.grey,
             borderRadius: BorderRadius.circular(5),
           ),
           child: Text(
-            "تم التاكيد",
+            orderStates?.label ?? "----",
             style: AppTextStyles.getMediumStyle(color: Colors.white),
           ),
         )

@@ -178,6 +178,7 @@ class OrderModule {
   String? orderStatesName;
   String? userStatusName;
   String? deliveryStatusName;
+  int? isShowStatuesPicker;
   dynamic image;
   dynamic image2;
   dynamic image3;
@@ -375,6 +376,7 @@ class OrderModule {
     this.orderStatesName,
     this.userStatusName,
     this.deliveryStatusName,
+    this.isShowStatuesPicker,
     this.image,
     this.image2,
     this.image3,
@@ -575,6 +577,7 @@ class OrderModule {
         orderStatesName: json['order_states_name'] as String?,
         userStatusName: json['user_status_name'] as String?,
         deliveryStatusName: json['delivery_status_name'] as String?,
+        isShowStatuesPicker: json['is_show_statues_picker'],
         image: json['image'] as dynamic,
         image2: json['image2'] as dynamic,
         image3: json['image3'] as dynamic,
@@ -793,6 +796,7 @@ class OrderModule {
         'order_states_name': orderStatesName,
         'user_status_name': userStatusName,
         'delivery_status_name': deliveryStatusName,
+        'is_show_statues_picker': isShowStatuesPicker,
         'image': image,
         'image2': image2,
         'image3': image3,

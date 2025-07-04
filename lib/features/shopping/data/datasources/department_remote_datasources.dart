@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import '../../../../core/constants/endpoint.dart';
 import '../../../../core/data/models/department/data.dart';
+import '../../../../core/server/header_server.dart';
 import '../../../../core/services/api.service.dart';
 import '../models/department_type/department_type.dart';
 import '../models/shop_products/shop_products.dart';
@@ -23,10 +24,11 @@ class DepartmentRemoteDataSourceImplWithDio extends DepartmentRemoteDataSource {
       String orderType, String tagsTypeId) async {
     final response = await apiService.get(
       endPoint: EndPointName.basicDepartments,
+      headers: HeaderServer.headerWithToken,
       data: {
         "order_type": orderType,
         "tags_type_id": tagsTypeId,
-        // "isOpened": false
+        "isOpened": true
       },
     );
     log(response.toString());
@@ -51,11 +53,13 @@ class DepartmentRemoteDataSourceImplWithDio extends DepartmentRemoteDataSource {
   @override
   Future<List<ShopProduct>> getShopProducts(
       String? orderType, String? departmentsId) async {
-    final response =
-        await apiService.get(endPoint: "${EndPointName.shopProducts}?", data: {
-      "order_type": orderType,
-      'departments_id': departmentsId,
-    });
+    final response = await apiService.get(
+        endPoint: "${EndPointName.shopProducts}?",
+        headers: HeaderServer.headerWithToken,
+        data: {
+          "order_type": orderType,
+          'departments_id': departmentsId,
+        });
 
     return (response["data"] as List?)
             ?.map((e) => ShopProduct.fromJson(e))

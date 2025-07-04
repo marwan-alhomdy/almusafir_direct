@@ -21,6 +21,7 @@ class AuthRepostitoryImpl extends AuthRepostitory {
     if (await networkInfo.isConnected) {
       try {
         final remotePosts = await remoteDataSource.login(data: data);
+
         return Right(remotePosts);
       } on AccountNotActiveExecption {
         return Left(AccountNotActiveFailure());
