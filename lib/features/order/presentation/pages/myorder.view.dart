@@ -41,9 +41,14 @@ class MyOrdersView extends StatelessWidget {
   }
 }
 
-class FilterOrderWidget extends StatelessWidget {
+class FilterOrderWidget extends StatefulWidget {
   const FilterOrderWidget({super.key});
 
+  @override
+  State<FilterOrderWidget> createState() => _FilterOrderWidgetState();
+}
+
+class _FilterOrderWidgetState extends State<FilterOrderWidget> {
   @override
   Widget build(BuildContext context) {
     final filterOrderCubit = context.read<FilterOrderCubit>();
@@ -52,7 +57,8 @@ class FilterOrderWidget extends StatelessWidget {
       children: [
         OrderFilterbar(
           selectedOrderStatuese: filterOrderCubit.selectedOrderStatuese,
-          onChanged: filterOrderCubit.changeSelectedOrderStatues,
+          onChanged: (value) => setState(
+              () => filterOrderCubit.changeSelectedOrderStatues(value)),
         ),
         Divider(height: 0),
         BlocBuilder<FilterOrderCubit, FilterOrderState>(

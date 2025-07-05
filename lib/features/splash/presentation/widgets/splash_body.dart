@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/utils/resource/images.dart';
-import '../../../../core/utils/resource/size_config.dart';
 import '../../../home/presentation/view/home_view.dart';
+import '../../../onboarding/presentation/pages/onboarding.view.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -22,8 +22,6 @@ class SplashViewBodyState extends State<SplashViewBody>
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
-
     return Column(
       children: [
         const Spacer(),
@@ -39,7 +37,11 @@ class SplashViewBodyState extends State<SplashViewBody>
 
   void _goToNextView() {
     Future.delayed(const Duration(seconds: 2), () async {
-      Get.offAll(() => const HomeView());
+      if (true) {
+        Get.offAll(() => const OnboardingView());
+      } else {
+        Get.offAll(() => const HomeView());
+      }
     });
   }
 }

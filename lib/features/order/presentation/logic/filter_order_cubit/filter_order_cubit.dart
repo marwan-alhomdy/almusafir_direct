@@ -12,13 +12,12 @@ class FilterOrderCubit extends Cubit<FilterOrderState> {
   List<OrderModule> orders = [];
 
   void initFilterOrder(List<OrderModule> orders) {
-    orders = this.orders;
+    this.orders = orders;
     filterOrder();
   }
 
   void changeSelectedOrderStatues(OrderStatues orderStatues) {
     if (selectedOrderStatuese == orderStatues) return;
-
     selectedOrderStatuese = orderStatues;
     filterOrder();
   }
@@ -27,14 +26,22 @@ class FilterOrderCubit extends Cubit<FilterOrderState> {
     emit(LoadingFilterOrderState());
 
     if (selectedOrderStatuese == OrderStatues.All) {
-      emit(FilterOrderSuccessfullyState(orders: orders));
+      if (orders.isEmpty) {
+        emit(EmptyFilterOrderState());
+      } else {
+        emit(FilterOrderSuccessfullyState(orders: orders));
+      }
     } else {
       final filterOrder = orders
           .where(
               (order) => order.orderStatesRefType == selectedOrderStatuese.name)
           .toList();
 
-      emit(FilterOrderSuccessfullyState(orders: filterOrder));
+      if (filterOrder.isEmpty) {
+        emit(EmptyFilterOrderState());
+      } else {
+        emit(FilterOrderSuccessfullyState(orders: filterOrder));
+      }
     }
   }
 }
