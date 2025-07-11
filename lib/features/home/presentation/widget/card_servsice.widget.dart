@@ -6,8 +6,8 @@ import '../../../../core/utils/style/border_radius.dart';
 import '../../../../core/widget/image/image_widget.dart';
 import '../../../services/presentation/pages/form_service_input.view.dart';
 import '../../../services/presentation/pages/service.view.dart';
-import '../../../shopping/presentation/pages/service_category.view.dart';
 import '../../../shopping/presentation/pages/service_items.view.dart';
+import '../../../shopping/presentation/pages/shops.view.dart';
 import '../../data/model/orderstypes/datum.dart';
 
 class CardServsiceWidget extends StatelessWidget {
@@ -69,7 +69,7 @@ class CardServsiceWidget extends StatelessWidget {
 
   void _moveToServiceDetails() {
     if (orderType?.isRequiredCart == 1 && orderType?.isRequiredShopId == 1) {
-      Get.to(() => ServiceCategoryView(orderType: orderType));
+      Get.to(() => ShopCategoryView(orderType: orderType));
     } else if (orderType?.isRequiredCart == 1 &&
         orderType?.isRequiredShopId == 0) {
       Get.to(() => ServiceItemsView(orderType: orderType));

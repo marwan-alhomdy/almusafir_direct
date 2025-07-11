@@ -128,6 +128,13 @@ class Themes {
     primarySwatch: AppColors.primaryMaterialColor,
     brightness: Brightness.light,
     primaryColor: AppColors.secondaryOneColor,
+    // appBarTheme: AppBarTheme(backgroundColor: const Color(0xFFF9F9F9)),
+    // scaffoldBackgroundColor: const Color.fromARGB(255, 229, 255, 248),
+    // cardTheme: CardTheme(
+    //   color: const Color(0xFFF9F9F9),
+    //   elevation: 0.1,
+    // ),
+
     dividerColor: Colors.transparent,
     expansionTileTheme: const ExpansionTileThemeData(
       tilePadding: EdgeInsets.zero,
@@ -203,7 +210,7 @@ class Themes {
       errorBorder: BorderTextFiled.errorBorder(true, 12),
       contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
     ),
-    appBarTheme: AppBarTheme(),
+
     listTileTheme: const ListTileThemeData(
         iconColor: AppColors.secondaryOneColor,
         shape: RoundedRectangleBorder(

@@ -1,4 +1,5 @@
 import '../../../../../core/data/models/image.dart';
+import '../../../../../core/data/models/user_object_rating.module.dart';
 import 'config_data.dart';
 
 class Datum {
@@ -44,7 +45,7 @@ class Datum {
   int? sumRating;
   int? averageRating;
   int? userIsRating;
-  dynamic userObjectRating;
+  UserObjectRating? userObjectRating;
   int? favoritesCount;
   int? userIsFavorite;
   int? likesCount;
@@ -151,7 +152,10 @@ class Datum {
         sumRating: json['sumRating'] as int?,
         averageRating: json['averageRating'] as int?,
         userIsRating: json['user_is_rating'] as int?,
-        userObjectRating: json['user_object_rating'] as dynamic,
+        userObjectRating: json['user_object_rating'] == null
+            ? null
+            : UserObjectRating.fromJson(
+                json['user_object_rating'] as Map<String, dynamic>),
         favoritesCount: json['favorites_count'] as int?,
         userIsFavorite: json['user_is_favorite'] as int?,
         likesCount: json['likes_count'] as int?,
@@ -203,7 +207,7 @@ class Datum {
         'sumRating': sumRating,
         'averageRating': averageRating,
         'user_is_rating': userIsRating,
-        'user_object_rating': userObjectRating,
+        'user_object_rating': userObjectRating?.toJson(),
         'favorites_count': favoritesCount,
         'user_is_favorite': userIsFavorite,
         'likes_count': likesCount,

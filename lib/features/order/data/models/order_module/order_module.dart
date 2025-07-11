@@ -1,5 +1,6 @@
 import '../../../../../core/data/current_user/data.dart';
 import '../../../../../core/data/models/department/data.dart';
+import '../../../../../core/data/models/user_object_rating.module.dart';
 import '../../../../../core/data/service.module.dart';
 import '../../../../home/data/model/orderstypes/datum.dart';
 import 'delivery_user.dart';
@@ -190,7 +191,7 @@ class OrderModule {
   num? sumRating;
   num? averageRating;
   num? userIsRating;
-  dynamic userObjectRating;
+  UserObjectRating? userObjectRating;
   num? favoritesCount;
   num? userIsFavorite;
   num? likesCount;
@@ -589,7 +590,10 @@ class OrderModule {
         sumRating: json['sumRating'] as num?,
         averageRating: json['averageRating'] as num?,
         userIsRating: json['user_is_rating'] as num?,
-        userObjectRating: json['user_object_rating'] as dynamic,
+        userObjectRating: json['user_object_rating'] == null
+            ? null
+            : UserObjectRating.fromJson(
+                json['user_object_rating'] as Map<String, dynamic>),
         favoritesCount: json['favorites_count'] as num?,
         userIsFavorite: json['user_is_favorite'] as num?,
         likesCount: json['likes_count'] as num?,
@@ -808,7 +812,7 @@ class OrderModule {
         'sumRating': sumRating,
         'averageRating': averageRating,
         'user_is_rating': userIsRating,
-        'user_object_rating': userObjectRating,
+        'user_object_rating': userObjectRating?.toJson(),
         'favorites_count': favoritesCount,
         'user_is_favorite': userIsFavorite,
         'likes_count': likesCount,

@@ -68,7 +68,7 @@ import 'features/shopping/domain/repositories/department_repositories.dart';
 import 'features/shopping/domain/usecases/get_departments_uescases.dart';
 import 'features/shopping/domain/usecases/get_shop_products_uescases.dart';
 import 'features/shopping/domain/usecases/get_type_departments_uescases.dart';
-import 'features/shopping/presentation/logic/department_cubit/department_cubit.dart';
+import 'features/shopping/presentation/logic/department_bloc/department_bloc.dart';
 import 'features/shopping/presentation/logic/department_type_cubit/department_type_cubit.dart';
 
 final sl = GetIt.instance;
@@ -117,7 +117,7 @@ Future<void> init() async {
   sl.registerFactory(
       () => DepartmentTypeCubit(getTypeDepartmentsUescases: sl()));
 
-  sl.registerFactory(() => DepartmentCubit(getDepartmentsUescases: sl()));
+  sl.registerFactory(() => DepartmentBloc(getDepartmentsUescases: sl()));
 
   sl.registerFactory(() => ShopProductsCubit(getShopProductsUescases: sl()));
 

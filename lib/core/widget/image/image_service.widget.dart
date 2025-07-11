@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../core/widget/image/image_widget.dart';
-import '../../../../core/view/image.view.dart';
-import '../../../../core/widget/carousel_slider.widget.dart';
+import '../../../../core/widget/image/image_widget.dart';
+import '../../view/image.view.dart';
+import '../carousel_slider.widget.dart';
 
 class ImageServiceWidget extends StatefulWidget {
   const ImageServiceWidget({super.key, required this.images});

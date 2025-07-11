@@ -45,4 +45,6 @@ class EndPointName {
 
   //Favorite
   static const favoriteToggle = 'favorites/favorites/toggle';
+  //Rating
+  static const ratingToggle = 'reviews/reviews/toggle';
 }

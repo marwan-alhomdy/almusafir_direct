@@ -7,29 +7,29 @@ import '../../../../core/utils/resource/color_app.dart';
 import '../../../../core/widget/appbar/my_appbar.dart';
 import '../../../../core/widget/state/error.widget.dart';
 import '../../../home/data/model/orderstypes/datum.dart';
-import '../logic/department_cubit/department_cubit.dart';
+import '../logic/department_bloc/department_bloc.dart';
 import '../logic/department_type_cubit/department_type_cubit.dart';
-import '../widgets/category_service/loading_service_category.widget.dart';
-import '../widgets/category_service/service_category.filterbar.dart';
-import '../widgets/category_service/shopping.widget.dart';
+import '../widgets/shop/loading_service_category.widget.dart';
+import '../widgets/shop/service_category.filterbar.dart';
+import '../widgets/shop/shopping.widget.dart';
 
-class ServiceCategoryView extends StatefulWidget {
-  const ServiceCategoryView({super.key, required this.orderType});
+class ShopCategoryView extends StatefulWidget {
+  const ShopCategoryView({super.key, required this.orderType});
   final OrderType? orderType;
 
   @override
-  State<ServiceCategoryView> createState() => _ServiceCategoryViewState();
+  State<ShopCategoryView> createState() => _ShopCategoryViewState();
 }
 
-class _ServiceCategoryViewState extends State<ServiceCategoryView> {
+class _ShopCategoryViewState extends State<ShopCategoryView> {
   bool isGridView = false;
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => di.sl<DepartmentCubit>()),
+        BlocProvider(create: (_) => di.sl<DepartmentBloc>()),
         BlocProvider(
-          create: (context) => di.sl<DepartmentTypeCubit>()
+          create: (_) => di.sl<DepartmentTypeCubit>()
             ..getDepartmentType(widget.orderType?.refType),
         ),
       ],
@@ -59,8 +59,8 @@ class _ServiceCategoryViewState extends State<ServiceCategoryView> {
   void _listenerDepartment(BuildContext context, DepartmentTypeState state) {
     if (state is GetDepartmentTypeSuccessfullyState) {
       final type = context.read<DepartmentTypeCubit>().selectedDepartmentType;
-      BlocProvider.of<DepartmentCubit>(context)
-          .getShoppingDepartment(widget.orderType?.refType, type?.id);
+      BlocProvider.of<DepartmentBloc>(context)
+          .add(GetShoppingDepartment(widget.orderType?.refType, type?.id));
     }
   }
 

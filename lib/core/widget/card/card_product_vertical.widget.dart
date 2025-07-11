@@ -86,7 +86,7 @@ class _CardProductVerticalWidgetState extends State<CardProductVerticalWidget> {
                         overflow: TextOverflow.ellipsis,
                         style: AppTextStyles.getBoldStyle(
                           color: Colors.blueAccent,
-                          fontSize: 16,
+                          fontSize: 14,
                         ),
                       ),
                       if ((widget.product.oldPrice ?? 0) > 0)
@@ -100,14 +100,6 @@ class _CardProductVerticalWidgetState extends State<CardProductVerticalWidget> {
                               decorationColor: Colors.red,
                               decoration: TextDecoration.lineThrough),
                         ),
-                      Spacer(),
-                      Icon(Iconsax.star_1, color: Colors.orange, size: 15),
-                      Text(
-                        widget.product.averageRating?.toString() ?? "---",
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: AppTextStyles.getRegularStyle(fontSize: 12),
-                      ),
                     ]),
                   ],
                 ),

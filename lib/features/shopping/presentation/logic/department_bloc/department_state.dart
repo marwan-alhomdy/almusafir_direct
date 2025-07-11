@@ -1,4 +1,4 @@
-part of 'department_cubit.dart';
+part of 'department_bloc.dart';
 
 sealed class DepartmentState extends Equatable {
   const DepartmentState();

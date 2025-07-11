@@ -28,7 +28,8 @@ class DepartmentRemoteDataSourceImplWithDio extends DepartmentRemoteDataSource {
       data: {
         "order_type": orderType,
         "tags_type_id": tagsTypeId,
-        "isOpened": true
+        "isOpened": true,
+        "include": "working_hours"
       },
     );
     log(response.toString());
@@ -54,7 +55,7 @@ class DepartmentRemoteDataSourceImplWithDio extends DepartmentRemoteDataSource {
   Future<List<ShopProduct>> getShopProducts(
       String? orderType, String? departmentsId) async {
     final response = await apiService.get(
-        endPoint: "${EndPointName.shopProducts}?",
+        endPoint: EndPointName.shopProducts,
         headers: HeaderServer.headerWithToken,
         data: {
           "order_type": orderType,

@@ -6,7 +6,7 @@ class AppColors {
 
   static const Color mainOneColor = Color(0xFF2196F3);
   static const primaryMaterialColor = MaterialColor(
-    0xFF2d3343,
+    0xFF2196F3,
     <int, Color>{
       50: Color(0xFF2d3343),
       100: Color(0xFF2d3343),

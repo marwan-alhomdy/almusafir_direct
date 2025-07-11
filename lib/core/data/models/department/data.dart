@@ -1,6 +1,8 @@
 import '../email.dart';
 import '../image.dart';
 import '../phone.dart';
+import '../user_object_rating.module.dart';
+import '../working_hours/working_hours.module.dart';
 import 'website.dart';
 
 class ShoppingDepartment {
@@ -69,7 +71,7 @@ class ShoppingDepartment {
   num? sumRating;
   num? averageRating;
   num? userIsRating;
-  dynamic userObjectRating;
+  UserObjectRating? userObjectRating;
   num? favoritesCount;
   num? userIsFavorite;
   num? likesCount;
@@ -77,6 +79,7 @@ class ShoppingDepartment {
   num? reactionsCount;
   String? objectType;
   int? isOpen;
+  WorkingHoursModule? workingHours;
 
   ShoppingDepartment({
     this.id,
@@ -152,6 +155,7 @@ class ShoppingDepartment {
     this.reactionsCount,
     this.objectType,
     this.isOpen,
+    this.workingHours,
   });
 
   factory ShoppingDepartment.fromJson(Map<String, dynamic> json) =>
@@ -231,7 +235,10 @@ class ShoppingDepartment {
         sumRating: json['sumRating'],
         averageRating: json['averageRating'],
         userIsRating: json['user_is_rating'],
-        // userObjectRating: json['user_object_rating'] as dynamic,
+        userObjectRating: json['user_object_rating'] == null
+            ? null
+            : UserObjectRating.fromJson(
+                json['user_object_rating'] as Map<String, dynamic>),
         favoritesCount: json['favorites_count'],
         userIsFavorite: json['user_is_favorite'],
         likesCount: json['likes_count'],
@@ -239,6 +246,10 @@ class ShoppingDepartment {
         reactionsCount: json['reactions_count'],
         isOpen: json['is_opened'],
         objectType: json['object_type'],
+        workingHours: json['working_hours'] == null
+            ? null
+            : WorkingHoursModule.fromJson(
+                json['working_hours'] as Map<String, dynamic>),
       );
 
   Map<String, dynamic> toJson() => {
@@ -307,7 +318,7 @@ class ShoppingDepartment {
         'sumRating': sumRating,
         'averageRating': averageRating,
         'user_is_rating': userIsRating,
-        'user_object_rating': userObjectRating,
+        'user_object_rating': userObjectRating?.toJson(),
         'favorites_count': favoritesCount,
         'user_is_favorite': userIsFavorite,
         'likes_count': likesCount,
@@ -315,5 +326,6 @@ class ShoppingDepartment {
         'reactions_count': reactionsCount,
         'object_type': objectType,
         'is_opened': isOpen,
+        'working_hours': workingHours?.toJson(),
       };
 }

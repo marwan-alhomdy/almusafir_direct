@@ -9,9 +9,9 @@ import '../../../../../core/widget/card/card_shop_category.widget.dart';
 import '../../../../../core/widget/card/card_shop_vertical.widget.dart';
 import '../../../../../core/widget/state/error.widget.dart';
 import '../../../../home/data/model/orderstypes/datum.dart';
-import '../../logic/department_cubit/department_cubit.dart';
+import '../../logic/department_bloc/department_bloc.dart';
 import '../../logic/department_type_cubit/department_type_cubit.dart';
-import '../../pages/service_items.view.dart';
+import '../../pages/products_shopping.view.dart';
 import 'loading_service_category.widget.dart';
 
 class ShoppingWidget extends StatelessWidget {
@@ -22,7 +22,7 @@ class ShoppingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DepartmentCubit, DepartmentState>(
+    return BlocBuilder<DepartmentBloc, DepartmentState>(
       builder: (context, state) {
         if (state is DepartmentErrorState) {
           return SliverFillRemaining(
@@ -56,8 +56,8 @@ class ShoppingWidget extends StatelessWidget {
   void getShopping(BuildContext context) {
     final type = context.read<DepartmentTypeCubit>().selectedDepartmentType;
     context
-        .read<DepartmentCubit>()
-        .getShoppingDepartment(orderType?.refType, type?.id);
+        .read<DepartmentBloc>()
+        .add(GetShoppingDepartment(orderType?.refType, type?.id));
   }
 }
 
@@ -71,7 +71,7 @@ class ListShoppingItemsWidget extends StatelessWidget {
       children: shoppings
           .map((shop) => CardShopVerticalWidget(
                 shop: shop,
-                onPressed: () => Get.to(() => ServiceItemsView(
+                onPressed: () => Get.to(() => ProductsShoppingView(
                       shop: shop,
                     )),
               ))
@@ -94,7 +94,7 @@ class GridShoppingItemsWidget extends StatelessWidget {
               width: Get.width * 0.5,
               child: CardShopCategoryWidget(
                 shop: shop,
-                onPressed: () => Get.to(() => ServiceItemsView(
+                onPressed: () => Get.to(() => ProductsShoppingView(
                       shop: shop,
                     )),
               )))

@@ -54,4 +54,25 @@ class DateTimeHandler {
         .format(DateTime.tryParse(date ?? "") ?? DateTime.now())
         .trim();
   }
+
+  static String convertTimeToArabic(String time) {
+    if (time.trim().isEmpty) return "---";
+    final List<String> parts = time.split(':');
+    final int hour = int.parse(parts[0]);
+    final int minute = int.parse(parts[1]);
+
+    String arabicHour;
+    if (hour >= 1 && hour <= 12) {
+      arabicHour = hour.toString();
+    } else if (hour == 0) {
+      arabicHour = '12';
+    } else {
+      arabicHour = (hour - 12).toString();
+    }
+
+    final String arabicMinute = minute.toString().padLeft(2, '0');
+    final String amPm = (hour < 12) ? 'ص' : 'م';
+
+    return '$arabicHour:$arabicMinute $amPm';
+  }
 }

@@ -8,8 +8,8 @@ import '../../../../core/widget/appbar/my_appbar.dart';
 import '../../../../core/widget/state/error.widget.dart';
 import '../../../home/data/model/orderstypes/datum.dart';
 import '../logic/shop_products_cubit/shop_products_cubit.dart';
-import '../widgets/category_service/loading_service_category.widget.dart';
-import '../widgets/products/shop_products.widget.dart';
+import '../widgets/products_shop/shop_products.widget.dart';
+import '../widgets/shop/loading_service_category.widget.dart';
 
 class ServiceItemsView extends StatefulWidget {
   const ServiceItemsView({
@@ -35,19 +35,21 @@ class _ServiceItemsViewState extends State<ServiceItemsView> {
           departmentsId: widget.shop?.id,
         ),
       child: Scaffold(
-        appBar: MyAppBarWithLogo(
-          actions: [
-            IconButton(
-              icon: Icon(isGridView
-                  ? Iconsax.textalign_justifycenter
-                  : Iconsax.element_3_copy),
-              onPressed: () => setState(() {
-                isGridView = !isGridView;
-              }),
-            ),
-            SizedBox(width: 20),
-          ],
-        ),
+        appBar: widget.shop != null
+            ? null
+            : MyAppBarWithLogo(
+                actions: [
+                  IconButton(
+                    icon: Icon(isGridView
+                        ? Iconsax.textalign_justifycenter
+                        : Iconsax.element_3_copy),
+                    onPressed: () => setState(() {
+                      isGridView = !isGridView;
+                    }),
+                  ),
+                  SizedBox(width: 20),
+                ],
+              ),
         body: BlocBuilder<ShopProductsCubit, ShopProductsState>(
           builder: _builderShopProducts,
         ),
@@ -70,7 +72,7 @@ class _ServiceItemsViewState extends State<ServiceItemsView> {
       );
     } else if (state is ShopProductsSuccessfullyState) {
       return ShopProductsWidget(
-          shop: widget.shop, isGridView: isGridView, products: state.products);
+          isGridView: isGridView, products: state.products);
     } else {
       return const SizedBox();
     }

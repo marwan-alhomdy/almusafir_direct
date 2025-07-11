@@ -7,6 +7,7 @@ import '../../data/models/department/data.dart';
 import '../../utils/resource/text_style.dart';
 import '../../utils/style/border_radius.dart';
 import '../image/image_widget.dart';
+import '../rating/rating.widget.dart';
 
 class CardShopCategoryWidget extends StatefulWidget {
   const CardShopCategoryWidget({super.key, required this.shop, this.onPressed});
@@ -68,12 +69,9 @@ class _CardShopCategoryWidgetState extends State<CardShopCategoryWidget> {
               Row(
                 spacing: 4,
                 children: [
-                  Icon(Iconsax.star_1, color: Colors.orange, size: 15),
-                  Text(
-                    widget.shop.averageRating?.toString() ?? "---",
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: AppTextStyles.getRegularStyle(fontSize: 12),
+                  RatingWidget(
+                    rating: widget.shop.averageRating ?? 0,
+                    sizeIcon: 15,
                   ),
                   Spacer(),
                   Text(

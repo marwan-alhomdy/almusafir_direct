@@ -1,3 +1,4 @@
+import '../models/user_object_rating.module.dart';
 import 'avatar.dart';
 
 class User {
@@ -60,7 +61,7 @@ class User {
   int? sumRating;
   int? averageRating;
   int? userIsRating;
-  dynamic userObjectRating;
+  UserObjectRating? userObjectRating;
   int? favoritesCount;
   int? userIsFavorite;
   int? likesCount;
@@ -203,7 +204,10 @@ class User {
         sumRating: json['sumRating'],
         averageRating: json['averageRating'],
         userIsRating: json['user_is_rating'],
-        userObjectRating: json['user_object_rating'] as dynamic,
+        userObjectRating: json['user_object_rating'] == null
+            ? null
+            : UserObjectRating.fromJson(
+                json['user_object_rating'] as Map<String, dynamic>),
         favoritesCount: json['favorites_count'],
         userIsFavorite: json['user_is_favorite'],
         likesCount: json['likes_count'],
@@ -274,7 +278,7 @@ class User {
         'sumRating': sumRating,
         'averageRating': averageRating,
         'user_is_rating': userIsRating,
-        'user_object_rating': userObjectRating,
+        'user_object_rating': userObjectRating?.toJson(),
         'favorites_count': favoritesCount,
         'user_is_favorite': userIsFavorite,
         'likes_count': likesCount,

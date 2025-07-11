@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../data/models/department_type/department_type.dart';
-import '../../logic/department_cubit/department_cubit.dart';
+import '../../logic/department_bloc/department_bloc.dart';
 import '../../logic/department_type_cubit/department_type_cubit.dart';
 
 class ServiceCategoryFilterbar extends StatefulWidget {
@@ -87,7 +87,10 @@ class _ServiceCategoryFilterbarState extends State<ServiceCategoryFilterbar> {
     if (departmentTCubit.selectedDepartmentType?.id == type?.id) return;
     departmentTCubit.selectedDepartmentType = type;
     final orderType = widget.orderType?.refType;
-    context.read<DepartmentCubit>().getShoppingDepartment(orderType, type?.id);
+    context
+        .read<DepartmentBloc>()
+        .add(GetShoppingDepartment(orderType, type?.id));
+
     setState(() {});
   }
 }

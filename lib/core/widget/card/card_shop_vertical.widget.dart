@@ -1,3 +1,4 @@
+import 'package:almusafir_direct/core/widget/rating/rating.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
@@ -34,7 +35,7 @@ class _CardShopVerticalWidgetState extends State<CardShopVerticalWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ClipRRect(
-                  borderRadius: BorderRadiusAttribute.all(5),
+                  borderRadius: BorderRadiusAttribute.all(10),
                   child: ImageWidget(widget.shop.image?.small ?? "",
                       width: 70, height: 70, fit: BoxFit.cover)),
               Expanded(
@@ -93,12 +94,9 @@ class _CardShopVerticalWidgetState extends State<CardShopVerticalWidget> {
                     Row(
                       spacing: 4,
                       children: [
-                        Icon(Iconsax.star_1, color: Colors.orange, size: 15),
-                        Text(
-                          widget.shop.averageRating?.toString() ?? "---",
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: AppTextStyles.getRegularStyle(fontSize: 12),
+                        RatingWidget(
+                          rating: widget.shop.averageRating ?? 0,
+                          sizeIcon: 15,
                         ),
                         Spacer(),
                         Text(
