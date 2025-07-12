@@ -120,6 +120,7 @@ class ShopProduct {
   Children? children;
   PricesUnits? pricesUnits;
   ProductOptions? productOptions;
+  bool? isLoading;
 
   ShopProduct({
     this.id,
@@ -235,6 +236,7 @@ class ShopProduct {
     this.children,
     this.pricesUnits,
     this.productOptions,
+    this.isLoading,
   });
 
   factory ShopProduct.fromJson(Map<String, dynamic> json) => ShopProduct(

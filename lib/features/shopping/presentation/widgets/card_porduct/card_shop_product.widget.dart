@@ -1,6 +1,9 @@
 import 'package:almusafir_direct/core/utils/resource/color_app.dart';
 import 'package:almusafir_direct/core/widget/rating/rating.widget.dart';
+import 'package:almusafir_direct/features/shopping/presentation/logic/shop_cart_cubit/shop_cart_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../../../core/api/favorite.api.dart';
@@ -20,8 +23,6 @@ class CardShopProductWidget extends StatefulWidget {
 }
 
 class _CardShopProductWidgetState extends State<CardShopProductWidget> {
-  int count = 0;
-
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -95,15 +96,7 @@ class _CardShopProductWidgetState extends State<CardShopProductWidget> {
                               decoration: TextDecoration.lineThrough),
                         ),
                       const Spacer(),
-                      CounterProductInCardWidget(
-                        count: count,
-                        onChanged: (count) {
-                          this.count = count;
-                          setState(() {});
-                        },
-                        product: widget.product,
-                      )
-                      //ButtonAddToRemoveWidget(),
+                      QuantityProductinCardWidget(product: widget.product),
                     ],
                   ),
                 ],
@@ -120,6 +113,67 @@ class _CardShopProductWidgetState extends State<CardShopProductWidget> {
     widget.product.userIsFavorite = isFavorite ? 0 : 1;
     FavoriteApi.toggleFavorite(
         objectId: widget.product.id, objectType: widget.product.objectType);
+    setState(() {});
+  }
+}
+
+class QuantityProductinCardWidget extends StatefulWidget {
+  const QuantityProductinCardWidget({super.key, required this.product});
+  final ShopProduct product;
+
+  @override
+  State<QuantityProductinCardWidget> createState() =>
+      _QuantityProductinCardWidgetState();
+}
+
+class _QuantityProductinCardWidgetState
+    extends State<QuantityProductinCardWidget> {
+  int count = 0;
+  bool isLoaing = true;
+
+  @override
+  void initState() {
+    count = context
+            .read<ShopCartCubit>()
+            .rowCart
+            .firstWhereOrNull((row) => row.id == widget.product.id)
+            ?.qty ??
+        0;
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    widget.product.isLoading = false;
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ShopCartCubit, ShopCartState>(
+      builder: (_, __) {
+        return (widget.product.isLoading == true)
+            ? SizedBox(
+                height: 25,
+                width: 25,
+                child: CircularProgressIndicator(
+                  backgroundColor: AppColors.mainOneColor,
+                  color: Colors.deepOrangeAccent,
+                ))
+            : CounterProductInCardWidget(
+                count: count,
+                onChanged: changeCountProductInCart,
+                product: widget.product,
+              );
+      },
+    );
+  }
+
+  void changeCountProductInCart(int count) {
+    this.count == 0
+        ? context.read<ShopCartCubit>().addToCart(widget.product, count)
+        : context.read<ShopCartCubit>().updateCart(widget.product, count);
+    this.count = count;
     setState(() {});
   }
 }

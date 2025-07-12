@@ -12,14 +12,7 @@ class FavoriteApi {
   }) async {
     final client = di.sl<ApiService>();
     try {
-      print("=========addToFavorite============");
-      print({
-        "object_id": objectId,
-        "object_type": objectType,
-      });
-      print("=========addToFavorite============");
-      print(HeaderServer.headerWithToken);
-      final response = await client.post(
+      await client.post(
         endPoint: EndPointName.favoriteToggle,
         headers: HeaderServer.headerWithToken,
         data: {
@@ -27,9 +20,6 @@ class FavoriteApi {
           "object_type": objectType,
         },
       );
-      print("=========addToFavorite============");
-      print(response);
-      print("=========addToFavorite============");
     } catch (e) {
       if (e is DioException) print(e.response?.data.toString());
     }

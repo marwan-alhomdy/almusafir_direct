@@ -38,7 +38,7 @@ class Datum {
   String? createdAt;
   String? updatedAt;
   ImageModel? image;
-  List<dynamic>? images;
+  List<ImageModel>? images;
   List<dynamic>? files;
   int? ratingsCount;
   int? countRating;
@@ -145,7 +145,9 @@ class Datum {
         image: json['image'] == null
             ? null
             : ImageModel.fromJson(json['image'] as Map<String, dynamic>),
-        images: json['images'] as List<dynamic>?,
+        images: (json['images'] as List<dynamic>?)
+            ?.map((e) => ImageModel.fromJson(e as Map<String, dynamic>))
+            .toList(),
         files: json['files'] as List<dynamic>?,
         ratingsCount: json['ratings_count'] as int?,
         countRating: json['countRating'] as int?,
@@ -200,7 +202,7 @@ class Datum {
         'created_at': createdAt,
         'updated_at': updatedAt,
         'image': image?.toJson(),
-        'images': images,
+        'images': images?.map((e) => e.toJson()).toList(),
         'files': files,
         'ratings_count': ratingsCount,
         'countRating': countRating,

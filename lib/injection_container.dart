@@ -20,6 +20,14 @@ import 'features/auth/domain/usecases/send_activation.usecases.dart';
 import 'features/auth/persention/logic/auth_bloc/auth_bloc.dart';
 import 'features/auth/persention/logic/register_cubit/register_cubit.dart';
 import 'features/auth/persention/logic/verify_cubit/verify_cubit.dart';
+import 'features/cart/data/datasources/cart_remote_datasources.dart';
+import 'features/cart/data/repositories/cart_repositories_imp.dart';
+import 'features/cart/domain/repositories/cart_repositories.dart';
+import 'features/cart/domain/usecases/add_cartusecases.dart';
+import 'features/cart/domain/usecases/delete_cartusecases.dart';
+import 'features/cart/domain/usecases/get_cartusecases.dart';
+import 'features/cart/presentation/logic/cart_cubit/cart_cubit.dart';
+import 'features/cart/presentation/logic/product_card_cubit/product_card_cubit.dart';
 import 'features/chat/data/datasources/chat_remote_datasources.dart';
 import 'features/chat/data/repositories/chat_repositories_imp.dart';
 import 'features/chat/domain/repositories/chat_repositories.dart';
@@ -126,6 +134,11 @@ Future<void> init() async {
 
 //order
   sl.registerFactory(() => OrderCubit(getOrdersUescases: sl()));
+//cart
+  sl.registerFactory(
+      () => CartCubit(getCartUescases: sl(), deleteCartUescases: sl()));
+
+  sl.registerFactory(() => ProductCardCubit(addToCartUescases: sl()));
 
   //=============================
 
@@ -172,6 +185,11 @@ Future<void> init() async {
   //order
   sl.registerLazySingleton(() => GetOrdersUescases(sl()));
 
+  //cart
+  sl.registerLazySingleton(() => GetCartUescases(sl()));
+  sl.registerLazySingleton(() => AddToCartUescases(sl()));
+  sl.registerLazySingleton(() => DeleteCartUescases(sl()));
+
   //===========================================================
 
   //? Repository
@@ -212,7 +230,11 @@ Future<void> init() async {
         remoteDataSource: sl(),
         networkInfo: sl(),
       ));
-
+  //cart
+  sl.registerLazySingleton<CartRepostitory>(() => CartRepostitoryImp(
+        remoteDataSource: sl(),
+        networkInfo: sl(),
+      ));
   //=============================
 
   //? Datasources
@@ -240,6 +262,10 @@ Future<void> init() async {
   //order
   sl.registerLazySingleton<OrderRemoteDataSource>(
       () => OrderRemoteDataSourceeImplWithDio(apiService: sl()));
+  //cart
+  sl.registerLazySingleton<CartRemoteDataSource>(
+      () => CartRemoteDataSourceeImplWithDio(apiService: sl()));
+
   //=============================
 
   //? LocalDataSource

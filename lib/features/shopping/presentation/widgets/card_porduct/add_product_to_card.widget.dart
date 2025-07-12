@@ -14,20 +14,15 @@ import '../../../../../core/widget/rating/ratingbar.widget.dart';
 import '../../../../../helper/public_infromation.dart';
 import '../../../data/models/shop_products/shop_products.dart';
 
-class AddProductToCardWidget extends StatefulWidget {
+class AddProductToCardWidget extends StatelessWidget {
   const AddProductToCardWidget(
       {super.key, required this.product, required this.onChanged});
   final ShopProduct product;
   final void Function(int) onChanged;
 
   @override
-  State<AddProductToCardWidget> createState() => _AddProductToCardWidgetState();
-}
-
-class _AddProductToCardWidgetState extends State<AddProductToCardWidget> {
-  int count = 0;
-  @override
   Widget build(BuildContext context) {
+    int count = 0;
     return Container(
       padding: const EdgeInsets.all(20),
       constraints: BoxConstraints(
@@ -42,7 +37,7 @@ class _AddProductToCardWidgetState extends State<AddProductToCardWidget> {
             children: [
               ClipRRect(
                   borderRadius: BorderRadiusAttribute.all(5),
-                  child: ImageWidget(widget.product.image?.small ?? "---",
+                  child: ImageWidget(product.image?.small ?? "---",
                       width: 50, height: 50, fit: BoxFit.cover)),
               Expanded(
                 child: Column(
@@ -50,19 +45,19 @@ class _AddProductToCardWidgetState extends State<AddProductToCardWidget> {
                   spacing: 10,
                   children: [
                     Text(
-                      widget.product.name ?? "---",
+                      product.name ?? "---",
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: AppTextStyles.getMediumStyle(),
                     ),
                     RatingBarWidget(
-                      initialRating: widget.product.userObjectRating?.rating,
+                      initialRating: product.userObjectRating?.rating,
                       onRatingUpdate: (rating) {
-                        widget.product.userObjectRating ??= UserObjectRating();
-                        widget.product.userObjectRating?.rating = rating;
+                        product.userObjectRating ??= UserObjectRating();
+                        product.userObjectRating?.rating = rating;
                         RatingApi.toggleRating(
-                            objectType: widget.product.objectType,
-                            objectId: widget.product.id,
+                            objectType: product.objectType,
+                            objectId: product.id,
                             rating: rating);
                       },
                     ),
@@ -70,32 +65,29 @@ class _AddProductToCardWidgetState extends State<AddProductToCardWidget> {
                 ),
               ),
               if (Helper.isAuth)
-                InkWell(
-                  onTap: () {},
-                  child: Icon(
-                    widget.product.userIsFavorite == 1
-                        ? Iconsax.heart
-                        : Iconsax.heart_copy,
-                    color: Colors.redAccent,
-                  ),
+                Icon(
+                  product.userIsFavorite == 1
+                      ? Iconsax.heart
+                      : Iconsax.heart_copy,
+                  color: Colors.redAccent,
                 ),
             ],
           ),
           Divider(thickness: 0.4),
           ButtonAddToRemoveWidget(
             count: 0,
-            price: widget.product.price ?? 0,
-            onChanged: (count) {
-              if (count == 0) Get.back();
-              this.count = count;
+            price: product.price ?? 0,
+            onChanged: (count0) {
+              if (count0 == 0) Get.back();
+              count = count0;
             },
           ),
-          Divider(thickness: 0.4),
+          const Divider(thickness: 0.4),
           ButtonWidget(
             text: 'OK'.tr,
             onTap: () {
               Get.back();
-              widget.onChanged(count);
+              onChanged(count);
             },
           ),
         ],
@@ -135,27 +127,31 @@ class _ButtonAddToRemoveWidgetState extends State<ButtonAddToRemoveWidget> {
       spacing: 25,
       mainAxisSize: MainAxisSize.min,
       children: [
-        (count == 1)
-            ? IconButton(
-                iconSize: 38,
-                padding: const EdgeInsets.all(2.0),
-                color: AppColors.redForeColor,
-                icon: Icon(Iconsax.trush_square),
-                onPressed: () {
-                  if (count == 0) return;
-                  widget.onChanged(--count);
-                  setState(() {});
-                })
-            : IconButton(
+        Visibility(
+          visible: (count == 1),
+          child: IconButton(
+              iconSize: 38,
+              padding: const EdgeInsets.all(2.0),
+              color: AppColors.redForeColor,
+              icon: const Icon(Iconsax.trush_square),
+              onPressed: () {
+                if (count == 0) return;
+                widget.onChanged(--count);
+                setState(() {});
+              }),
+        ),
+        Visibility(
+            visible: (count != 1),
+            child: IconButton(
                 iconSize: 38,
                 padding: const EdgeInsets.all(2.0),
                 color: AppColors.mainOneColor,
-                icon: Icon(Iconsax.minus_square),
+                icon: const Icon(Iconsax.minus_square),
                 onPressed: () {
                   if (count == 0) return;
                   widget.onChanged(--count);
                   setState(() {});
-                }),
+                })),
         Text(
           count.toString(),
           style: AppTextStyles.getMediumStyle(fontSize: 18),
@@ -164,14 +160,15 @@ class _ButtonAddToRemoveWidgetState extends State<ButtonAddToRemoveWidget> {
           iconSize: 38,
           padding: const EdgeInsets.all(2.0),
           color: AppColors.mainOneColor,
-          icon: Icon(Iconsax.add_square),
+          icon: const Icon(Iconsax.add_square),
           onPressed: () {
             widget.onChanged(++count);
             setState(() {});
           },
         ),
-        if (count > 0)
-          Column(
+        Visibility(
+          visible: (count > 0),
+          child: Column(
             spacing: 5,
             children: [
               Text(
@@ -185,6 +182,7 @@ class _ButtonAddToRemoveWidgetState extends State<ButtonAddToRemoveWidget> {
               ),
             ],
           ),
+        ),
       ],
     );
   }

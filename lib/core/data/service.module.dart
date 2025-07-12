@@ -127,7 +127,7 @@ class ServiceModul {
         'updated_at': updatedAt,
         'image': image?.toJson(),
         'logo': logo?.toJson(),
-        'images': images,
+        'images': images?.map((e) => e.toJson()).toList(),
         'files': files,
       };
 }

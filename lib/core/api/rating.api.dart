@@ -13,8 +13,7 @@ class RatingApi {
       String? comment}) async {
     final client = di.sl<ApiService>();
     try {
-      print(rating);
-      final response = await client.post(
+      await client.post(
         endPoint: EndPointName.ratingToggle,
         headers: HeaderServer.headerWithToken,
         data: {
@@ -24,7 +23,6 @@ class RatingApi {
           'title': comment,
         },
       );
-      print(response);
     } catch (e) {
       if (e is DioException) print(e.response?.data.toString());
     }

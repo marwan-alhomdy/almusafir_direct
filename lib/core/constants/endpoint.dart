@@ -37,6 +37,11 @@ class EndPointName {
   static const String basicDepartments = 'basic/departments';
   static const String shopProducts = "shop/products";
 
+  //cart
+  static const String card = "shop/carts";
+  static const String addCard = "shop/carts/add";
+  static const String destroyAllCard = "shop/carts/destroy/all";
+
   //order
   static const String customerOrders =
       'orders/orders?include=department,order_types,items,totals,payment_method,shipping_method,user,delivery_user';

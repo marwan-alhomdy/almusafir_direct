@@ -30,7 +30,7 @@ class DepartmentType {
   String? createdAt;
   String? updatedAt;
   ImageModel? image;
-  List<dynamic>? images;
+  List<ImageModel>? images;
   String? objectType;
 
   DepartmentType({
@@ -101,7 +101,9 @@ class DepartmentType {
       image: json['image'] == null
           ? null
           : ImageModel.fromJson(json['image'] as Map<String, dynamic>),
-      images: json['images'] as List<dynamic>?,
+      images: (json['images'] as List<dynamic>?)
+          ?.map((e) => ImageModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
   }
 
@@ -133,7 +135,7 @@ class DepartmentType {
         'created_at': createdAt,
         'updated_at': updatedAt,
         'image': image?.toJson(),
-        'images': images,
+        'images': images?.map((e) => e.toJson()).toList(),
         'object_type': objectType,
       };
 }

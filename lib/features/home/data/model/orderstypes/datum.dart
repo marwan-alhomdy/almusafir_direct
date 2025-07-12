@@ -358,7 +358,7 @@ class OrderType {
         image: json['image'] == null
             ? null
             : ImageModel.fromJson(json['image'] as Map<String, dynamic>),
-        images: json['images'] as List<dynamic>?,
+        images: [], // json['images'] as List<dynamic>?,
         files: json['files'] as List<dynamic>?,
         objectType: json['object_type'],
       );
@@ -478,7 +478,7 @@ class OrderType {
         'updated_at': updatedAt,
         'deleted_at': deletedAt,
         'image': image?.toJson(),
-        'images': images,
+        'images': images?.map((e) => e.toJson()).toList(),
         'files': files,
         'object_type': objectType,
       };

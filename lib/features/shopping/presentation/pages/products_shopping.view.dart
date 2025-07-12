@@ -1,4 +1,4 @@
-import 'package:almusafir_direct/core/utils/resource/color_app.dart';
+import 'package:almusafir_direct/features/shopping/presentation/logic/shop_cart_cubit/shop_cart_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -9,6 +9,7 @@ import '../../../../core/widget/state/error.widget.dart';
 import '../../../home/data/model/orderstypes/datum.dart';
 import '../logic/shop_products_cubit/shop_products_cubit.dart';
 import '../widgets/card_porduct/card_shop_product.widget.dart';
+import '../widgets/products_shop/button_move_to_cart.widget.dart';
 import '../widgets/products_shop/header_shopping_widget.dart';
 import '../widgets/products_shop/sliver_shopping_header.dart';
 import '../widgets/shop/loading_service_category.widget.dart';
@@ -24,47 +25,36 @@ class ProductsShoppingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => di.sl<ShopProductsCubit>()
-        ..getShopProducts(
-          orderType: orderType?.refType,
-          departmentsId: shop.id,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => ShopCartCubit()..fetchCart()),
+        BlocProvider(
+          create: (context) => di.sl<ShopProductsCubit>()
+            ..getShopProducts(
+              orderType: orderType?.refType,
+              departmentsId: shop.id,
+            ),
         ),
+      ],
       child: Scaffold(
-          body: CustomScrollView(
-            physics: ClampingScrollPhysics(),
-            slivers: [
-              SliverShopHeader.appBar(context, shop: shop),
-              SliverPersistentHeader(
-                pinned: true,
-                delegate: SliverHeaderDelegate(
-                  child: HeaderShoppingWidget(shop: shop),
-                  height: 100,
-                ),
+        bottomNavigationBar: ButtonMoveToCartWidget(),
+        body: CustomScrollView(
+          physics: ClampingScrollPhysics(),
+          slivers: [
+            SliverShopHeader.appBar(context, shop: shop),
+            SliverPersistentHeader(
+              pinned: true,
+              delegate: SliverHeaderDelegate(
+                child: HeaderShoppingWidget(shop: shop),
+                height: 100,
               ),
-              BlocBuilder<ShopProductsCubit, ShopProductsState>(
-                builder: _builderShopProducts,
-              ),
-            ],
-          ),
-          bottomNavigationBar: Padding(
-              padding: const EdgeInsets.fromLTRB(16, 16, 16, 30),
-              child: SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: ElevatedButton.icon(
-                  onPressed: () {},
-                  icon: Icon(Icons.shopping_cart, color: Colors.white),
-                  label: Text('الانتقال إلى السلة'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.mainOneColor,
-                    foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                ),
-              ))),
+            ),
+            BlocBuilder<ShopProductsCubit, ShopProductsState>(
+              builder: _builderShopProducts,
+            ),
+          ],
+        ),
+      ),
     );
   }
 
