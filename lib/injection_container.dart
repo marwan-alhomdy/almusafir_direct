@@ -1,6 +1,6 @@
+import 'package:almusafir_direct/features/checkout/domain/usecases/services/get_flights_uescases.dart';
 import 'package:almusafir_direct/features/profile/domain/usecases/delete_avatar_usecases.dart';
 import 'package:almusafir_direct/features/profile/domain/usecases/get_paymens_available.usecases.dart';
-import 'package:almusafir_direct/features/services/domain/usecases/services/get_flights_uescases.dart';
 import 'package:almusafir_direct/features/shopping/presentation/logic/shop_products_cubit/shop_products_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
@@ -33,6 +33,16 @@ import 'features/chat/data/repositories/chat_repositories_imp.dart';
 import 'features/chat/domain/repositories/chat_repositories.dart';
 import 'features/chat/domain/usecases/chat_with_openai.usecases.dart';
 import 'features/chat/presentation/logic/chat_with_openai_cubit/chat_with_openai_cubit.dart';
+import 'features/checkout/data/datasources/checkout_remote_datasources.dart';
+import 'features/checkout/data/repositories/checkout_repositories_imp.dart';
+import 'features/checkout/domain/repositories/checkout_repositories.dart';
+import 'features/checkout/domain/usecases/services/checkout2_uescases.dart';
+import 'features/checkout/domain/usecases/services/get_airport_uescases.dart';
+import 'features/checkout/domain/usecases/services/get_loads_types_uescases.dart';
+import 'features/checkout/domain/usecases/services/get_payment_methods_uescases.dart';
+import 'features/checkout/domain/usecases/services/get_vehicle_type_uescases.dart';
+import 'features/checkout/presentation/logic/form_checkout_cubit/form_checkout_cubit.dart';
+import 'features/checkout/presentation/logic/form_service_cubit/form_service_cubit.dart';
 import 'features/home/data/datasources/home_local_datasource.dart';
 import 'features/home/data/datasources/home_remote_datasources.dart';
 import 'features/home/data/repositories/home_repositories_imp.dart';
@@ -60,16 +70,6 @@ import 'features/profile/presention/bloc/payment_methods_cubit/payment_methods_c
 import 'features/profile/presention/bloc/point_cubit/point_cubit.dart';
 import 'features/profile/presention/bloc/profile_bloc/profile_bloc.dart';
 import 'features/profile/presention/bloc/referral_bloc/referral_bloc.dart';
-import 'features/services/data/datasources/services_remote_datasources.dart';
-import 'features/services/data/repositories/services_repositories_imp.dart';
-import 'features/services/domain/repositories/services_repositories.dart';
-import 'features/services/domain/usecases/services/checkout2_uescases.dart';
-import 'features/services/domain/usecases/services/get_airport_uescases.dart';
-import 'features/services/domain/usecases/services/get_loads_types_uescases.dart';
-import 'features/services/domain/usecases/services/get_payment_methods_uescases.dart';
-import 'features/services/domain/usecases/services/get_vehicle_type_uescases.dart';
-import 'features/services/presentation/logic/form_service_cubit/form_service_cubit.dart';
-import 'features/services/presentation/logic/services_cubit/services_cubit.dart';
 import 'features/shopping/data/datasources/department_remote_datasources.dart';
 import 'features/shopping/data/repositories/department_repositories_imp.dart';
 import 'features/shopping/domain/repositories/department_repositories.dart';
@@ -113,7 +113,7 @@ Future<void> init() async {
 
   sl.registerFactory(() => ContactUsCubit(contactUsUsecases: sl()));
 
-  sl.registerFactory(() => ServicesCubit(checkout2Uescases: sl()));
+  sl.registerFactory(() => FormCheckoutCubit(checkout2Uescases: sl()));
   sl.registerFactory(() => FormServiceCubit(
       getAirportUescases: sl(),
       getLoadsTypesUescases: sl(),
@@ -208,7 +208,7 @@ Future<void> init() async {
       ));
 
   //Services
-  sl.registerLazySingleton<ServicesRepostitory>(() => ServicesRepostitoryImp(
+  sl.registerLazySingleton<CheckoutRepostitory>(() => CheckoutRepostitoryImp(
         remoteDataSource: sl(),
         networkInfo: sl(),
       ));
@@ -248,8 +248,8 @@ Future<void> init() async {
   sl.registerLazySingleton<HomeRemoteDataSource>(
       () => HomeRemoteDataSourceImplWithDio(apiService: sl()));
 
-  sl.registerLazySingleton<ServicesRemoteDataSource>(
-      () => ServicesRemoteDataSourceImplWithDio(apiService: sl()));
+  sl.registerLazySingleton<CheckoutRemoteDataSource>(
+      () => CheckoutRemoteDataSourceImplWithDio(apiService: sl()));
 
   //Departments
   sl.registerLazySingleton<DepartmentRemoteDataSource>(

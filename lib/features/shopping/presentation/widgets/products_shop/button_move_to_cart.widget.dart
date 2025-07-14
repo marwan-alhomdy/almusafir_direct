@@ -1,4 +1,4 @@
-import 'package:almusafir_direct/core/utils/function/message_box.dart';
+import 'package:almusafir_direct/core/utils/function/toast_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -6,10 +6,12 @@ import 'package:get/get.dart';
 import '../../../../../core/utils/resource/color_app.dart';
 import '../../../../../core/utils/style/border_radius.dart';
 import '../../../../cart/presentation/pages/cart.view.dart';
+import '../../../../home/data/model/orderstypes/datum.dart';
 import '../../logic/shop_cart_cubit/shop_cart_cubit.dart';
 
 class ButtonMoveToCartWidget extends StatelessWidget {
-  const ButtonMoveToCartWidget({super.key});
+  const ButtonMoveToCartWidget({super.key, required this.orderType});
+  final OrderType? orderType;
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +25,8 @@ class ButtonMoveToCartWidget extends StatelessWidget {
                 width: double.infinity,
                 height: 50,
                 child: ElevatedButton.icon(
-                  onPressed: () => Get.to(() => MyCartView())
-                      ?.then((_) => context.read<ShopCartCubit>().fetchCart()),
+                  onPressed: () =>
+                      Get.to(() => MyCartView(orderType: orderType)),
                   icon: Icon(Icons.shopping_cart, color: Colors.white),
                   label: Text('الانتقال إلى السلة'),
                   style: ElevatedButton.styleFrom(
@@ -40,7 +42,7 @@ class ButtonMoveToCartWidget extends StatelessWidget {
 
   void listenerShopCart(BuildContext context, ShopCartState state) {
     if (state is ErrorFetchShopCartState) {
-      MessageBox.showError(context, state.message);
+      ToastBox.showError(message: state.message);
     }
   }
 }

@@ -37,7 +37,7 @@ class ProductsShoppingView extends StatelessWidget {
         ),
       ],
       child: Scaffold(
-        bottomNavigationBar: ButtonMoveToCartWidget(),
+        bottomNavigationBar: ButtonMoveToCartWidget(orderType: orderType),
         body: CustomScrollView(
           physics: ClampingScrollPhysics(),
           slivers: [

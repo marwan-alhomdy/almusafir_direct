@@ -4,10 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
 import '../../../../../core/utils/resource/color_app.dart';
+import '../../../checkout/presentation/pages/chekcout.view.dart';
+import '../../../home/data/model/orderstypes/datum.dart';
 import '../logic/cart_cubit/cart_cubit.dart';
 
 class ButtonMoveToCheckoutWidget extends StatelessWidget {
-  const ButtonMoveToCheckoutWidget({super.key});
+  const ButtonMoveToCheckoutWidget({super.key, this.orderType});
+  final OrderType? orderType;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,8 @@ class ButtonMoveToCheckoutWidget extends StatelessWidget {
                 width: double.infinity,
                 height: 50,
                 child: ElevatedButton.icon(
-                  onPressed: () => Get.to(() => SizedBox()),
+                  onPressed: () =>
+                      Get.to(() => CheckoutView(orderType: orderType)),
                   icon: Icon(Icons.shopping_cart, color: Colors.white),
                   label: Text('اتمام الطلب'),
                   style: ElevatedButton.styleFrom(

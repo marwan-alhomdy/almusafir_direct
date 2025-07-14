@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import '../../../../core/utils/resource/text_style.dart';
 import '../../../../core/utils/style/border_radius.dart';
 import '../../../../core/widget/image/image_widget.dart';
-import '../../../services/presentation/pages/form_service_input.view.dart';
-import '../../../services/presentation/pages/service.view.dart';
+import '../../../checkout/presentation/pages/form_checkout_input.view.dart';
+import '../../../service/presentation/pages/service.view.dart';
 import '../../../shopping/presentation/pages/service_items.view.dart';
 import '../../../shopping/presentation/pages/shops.view.dart';
 import '../../data/model/orderstypes/datum.dart';
@@ -30,7 +30,7 @@ class CardServsiceWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 ImageWidget(
-                  orderType?.image?.small ?? "",
+                  orderType?.image?.original ?? "",
                   width: 50,
                   height: 50,
                   fit: BoxFit.contain,
@@ -74,7 +74,7 @@ class CardServsiceWidget extends StatelessWidget {
         orderType?.isRequiredShopId == 0) {
       Get.to(() => ServiceItemsView(orderType: orderType));
     } else if (orderType?.isRequiredCart == 0) {
-      Get.to(() => FormServiceInputView(orderType: orderType));
+      Get.to(() => FormCheckoutInputView(orderType: orderType));
     } else {
       Get.to(() => ServicesView());
     }

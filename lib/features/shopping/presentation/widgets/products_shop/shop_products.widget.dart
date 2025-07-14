@@ -6,7 +6,7 @@ import '../../../../../core/Animation/animation_column_widget.dart';
 import '../../../../../core/Animation/scale_animation_widget.dart';
 import '../../../../../core/widget/card/card_product.widget.dart';
 import '../../../../../core/widget/card/card_product_vertical.widget.dart';
-import '../../../../service_details/presentation/pages/service_details.view.dart';
+import '../../../../service/presentation/pages/service_details.view.dart';
 
 class ShopProductsWidget extends StatelessWidget {
   const ShopProductsWidget({

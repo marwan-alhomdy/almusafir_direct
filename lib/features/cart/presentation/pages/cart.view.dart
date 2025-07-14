@@ -11,12 +11,14 @@ import '../../../../core/Animation/animation_limiter_widget.dart';
 import '../../../../core/utils/dialoge/messagebox_dialog_widget.dart';
 import '../../../../core/widget/appbar/my_appbar.dart';
 import '../../../../core/widget/state/error.widget.dart';
+import '../../../home/data/model/orderstypes/datum.dart';
 import '../logic/product_card_cubit/product_card_cubit.dart';
 import '../widgets/button_move_to_checkout.widget.dart';
 import '../widgets/card_product_cart.widget.dart';
 
 class MyCartView extends StatelessWidget {
-  const MyCartView({super.key});
+  const MyCartView({super.key, required this.orderType});
+  final OrderType? orderType;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +47,7 @@ class MyCartView extends StatelessWidget {
               SizedBox(width: 20),
             ],
           ),
-          bottomNavigationBar: ButtonMoveToCheckoutWidget(),
+          bottomNavigationBar: ButtonMoveToCheckoutWidget(orderType: orderType),
           body: BlocBuilder<CartCubit, CartState>(
             builder: (context, state) {
               if (state is LoadingFetchCartState) {

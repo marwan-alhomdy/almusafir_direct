@@ -133,12 +133,7 @@ class _QuantityProductinCardWidgetState
 
   @override
   void initState() {
-    count = context
-            .read<ShopCartCubit>()
-            .rowCart
-            .firstWhereOrNull((row) => row.id == widget.product.id)
-            ?.qty ??
-        0;
+    initSettingCount();
     super.initState();
   }
 
@@ -146,6 +141,15 @@ class _QuantityProductinCardWidgetState
   void dispose() {
     widget.product.isLoading = false;
     super.dispose();
+  }
+
+  void initSettingCount() {
+    count = context
+            .read<ShopCartCubit>()
+            .rowCart
+            .firstWhereOrNull((row) => row.id == widget.product.id)
+            ?.qty ??
+        0;
   }
 
   @override
