@@ -13,10 +13,10 @@ final class LoadingReferralState extends ReferralState {}
 
 final class ErrorReferralState extends ReferralState {
   final String message;
-  ErrorReferralState(this.message);
+  const ErrorReferralState(this.message);
 }
 
 final class ReferralSeccessfulState extends ReferralState {
   final Referral referral;
-  ReferralSeccessfulState(this.referral);
+  const ReferralSeccessfulState(this.referral);
 }

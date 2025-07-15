@@ -50,7 +50,7 @@ class ChatWidget extends StatelessWidget {
                       isLoading: true,
                       message: Message(direction: "OUT"),
                     )
-                  : SizedBox()),
+                  : const SizedBox()),
           const FooterChatWidget(),
         ],
       ),

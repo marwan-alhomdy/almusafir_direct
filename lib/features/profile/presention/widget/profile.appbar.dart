@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+
 import '../../../../helper/language.helper.dart';
 
 class ProfileAppbar extends StatelessWidget implements PreferredSizeWidget {

@@ -42,7 +42,7 @@ class _OnboardingViewState extends State<OnboardingView> {
               flex: 1,
               child: ButtonsOnboardingWidget(
                 currentPage: _currentPage,
-                onSkip: () => Get.offAll(() => HomeView()),
+                onSkip: () => Get.offAll(() => const HomeView()),
                 onNext: () => _controller.nextPage(
                   duration: const Duration(milliseconds: 200),
                   curve: Curves.easeIn,

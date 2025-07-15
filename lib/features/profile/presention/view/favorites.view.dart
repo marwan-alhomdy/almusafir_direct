@@ -16,7 +16,7 @@ class _MyFavoritesViewState extends State<MyFavoritesView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBarWithLogo(),
+      appBar: const MyAppBarWithLogo(),
       body: Column(
         spacing: 10,
         children: [
@@ -26,8 +26,8 @@ class _MyFavoritesViewState extends State<MyFavoritesView> {
               setState(() => selectedBookingType = value);
             },
           ),
-          Divider(height: 0),
-          Expanded(child: SizedBox()),
+          const Divider(height: 0),
+          const Expanded(child: SizedBox()),
         ],
       ),
     );

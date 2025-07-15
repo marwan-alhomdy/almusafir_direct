@@ -27,15 +27,15 @@ class FormCheckoutInputView extends StatelessWidget {
         BlocProvider(create: (_) => di.sl<FormServiceCubit>()),
       ],
       child: Scaffold(
-        appBar: MyAppBarWithLogo(),
+        appBar: const MyAppBarWithLogo(),
         body: Padding(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: Column(
             spacing: 10,
             children: [
               Expanded(
                 child: SingleChildScrollView(
-                  physics: ClampingScrollPhysics(),
+                  physics: const ClampingScrollPhysics(),
                   child: FormCheckoutInputWidget(orderType: orderType),
                 ),
               ),
@@ -48,7 +48,7 @@ class FormCheckoutInputView extends StatelessWidget {
                   );
                 }),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
             ],
           ),
         ),
@@ -60,7 +60,7 @@ class FormCheckoutInputView extends StatelessWidget {
     if (Helper.isAuth) {
       context.read<FormCheckoutCubit>().checkout2();
     } else {
-      Get.to(() => AuthView())?.then((_) {
+      Get.to(() => const AuthView())?.then((_) {
         if (Helper.isAuth && context.mounted) {
           context.read<FormCheckoutCubit>().checkout2();
         }

@@ -12,9 +12,12 @@ class ProductCardCubit extends Cubit<ProductCardState> {
     required this.addToCartUescases,
   }) : super(ProductCardInitial());
 
+  int? shopId;
+  void setShopId(int? shopId) => this.shopId = shopId;
+
   void updateProductFromCart(RowCartModel product, int count) async {
     product.isLoading = true;
-    emit(LoadingUpdateProductInCartState());
+    emit(const LoadingUpdateProductInCartState());
     final data = _getDataCart(product, count);
     final failureOrSuccess = await addToCartUescases(data: data);
     product.isLoading = false;
@@ -26,6 +29,7 @@ class ProductCardCubit extends Cubit<ProductCardState> {
 
   Map<String, dynamic> _getDataCart(RowCartModel product, int count) {
     return {
+      "shop_id": shopId,
       "menuId": product.id,
       "quantity": count,
       "comment": "",

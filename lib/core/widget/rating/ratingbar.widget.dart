@@ -24,7 +24,7 @@ class RatingBarWidget extends StatelessWidget {
       ignoreGestures: false,
       glowColor: Colors.amberAccent,
       unratedColor: Colors.grey.shade300,
-      itemBuilder: (__, _) => Icon(
+      itemBuilder: (__, _) => const Icon(
         Icons.star,
         color: Colors.amber,
       ),

@@ -31,7 +31,7 @@ class _LoginWidgetState extends State<LoginWidget> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            LogoAuthWidget(),
+            const LogoAuthWidget(),
             Text("mobileOrEmail".tr, style: AppTextStyles.getMediumStyle()),
             const SizedBox(height: 15),
             MobileOrEmailFieldWidget(
@@ -52,7 +52,7 @@ class _LoginWidgetState extends State<LoginWidget> {
             BlocBuilder<AuthBloc, AuthState>(
               builder: (context, state) {
                 return (state is LoadingAuthState)
-                    ? ButtonLoadingWidget(isLoading: true, text: "")
+                    ? const ButtonLoadingWidget(isLoading: true, text: "")
                     : ButtonLoadingWidget(onTap: _login, text: "login".tr);
               },
             ),
@@ -72,10 +72,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                   TextSpan(
                     children: [
                       TextSpan(text: "youDon'tHaveAnAccount".tr),
-                      WidgetSpan(child: SizedBox(width: 10)),
+                      const WidgetSpan(child: SizedBox(width: 10)),
                       TextSpan(
                         text: "createAccount".tr,
-                        style: TextStyle(color: Colors.orange),
+                        style: const TextStyle(color: Colors.orange),
                       ),
                     ],
                   ),
@@ -91,13 +91,13 @@ class _LoginWidgetState extends State<LoginWidget> {
   }
 
   Future<void> _moveToRegister() async {
-    Get.to(() => RegisterView())?.then((_) {
+    Get.to(() => const RegisterView())?.then((_) {
       if (Helper.isAuth) Get.back();
     });
   }
 
   Future<void> _moveToForgetPassword() async {
-    Get.to(() => ForgetPasswordView())?.then((_) {
+    Get.to(() => const ForgetPasswordView())?.then((_) {
       if (Helper.isAuth) Get.back();
     });
   }

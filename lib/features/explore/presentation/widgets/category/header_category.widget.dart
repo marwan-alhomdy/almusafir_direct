@@ -15,12 +15,12 @@ class HeaderCategoryWidget extends StatelessWidget {
     return Row(
       children: [
         Icon(category.icon, size: 18),
-        SizedBox(width: 10),
+        const SizedBox(width: 10),
         Text(
           LanguageHelper.isArabic ? category.labelAr : category.labelEn,
           style: AppTextStyles.getMediumStyle(fontSize: 16),
         ),
-        Spacer(),
+        const Spacer(),
         TextButton(
             onPressed: onPressed,
             child: Text("عرض الكل",

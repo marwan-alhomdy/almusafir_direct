@@ -17,7 +17,7 @@ class ReferralWidget extends StatelessWidget {
       spacing: 10,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SizedBox(width: double.infinity),
+        const SizedBox(width: double.infinity),
         Image.network(
           referral.imageDisplay ?? "",
           height: 200,
@@ -36,9 +36,9 @@ class ReferralWidget extends StatelessWidget {
           style: AppTextStyles.getMediumStyle(),
         ),
         CopyTextButton(referral.alias ?? ""),
-        SizedBox(),
+        const SizedBox(),
         Text("أو شارك", style: AppTextStyles.getMediumStyle()),
-        SizedBox(),
+        const SizedBox(),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -48,7 +48,7 @@ class ReferralWidget extends StatelessWidget {
                     Uri.parse('https://wa.me/?text=${referral.alias ?? ""}');
                 await launchUrl(alias, mode: LaunchMode.externalApplication);
               },
-              icon: Icon(
+              icon: const Icon(
                 Iconsax.whatsapp,
                 size: 25,
                 color: Colors.green,
@@ -66,7 +66,7 @@ class ReferralWidget extends StatelessWidget {
 
                 await launchUrl(alias, mode: LaunchMode.externalApplication);
               },
-              icon: Icon(
+              icon: const Icon(
                 Iconsax.message,
                 size: 25,
                 color: Colors.orange,
@@ -80,7 +80,7 @@ class ReferralWidget extends StatelessWidget {
                 await launchUrl(Uri.parse(url),
                     mode: LaunchMode.externalApplication);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.email_rounded,
                 size: 25,
                 color: Colors.blue,
@@ -90,7 +90,7 @@ class ReferralWidget extends StatelessWidget {
               onPressed: () {
                 Share.share(referral.alias ?? "");
               },
-              icon: Icon(
+              icon: const Icon(
                 Iconsax.share,
                 size: 25,
                 color: Colors.red,
@@ -116,7 +116,7 @@ class CopyTextButton extends StatelessWidget {
         onPressed: () {
           Clipboard.setData(ClipboardData(text: alias));
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
+            const SnackBar(
               backgroundColor: Colors.blue,
               content: Text(
                 'تم نسخ النص!',
@@ -134,22 +134,22 @@ class CopyTextButton extends StatelessWidget {
           backgroundColor: Colors.blue, // لون الخلفية
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0), // شكل الحافة
-            side: BorderSide(color: Colors.blue), // لون الحدود المنقطة
+            side: const BorderSide(color: Colors.blue), // لون الحدود المنقطة
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+          padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(Iconsax.copy, color: Colors.white),
-              SizedBox(width: 10.0),
+              const Icon(Iconsax.copy, color: Colors.white),
+              const SizedBox(width: 10.0),
               Flexible(
                 child: Text(
                   alias,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.white),
                 ),
               ),
             ],

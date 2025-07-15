@@ -37,11 +37,11 @@ class _FormContactUsWidgetState extends State<FormContactUsWidget> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            LineButtonSheetWidget(),
+            const LineButtonSheetWidget(),
             Row(
               spacing: 10,
               children: [
-                Icon(Iconsax.message_copy),
+                const Icon(Iconsax.message_copy),
                 Text(
                   "contact_us".tr,
                   style: AppTextStyles.getMediumStyle(fontSize: 18),
@@ -73,18 +73,18 @@ class _FormContactUsWidgetState extends State<FormContactUsWidget> {
                 validator: "".validator(),
                 controller: contactCubit.messageController,
                 maxLines: 3),
-            SizedBox(),
+            const SizedBox(),
             BlocBuilder<ContactUsCubit, ContactUsState>(
               builder: (context, state) {
                 return (state is LoadingContactUsState)
-                    ? ButtonLoadingWidget(text: "", isLoading: true)
+                    ? const ButtonLoadingWidget(text: "", isLoading: true)
                     : ButtonLoadingWidget(
                         text: "OK".tr,
                         onTap: () => contactCubit.contactUs(),
                       );
               },
             ),
-            SizedBox(),
+            const SizedBox(),
           ],
         ),
       ),

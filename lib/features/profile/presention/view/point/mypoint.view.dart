@@ -14,7 +14,7 @@ class MyPointsView extends StatelessWidget {
     return BlocProvider(
       create: (context) => di.sl<PointCubit>()..getStatisticalPoints(),
       child: Scaffold(
-        appBar: MyAppBarWithLogo(),
+        appBar: const MyAppBarWithLogo(),
         body: BlocBuilder<PointCubit, PointState>(
           builder: (context, state) {
             if (state is LoadingPointsState) {
@@ -24,7 +24,7 @@ class MyPointsView extends StatelessWidget {
             } else if (state is StatisticalPointsSuccessfulState) {
               return MyPointsWidget(statisticalPoint: state.statisticalPoint);
             } else {
-              return SizedBox();
+              return const SizedBox();
             }
           },
         ),

@@ -27,7 +27,7 @@ class ProductsShoppingView extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => ShopCartCubit()..fetchCart()),
+        BlocProvider(create: (_) => ShopCartCubit(shop.id)..fetchCart()),
         BlocProvider(
           create: (context) => di.sl<ShopProductsCubit>()
             ..getShopProducts(
@@ -37,9 +37,10 @@ class ProductsShoppingView extends StatelessWidget {
         ),
       ],
       child: Scaffold(
-        bottomNavigationBar: ButtonMoveToCartWidget(orderType: orderType),
+        bottomNavigationBar:
+            ButtonMoveToCartWidget(shopId: shop.id, orderType: orderType),
         body: CustomScrollView(
-          physics: ClampingScrollPhysics(),
+          physics: const ClampingScrollPhysics(),
           slivers: [
             SliverShopHeader.appBar(context, shop: shop),
             SliverPersistentHeader(
@@ -68,7 +69,7 @@ class ProductsShoppingView extends StatelessWidget {
                   departmentsId: shop.id,
                 )));
     } else if (state is ShopProductsLoadingState) {
-      return SliverFillRemaining(
+      return const SliverFillRemaining(
         child: LoadingServiceCategoryWidget(
           isGridView: false,
           showHeader: false,

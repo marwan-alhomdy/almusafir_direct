@@ -16,8 +16,10 @@ class FormCheckoutCubit extends Cubit<FormCheckoutState> {
   }) : super(ServicesInitial());
 
   late final OrderType? orderType;
-  void setOrderType(OrderType? orderType) {
+  late final int? shopId;
+  void setOrderType(OrderType? orderType, [int? shopId]) {
     this.orderType = orderType;
+    this.shopId = shopId;
   }
 
   final GlobalKey<FormState> formKey = GlobalKey();
@@ -63,9 +65,11 @@ class FormCheckoutCubit extends Cubit<FormCheckoutState> {
 
   Map<String, dynamic> getDataCheckout() {
     return {
+      "shop_id": shopId,
+      'order_type': orderType?.refType,
       'step': "details_shiping_coupon",
       'payment_method_id': selectedpaymentMethod?.id?.toString(),
-      'order_type': orderType?.refType,
+
       'vehicle_type_id': selectedVehicleType?.id?.toString(),
       'expected_cart_total': expectedTotalController.text,
       'customer_notes': customerNoteController.text,

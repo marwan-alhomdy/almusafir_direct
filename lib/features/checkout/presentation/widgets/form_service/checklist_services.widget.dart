@@ -22,7 +22,7 @@ class CheckListServicesWidget extends StatelessWidget {
       trackVisibility: true,
       thumbVisibility: true,
       child: SingleChildScrollView(
-        physics: ClampingScrollPhysics(),
+        physics: const ClampingScrollPhysics(),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: List.generate(
@@ -31,8 +31,8 @@ class CheckListServicesWidget extends StatelessWidget {
               minVerticalPadding: 0,
               onTap: () => onChanged(services[index]),
               leading: services[index].id == value?.id
-                  ? Icon(Iconsax.tick_circle, color: Colors.green)
-                  : Icon(Iconsax.tick_circle_copy, color: Colors.grey),
+                  ? const Icon(Iconsax.tick_circle, color: Colors.green)
+                  : const Icon(Iconsax.tick_circle_copy, color: Colors.grey),
               title: Text(services[index].name ?? "---"),
               subtitle: Text(
                 services[index].shortDescription ?? "---",

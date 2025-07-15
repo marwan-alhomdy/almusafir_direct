@@ -18,7 +18,7 @@ class ReferralBloc extends Bloc<ReferralEvent, ReferralState> {
     final failurOrReferral = await getReferralUseCase();
     emit(
       failurOrReferral.fold(
-        (failur) => ErrorReferralState(""),
+        (failur) => const ErrorReferralState(""),
         (referral) => ReferralSeccessfulState(referral),
       ),
     );

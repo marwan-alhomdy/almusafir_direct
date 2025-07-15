@@ -20,7 +20,7 @@ class ContactUsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBarWithLogo(
+      appBar: const MyAppBarWithLogo(
         actions: [
           ButtonContactUsWidget(),
           SizedBox(width: 10),
@@ -125,7 +125,7 @@ class _InfoRowWidget extends StatelessWidget {
       textDirection: TextDirection.ltr,
       child: Card.filled(
         child: ListTile(
-          contentPadding: EdgeInsetsDirectional.only(start: 15),
+          contentPadding: const EdgeInsetsDirectional.only(start: 15),
           minTileHeight: 50,
           leading: Icon(icon, size: 18),
           title: Text(

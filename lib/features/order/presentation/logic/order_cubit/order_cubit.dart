@@ -11,7 +11,7 @@ class OrderCubit extends Cubit<OrderState> {
   OrderCubit({required this.getOrdersUescases}) : super(OrderInitial());
 
   void getOrders() async {
-    emit(LoadingOrdersState());
+    emit(const LoadingOrdersState());
     final failureOrSuccess = await getOrdersUescases();
     failureOrSuccess.fold(
         (failuer) => emit(ErrorGetOrderState(message: failuer.message)),

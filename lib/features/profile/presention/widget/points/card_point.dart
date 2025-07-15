@@ -21,10 +21,10 @@ class CardPointWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           ListTile(
             minLeadingWidth: 0,
-            leading: Icon(
+            leading: const Icon(
               Iconsax.wallet,
               color: Colors.deepOrange,
               size: 18,
@@ -36,15 +36,15 @@ class CardPointWidget extends StatelessWidget {
             ),
             trailing: Text(
               DateTimeHandler.formatDateFromString(createAt),
-              style: TextStyle(color: Colors.blueAccent),
+              style: const TextStyle(color: Colors.blueAccent),
             ),
           ),
-          Divider(height: 0, endIndent: 20, indent: 20),
+          const Divider(height: 0, endIndent: 20, indent: 20),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(note ?? "----"),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
         ],
       ),
     );

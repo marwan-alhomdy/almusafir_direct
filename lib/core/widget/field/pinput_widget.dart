@@ -35,7 +35,9 @@ class PinputWidget extends StatelessWidget {
               color: AppColors.mainOneColor,
               fontWeight: FontWeight.w500),
           decoration: BoxDecoration(
-            color: Get.isDarkMode ? const Color(0x31535151) : Color(0xfff2f2f2),
+            color: Get.isDarkMode
+                ? const Color(0x31535151)
+                : const Color(0xfff2f2f2),
             border: Border.all(color: const Color(0x999FAACE), width: 0.5),
             borderRadius: BorderRadius.circular(12),
           ),

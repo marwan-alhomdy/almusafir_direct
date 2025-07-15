@@ -29,7 +29,7 @@ class PaymentMethodsWidget extends StatelessWidget {
               return PaymentMethodsAvailablesWidget(
                   paymentMethods: state.paymentMethods);
             } else {
-              return SizedBox();
+              return const SizedBox();
             }
           },
         ),

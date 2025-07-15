@@ -15,7 +15,7 @@ class DetaislPointsView extends StatelessWidget {
     return BlocProvider(
       create: (context) => di.sl<PointCubit>()..getPoints(),
       child: Scaffold(
-        appBar: MyAppBarWithLogo(),
+        appBar: const MyAppBarWithLogo(),
         body: BlocBuilder<PointCubit, PointState>(
           builder: (context, state) {
             if (state is LoadingPointsState) {
@@ -25,7 +25,7 @@ class DetaislPointsView extends StatelessWidget {
             } else if (state is GetPointsSuccessfulState) {
               return _PointsWidget(points: state.points);
             } else {
-              return SizedBox();
+              return const SizedBox();
             }
           },
         ),
@@ -40,12 +40,12 @@ class _PointsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (points.isEmpty) {
-      return Center(child: Text("لاتوجد عمليات"));
+      return const Center(child: Text("لاتوجد عمليات"));
     }
 
     return SingleChildScrollView(
-      padding: EdgeInsets.all(10),
-      physics: ClampingScrollPhysics(),
+      padding: const EdgeInsets.all(10),
+      physics: const ClampingScrollPhysics(),
       child: Column(
         spacing: 5,
         children: List.generate(

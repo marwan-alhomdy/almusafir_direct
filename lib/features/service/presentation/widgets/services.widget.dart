@@ -17,13 +17,13 @@ class ListServicesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      physics: ClampingScrollPhysics(),
+      physics: const ClampingScrollPhysics(),
       itemCount: services.length,
       itemBuilder: (context, index) {
         final service = services[index];
         return Card.filled(
           child: ListTile(
-            contentPadding: EdgeInsets.symmetric(horizontal: 10),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 10),
             onTap: () => _showServiceDetails(service),
             title: Text(service.title),
             trailing: const Icon(Icons.chevron_right),
@@ -55,13 +55,13 @@ class GridServicesWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.builder(
       gridDelegate:
-          SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-      physics: ClampingScrollPhysics(),
+          const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+      physics: const ClampingScrollPhysics(),
       itemCount: services.length,
       itemBuilder: (context, index) {
         final service = services[index];
         return Card.filled(
-          margin: EdgeInsets.all(5),
+          margin: const EdgeInsets.all(5),
           child: InkWell(
             customBorder: RoundedRectangleBorderAttribute.all(12),
             onTap: () => _showServiceDetails(service),
@@ -70,7 +70,7 @@ class GridServicesWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Icon(service.icon, color: service.color, size: 30),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Text(
                   service.title,
                   maxLines: 2,

@@ -19,10 +19,10 @@ class RegisterView extends StatelessWidget {
     return BlocProvider(
       create: (context) => di.sl<RegisterCubit>(),
       child: Scaffold(
-        appBar: AuthAppBer(),
+        appBar: const AuthAppBer(),
         body: BlocListener<RegisterCubit, RegisterState>(
           listener: _listenerSignInBlocState,
-          child: RegisterWidget(),
+          child: const RegisterWidget(),
         ),
       ),
     );

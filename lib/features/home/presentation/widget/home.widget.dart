@@ -30,7 +30,7 @@ class HomeWidget extends StatelessWidget {
             onTap: () => context.read<HomeBloc>().add(FetchAllDataEvent()),
           );
         } else if (state is LoadingHomeState) {
-          return HomeLoadingWidget();
+          return const HomeLoadingWidget();
         } else {
           return const SizedBox();
         }
@@ -73,7 +73,7 @@ class _HomeWidget extends StatelessWidget {
           const SizedBox(height: 10),
           CarouselSliderGroupWidget(
               images: allData?.adverts?.data
-                      ?.map((e) => e.image?.medium ?? "")
+                      ?.map((e) => e.image?.original ?? "")
                       .toList() ??
                   []),
           Padding(
@@ -83,51 +83,12 @@ class _HomeWidget extends StatelessWidget {
                 mainAxisSpacing: 0,
                 shrinkWrap: true,
                 childAspectRatio: 5 / 4,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 children: allData?.orderstypes?.orderType
                         ?.map((e) => CardServsiceWidget(orderType: e))
                         .toList() ??
                     []),
           ),
-          // SizedBox(height: 10),
-          // Row(
-          //   children: [
-          //     SizedBox(width: 20),
-          //     Icon(Iconsax.discount_shape_copy, size: 18),
-          //     SizedBox(width: 5),
-          //     Text(
-          //       "العروض".tr,
-          //       style: AppTextStyles.getMediumStyle(
-          //         fontSize: 18,
-          //       ),
-          //     ),
-          //   ],
-          // ),
-          // SizedBox(height: 10),
-          // SingleChildScrollView(
-          //   padding: const EdgeInsets.symmetric(horizontal: 10),
-          //   physics: const ClampingScrollPhysics(),
-          //   scrollDirection: Axis.horizontal,
-          //   child: Row(
-          //     children: [
-          //       _CardOfferWidget(
-          //         image:
-          //             "https://dynamicimagesae.rehlat.com/DynamicImages/DealsAndOffers/DealsPromos/1033_202505141244365789_DealsPromoImageMWeb.jpg",
-          //         title: "خصم 50% على جميع الرحلات".tr,
-          //       ),
-          //       _CardOfferWidget(
-          //         image:
-          //             "https://emiristanbul.com/wp-content/uploads/2020/12/ucuz-bilet.jpg",
-          //         title: "خصم 50% على جميع الرحلات".tr,
-          //       ),
-          //       _CardOfferWidget(
-          //         image:
-          //             "https://elgzeratours.com/wp-content/uploads/2024/12/%D8%AA%D8%B0%D8%A7%D9%83%D8%B1-%D8%AD%D8%AC%D8%B2-%D8%A7%D9%84%D8%B7%D9%8A%D8%B1%D8%A7%D9%86-%D8%A8%D8%A3%D8%B1%D8%AE%D8%B5-%D8%A7%D9%84%D8%A3%D8%B3%D8%B9%D8%A7%D8%B1.png",
-          //         title: "خصم 50% على جميع الرحلات".tr,
-          //       ),
-          //     ],
-          //   ),
-          // )
         ],
       ),
     );
@@ -145,7 +106,7 @@ class _CardOfferWidget extends StatelessWidget {
       width: 200,
       child: Card(
         elevation: 0.3,
-        margin: EdgeInsets.all(5),
+        margin: const EdgeInsets.all(5),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -154,14 +115,14 @@ class _CardOfferWidget extends StatelessWidget {
                 borderRadius: BorderRadiusAttribute.top(12),
                 child: ImageWidget(image,
                     width: 200, height: 150, fit: BoxFit.cover)),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               title,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: AppTextStyles.getMediumStyle(),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
           ],
         ),
       ),

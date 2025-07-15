@@ -21,7 +21,7 @@ class ProductsOrderWidget extends StatelessWidget {
             CardOrderProductWidget(
               product: order.items?.data?[index],
             ),
-            if (index != length - 1) Divider(thickness: 0.3),
+            if (index != length - 1) const Divider(thickness: 0.3),
           ],
         ]),
       ),

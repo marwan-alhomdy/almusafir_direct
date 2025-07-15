@@ -49,11 +49,11 @@ class MyPointsWidget extends StatelessWidget {
         Card(
             color: Colors.blueAccent,
             child: ListTile(
-              onTap: () => Get.to(() => DetaislPointsView()),
+              onTap: () => Get.to(() => const DetaislPointsView()),
               minTileHeight: 50,
               iconColor: Colors.white,
-              leading: Icon(Iconsax.empty_wallet_time, size: 18),
-              title: Text(
+              leading: const Icon(Iconsax.empty_wallet_time, size: 18),
+              title: const Text(
                 'عرض عمليات النقاط',
                 style: TextStyle(
                   color: Colors.white,

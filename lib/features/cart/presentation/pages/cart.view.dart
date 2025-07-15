@@ -17,15 +17,20 @@ import '../widgets/button_move_to_checkout.widget.dart';
 import '../widgets/card_product_cart.widget.dart';
 
 class MyCartView extends StatelessWidget {
-  const MyCartView({super.key, required this.orderType});
+  const MyCartView({super.key, required this.shopId, required this.orderType});
   final OrderType? orderType;
+  final int? shopId;
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => di.sl<CartCubit>()..fetchCart()),
-        BlocProvider(create: (_) => di.sl<ProductCardCubit>()),
+        BlocProvider(
+            create: (_) => di.sl<CartCubit>()
+              ..setShopId(shopId)
+              ..fetchCart()),
+        BlocProvider(
+            create: (_) => di.sl<ProductCardCubit>()..setShopId(shopId)),
       ],
       child: BlocListener<ProductCardCubit, ProductCardState>(
         listener: (context, state) {
@@ -40,25 +45,26 @@ class MyCartView extends StatelessWidget {
                 return IconButton(
                   tooltip: "حذف السلة",
                   color: AppColors.redForeColor,
-                  icon: Icon(Iconsax.trash),
+                  icon: const Icon(Iconsax.trash),
                   onPressed: () => _deleteCart(context),
                 );
               }),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
             ],
           ),
-          bottomNavigationBar: ButtonMoveToCheckoutWidget(orderType: orderType),
+          bottomNavigationBar:
+              ButtonMoveToCheckoutWidget(shopId: shopId, orderType: orderType),
           body: BlocBuilder<CartCubit, CartState>(
             builder: (context, state) {
               if (state is LoadingFetchCartState) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               } else if (state is ErrorFetchCartState) {
                 return ErrorCustomWidget(state.message,
                     onTap: () => context.read<CartCubit>().fetchCart());
               } else if (state is FetchCartSuccessfullyState) {
                 final rows = context.read<CartCubit>().rowCart;
                 return (rows.isEmpty)
-                    ? EmptyCartWidget()
+                    ? const EmptyCartWidget()
                     : AnimationLimiterWidget(
                         children: List.generate(
                           rows.length,
@@ -68,7 +74,7 @@ class MyCartView extends StatelessWidget {
                         ),
                       );
               } else {
-                return SizedBox();
+                return const SizedBox();
               }
             },
           ),

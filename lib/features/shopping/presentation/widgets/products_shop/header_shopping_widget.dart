@@ -17,7 +17,7 @@ class HeaderShoppingWidget extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       spacing: 10,
       children: [
-        SizedBox(width: 10),
+        const SizedBox(width: 10),
         Expanded(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -27,12 +27,13 @@ class HeaderShoppingWidget extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: AppTextStyles.getMediumStyle()),
-              SizedBox(height: 5),
+              const SizedBox(height: 5),
               Row(
                 spacing: 2,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Icon(Iconsax.location, size: 12, color: Colors.blueAccent),
+                  const Icon(Iconsax.location,
+                      size: 12, color: Colors.blueAccent),
                   Expanded(
                     child: Text(
                       shop?.address ?? "---",

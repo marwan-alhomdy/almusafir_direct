@@ -14,28 +14,30 @@ import '../logic/form_service_cubit/form_service_cubit.dart';
 import '../widgets/form_checkout_input.widget.dart';
 
 class CheckoutView extends StatelessWidget {
-  const CheckoutView({super.key, required this.orderType});
-
+  const CheckoutView(
+      {super.key, required this.shopId, required this.orderType});
   final OrderType? orderType;
+  final int? shopId;
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-            create: (_) => di.sl<FormCheckoutCubit>()..setOrderType(orderType)),
+            create: (_) =>
+                di.sl<FormCheckoutCubit>()..setOrderType(orderType, shopId)),
         BlocProvider(create: (_) => di.sl<FormServiceCubit>()),
       ],
       child: Scaffold(
-        appBar: MyAppBarWithLogo(),
+        appBar: const MyAppBarWithLogo(),
         body: Padding(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: Column(
             spacing: 10,
             children: [
               Expanded(
                 child: SingleChildScrollView(
-                  physics: ClampingScrollPhysics(),
+                  physics: const ClampingScrollPhysics(),
                   child: FormCheckoutInputWidget(orderType: orderType),
                 ),
               ),
@@ -48,7 +50,7 @@ class CheckoutView extends StatelessWidget {
                   );
                 }),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
             ],
           ),
         ),
@@ -60,7 +62,7 @@ class CheckoutView extends StatelessWidget {
     if (Helper.isAuth) {
       context.read<FormCheckoutCubit>().checkout2();
     } else {
-      Get.to(() => AuthView())?.then((_) {
+      Get.to(() => const AuthView())?.then((_) {
         if (Helper.isAuth && context.mounted) {
           context.read<FormCheckoutCubit>().checkout2();
         }

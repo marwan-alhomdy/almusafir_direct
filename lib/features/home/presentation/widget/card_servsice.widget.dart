@@ -18,7 +18,7 @@ class CardServsiceWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card.filled(
-      margin: EdgeInsets.all(5),
+      margin: const EdgeInsets.all(5),
       child: InkWell(
         customBorder: RoundedRectangleBorderAttribute.all(12),
         onTap: (orderType?.isSoon == 1) ? null : _moveToServiceDetails,
@@ -28,11 +28,12 @@ class CardServsiceWidget extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
+              spacing: 5,
               children: [
                 ImageWidget(
                   orderType?.image?.original ?? "",
-                  width: 50,
-                  height: 50,
+                  width: 35,
+                  height: 35,
                   fit: BoxFit.contain,
                 ),
                 Text(
@@ -49,7 +50,8 @@ class CardServsiceWidget extends StatelessWidget {
                 top: 4,
                 right: 4,
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                   decoration: BoxDecoration(
                     color: Colors.red,
                     borderRadius: BorderRadius.circular(8),
@@ -76,7 +78,7 @@ class CardServsiceWidget extends StatelessWidget {
     } else if (orderType?.isRequiredCart == 0) {
       Get.to(() => FormCheckoutInputView(orderType: orderType));
     } else {
-      Get.to(() => ServicesView());
+      Get.to(() => const ServicesView());
     }
   }
 }
@@ -89,7 +91,7 @@ class CardServsiceWidget2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card.filled(
-      margin: EdgeInsets.all(5),
+      margin: const EdgeInsets.all(5),
       child: InkWell(
         customBorder: RoundedRectangleBorderAttribute.all(12),
         onTap: () => _moveToServiceDetails(),

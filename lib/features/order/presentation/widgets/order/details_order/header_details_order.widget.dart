@@ -22,7 +22,7 @@ class HeaderDetailsOrderWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             HeaderOrderWidget(order: order),
-            Divider(height: 5),
+            const Divider(height: 5),
             Text(
               order.department?.name ?? "---",
               style: AppTextStyles.getMediumStyle(fontSize: 17),
@@ -33,7 +33,7 @@ class HeaderDetailsOrderWidget extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               style: AppTextStyles.getRegularStyle(),
             ),
-            Divider(height: 5),
+            const Divider(height: 5),
             OrderInfoWidget(
               icon: Iconsax.ticket_copy,
               label: "رقم الطلب :",

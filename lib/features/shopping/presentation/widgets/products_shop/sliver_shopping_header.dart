@@ -24,7 +24,7 @@ class SliverShopHeader {
       leading: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           IconButton.filled(
             onPressed: () => Get.back(),
             style: ButtonStyle(
@@ -43,7 +43,7 @@ class SliverShopHeader {
       ),
       actions: [
         if (Helper.isAuth) _FavoriteShoppingWidget(shop: shop),
-        SizedBox(width: 20),
+        const SizedBox(width: 20),
       ],
       flexibleSpace: FlexibleSpaceBar(
         collapseMode: CollapseMode.parallax,

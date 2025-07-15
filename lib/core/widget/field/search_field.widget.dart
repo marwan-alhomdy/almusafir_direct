@@ -19,11 +19,10 @@ class SearchFieldWidget extends StatelessWidget {
       keyboardType: TextInputType.text,
       validator: validator,
       onFieldSubmitted: onFieldSubmitted,
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         alignLabelWithHint: true,
         prefixIcon: Icon(Iconsax.search_normal_1_copy),
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
+        contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 15),
         counterText: "",
       ),
     );

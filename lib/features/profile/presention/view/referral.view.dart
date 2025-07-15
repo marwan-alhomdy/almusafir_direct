@@ -14,7 +14,7 @@ class ReferralView extends StatelessWidget {
     return BlocProvider(
       create: (context) => di.sl<ReferralBloc>()..add(GetReferralMeBloc()),
       child: Scaffold(
-        appBar: MyAppBarWithLogo(),
+        appBar: const MyAppBarWithLogo(),
         body: BlocBuilder<ReferralBloc, ReferralState>(
           builder: (context, state) {
             if (state is LoadingReferralState) {
@@ -24,7 +24,7 @@ class ReferralView extends StatelessWidget {
             } else if (state is ReferralSeccessfulState) {
               return ReferralWidget(referral: state.referral);
             } else {
-              return SizedBox();
+              return const SizedBox();
             }
           },
         ),

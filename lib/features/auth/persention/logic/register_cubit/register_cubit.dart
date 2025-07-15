@@ -42,7 +42,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     emit(
       result.fold(
           (failure) => failure is AccountNotActiveFailure
-              ? MoveToActivationState()
+              ? const MoveToActivationState()
               : ErrorRegisterState(failure.message),
           (currentUser) => SuccessRegisterState(currentUser: currentUser)),
     );

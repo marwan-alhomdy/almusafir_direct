@@ -22,7 +22,7 @@ class _CardProductCartWidgetState extends State<CardProductCartWidget> {
   Widget build(BuildContext context) {
     return Card(
       elevation: 0.3,
-      margin: EdgeInsets.all(5),
+      margin: const EdgeInsets.all(5),
       child: Padding(
         padding: const EdgeInsets.all(10),
         child: Row(
@@ -75,7 +75,7 @@ class _CardProductCartWidgetState extends State<CardProductCartWidget> {
                       const Spacer(),
                       BlocBuilder<ProductCardCubit, ProductCardState>(
                         builder: (_, __) => (widget.rowCart.isLoading == true)
-                            ? SizedBox(
+                            ? const SizedBox(
                                 height: 25,
                                 width: 25,
                                 child: CircularProgressIndicator(
@@ -133,7 +133,7 @@ class CounterRowProductInCardWidget extends StatelessWidget {
                   backgroundColor: AppColors.mainOneColor,
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorderAttribute.all(5),
-                  child: Icon(Iconsax.minus_square, size: 16),
+                  child: const Icon(Iconsax.minus_square, size: 16),
                   onPressed: () => onChanged(count - 1),
                 ))
             : SizedBox(
@@ -145,7 +145,7 @@ class CounterRowProductInCardWidget extends StatelessWidget {
                   backgroundColor: Colors.redAccent,
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorderAttribute.all(5),
-                  child: Icon(Iconsax.trush_square, size: 16),
+                  child: const Icon(Iconsax.trush_square, size: 16),
                   onPressed: () => onChanged(0),
                 ),
               ),
@@ -164,7 +164,7 @@ class CounterRowProductInCardWidget extends StatelessWidget {
               backgroundColor: AppColors.mainOneColor,
               foregroundColor: Colors.white,
               shape: RoundedRectangleBorderAttribute.all(5),
-              child: Icon(Iconsax.add_square, size: 16),
+              child: const Icon(Iconsax.add_square, size: 16),
               onPressed: () => onChanged(count + 1),
             ),
           ),

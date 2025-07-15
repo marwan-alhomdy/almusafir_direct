@@ -19,7 +19,7 @@ class AuthView extends StatelessWidget {
     return BlocProvider(
       create: (context) => di.sl<AuthBloc>(),
       child: Scaffold(
-        appBar: AuthAppBer(),
+        appBar: const AuthAppBer(),
         body: BlocListener<AuthBloc, AuthState>(
           listener: _listenerSignInBlocState,
           child: const LoginWidget(),

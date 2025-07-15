@@ -25,7 +25,7 @@ class _CardProductVerticalWidgetState extends State<CardProductVerticalWidget> {
   Widget build(BuildContext context) {
     return Card(
       elevation: 0.3,
-      margin: EdgeInsets.all(5),
+      margin: const EdgeInsets.all(5),
       child: InkWell(
         onTap: widget.onPressed,
         customBorder: RoundedRectangleBorderAttribute.all(12),

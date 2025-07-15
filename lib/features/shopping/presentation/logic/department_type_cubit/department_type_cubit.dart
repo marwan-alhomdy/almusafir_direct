@@ -20,7 +20,7 @@ class DepartmentTypeCubit extends Cubit<DepartmentTypeState> {
     failureOrSuccess.fold(
         (failuer) => emit(DepartmentTypeErrorState(message: failuer.message)),
         (types) {
-      selectedDepartmentType = types.first;
+      selectedDepartmentType = types.firstOrNull;
       departmentTypes = types;
       emit(GetDepartmentTypeSuccessfullyState(types));
     });

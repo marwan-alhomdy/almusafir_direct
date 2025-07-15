@@ -5,13 +5,13 @@ class RoutesRowWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return const Card(
       margin: EdgeInsets.zero,
       child: Padding(
-        padding: const EdgeInsets.all(12),
+        padding: EdgeInsets.all(12),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
+          children: [
             Text('Popular Routes',
                 style: TextStyle(fontWeight: FontWeight.bold)),
             SizedBox(height: 8),

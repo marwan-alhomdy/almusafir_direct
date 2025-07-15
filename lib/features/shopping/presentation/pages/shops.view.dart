@@ -45,7 +45,7 @@ class _ShopCategoryViewState extends State<ShopCategoryView> {
                 isGridView = !isGridView;
               }),
             ),
-            SizedBox(width: 20),
+            const SizedBox(width: 20),
           ],
         ),
         body: BlocConsumer<DepartmentTypeCubit, DepartmentTypeState>(
@@ -74,7 +74,8 @@ class _ShopCategoryViewState extends State<ShopCategoryView> {
       return CustomScrollView(
         physics: const AlwaysScrollableScrollPhysics(),
         slivers: [
-          ServiceCategoryFilterbar(),
+          if (state.departmentTypes.isNotEmpty)
+            const ServiceCategoryFilterbar(),
           ShoppingWidget(isGridView: isGridView, orderType: widget.orderType),
         ],
       );

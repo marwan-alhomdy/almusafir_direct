@@ -32,7 +32,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       padding: const EdgeInsets.symmetric(horizontal: 20),
-      physics: ClampingScrollPhysics(),
+      physics: const ClampingScrollPhysics(),
       child: Form(
         key: registerCubit.formState,
         child: Column(
@@ -41,7 +41,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            LogoAuthWidget(),
+            const LogoAuthWidget(),
             Text("name".tr, style: AppTextStyles.getMediumStyle()),
             TextFieldWidget(
               controller: registerCubit.nameController,
@@ -73,7 +73,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
             const SizedBox(height: 10),
             BlocBuilder<RegisterCubit, RegisterState>(builder: (_, state) {
               return (state is LoadingRegisterState)
-                  ? ButtonLoadingWidget(isLoading: true, text: "")
+                  ? const ButtonLoadingWidget(isLoading: true, text: "")
                   : ButtonLoadingWidget(onTap: _register, text: "OK".tr);
             }),
             TextButton(
@@ -86,7 +86,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                             .tr),
                     TextSpan(
                       text: "Terms of Service and Privacy Policy".tr,
-                      style: TextStyle(color: Colors.orange),
+                      style: const TextStyle(color: Colors.orange),
                     ),
                   ],
                 ),

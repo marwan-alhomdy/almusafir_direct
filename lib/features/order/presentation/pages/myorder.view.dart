@@ -20,19 +20,19 @@ class MyOrdersView extends StatelessWidget {
         BlocProvider(create: (context) => FilterOrderCubit()),
       ],
       child: Scaffold(
-        appBar: MyAppBarWithLogo(),
+        appBar: const MyAppBarWithLogo(),
         body: BlocBuilder<OrderCubit, OrderState>(
           builder: (context, state) {
             if (state is LoadingOrdersState) {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             } else if (state is ErrorGetOrderState) {
               return ErrorCustomWidget(state.message,
                   onTap: () => context.read<OrderCubit>().getOrders());
             } else if (state is GetOrderSuccessfullyState) {
               context.read<FilterOrderCubit>().initFilterOrder(state.orders);
-              return FilterOrderWidget();
+              return const FilterOrderWidget();
             } else {
-              return SizedBox();
+              return const SizedBox();
             }
           },
         ),
@@ -60,17 +60,17 @@ class _FilterOrderWidgetState extends State<FilterOrderWidget> {
           onChanged: (value) => setState(
               () => filterOrderCubit.changeSelectedOrderStatues(value)),
         ),
-        Divider(height: 0),
+        const Divider(height: 0),
         BlocBuilder<FilterOrderCubit, FilterOrderState>(
           builder: (context, state) {
             if (state is FilterOrderSuccessfullyState) {
               return Expanded(child: OrdersWidget(orders: state.orders));
             } else if (state is LoadingFilterOrderState) {
-              return CircularProgressIndicator();
+              return const CircularProgressIndicator();
             } else if (state is EmptyFilterOrderState) {
-              return Center(child: Text("لا توجد طلبات"));
+              return const Center(child: Text("لا توجد طلبات"));
             } else {
-              return SizedBox();
+              return const SizedBox();
             }
           },
         ),

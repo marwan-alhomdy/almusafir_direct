@@ -1,5 +1,7 @@
 import 'dart:io' show Platform;
 
+import 'package:almusafir_direct/helper/language.helper.dart';
+
 import '../../helper/cache_helper.dart';
 import '../constants/cached/cached_name.dart';
 
@@ -9,6 +11,7 @@ class HeaderServer {
       'Content-Type': 'application/json',
       "api_version": "v2",
       'User-Agent': Platform.isIOS ? 'ios' : 'android',
+      'Accept-Language':LanguageHelper.isArabic?"ar":"en",
     };
   }
 
@@ -19,6 +22,7 @@ class HeaderServer {
       'Content-Type': 'application/json',
       "api_version": "v2",
       'User-Agent': Platform.isIOS ? 'ios' : 'android',
+      'Accept-Language':LanguageHelper.isArabic?"ar":"en",
     };
   }
 
@@ -27,6 +31,7 @@ class HeaderServer {
       "content-type": "multipart/form-data",
       "api_version": "v2",
       'User-Agent': Platform.isIOS ? 'ios' : 'android',
+      'Accept-Language':LanguageHelper.isArabic?"ar":"en",
     };
   }
 

@@ -23,7 +23,7 @@ class ExploreFilterBarWidget extends StatelessWidget {
       height: 50,
       child: Row(
         children: [
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Expanded(
             child: Card(
               elevation: 0.5,
@@ -33,7 +33,7 @@ class ExploreFilterBarWidget extends StatelessWidget {
                   controller: TextEditingController()),
             ),
           ),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           SizedBox(
             width: 50,
             height: 50,
@@ -42,10 +42,10 @@ class ExploreFilterBarWidget extends StatelessWidget {
               foregroundColor: Colors.white,
               backgroundColor: AppColors.mainOneColor,
               onPressed: openFilterDialog,
-              child: Icon(Iconsax.filter_copy),
+              child: const Icon(Iconsax.filter_copy),
             ),
           ),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
         ],
       ),
     );
@@ -61,7 +61,7 @@ class ExploreFilterBarWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             const SizedBox(height: 10),
-            LineButtonSheetWidget(),
+            const LineButtonSheetWidget(),
             FilterItemWidget(
                 value: value, onChanged: (value) => filter = value),
             ButtonWidget(

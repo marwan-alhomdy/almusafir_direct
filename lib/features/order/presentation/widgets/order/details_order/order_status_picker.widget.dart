@@ -65,7 +65,7 @@ class OrderStatusPickerWidget extends StatelessWidget {
       width: 1,
       height: 10,
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-      child: VerticalDivider(),
+      child: const VerticalDivider(),
     );
   }
 

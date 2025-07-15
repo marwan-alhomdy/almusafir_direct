@@ -45,12 +45,12 @@ class _BottomSheetFormServicesWidgetState
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          LineButtonSheetWidget(),
+          const LineButtonSheetWidget(),
           BlocBuilder<FormServiceCubit, FormServiceState>(
             bloc: widget.formServiceCubit,
             builder: (context, state) {
               if (state is FormServiceLoadingState) {
-                return LoadingFormServiceWidget();
+                return const LoadingFormServiceWidget();
               } else if (state is FormServiceErrorState) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 50),
@@ -68,10 +68,10 @@ class _BottomSheetFormServicesWidgetState
                   }),
                 );
               }
-              return SizedBox();
+              return const SizedBox();
             },
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           ButtonWidget(
             text: 'OK'.tr,
             onTap: () {

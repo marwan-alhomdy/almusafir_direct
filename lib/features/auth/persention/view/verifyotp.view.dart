@@ -29,7 +29,7 @@ class VerifyOtpView extends StatelessWidget {
         ..setMobileOrEmail(mobileOrEmail)
         ..sendActivation(fieldNameAuth: fieldNameAuth),
       child: Scaffold(
-        appBar: AuthAppBer(),
+        appBar: const AuthAppBer(),
         body: BlocListener<VerifyCubit, VerifyState>(
           listener: _listenerBlocState,
           child: VerifyotpWidget(fieldNameAuth: fieldNameAuth),

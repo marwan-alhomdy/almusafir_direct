@@ -24,7 +24,7 @@ class CardOrderWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             HeaderOrderWidget(order: order),
-            Divider(),
+            const Divider(),
             Text(
               order.department?.name ?? "---",
               style: AppTextStyles.getMediumStyle(fontSize: 17),
@@ -35,7 +35,7 @@ class CardOrderWidget extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               style: AppTextStyles.getRegularStyle(),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             OrderInfoWidget(
               icon: Iconsax.ticket_copy,
               label: "رقم الطلب :",
@@ -56,7 +56,7 @@ class CardOrderWidget extends StatelessWidget {
               label: "المبلغ :",
               value: "${order.orderTotal ?? "0"}",
             ),
-            Divider(height: 20),
+            const Divider(height: 20),
             ElevatedButton(
               onPressed: () => Get.to(() => DetailsOrderView(order: order)),
               style: ElevatedButton.styleFrom(
@@ -71,7 +71,7 @@ class CardOrderWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Icon(Iconsax.document, color: Colors.white),
+                  const Icon(Iconsax.document, color: Colors.white),
                   Text(
                     "عرض فاتورة الحجز",
                     style: AppTextStyles.getMediumStyle(),
@@ -96,13 +96,14 @@ class HeaderOrderWidget extends StatelessWidget {
 
     return Row(
       children: [
-        Icon(Iconsax.bookmark_2_copy, size: 18, color: AppColors.mainOneColor),
-        SizedBox(width: 10),
+        const Icon(Iconsax.bookmark_2_copy,
+            size: 18, color: AppColors.mainOneColor),
+        const SizedBox(width: 10),
         Text(
           order.orderTypes?.name ?? "---",
           style: AppTextStyles.getMediumStyle(fontSize: 16),
         ),
-        Spacer(),
+        const Spacer(),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 5),
           decoration: BoxDecoration(

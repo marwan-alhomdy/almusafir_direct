@@ -47,7 +47,7 @@ class _ServiceItemsViewState extends State<ServiceItemsView> {
                       isGridView = !isGridView;
                     }),
                   ),
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                 ],
               ),
         body: BlocBuilder<ShopProductsCubit, ShopProductsState>(

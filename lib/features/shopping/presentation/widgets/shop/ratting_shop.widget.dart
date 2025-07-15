@@ -37,12 +37,12 @@ class _RattingShopWidgetState extends State<RattingShopWidget> {
         mainAxisSize: MainAxisSize.min,
         spacing: 10,
         children: [
-          LineButtonSheetWidget(),
+          const LineButtonSheetWidget(),
           Row(
             spacing: 5,
             children: [
-              SizedBox(),
-              Icon(
+              const SizedBox(),
+              const Icon(
                 Iconsax.shop_copy,
                 color: Colors.grey,
               ),
@@ -60,8 +60,8 @@ class _RattingShopWidgetState extends State<RattingShopWidget> {
           Row(
             spacing: 5,
             children: [
-              SizedBox(),
-              Icon(
+              const SizedBox(),
+              const Icon(
                 Iconsax.note_2_copy,
                 color: Colors.grey,
               ),
@@ -89,7 +89,7 @@ class _RattingShopWidgetState extends State<RattingShopWidget> {
               Get.back();
             },
           ),
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
         ],
       ),
     );

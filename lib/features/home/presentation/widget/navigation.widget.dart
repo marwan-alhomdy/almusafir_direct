@@ -18,7 +18,7 @@ class NavigationWidget extends StatelessWidget {
     return NavigationBar(
       selectedIndex: currentIndex,
       onDestinationSelected: chingeScreen,
-      destinations: [
+      destinations: const [
         NavigationDestination(
           icon: Icon(Iconsax.home_copy),
           selectedIcon: Icon(Iconsax.home_1, color: AppColors.mainOneColor),

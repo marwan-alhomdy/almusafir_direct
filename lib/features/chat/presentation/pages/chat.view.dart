@@ -23,7 +23,7 @@ class ChatView extends StatelessWidget {
           appBar: const MyAppBarWithLogo(),
           body: BlocListener<ChatWithOpenaiCubit, ChatWithOpenaiState>(
             listener: _listenerChatWithOpenai,
-            child: ChatWidget(),
+            child: const ChatWidget(),
           ),
         );
       }),

@@ -39,7 +39,7 @@ class ContactUsCubit extends Cubit<ContactUsState> {
       final failureOrSuccess = await contactUsUsecases(data: data);
       emit(failureOrSuccess.fold(
           (failuer) => ErrorContactUsState(message: failuer.message),
-          (_) => ContactUsSuccessfulState()));
+          (_) => const ContactUsSuccessfulState()));
     }
   }
 }

@@ -19,10 +19,9 @@ class DropTextFieldWidget extends StatelessWidget {
       validator: validator,
       onTap: onTap,
       readOnly: true,
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
           alignLabelWithHint: true,
-          contentPadding:
-              const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
+          contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 15),
           counterText: "",
           suffixIcon: Icon(Iconsax.arrow_down)),
     );

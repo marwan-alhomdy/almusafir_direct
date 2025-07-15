@@ -13,9 +13,9 @@ class ForgetPasswordView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => di.sl<VerifyCubit>(),
-      child: Scaffold(
+      child: const Scaffold(
         appBar: AuthAppBer(),
-        body: const ForgetPasswordWidget(),
+        body: ForgetPasswordWidget(),
       ),
     );
   }

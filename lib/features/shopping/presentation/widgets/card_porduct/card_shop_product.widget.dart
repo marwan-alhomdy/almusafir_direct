@@ -27,7 +27,7 @@ class _CardShopProductWidgetState extends State<CardShopProductWidget> {
   Widget build(BuildContext context) {
     return Card(
       elevation: 0.3,
-      margin: EdgeInsets.all(5),
+      margin: const EdgeInsets.all(5),
       child: Padding(
         padding: const EdgeInsets.all(10),
         child: Row(
@@ -157,7 +157,7 @@ class _QuantityProductinCardWidgetState
     return BlocBuilder<ShopCartCubit, ShopCartState>(
       builder: (_, __) {
         return (widget.product.isLoading == true)
-            ? SizedBox(
+            ? const SizedBox(
                 height: 25,
                 width: 25,
                 child: CircularProgressIndicator(

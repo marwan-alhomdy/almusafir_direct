@@ -18,7 +18,7 @@ class _ExploreViewState extends State<ExploreView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBarWithLogo(),
+      appBar: const MyAppBarWithLogo(),
       body: Column(
         spacing: 10,
         children: [
@@ -30,7 +30,7 @@ class _ExploreViewState extends State<ExploreView> {
           ),
           Expanded(
               child: selectedExplore == ExploreFilter.all
-                  ? CategoryWidget()
+                  ? const CategoryWidget()
                   : FilterCategoryWidget(category: selectedExplore)),
         ],
       ),

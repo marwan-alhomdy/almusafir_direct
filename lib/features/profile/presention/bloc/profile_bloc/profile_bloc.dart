@@ -66,7 +66,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     final failureOrSuccess = await deleteAvatarUsecases();
     emit(failureOrSuccess.fold(
         (failuer) => ErrorProfileState(message: failuer.message),
-        (_) => ChangeAvatarSuccessfulState(avatar: null)));
+        (_) => const ChangeAvatarSuccessfulState(avatar: null)));
   }
 
   Future<void> _logoutEvent(

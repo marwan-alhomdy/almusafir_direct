@@ -25,7 +25,7 @@ class _CardShopCategoryWidgetState extends State<CardShopCategoryWidget> {
       width: 200,
       child: Card(
         elevation: 0.3,
-        margin: EdgeInsets.all(5),
+        margin: const EdgeInsets.all(5),
         child: InkWell(
           onTap: widget.onPressed,
           child: Column(
@@ -65,7 +65,7 @@ class _CardShopCategoryWidgetState extends State<CardShopCategoryWidget> {
                     ),
                 ],
               ),
-              SizedBox(),
+              const SizedBox(),
               Row(
                 spacing: 4,
                 children: [
@@ -73,7 +73,7 @@ class _CardShopCategoryWidgetState extends State<CardShopCategoryWidget> {
                     rating: widget.shop.averageRating ?? 0,
                     sizeIcon: 15,
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Text(
                     widget.shop.isOpen == 1 ? "مفتوح" : "مغلق",
                     maxLines: 1,
@@ -84,7 +84,7 @@ class _CardShopCategoryWidgetState extends State<CardShopCategoryWidget> {
                             : Colors.redAccent,
                         fontSize: 13),
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                 ],
               ),
               Text(
@@ -97,7 +97,8 @@ class _CardShopCategoryWidgetState extends State<CardShopCategoryWidget> {
                 spacing: 2,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Icon(Iconsax.location, size: 12, color: Colors.blueAccent),
+                  const Icon(Iconsax.location,
+                      size: 12, color: Colors.blueAccent),
                   Text(
                     widget.shop.address ?? "---",
                     maxLines: 1,
@@ -107,7 +108,7 @@ class _CardShopCategoryWidgetState extends State<CardShopCategoryWidget> {
                   ),
                 ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
             ],
           ),
         ),

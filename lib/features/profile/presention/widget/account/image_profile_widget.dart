@@ -56,7 +56,7 @@ class ImageProfileWidget extends StatelessWidget {
               backgroundColor: AppColorsWithTheme.background,
               foregroundColor: AppColors.mainOneColor,
               onPressed: () => _showDialugeImagePaicker(context),
-              child: Icon(Iconsax.edit)),
+              child: const Icon(Iconsax.edit)),
         ),
       ],
     );
@@ -67,7 +67,7 @@ class ImageProfileWidget extends StatelessWidget {
     BottomSheetWidget.show(ChooseImageWidget(
       onDeleteImage: () {
         Get.back();
-        context.read<ProfileBloc>().add((DeleteAvatarEvent()));
+        context.read<ProfileBloc>().add((const DeleteAvatarEvent()));
       },
       onChooseImage: (imageSource) async {
         Get.back();

@@ -90,15 +90,15 @@ class _SuffixIconWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          SizedBox(),
+          const SizedBox(),
           Text(country.flag, style: const TextStyle(fontSize: 20)),
           Text(
             country.code.replaceAll(RegExp(r'\+'), ''),
             textDirection: TextDirection.ltr,
             style: AppTextStyles.getMediumStyle(),
           ),
-          Icon(Iconsax.arrow_down),
-          SizedBox(width: 5),
+          const Icon(Iconsax.arrow_down),
+          const SizedBox(width: 5),
         ],
       ),
     );

@@ -48,7 +48,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
         ),
 
         CardListProfileWidget(
-          onTap: () => Get.to(() => ContactUsView()),
+          onTap: () => Get.to(() => const ContactUsView()),
           icon: Iconsax.message,
           title: "تواصل معنا".tr,
         ),

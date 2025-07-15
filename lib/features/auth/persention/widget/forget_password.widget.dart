@@ -37,7 +37,7 @@ class _ForgetPasswordWidgetState extends State<ForgetPasswordWidget> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            LogoAuthWidget(),
+            const LogoAuthWidget(),
             Text("mobileOrEmail".tr, style: AppTextStyles.getMediumStyle()),
             const SizedBox(height: 15),
             MobileOrEmailFieldWidget(
@@ -51,7 +51,7 @@ class _ForgetPasswordWidgetState extends State<ForgetPasswordWidget> {
             BlocBuilder<VerifyCubit, VerifyState>(
               builder: (_, state) {
                 return (state is SendOtpLoading)
-                    ? ButtonLoadingWidget(isLoading: true, text: "")
+                    ? const ButtonLoadingWidget(isLoading: true, text: "")
                     : ButtonLoadingWidget(
                         onTap: _moveToVerifyOtp, text: "sendOtp".tr);
               },

@@ -27,7 +27,7 @@ class _ServicesViewState extends State<ServicesView> {
                 isGridView = !isGridView;
               }),
             ),
-            SizedBox(width: 20),
+            const SizedBox(width: 20),
           ],
         ),
         body: Padding(

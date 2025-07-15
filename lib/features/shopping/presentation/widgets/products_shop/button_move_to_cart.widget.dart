@@ -10,25 +10,27 @@ import '../../../../home/data/model/orderstypes/datum.dart';
 import '../../logic/shop_cart_cubit/shop_cart_cubit.dart';
 
 class ButtonMoveToCartWidget extends StatelessWidget {
-  const ButtonMoveToCartWidget({super.key, required this.orderType});
+  const ButtonMoveToCartWidget(
+      {super.key, required this.shopId, required this.orderType});
   final OrderType? orderType;
+  final int? shopId;
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ShopCartCubit, ShopCartState>(
       listener: listenerShopCart,
       builder: (context, __) => context.read<ShopCartCubit>().rowCart.isEmpty
-          ? SizedBox()
+          ? const SizedBox()
           : Padding(
               padding: const EdgeInsets.fromLTRB(16, 16, 16, 30),
               child: SizedBox(
                 width: double.infinity,
                 height: 50,
                 child: ElevatedButton.icon(
-                  onPressed: () =>
-                      Get.to(() => MyCartView(orderType: orderType)),
-                  icon: Icon(Icons.shopping_cart, color: Colors.white),
-                  label: Text('الانتقال إلى السلة'),
+                  onPressed: () => Get.to(
+                      () => MyCartView(orderType: orderType, shopId: shopId)),
+                  icon: const Icon(Icons.shopping_cart, color: Colors.white),
+                  label: const Text('الانتقال إلى السلة'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.mainOneColor,
                     foregroundColor: Colors.white,

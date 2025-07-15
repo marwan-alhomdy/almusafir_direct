@@ -26,7 +26,7 @@ class DatePickerFieldWidget extends StatelessWidget {
       decoration: InputDecoration(
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
-        suffix: Icon(Iconsax.calendar),
+        suffix: const Icon(Iconsax.calendar),
         label: (name == null) ? null : Text(name ?? "----"),
       ),
     );

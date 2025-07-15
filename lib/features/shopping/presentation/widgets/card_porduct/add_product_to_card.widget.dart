@@ -31,7 +31,7 @@ class AddProductToCardWidget extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          LineButtonSheetWidget(),
+          const LineButtonSheetWidget(),
           Row(
             spacing: 10,
             children: [
@@ -73,7 +73,7 @@ class AddProductToCardWidget extends StatelessWidget {
                 ),
             ],
           ),
-          Divider(thickness: 0.4),
+          const Divider(thickness: 0.4),
           ButtonAddToRemoveWidget(
             count: 0,
             price: product.price ?? 0,

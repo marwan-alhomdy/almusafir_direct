@@ -22,7 +22,7 @@ class CartRemoteDataSourceeImplWithDio extends CartRemoteDataSource {
       headers: HeaderServer.headerWithToken,
       data: data,
     );
-    print(response);
+
     return (response["data"]["content"] as List?)
             ?.map((e) => RowCartModel.fromJson(e))
             .toList() ??
@@ -35,7 +35,6 @@ class CartRemoteDataSourceeImplWithDio extends CartRemoteDataSource {
       endPoint: EndPointName.destroyAllCard,
       headers: HeaderServer.headerWithToken,
     );
-    print(response["data"]);
     return (response["data"]["content"] as List?)
             ?.map((e) => RowCartModel.fromJson(e))
             .toList() ??

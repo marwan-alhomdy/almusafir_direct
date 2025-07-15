@@ -12,20 +12,20 @@ class HomeLoadingWidget extends StatelessWidget {
       highlightColor: AppColorsWithTheme.backgroundhighlightShimmer,
       child: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 12),
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         child: Column(
           spacing: 20,
           children: [
-            _TextWidget(),
-            _SilderWidget(),
-            _DotPointWidget(),
+            const _TextWidget(),
+            const _SilderWidget(),
+            const _DotPointWidget(),
             GridView.count(
               crossAxisCount: 3,
               mainAxisSpacing: 0,
               shrinkWrap: true,
               childAspectRatio: 5 / 4,
-              physics: NeverScrollableScrollPhysics(),
-              children: List.generate(20, (index) => _CardWidget()),
+              physics: const NeverScrollableScrollPhysics(),
+              children: List.generate(20, (index) => const _CardWidget()),
             ),
           ],
         ),
@@ -42,11 +42,11 @@ class _TextWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(width: double.infinity),
+        const SizedBox(width: double.infinity),
         Container(
           height: 10,
           width: MediaQuery.sizeOf(context).width * 0.2,
-          margin: EdgeInsets.all(5),
+          margin: const EdgeInsets.all(5),
           decoration: BoxDecoration(
             color: AppColorsWithTheme.backgroundbaseShimmer,
             borderRadius: BorderRadius.circular(5),
@@ -55,7 +55,7 @@ class _TextWidget extends StatelessWidget {
         Container(
           height: 10,
           width: MediaQuery.sizeOf(context).width * 0.5,
-          margin: EdgeInsets.all(5),
+          margin: const EdgeInsets.all(5),
           decoration: BoxDecoration(
             color: AppColorsWithTheme.backgroundbaseShimmer,
             borderRadius: BorderRadius.circular(5),
@@ -107,7 +107,7 @@ class _CardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(5),
+      margin: const EdgeInsets.all(5),
       decoration: BoxDecoration(
         color: AppColorsWithTheme.backgroundbaseShimmer,
         borderRadius: BorderRadius.circular(10),

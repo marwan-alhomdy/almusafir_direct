@@ -34,7 +34,7 @@ class _AccountProfileViewState extends State<AccountProfileView> {
         listener: _listenerProfile,
         child: Builder(builder: (context) {
           return Scaffold(
-            appBar: MyAppBarWithLogo(),
+            appBar: const MyAppBarWithLogo(),
             body: SingleChildScrollView(
               padding: const EdgeInsets.all(20),
               child: AnimationColumnWidget(

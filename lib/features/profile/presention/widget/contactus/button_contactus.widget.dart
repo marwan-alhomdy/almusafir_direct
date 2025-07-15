@@ -20,14 +20,14 @@ class _ButtonContactUsWidgetState extends State<ButtonContactUsWidget> {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-        onPressed: _showFormContactUsWidget, icon: Icon(Iconsax.message));
+        onPressed: _showFormContactUsWidget, icon: const Icon(Iconsax.message));
   }
 
   void _showFormContactUsWidget() {
     BottomSheetWidget.showIsScroll(BlocProvider(
         create: (context) => di.sl<ContactUsCubit>(),
         child: BlocListener<ContactUsCubit, ContactUsState>(
-            listener: _listenerContactUs, child: FormContactUsWidget())));
+            listener: _listenerContactUs, child: const FormContactUsWidget())));
   }
 
   void _listenerContactUs(_, ContactUsState state) {

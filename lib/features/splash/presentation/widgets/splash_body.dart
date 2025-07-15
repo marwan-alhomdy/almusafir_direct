@@ -37,7 +37,7 @@ class SplashViewBodyState extends State<SplashViewBody>
 
   void _goToNextView() {
     Future.delayed(const Duration(seconds: 2), () async {
-      if (false) {
+      if (true) {
         Get.offAll(() => const OnboardingView());
       } else {
         Get.offAll(() => const HomeView());

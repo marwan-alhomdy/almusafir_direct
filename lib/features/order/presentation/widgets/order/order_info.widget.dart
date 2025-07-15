@@ -24,11 +24,11 @@ class OrderInfoWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           if (icon != null) Icon(icon, size: 18, color: AppColors.mainOneColor),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Text(label,
               style: AppTextStyles.getRegularStyle(
                   color: Get.isDarkMode ? Colors.white70 : null)),
-          Spacer(),
+          const Spacer(),
           trailing ??
               Text(value,
                   style: AppTextStyles.getRegularStyle(

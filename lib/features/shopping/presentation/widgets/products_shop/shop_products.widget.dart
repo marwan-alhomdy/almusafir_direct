@@ -21,7 +21,7 @@ class ShopProductsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      physics: ClampingScrollPhysics(),
+      physics: const ClampingScrollPhysics(),
       child: isGridView
           ? GridServiceItemsWidget(products: products)
           : ListServiceItemsWidget(products: products),

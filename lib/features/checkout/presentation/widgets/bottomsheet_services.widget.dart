@@ -17,7 +17,7 @@ class BottomSheetServicesWidget extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          LineButtonSheetWidget(),
+          const LineButtonSheetWidget(),
           Row(
             children: [
               Icon(service.icon, color: service.color),
@@ -29,7 +29,7 @@ class BottomSheetServicesWidget extends StatelessWidget {
             ],
           ),
           Text(service.description, style: AppTextStyles.getRegularStyle()),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           ElevatedButton(
             onPressed: () {},
             style: ElevatedButton.styleFrom(
@@ -44,7 +44,7 @@ class BottomSheetServicesWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Icon(Iconsax.whatsapp, color: Colors.white),
+                const Icon(Iconsax.whatsapp, color: Colors.white),
                 Text(
                   'Inquire Now',
                   style: AppTextStyles.getMediumStyle(),

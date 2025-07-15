@@ -17,9 +17,12 @@ class CartCubit extends Cubit<CartState> {
 
   List<RowCartModel> rowCart = [];
 
+  int? shopId;
+  void setShopId(int? shopId) => this.shopId = shopId;
+
   void fetchCart() async {
-    emit(LoadingFetchCartState());
-    final failureOrSuccess = await getCartUescases(data: {});
+    emit(const LoadingFetchCartState());
+    final failureOrSuccess = await getCartUescases(data: {"shop_id": shopId});
     failureOrSuccess
         .fold((failuer) => emit(ErrorFetchCartState(message: failuer.message)),
             (rowCart) {
@@ -29,8 +32,9 @@ class CartCubit extends Cubit<CartState> {
   }
 
   void deleteCart() async {
-    emit(LoadingFetchCartState());
-    final failureOrSuccess = await deleteCartUescases(data: {});
+    emit(const LoadingFetchCartState());
+    final failureOrSuccess =
+        await deleteCartUescases(data: {"shop_id": shopId});
     failureOrSuccess
         .fold((failuer) => emit(ErrorFetchCartState(message: failuer.message)),
             (rowCart) {
@@ -40,7 +44,7 @@ class CartCubit extends Cubit<CartState> {
   }
 
   void refreshRowsInCart(List<RowCartModel> rows) {
-    emit(LoadingFetchCartState());
+    emit(const LoadingFetchCartState());
     rowCart = rows;
     emit(FetchCartSuccessfullyState(rowCart: rows));
   }

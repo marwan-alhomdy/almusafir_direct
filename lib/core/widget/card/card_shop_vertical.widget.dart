@@ -23,7 +23,7 @@ class _CardShopVerticalWidgetState extends State<CardShopVerticalWidget> {
   Widget build(BuildContext context) {
     return Card(
       elevation: 0.3,
-      margin: EdgeInsets.all(5),
+      margin: const EdgeInsets.all(5),
       child: InkWell(
         onTap: widget.onPressed,
         customBorder: RoundedRectangleBorderAttribute.all(12),
@@ -80,7 +80,7 @@ class _CardShopVerticalWidgetState extends State<CardShopVerticalWidget> {
                       spacing: 2,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Icon(Iconsax.location,
+                        const Icon(Iconsax.location,
                             size: 12, color: Colors.blueAccent),
                         Text(
                           widget.shop.address ?? "---",
@@ -98,7 +98,7 @@ class _CardShopVerticalWidgetState extends State<CardShopVerticalWidget> {
                           rating: widget.shop.averageRating ?? 0,
                           sizeIcon: 15,
                         ),
-                        Spacer(),
+                        const Spacer(),
                         Text(
                           widget.shop.isOpen == 1 ? "مفتوح" : "مغلق",
                           maxLines: 1,

@@ -25,7 +25,7 @@ class CardVerticalWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 0.3,
-      margin: EdgeInsets.all(5),
+      margin: const EdgeInsets.all(5),
       child: InkWell(
         onTap: onPressed,
         customBorder: RoundedRectangleBorderAttribute.all(12),
@@ -72,7 +72,7 @@ class CardVerticalWidget extends StatelessWidget {
                       Row(
                         spacing: 4,
                         children: [
-                          Icon(Iconsax.location_copy, size: 12),
+                          const Icon(Iconsax.location_copy, size: 12),
                           Text(
                             address ?? "---",
                             maxLines: 1,

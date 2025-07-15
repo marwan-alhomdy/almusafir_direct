@@ -20,12 +20,12 @@ class WorkingHoursView extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         spacing: 20,
         children: [
-          LineButtonSheetWidget(),
+          const LineButtonSheetWidget(),
           Row(
             spacing: 10,
             children: [
-              SizedBox(),
-              Icon(
+              const SizedBox(),
+              const Icon(
                 Iconsax.calendar_1_copy,
                 color: Colors.deepOrange,
               ),
@@ -36,7 +36,7 @@ class WorkingHoursView extends StatelessWidget {
             ],
           ),
           ListView.builder(
-              physics: ClampingScrollPhysics(),
+              physics: const ClampingScrollPhysics(),
               itemCount: shop?.workingHours?.workinghours?.length ?? 0,
               shrinkWrap: true,
               itemBuilder: (context, index) {
@@ -45,7 +45,7 @@ class WorkingHoursView extends StatelessWidget {
                 return Row(
                   spacing: 20,
                   children: [
-                    SizedBox(),
+                    const SizedBox(),
                     Expanded(
                         child: Text(
                             LanguageHelper.chooseLabelLanguage(
@@ -59,20 +59,20 @@ class WorkingHoursView extends StatelessWidget {
                         DateTimeHandler.convertTimeToArabic(
                             working?.openingTime ?? ""),
                         style: AppTextStyles.getRegularStyle()),
-                    SizedBox(),
+                    const SizedBox(),
                     Text(
                         DateTimeHandler.convertTimeToArabic(
                             working?.closingTime ?? ""),
                         style: AppTextStyles.getRegularStyle()),
-                    SizedBox(),
+                    const SizedBox(),
                     Text(statues?.label ?? "---,",
                         style: AppTextStyles.getRegularStyle(
                             color: statues?.color)),
-                    SizedBox(),
+                    const SizedBox(),
                   ],
                 );
               }),
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
         ],
       ),
     );

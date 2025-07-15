@@ -42,7 +42,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     final failureOrLogin = await loginUseCases(data: data);
     emit(failureOrLogin.fold(
         (failuer) => failuer is AccountNotActiveFailure
-            ? MoveToActivationState()
+            ? const MoveToActivationState()
             : ErrorLoginState(message: failuer.message),
         (user) => LoginSuccessfulState(currentUser: user)));
   }

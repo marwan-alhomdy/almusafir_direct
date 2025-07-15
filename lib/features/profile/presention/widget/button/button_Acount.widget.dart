@@ -48,10 +48,10 @@ class _ButtonAcountWidgetState extends State<ButtonAcountWidget> {
           ),
           const Spacer(),
           IconButton(
-            onPressed: () => Get.to(() => AccountProfileView())
+            onPressed: () => Get.to(() => const AccountProfileView())
                 ?.then((_) => setState(() {})),
             color: AppColors.mainOneColor,
-            icon: Icon(Iconsax.edit),
+            icon: const Icon(Iconsax.edit),
           ),
         ]),
       ),

@@ -15,7 +15,7 @@ class ServiceDetailsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
-        physics: ClampingScrollPhysics(),
+        physics: const ClampingScrollPhysics(),
         slivers: [
           SliverAppBar(
             expandedHeight: 300,
@@ -41,17 +41,17 @@ class ServiceDetailsView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(product.name ?? "-----",
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                      style: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.bold)),
                   const SizedBox(height: 10),
                   // Rating
                   Row(
                     spacing: 4,
                     children: [
-                      Icon(Icons.star, color: Colors.orange, size: 16),
+                      const Icon(Icons.star, color: Colors.orange, size: 16),
                       Text(
                           '${product.averageRating ?? 0} (${product.countRating ?? 0} reviews)',
-                          style: TextStyle(fontSize: 12)),
+                          style: const TextStyle(fontSize: 12)),
                     ],
                   ),
                   const SizedBox(height: 16),
@@ -71,10 +71,10 @@ class ServiceDetailsView extends StatelessWidget {
                   const Text('Bus Specifications',
                       style: TextStyle(fontWeight: FontWeight.bold)),
                   const SizedBox(height: 8),
-                  Wrap(
+                  const Wrap(
                     spacing: 2,
                     runSpacing: 0,
-                    children: const [
+                    children: [
                       Chip(label: Text('VIP Seating')),
                       Chip(label: Text('High-Speed WiFi')),
                       Chip(label: Text('USB & Power Outlets')),
@@ -110,7 +110,7 @@ class ServiceDetailsView extends StatelessWidget {
                       Expanded(
                         child: ButtonWidget(onTap: () {}, text: 'Book Now'),
                       ),
-                      SizedBox(width: 12),
+                      const SizedBox(width: 12),
                       Expanded(
                         child: OutlinedButtonWidget(
                             onTap: () {}, text: 'Inquire Now'),

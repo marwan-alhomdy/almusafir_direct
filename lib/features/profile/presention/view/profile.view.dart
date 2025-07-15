@@ -26,7 +26,7 @@ class _ProfileVeiwState extends State<ProfileVeiw> {
         create: (context) => di.sl<ProfileBloc>(),
         child: BlocListener<ProfileBloc, ProfileState>(
           listener: _listenerProfile,
-          child: ProfileWidget(),
+          child: const ProfileWidget(),
         ),
       ),
     );

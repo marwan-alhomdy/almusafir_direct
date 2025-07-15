@@ -26,10 +26,9 @@ class TextFieldWidget extends StatelessWidget {
       maxLines: maxLines,
       onTap: onTap,
       readOnly: isReadOnly,
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         alignLabelWithHint: true,
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
+        contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 15),
         counterText: "",
       ),
     );

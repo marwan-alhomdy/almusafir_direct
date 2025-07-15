@@ -61,7 +61,7 @@ class _ServiceCategoryFilterbarState extends State<ServiceCategoryFilterbar> {
           crossAxisAlignment: CrossAxisAlignment.center,
           spacing: 5,
           children: [
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: ImageWidget(
@@ -76,7 +76,7 @@ class _ServiceCategoryFilterbarState extends State<ServiceCategoryFilterbar> {
                 color: isSelected ? Colors.white : null,
               ),
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
           ],
         ),
       ),

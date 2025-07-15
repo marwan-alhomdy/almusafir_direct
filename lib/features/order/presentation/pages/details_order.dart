@@ -17,7 +17,7 @@ class DetailsOrderView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBarWithLogo(),
+      appBar: const MyAppBarWithLogo(),
       body: DetailsOrderWidget(order: order),
     );
   }
@@ -29,8 +29,8 @@ class DetailsOrderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: EdgeInsets.all(15),
-      physics: ClampingScrollPhysics(),
+      padding: const EdgeInsets.all(15),
+      physics: const ClampingScrollPhysics(),
       child: Column(
         spacing: 10,
         children: [
@@ -74,7 +74,7 @@ class DetailsOrderWidget extends StatelessWidget {
                 children: [
                   Text("الملاحظات",
                       style: AppTextStyles.getBoldStyle(fontSize: 16)),
-                  Divider(),
+                  const Divider(),
                   Text(order.customerNotes ?? "لا يوجد ملاحظات",
                       style: AppTextStyles.getRegularStyle()),
                 ],
@@ -84,7 +84,7 @@ class DetailsOrderWidget extends StatelessWidget {
           if (order.items?.data?.isNotEmpty ?? false)
             ProductsOrderWidget(order),
           DetailsOrderPriceWidget(order),
-          SizedBox(height: 40),
+          const SizedBox(height: 40),
         ],
       ),
     );

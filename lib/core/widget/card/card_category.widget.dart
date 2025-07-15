@@ -27,7 +27,7 @@ class CardCategoryWidget extends StatelessWidget {
       width: 200,
       child: Card(
         elevation: 0.3,
-        margin: EdgeInsets.all(5),
+        margin: const EdgeInsets.all(5),
         child: InkWell(
           onTap: onPressed,
           child: Column(
@@ -50,7 +50,7 @@ class CardCategoryWidget extends StatelessWidget {
                 Row(
                   spacing: 4,
                   children: [
-                    Icon(Iconsax.location_copy, size: 12),
+                    const Icon(Iconsax.location_copy, size: 12),
                     Text(
                       address!,
                       maxLines: 1,
@@ -76,7 +76,7 @@ class CardCategoryWidget extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: AppTextStyles.getMediumStyle(fontSize: 10),
                 ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
             ],
           ),
         ),

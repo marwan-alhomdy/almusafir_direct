@@ -8,13 +8,13 @@ import '../../../data/models/shop_products/shop_products.dart';
 part 'shop_cart_state.dart';
 
 class ShopCartCubit extends Cubit<ShopCartState> {
-  ShopCartCubit() : super(ShopCartInitial());
-
+  ShopCartCubit(this.shopId) : super(ShopCartInitial());
+  final int? shopId;
   List<RowCartModel> rowCart = [];
 
   void fetchCart() async {
-    emit(LoadingFetchShopCartState());
-    final failureOrSuccess = await CartApi.fetchRowsCart({});
+    emit(const LoadingFetchShopCartState());
+    final failureOrSuccess = await CartApi.fetchRowsCart({"shop_id": shopId});
     failureOrSuccess.fold(
         (failuer) => emit(ErrorFetchShopCartState(message: failuer.message)),
         (rowCart) {
@@ -25,7 +25,7 @@ class ShopCartCubit extends Cubit<ShopCartState> {
 
   void addToCart(ShopProduct product, int count) async {
     product.isLoading = true;
-    emit(LoadingFetchShopCartState());
+    emit(const LoadingFetchShopCartState());
 
     final data = _getDataCart(product, count);
 
@@ -40,7 +40,7 @@ class ShopCartCubit extends Cubit<ShopCartState> {
   }
 
   void updateCart(ShopProduct product, int count) async {
-    emit(LoadingFetchShopCartState());
+    emit(const LoadingFetchShopCartState());
     final data = _getDataCart(product, count);
     final failureOrSuccess = await CartApi.addToCart(data);
     failureOrSuccess.fold(
@@ -53,6 +53,7 @@ class ShopCartCubit extends Cubit<ShopCartState> {
 
   Map<String, dynamic> _getDataCart(ShopProduct product, int count) {
     return {
+      "shop_id": shopId,
       "menuId": product.id,
       "quantity": count,
       "comment": "",

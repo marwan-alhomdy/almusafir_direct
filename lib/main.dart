@@ -60,7 +60,7 @@ class _MyAppState extends State<MyApp> {
       translations: DataLoacleTranslations(),
       theme: Themes.themeLight,
       darkTheme: Themes.themeDark,
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.dark,
     );
   }
 }

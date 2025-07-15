@@ -20,20 +20,20 @@ class Themes {
       //backgroundColor: AppColors.secondaryOneColor,
       indicatorColor: AppColors.mainOneColor.withAlpha(50),
     ),
-    dialogTheme: DialogThemeData(),
-    datePickerTheme: DatePickerThemeData(
+    dialogTheme: const DialogThemeData(),
+    datePickerTheme: const DatePickerThemeData(
       backgroundColor: Colors.black87,
       elevation: 50,
       shadowColor: Colors.blueGrey,
     ),
     chipTheme: ChipThemeData(
         labelStyle: AppTextStyles.getMediumStyle(fontSize: 12),
-        padding: EdgeInsets.all(3),
+        padding: const EdgeInsets.all(3),
         shape: RoundedRectangleBorder(
-            side: BorderSide(width: 0),
+            side: const BorderSide(width: 0),
             borderRadius: BorderRadius.circular(10)),
         backgroundColor: AppColors.mainOneColor.withAlpha(100)),
-    dividerTheme: DividerThemeData(color: Colors.white24),
+    dividerTheme: const DividerThemeData(color: Colors.white24),
     inputDecorationTheme: InputDecorationTheme(
       fillColor: const Color(0x31535151),
       filled: true,
@@ -109,7 +109,7 @@ class Themes {
         color: Colors.white,
       ),
     ),
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       backgroundColor: Colors.transparent,
     ),
     listTileTheme: const ListTileThemeData(
@@ -158,7 +158,7 @@ class Themes {
     chipTheme: ChipThemeData(
         labelStyle: AppTextStyles.getMediumStyle(
             color: AppColors.grayOneColor, fontSize: 12),
-        padding: EdgeInsets.all(3),
+        padding: const EdgeInsets.all(3),
         shape: RoundedRectangleBorder(
             side: BorderSide(
               width: 0,

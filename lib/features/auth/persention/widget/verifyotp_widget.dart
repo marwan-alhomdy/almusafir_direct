@@ -24,7 +24,7 @@ class VerifyotpWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Spacer(),
-          LogoAuthWidget(),
+          const LogoAuthWidget(),
           const Spacer(),
           Text("verifyData".tr,
               style: AppTextStyles.getBoldStyle(fontSize: 22)),
@@ -41,7 +41,7 @@ class VerifyotpWidget extends StatelessWidget {
           const SizedBox(height: 20),
           BlocBuilder<VerifyCubit, VerifyState>(
               builder: (context, state) => (state is VerifyLoading)
-                  ? ButtonLoadingWidget(isLoading: true, text: "")
+                  ? const ButtonLoadingWidget(isLoading: true, text: "")
                   : ButtonLoadingWidget(
                       onTap: () => _verifyOtp(context), text: "Verify".tr)),
           const SizedBox(height: 10),

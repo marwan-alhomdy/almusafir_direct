@@ -26,7 +26,7 @@ class _CardProductCategoryWidgetState extends State<CardProductCategoryWidget> {
       width: 200,
       child: Card(
         elevation: 0.3,
-        margin: EdgeInsets.all(5),
+        margin: const EdgeInsets.all(5),
         child: InkWell(
           onTap: widget.onPressed,
           child: Column(
@@ -67,7 +67,7 @@ class _CardProductCategoryWidgetState extends State<CardProductCategoryWidget> {
                 ],
               ),
               Row(spacing: 10, children: [
-                Icon(Iconsax.star_1, color: Colors.orange, size: 15),
+                const Icon(Iconsax.star_1, color: Colors.orange, size: 15),
                 Text(
                   widget.product.averageRating?.toString() ?? "---",
                   maxLines: 1,
@@ -102,7 +102,7 @@ class _CardProductCategoryWidgetState extends State<CardProductCategoryWidget> {
                     ),
                   ),
               ]),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
             ],
           ),
         ),
