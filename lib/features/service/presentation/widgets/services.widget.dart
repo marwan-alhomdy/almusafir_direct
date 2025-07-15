@@ -1,16 +1,17 @@
+import 'package:almusafir_direct/core/data/shop_products/shop_products.dart';
 import 'package:almusafir_direct/core/utils/function/bottom_sheet.widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/resource/text_style.dart';
 import '../../../../core/utils/style/border_radius.dart';
-import '../../../checkout/data/models/service.models.dart';
-import '../../../checkout/presentation/widgets/bottomsheet_services.widget.dart';
+import '../../../../core/widget/image/image_widget.dart';
+import 'bottomsheet_services.widget.dart';
 
 class ListServicesWidget extends StatelessWidget {
   const ListServicesWidget({super.key, required this.services});
-  final List<OtherServiceMoele> services;
+  final List<ShopProduct> services;
 
-  void _showServiceDetails(OtherServiceMoele service) {
+  void _showServiceDetails(ShopProduct service) {
     BottomSheetWidget.show(BottomSheetServicesWidget(service: service));
   }
 
@@ -25,16 +26,14 @@ class ListServicesWidget extends StatelessWidget {
           child: ListTile(
             contentPadding: const EdgeInsets.symmetric(horizontal: 10),
             onTap: () => _showServiceDetails(service),
-            title: Text(service.title),
+            title: Text(service.name ?? "--"),
             trailing: const Icon(Icons.chevron_right),
-            leading: Card.filled(
-              color: service.color.withAlpha(50),
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: Icon(service.icon, color: service.color),
-              ),
+            leading: Padding(
+              padding: const EdgeInsets.all(10),
+              child: ImageWidget(service.image?.small ?? "---",
+                  width: 40, height: 30, fit: BoxFit.cover),
             ),
-            subtitle: Text(service.description,
+            subtitle: Text(service.description ?? "----",
                 maxLines: 1, overflow: TextOverflow.ellipsis),
           ),
         );
@@ -45,9 +44,10 @@ class ListServicesWidget extends StatelessWidget {
 
 class GridServicesWidget extends StatelessWidget {
   const GridServicesWidget({super.key, required this.services});
-  final List<OtherServiceMoele> services;
 
-  void _showServiceDetails(OtherServiceMoele service) {
+  final List<ShopProduct> services;
+
+  void _showServiceDetails(ShopProduct service) {
     BottomSheetWidget.show(BottomSheetServicesWidget(service: service));
   }
 
@@ -69,10 +69,11 @@ class GridServicesWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Icon(service.icon, color: service.color, size: 30),
+                ImageWidget(service.image?.small ?? "---",
+                    width: 40, height: 30, fit: BoxFit.cover),
                 const SizedBox(height: 10),
                 Text(
-                  service.title,
+                  service.name ?? "------",
                   maxLines: 2,
                   textAlign: TextAlign.center,
                   overflow: TextOverflow.ellipsis,

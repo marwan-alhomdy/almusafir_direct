@@ -65,6 +65,17 @@ class _RegisterWidgetState extends State<RegisterWidget> {
               controller: registerCubit.dateOfBirthController,
               validator: "".validator(),
             ),
+            Row(
+              spacing: 5,
+              children: [
+                Text('رمز الإحالة'.tr, style: AppTextStyles.getMediumStyle()),
+                Text("(اختياري)",
+                    style: AppTextStyles.getRegularStyle(fontSize: 12)),
+              ],
+            ),
+            TextFieldWidget(
+              controller: registerCubit.referralController,
+            ),
             Text("password".tr, style: AppTextStyles.getMediumStyle()),
             PasswordFieldWidget(
               controller: registerCubit.passwordController,

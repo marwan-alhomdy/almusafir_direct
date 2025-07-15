@@ -25,7 +25,11 @@ class ButtonMoveToCheckoutWidget extends StatelessWidget {
                 height: 50,
                 child: ElevatedButton.icon(
                   onPressed: () => Get.to(
-                      () => CheckoutView(orderType: orderType, shopId: shopId)),
+                    () => CheckoutView(
+                        productsCart: context.read<CartCubit>().rowCart,
+                        orderType: orderType,
+                        shopId: shopId),
+                  ),
                   icon: const Icon(Icons.shopping_cart, color: Colors.white),
                   label: const Text('اتمام الطلب'),
                   style: ElevatedButton.styleFrom(

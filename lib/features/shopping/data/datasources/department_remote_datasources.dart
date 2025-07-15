@@ -2,10 +2,10 @@ import 'dart:developer';
 
 import '../../../../core/constants/endpoint.dart';
 import '../../../../core/data/models/department/data.dart';
+import '../../../../core/data/shop_products/shop_products.dart';
 import '../../../../core/server/header_server.dart';
 import '../../../../core/services/api.service.dart';
 import '../models/department_type/department_type.dart';
-import '../models/shop_products/shop_products.dart';
 
 abstract class DepartmentRemoteDataSource {
   Future<List<ShoppingDepartment>> getDepartments(

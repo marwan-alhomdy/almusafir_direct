@@ -5,8 +5,7 @@ import '../../../../core/utils/resource/text_style.dart';
 import '../../../../core/utils/style/border_radius.dart';
 import '../../../../core/widget/image/image_widget.dart';
 import '../../../checkout/presentation/pages/form_checkout_input.view.dart';
-import '../../../service/presentation/pages/service.view.dart';
-import '../../../shopping/presentation/pages/service_items.view.dart';
+import '../../../service/presentation/pages/other_service.view.dart';
 import '../../../shopping/presentation/pages/shops.view.dart';
 import '../../data/model/orderstypes/datum.dart';
 
@@ -74,11 +73,12 @@ class CardServsiceWidget extends StatelessWidget {
       Get.to(() => ShopCategoryView(orderType: orderType));
     } else if (orderType?.isRequiredCart == 1 &&
         orderType?.isRequiredShopId == 0) {
-      Get.to(() => ServiceItemsView(orderType: orderType));
+      Get.to(() => OtherServicesView(orderType: orderType));
+      //  Get.to(() => ServiceItemsView(orderType: orderType));
     } else if (orderType?.isRequiredCart == 0) {
       Get.to(() => FormCheckoutInputView(orderType: orderType));
     } else {
-      Get.to(() => const ServicesView());
+      Get.to(() => const OtherServicesView());
     }
   }
 }

@@ -16,9 +16,4 @@ class Helper {
   static AppFirebaseMessage? firebaseMessage;
 
   static User? get user => primaryData?.data?.currentUser?.data;
-
-  static void init() async {
-    await CacheHelper.init();
-    isNotification = CacheHelper.getBool(CachedAppKey.isNotification) ?? false;
-  }
 }

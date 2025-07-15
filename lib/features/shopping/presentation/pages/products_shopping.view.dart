@@ -11,8 +11,8 @@ import '../logic/shop_products_cubit/shop_products_cubit.dart';
 import '../widgets/card_porduct/card_shop_product.widget.dart';
 import '../widgets/products_shop/button_move_to_cart.widget.dart';
 import '../widgets/products_shop/header_shopping_widget.dart';
+import '../widgets/products_shop/loading_cardpoducts.widget.dart';
 import '../widgets/products_shop/sliver_shopping_header.dart';
-import '../widgets/shop/loading_service_category.widget.dart';
 
 class ProductsShoppingView extends StatelessWidget {
   const ProductsShoppingView({
@@ -69,12 +69,7 @@ class ProductsShoppingView extends StatelessWidget {
                   departmentsId: shop.id,
                 )));
     } else if (state is ShopProductsLoadingState) {
-      return const SliverFillRemaining(
-        child: LoadingServiceCategoryWidget(
-          isGridView: false,
-          showHeader: false,
-        ),
-      );
+      return const SliverFillRemaining(child: LoadingCardProductWidget());
     } else if (state is ShopProductsSuccessfullyState) {
       return SliverList(
         delegate: SliverChildListDelegate(

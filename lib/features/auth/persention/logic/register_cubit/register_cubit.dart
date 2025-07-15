@@ -19,6 +19,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final dateOfBirthController = TextEditingController();
+  final referralController = TextEditingController();
   Country country = CountryManager.firstCountry();
 
   void changeCountry(Country country) => this.country = country;
@@ -37,6 +38,7 @@ class RegisterCubit extends Cubit<RegisterState> {
       'password_confirmation': passwordController.text,
       'date_of_birth': dateOfBirthController.text,
       'country_id': country.code,
+      'nano_referral': referralController.text
     };
     final result = await registerUseCases(data: data);
     emit(

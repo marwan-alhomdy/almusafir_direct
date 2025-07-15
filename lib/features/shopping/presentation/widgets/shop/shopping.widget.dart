@@ -40,10 +40,10 @@ class ShoppingWidget extends StatelessWidget {
               [
                 isGridView
                     ? GridShoppingItemsWidget(
-                  orderType: orderType,
+                        orderType: orderType,
                         shoppings: state.shoppingDepartments)
                     : ListShoppingItemsWidget(
-                    orderType: orderType,
+                        orderType: orderType,
                         shoppings: state.shoppingDepartments),
               ],
             ),
@@ -64,7 +64,8 @@ class ShoppingWidget extends StatelessWidget {
 }
 
 class ListShoppingItemsWidget extends StatelessWidget {
-  const ListShoppingItemsWidget({super.key, required this.shoppings, required this.orderType});
+  const ListShoppingItemsWidget(
+      {super.key, required this.shoppings, required this.orderType});
   final OrderType? orderType;
   final List<ShoppingDepartment> shoppings;
 
@@ -76,7 +77,7 @@ class ListShoppingItemsWidget extends StatelessWidget {
                 shop: shop,
                 onPressed: () => Get.to(() => ProductsShoppingView(
                       shop: shop,
-                  orderType: orderType,
+                      orderType: orderType,
                     )),
               ))
           .toList(),
@@ -85,7 +86,8 @@ class ListShoppingItemsWidget extends StatelessWidget {
 }
 
 class GridShoppingItemsWidget extends StatelessWidget {
-  const GridShoppingItemsWidget({super.key, required this.shoppings, required this.orderType});
+  const GridShoppingItemsWidget(
+      {super.key, required this.shoppings, required this.orderType});
   final OrderType? orderType;
   final List<ShoppingDepartment> shoppings;
 
@@ -100,7 +102,7 @@ class GridShoppingItemsWidget extends StatelessWidget {
               child: CardShopCategoryWidget(
                 shop: shop,
                 onPressed: () => Get.to(() => ProductsShoppingView(
-                  orderType: orderType,
+                      orderType: orderType,
                       shop: shop,
                     )),
               )))

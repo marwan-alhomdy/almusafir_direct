@@ -1,4 +1,4 @@
-class Datum {
+class UnitsDatum {
   int? id;
   String? productsId;
   String? unitsId;
@@ -22,7 +22,7 @@ class Datum {
   num? isActive;
   num? qty;
 
-  Datum({
+  UnitsDatum({
     this.id,
     this.productsId,
     this.unitsId,
@@ -47,7 +47,7 @@ class Datum {
     this.qty,
   });
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory UnitsDatum.fromJson(Map<String, dynamic> json) => UnitsDatum(
         id: json['id'],
         productsId: json['products_id'],
         unitsId: json['units_id'],

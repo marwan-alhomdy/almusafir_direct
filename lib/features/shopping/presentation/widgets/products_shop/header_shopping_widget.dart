@@ -5,6 +5,7 @@ import '../../../../../core/data/models/department/data.dart';
 import '../../../../../core/utils/function/bottom_sheet.widget.dart';
 import '../../../../../core/utils/resource/text_style.dart';
 import '../../../../../core/widget/rating/rating.widget.dart';
+import '../../../../../helper/public_infromation.dart';
 import '../shop/ratting_shop.widget.dart';
 import '../shop/working_hours.view.dart';
 
@@ -60,18 +61,19 @@ class HeaderShoppingWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            InkWell(
-              onTap: showRatiingShow,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "تقييم",
-                  style: AppTextStyles.getRegularStyle(
-                    color: Colors.deepOrange,
+            if (Helper.isAuth)
+              InkWell(
+                onTap: showRatiingShow,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "تقييم",
+                    style: AppTextStyles.getRegularStyle(
+                      color: Colors.deepOrange,
+                    ),
                   ),
                 ),
               ),
-            ),
             RatingWidget(rating: shop?.averageRating ?? 0, sizeIcon: 15),
             InkWell(
               onTap: showWorkingHours,

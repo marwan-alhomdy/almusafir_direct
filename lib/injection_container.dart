@@ -1,6 +1,9 @@
 import 'package:almusafir_direct/features/checkout/domain/usecases/services/get_flights_uescases.dart';
 import 'package:almusafir_direct/features/profile/domain/usecases/delete_avatar_usecases.dart';
 import 'package:almusafir_direct/features/profile/domain/usecases/get_paymens_available.usecases.dart';
+import 'package:almusafir_direct/features/service/domain/repositories/service_repositories.dart';
+import 'package:almusafir_direct/features/service/domain/usecases/get_other_services.uescases.dart';
+import 'package:almusafir_direct/features/service/presentation/cubit/other_services_cubit.dart';
 import 'package:almusafir_direct/features/shopping/presentation/logic/shop_products_cubit/shop_products_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
@@ -70,6 +73,8 @@ import 'features/profile/presention/bloc/payment_methods_cubit/payment_methods_c
 import 'features/profile/presention/bloc/point_cubit/point_cubit.dart';
 import 'features/profile/presention/bloc/profile_bloc/profile_bloc.dart';
 import 'features/profile/presention/bloc/referral_bloc/referral_bloc.dart';
+import 'features/service/data/datasources/service_remote_datasources.dart';
+import 'features/service/data/repositories/service_repositories_imp.dart';
 import 'features/shopping/data/datasources/department_remote_datasources.dart';
 import 'features/shopping/data/repositories/department_repositories_imp.dart';
 import 'features/shopping/domain/repositories/department_repositories.dart';
@@ -121,6 +126,8 @@ Future<void> init() async {
       getFlightsUescases: sl(),
       getVehicleTypeUescases: sl()));
 
+  sl.registerFactory(
+      () => OtherServicestsCubit(getOtherServicesUescases: sl()));
   //Departments
   sl.registerFactory(
       () => DepartmentTypeCubit(getTypeDepartmentsUescases: sl()));
@@ -166,13 +173,16 @@ Future<void> init() async {
   //setting
   sl.registerLazySingleton(() => FetchAllDataUseCases(sl()));
 
-  //Services
+  //checkout
   sl.registerLazySingleton(() => Checkout2Uescases(sl()));
   sl.registerLazySingleton(() => GetAirportUescases(sl()));
   sl.registerLazySingleton(() => GetVehicleTypeUescases(sl()));
   sl.registerLazySingleton(() => GetLoadsTypesUescases(sl()));
   sl.registerLazySingleton(() => GetPaymentMethodsUescases(sl()));
   sl.registerLazySingleton(() => GetFlightsUescases(sl()));
+
+  //Services
+  sl.registerLazySingleton(() => GetOtherServicesUescases(sl()));
 
   //Departments
   sl.registerLazySingleton(() => GetTypeDepartmentsUescases(sl()));
@@ -207,8 +217,13 @@ Future<void> init() async {
         networkInfo: sl(),
       ));
 
-  //Services
+  //Checkout
   sl.registerLazySingleton<CheckoutRepostitory>(() => CheckoutRepostitoryImp(
+        remoteDataSource: sl(),
+        networkInfo: sl(),
+      ));
+  //Services
+  sl.registerLazySingleton<ServiceRepostitory>(() => ServiceRepostitoryImp(
         remoteDataSource: sl(),
         networkInfo: sl(),
       ));
@@ -247,9 +262,13 @@ Future<void> init() async {
 
   sl.registerLazySingleton<HomeRemoteDataSource>(
       () => HomeRemoteDataSourceImplWithDio(apiService: sl()));
-
+  //checkout
   sl.registerLazySingleton<CheckoutRemoteDataSource>(
       () => CheckoutRemoteDataSourceImplWithDio(apiService: sl()));
+
+  //Service
+  sl.registerLazySingleton<ServiceRemoteDataSource>(
+      () => ServiceRemoteDataSourceImplWithDio(apiService: sl()));
 
   //Departments
   sl.registerLazySingleton<DepartmentRemoteDataSource>(

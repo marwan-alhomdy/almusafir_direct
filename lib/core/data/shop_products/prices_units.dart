@@ -1,13 +1,13 @@
 import 'datum.dart';
 
 class PricesUnits {
-  List<Datum>? data;
+  List<UnitsDatum>? data;
 
   PricesUnits({this.data});
 
   factory PricesUnits.fromJson(Map<String, dynamic> json) => PricesUnits(
         data: (json['data'] as List<dynamic>?)
-            ?.map((e) => Datum.fromJson(e as Map<String, dynamic>))
+            ?.map((e) => UnitsDatum.fromJson(e as Map<String, dynamic>))
             .toList(),
       );
 

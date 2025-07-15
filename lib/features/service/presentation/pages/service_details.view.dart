@@ -1,9 +1,9 @@
 import 'package:almusafir_direct/core/widget/button/button.widget.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/data/shop_products/shop_products.dart';
 import '../../../../core/utils/resource/images.dart';
 import '../../../../core/widget/image/image_service.widget.dart';
-import '../../../shopping/data/models/shop_products/shop_products.dart';
 import '../widgets/booking_requirements.widget.dart';
 import '../widgets/routes_row_widget.dart';
 import '../widgets/terms_list.widget.dart';

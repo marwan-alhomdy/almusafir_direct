@@ -1,3 +1,4 @@
+import 'package:almusafir_direct/core/utils/resource/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -8,14 +9,20 @@ import '../../../../core/widget/appbar/my_appbar.dart';
 import '../../../../core/widget/button/button.widget.dart';
 import '../../../../helper/public_infromation.dart';
 import '../../../auth/persention/view/auth_view.dart';
+import '../../../cart/data/models/row_cart.module.dart';
 import '../../../home/data/model/orderstypes/datum.dart';
 import '../logic/form_checkout_cubit/form_checkout_cubit.dart';
 import '../logic/form_service_cubit/form_service_cubit.dart';
 import '../widgets/form_checkout_input.widget.dart';
+import '../widgets/summery/porders_checkout.widget.dart';
 
 class CheckoutView extends StatelessWidget {
   const CheckoutView(
-      {super.key, required this.shopId, required this.orderType});
+      {super.key,
+      required this.shopId,
+      required this.orderType,
+      required this.productsCart});
+  final List<RowCartModel> productsCart;
   final OrderType? orderType;
   final int? shopId;
 
@@ -38,7 +45,21 @@ class CheckoutView extends StatelessWidget {
               Expanded(
                 child: SingleChildScrollView(
                   physics: const ClampingScrollPhysics(),
-                  child: FormCheckoutInputWidget(orderType: orderType),
+                  child: Column(
+                    spacing: 10,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      FormCheckoutInputWidget(orderType: orderType),
+                      if (productsCart.isNotEmpty) ...[
+                        Text(
+                          "ملخص الطلب",
+                          style: AppTextStyles.getMediumStyle(),
+                        ),
+                        ProductsCheckoutWidget(productsCart: productsCart),
+                        // const SummeryCheckoutWidget(),
+                      ]
+                    ],
+                  ),
                 ),
               ),
               BlocListener<FormCheckoutCubit, FormCheckoutState>(

@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '/injection_container.dart' as di;
 import '../../../../core/widget/upgrade/upgrade.widget.dart';
 import '../../../chat/presentation/pages/chat.view.dart';
+import '../../../explore/presentation/pages/explore.view.dart';
 import '../../../order/presentation/pages/myorder.view.dart';
 import '../../../profile/presention/view/profile.view.dart';
 import '../logic/bloc/home_bloc.dart';
@@ -52,7 +53,7 @@ class _HomeViewState extends State<HomeView> {
               const HomeWidget(),
               const MyOrdersView(),
               const ChatView(),
-              // const ExploreView(),
+              const ExploreView(),
               const ProfileVeiw(),
             ][currentIndex]),
       ),

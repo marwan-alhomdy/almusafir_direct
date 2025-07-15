@@ -2,8 +2,9 @@ import 'package:almusafir_direct/core/api/cart.api.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
+import '../../../../../core/data/shop_products/datum.dart';
+import '../../../../../core/data/shop_products/shop_products.dart';
 import '../../../../cart/data/models/row_cart.module.dart';
-import '../../../data/models/shop_products/shop_products.dart';
 
 part 'shop_cart_state.dart';
 
@@ -23,11 +24,11 @@ class ShopCartCubit extends Cubit<ShopCartState> {
     });
   }
 
-  void addToCart(ShopProduct product, int count) async {
+  void addToCart(ShopProduct product, int count, UnitsDatum? unit) async {
     product.isLoading = true;
     emit(const LoadingFetchShopCartState());
 
-    final data = _getDataCart(product, count);
+    final data = _getDataCart(product, count, unit);
 
     final failureOrSuccess = await CartApi.addToCart(data);
     product.isLoading = false;
@@ -39,9 +40,9 @@ class ShopCartCubit extends Cubit<ShopCartState> {
     });
   }
 
-  void updateCart(ShopProduct product, int count) async {
+  void updateCart(ShopProduct product, int count, UnitsDatum? unit) async {
     emit(const LoadingFetchShopCartState());
-    final data = _getDataCart(product, count);
+    final data = _getDataCart(product, count, unit);
     final failureOrSuccess = await CartApi.addToCart(data);
     failureOrSuccess.fold(
         (failuer) => emit(ErrorFetchShopCartState(message: failuer.message)),
@@ -51,16 +52,17 @@ class ShopCartCubit extends Cubit<ShopCartState> {
     });
   }
 
-  Map<String, dynamic> _getDataCart(ShopProduct product, int count) {
+  Map<String, dynamic> _getDataCart(
+      ShopProduct product, int count, UnitsDatum? unit) {
     return {
       "shop_id": shopId,
       "menuId": product.id,
       "quantity": count,
       "comment": "",
       "options": [],
-      "price": product.pricesUnits?.data?.firstOrNull?.price,
-      "units_name": product.pricesUnits?.data?.firstOrNull?.unitsName,
-      "units_id": product.pricesUnits?.data?.firstOrNull?.id,
+      "price": unit?.price,
+      "units_name": unit?.unitsName,
+      "units_id": unit?.id,
     };
   }
 }

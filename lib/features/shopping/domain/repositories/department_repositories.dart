@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/data/models/department/data.dart';
+import '../../../../core/data/shop_products/shop_products.dart';
 import '../../../../core/error/faiture.dart';
 import '../../data/models/department_type/department_type.dart';
-import '../../data/models/shop_products/shop_products.dart';
 
 abstract class DepartmentRepostitory {
   Future<Either<Failure, List<ShoppingDepartment>>> getDepartments(

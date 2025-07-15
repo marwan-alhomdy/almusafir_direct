@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../core/data/shop_products/shop_products.dart';
 import '../../../../core/utils/resource/color_app.dart';
 import '../../../../core/utils/resource/text_style.dart';
+import '../../../../core/widget/image/image_widget.dart';
 import '../../../../core/widget/liner.widget.dart';
-import '../../data/models/service.models.dart';
+import '../../../../helper/public_infromation.dart';
 
 class BottomSheetServicesWidget extends StatelessWidget {
   const BottomSheetServicesWidget({super.key, required this.service});
-  final OtherServiceMoele service;
+  final ShopProduct service;
 
   @override
   Widget build(BuildContext context) {
@@ -19,19 +22,26 @@ class BottomSheetServicesWidget extends StatelessWidget {
         children: [
           const LineButtonSheetWidget(),
           Row(
+            spacing: 10,
             children: [
-              Icon(service.icon, color: service.color),
-              const SizedBox(width: 10),
+              ImageWidget(service.image?.small ?? "---",
+                  width: 40, height: 30, fit: BoxFit.cover),
               Text(
-                service.title,
+                service.name ?? "--",
                 style: AppTextStyles.getMediumStyle(fontSize: 18),
               ),
             ],
           ),
-          Text(service.description, style: AppTextStyles.getRegularStyle()),
+          Text(service.description ?? "---",
+              style: AppTextStyles.getRegularStyle()),
           const SizedBox(height: 20),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              final phone = Helper
+                  .primaryData?.data?.department?.data?.phone?.firstOrNull;
+              launchUrl(Uri.parse("https://wa.me/${phone?.phoneNumber}"),
+                  mode: LaunchMode.externalApplication);
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.mainOneColor,
               foregroundColor: Colors.white,
@@ -52,6 +62,7 @@ class BottomSheetServicesWidget extends StatelessWidget {
               ],
             ),
           ),
+          const SizedBox(height: 20),
         ],
       ),
     );

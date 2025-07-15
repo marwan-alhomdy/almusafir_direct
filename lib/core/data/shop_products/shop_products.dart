@@ -1,6 +1,6 @@
 import 'package:almusafir_direct/core/data/models/image.dart';
 
-import '../../../../../core/data/models/user_object_rating.module.dart';
+import '../models/user_object_rating.module.dart';
 import 'children.dart';
 import 'field_values.dart';
 import 'prices_units.dart';

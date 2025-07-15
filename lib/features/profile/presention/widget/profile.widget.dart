@@ -1,3 +1,4 @@
+import 'package:almusafir_direct/core/utils/function/bottom_sheet.widget.dart';
 import 'package:almusafir_direct/features/profile/presention/view/point/mypoint.view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,8 +8,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/Animation/animation_limiter_widget.dart';
 import '../../../../core/locale/locale_controller.dart';
+import '../../../../core/logic/theme_cubit/theme_cubit.dart';
 import '../../../../core/utils/dialoge/messagebox_dialog_widget.dart';
-import '../../../../core/utils/resource/theme_app.dart';
 import '../../../../helper/public_infromation.dart';
 import '../../../auth/persention/view/auth_view.dart';
 import '../bloc/profile_bloc/profile_bloc.dart';
@@ -17,6 +18,7 @@ import '../view/payment.methods.view.dart';
 import '../view/referral.view.dart';
 import 'button/button_Acount.widget.dart';
 import 'button/cardlist_profile.widget.dart';
+import 'theme/change_theme.widget.dart';
 
 class ProfileWidget extends StatefulWidget {
   const ProfileWidget({super.key});
@@ -120,8 +122,16 @@ class _ProfileWidgetState extends State<ProfileWidget> {
   }
 
   void changeTheme() {
-    bool isDarkMode = Get.isDarkMode;
-    Get.changeTheme(isDarkMode ? Themes.themeLight : Themes.themeDark);
+    BottomSheetWidget.show(
+      ChangeThemeWidget(onChangeTheme: (isLight) {
+        Get.back();
+        final themeMode = isLight ? AppThemeMode.light : AppThemeMode.dark;
+        context.read<ThemeCubit>().setTheme(themeMode);
+      }, onDeleteTheme: () {
+        Get.back();
+        context.read<ThemeCubit>().setTheme(AppThemeMode.system);
+      }),
+    );
   }
 
   void _logout(BuildContext context) {

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
-import '../../../features/shopping/data/models/shop_products/shop_products.dart';
 import '../../../helper/public_infromation.dart';
 import '../../api/favorite.api.dart';
+import '../../data/shop_products/shop_products.dart';
 import '../../utils/resource/text_style.dart';
 import '../../utils/style/border_radius.dart';
 import '../image/image_widget.dart';

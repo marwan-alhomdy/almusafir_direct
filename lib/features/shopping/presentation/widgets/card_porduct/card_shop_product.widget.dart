@@ -7,11 +7,12 @@ import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../../../core/api/favorite.api.dart';
+import '../../../../../core/data/shop_products/datum.dart';
+import '../../../../../core/data/shop_products/shop_products.dart';
 import '../../../../../core/utils/resource/text_style.dart';
 import '../../../../../core/utils/style/border_radius.dart';
 import '../../../../../core/widget/image/image_widget.dart';
 import '../../../../../helper/public_infromation.dart';
-import '../../../data/models/shop_products/shop_products.dart';
 import 'counter_product_in_card.widget.dart';
 
 class CardShopProductWidget extends StatefulWidget {
@@ -130,6 +131,7 @@ class _QuantityProductinCardWidgetState
     extends State<QuantityProductinCardWidget> {
   int count = 0;
   bool isLoaing = true;
+  UnitsDatum? selectedUnit;
 
   @override
   void initState() {
@@ -144,12 +146,15 @@ class _QuantityProductinCardWidgetState
   }
 
   void initSettingCount() {
-    count = context
-            .read<ShopCartCubit>()
-            .rowCart
-            .firstWhereOrNull((row) => row.id == widget.product.id)
-            ?.qty ??
-        0;
+    final product = context
+        .read<ShopCartCubit>()
+        .rowCart
+        .firstWhereOrNull((row) => row.id == widget.product.id);
+    count = product?.qty ?? 0;
+    if (product != null) {
+      selectedUnit = UnitsDatum(
+          id: product.id, unitsName: product.unitsName, price: product.price);
+    }
   }
 
   @override
@@ -166,17 +171,26 @@ class _QuantityProductinCardWidgetState
                 ))
             : CounterProductInCardWidget(
                 count: count,
-                onChanged: changeCountProductInCart,
                 product: widget.product,
+                onChanged: changeCountProductInCart,
+                onAddToCard: addProductToCart,
               );
       },
     );
   }
 
+  void addProductToCart(int count, UnitsDatum? unit) {
+    this.count == 0;
+    selectedUnit = unit;
+    context.read<ShopCartCubit>().addToCart(widget.product, count, unit);
+    this.count = count;
+    setState(() {});
+  }
+
   void changeCountProductInCart(int count) {
-    this.count == 0
-        ? context.read<ShopCartCubit>().addToCart(widget.product, count)
-        : context.read<ShopCartCubit>().updateCart(widget.product, count);
+    context
+        .read<ShopCartCubit>()
+        .updateCart(widget.product, count, selectedUnit);
     this.count = count;
     setState(() {});
   }

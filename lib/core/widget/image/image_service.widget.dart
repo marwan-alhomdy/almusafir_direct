@@ -51,5 +51,6 @@ class _ImageServiceWidgetState extends State<ImageServiceWidget> {
 
   void pageChanged(int value) {
     _carouselSliderNumber = value;
+    setState(() {});
   }
 }

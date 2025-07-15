@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
+import '../../../../../core/data/shop_products/datum.dart';
+import '../../../../../core/data/shop_products/shop_products.dart';
 import '../../../../../core/utils/function/bottom_sheet.widget.dart';
 import '../../../../../core/utils/resource/text_style.dart';
 import '../../../../../core/utils/style/border_radius.dart';
-import '../../../data/models/shop_products/shop_products.dart';
 import 'add_product_to_card.widget.dart';
 
 class CounterProductInCardWidget extends StatelessWidget {
@@ -12,10 +13,12 @@ class CounterProductInCardWidget extends StatelessWidget {
       {super.key,
       required this.count,
       required this.onChanged,
+      required this.onAddToCard,
       required this.product});
   final ShopProduct product;
   final int count;
   final void Function(int) onChanged;
+  final void Function(int, UnitsDatum?) onAddToCard;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +37,7 @@ class CounterProductInCardWidget extends StatelessWidget {
           onPressed: () =>
               BottomSheetWidget.showIsScroll(AddProductToCardWidget(
             product: product,
-            onChanged: (count) => onChanged(count),
+            onChanged: onAddToCard,
           )),
         ),
       );

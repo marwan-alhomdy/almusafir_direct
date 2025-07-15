@@ -1,4 +1,4 @@
-import 'package:almusafir_direct/features/shopping/data/models/shop_products/shop_products.dart';
+import 'package:almusafir_direct/core/data/shop_products/shop_products.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../../../../core/error/faiture.dart';

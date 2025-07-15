@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../../../core/api/rating.api.dart';
+import '../../../../../core/data/shop_products/datum.dart';
+import '../../../../../core/data/shop_products/shop_products.dart';
 import '../../../../../core/utils/resource/text_style.dart';
 import '../../../../../core/utils/style/border_radius.dart';
 import '../../../../../core/widget/button/button.widget.dart';
@@ -12,17 +14,29 @@ import '../../../../../core/widget/image/image_widget.dart';
 import '../../../../../core/widget/liner.widget.dart';
 import '../../../../../core/widget/rating/ratingbar.widget.dart';
 import '../../../../../helper/public_infromation.dart';
-import '../../../data/models/shop_products/shop_products.dart';
+import 'chekbox_units.widget.dart';
 
-class AddProductToCardWidget extends StatelessWidget {
+class AddProductToCardWidget extends StatefulWidget {
   const AddProductToCardWidget(
       {super.key, required this.product, required this.onChanged});
   final ShopProduct product;
-  final void Function(int) onChanged;
+  final void Function(int, UnitsDatum?) onChanged;
+
+  @override
+  State<AddProductToCardWidget> createState() => _AddProductToCardWidgetState();
+}
+
+class _AddProductToCardWidgetState extends State<AddProductToCardWidget> {
+  UnitsDatum? selectedUnit;
+  int count = 1;
+  @override
+  void initState() {
+    selectedUnit = widget.product.pricesUnits?.data?.firstOrNull;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    int count = 0;
     return Container(
       padding: const EdgeInsets.all(20),
       constraints: BoxConstraints(
@@ -37,7 +51,7 @@ class AddProductToCardWidget extends StatelessWidget {
             children: [
               ClipRRect(
                   borderRadius: BorderRadiusAttribute.all(5),
-                  child: ImageWidget(product.image?.small ?? "---",
+                  child: ImageWidget(widget.product.image?.small ?? "---",
                       width: 50, height: 50, fit: BoxFit.cover)),
               Expanded(
                 child: Column(
@@ -45,19 +59,19 @@ class AddProductToCardWidget extends StatelessWidget {
                   spacing: 10,
                   children: [
                     Text(
-                      product.name ?? "---",
+                      widget.product.name ?? "---",
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: AppTextStyles.getMediumStyle(),
                     ),
                     RatingBarWidget(
-                      initialRating: product.userObjectRating?.rating,
+                      initialRating: widget.product.userObjectRating?.rating,
                       onRatingUpdate: (rating) {
-                        product.userObjectRating ??= UserObjectRating();
-                        product.userObjectRating?.rating = rating;
+                        widget.product.userObjectRating ??= UserObjectRating();
+                        widget.product.userObjectRating?.rating = rating;
                         RatingApi.toggleRating(
-                            objectType: product.objectType,
-                            objectId: product.id,
+                            objectType: widget.product.objectType,
+                            objectId: widget.product.id,
                             rating: rating);
                       },
                     ),
@@ -66,17 +80,32 @@ class AddProductToCardWidget extends StatelessWidget {
               ),
               if (Helper.isAuth)
                 Icon(
-                  product.userIsFavorite == 1
+                  widget.product.userIsFavorite == 1
                       ? Iconsax.heart
                       : Iconsax.heart_copy,
                   color: Colors.redAccent,
                 ),
             ],
           ),
+          if ((widget.product.pricesUnits?.data?.length ?? 0) > 1)
+            const Divider(thickness: 0.4),
+          if ((widget.product.pricesUnits?.data?.length ?? 0) > 1)
+            ...widget.product.pricesUnits?.data
+                    ?.map((unit) => RadioUnitsWidget(
+                          unit: unit,
+                          groupValue: selectedUnit,
+                          onChanged: (value) {
+                            setState(
+                              () => selectedUnit = value,
+                            );
+                          },
+                        ))
+                    .toList() ??
+                [],
           const Divider(thickness: 0.4),
           ButtonAddToRemoveWidget(
-            count: 0,
-            price: product.price ?? 0,
+            count: count,
+            price: widget.product.price ?? 0,
             onChanged: (count0) {
               if (count0 == 0) Get.back();
               count = count0;
@@ -87,7 +116,7 @@ class AddProductToCardWidget extends StatelessWidget {
             text: 'OK'.tr,
             onTap: () {
               Get.back();
-              onChanged(count);
+              if (count > 0) widget.onChanged(count, selectedUnit);
             },
           ),
         ],
