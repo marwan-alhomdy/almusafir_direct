@@ -2,23 +2,30 @@ import 'package:almusafir_direct/features/order/presentation/logic/order_cubit/o
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '/injection_container.dart' as di;
 import '../../../../core/widget/appbar/my_appbar.dart';
 import '../../../../core/widget/state/error.widget.dart';
 import '../logic/filter_order_cubit/filter_order_cubit.dart';
 import '../widgets/filter/order_filterbar.dart';
 import '../widgets/order/order.widget.dart';
 
-class MyOrdersView extends StatelessWidget {
+class MyOrdersView extends StatefulWidget {
   const MyOrdersView({super.key});
 
   @override
+  State<MyOrdersView> createState() => _MyOrdersViewState();
+}
+
+class _MyOrdersViewState extends State<MyOrdersView> {
+  @override
+  void initState() {
+    context.read<OrderCubit>().chcekGetOrders();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => di.sl<OrderCubit>()..getOrders()),
-        BlocProvider(create: (context) => FilterOrderCubit()),
-      ],
+    return BlocProvider(
+      create: (_) => FilterOrderCubit(),
       child: Scaffold(
         appBar: const MyAppBarWithLogo(),
         body: BlocBuilder<OrderCubit, OrderState>(

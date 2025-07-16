@@ -1,3 +1,4 @@
+import 'package:almusafir_direct/helper/public_infromation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -40,7 +41,9 @@ class SplashViewBodyState extends State<SplashViewBody>
       if (false) {
         Get.offAll(() => const OnboardingView());
       } else {
-        Get.offAll(() => const HomeView());
+        Get.offAll(() => HomeView(
+              key: Helper.homeKey,
+            ));
       }
     });
   }

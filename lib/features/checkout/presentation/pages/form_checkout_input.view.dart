@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart' as transition;
 import 'package:get/get.dart';
 
 import '/injection_container.dart' as di;
+import '../../../../core/utils/dialoge/messagebox_dialog_widget.dart';
 import '../../../../core/utils/function/message_box.dart';
+import '../../../../core/utils/handler/navigator.handler.dart';
 import '../../../../core/widget/appbar/my_appbar.dart';
 import '../../../../core/widget/button/button.widget.dart';
 import '../../../../helper/public_infromation.dart';
@@ -12,6 +15,7 @@ import '../../../home/data/model/orderstypes/datum.dart';
 import '../logic/form_checkout_cubit/form_checkout_cubit.dart';
 import '../logic/form_service_cubit/form_service_cubit.dart';
 import '../widgets/form_checkout_input.widget.dart';
+import 'order_success.view.dart';
 
 class FormCheckoutInputView extends StatelessWidget {
   const FormCheckoutInputView({super.key, required this.orderType});
@@ -60,11 +64,24 @@ class FormCheckoutInputView extends StatelessWidget {
     if (Helper.isAuth) {
       context.read<FormCheckoutCubit>().checkout2();
     } else {
-      Get.to(() => const AuthView())?.then((_) {
-        if (Helper.isAuth && context.mounted) {
-          context.read<FormCheckoutCubit>().checkout2();
-        }
-      });
+      showDialog(
+        context: context,
+        builder: (cxt) => MessageBoxDialogWidget(
+          message: "يجب عليك تسجيل الدخول ، هل تريد تسجيل الدخول ؟".tr,
+          onAccenpt: () {
+            Get.back();
+            Get.to(() => const AuthView(),
+                    duration: const Duration(milliseconds: 600),
+                    transition: transition.Transition.downToUp,
+                    curve: Curves.easeInOutCubicEmphasized)
+                ?.then((_) {
+              if (Helper.isAuth && context.mounted) {
+                context.read<FormCheckoutCubit>().checkout2();
+              }
+            });
+          },
+        ),
+      );
     }
   }
 
@@ -76,8 +93,7 @@ class FormCheckoutInputView extends StatelessWidget {
       MessageBox.showError(context, state.message);
     } else if (state is CheckoutSuccessfullyState) {
       Get.back();
-      final message = "operation_was_completed_successfully".tr;
-      MessageBox.showSuccess(context, message);
+      NavigatorHandler.push(context, const OrderSuccessPage());
     }
   }
 }

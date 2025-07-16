@@ -4,6 +4,7 @@ import 'package:almusafir_direct/features/home/presentation/view/home_view.dart'
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../helper/public_infromation.dart';
 import '../widgets/buttons_onboarding.widget.dart';
 import '../widgets/images_onboarding.widget.dart';
 
@@ -42,7 +43,9 @@ class _OnboardingViewState extends State<OnboardingView> {
               flex: 1,
               child: ButtonsOnboardingWidget(
                 currentPage: _currentPage,
-                onSkip: () => Get.offAll(() => const HomeView()),
+                onSkip: () => Get.offAll(() => HomeView(
+                      key: Helper.homeKey,
+                    )),
                 onNext: () => _controller.nextPage(
                   duration: const Duration(milliseconds: 200),
                   curve: Curves.easeIn,

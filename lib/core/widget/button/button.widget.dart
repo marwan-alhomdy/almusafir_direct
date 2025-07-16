@@ -74,13 +74,11 @@ class OutlinedButtonWidget extends StatelessWidget {
           elevation: 0,
           padding: const EdgeInsets.all(0),
           shape: RoundedRectangleBorder(
-              side:
-                  BorderSide(width: 1, color: color ?? AppColors.mainOneColor),
+              side: BorderSide(color: color ?? AppColors.mainOneColor),
               borderRadius: BorderRadius.circular(18)),
         ),
         child: DecoratedBox(
-          decoration: BoxDecoration(
-              color: color, borderRadius: BorderRadius.circular(18)),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(18)),
           child: Container(
             alignment: Alignment.center,
             width: double.infinity,
@@ -88,8 +86,9 @@ class OutlinedButtonWidget extends StatelessWidget {
             child: Text(
               text,
               textAlign: TextAlign.center,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 16,
+                color: color,
                 fontFamily: FontFamilyNames.dINNextLTArabicMedium,
               ),
             ),

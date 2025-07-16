@@ -7,6 +7,7 @@ import '../../../../core/server/error_token.dart';
 import '../../../../core/utils/function/message_box.dart';
 import '../../../../core/utils/function/toast_box.dart';
 import '../../../../core/widget/appbar/my_appbar.dart';
+import '../../../../helper/public_infromation.dart';
 import '../bloc/profile_bloc/profile_bloc.dart';
 import '../widget/profile.widget.dart';
 
@@ -40,7 +41,8 @@ class _ProfileVeiwState extends State<ProfileVeiw> {
       ToastBox.show(message: state.message);
     } else if (state is LogoutOrDeleteAccountSuccessfulState) {
       Get.back();
-      setState(() => ErrorTokenAuth.logoutApp());
+      ErrorTokenAuth.logoutApp();
+      Helper.homeKey.currentState?.changeScreenWithBack(0);
     }
   }
 }

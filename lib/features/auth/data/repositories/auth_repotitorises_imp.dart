@@ -28,6 +28,7 @@ class AuthRepostitoryImpl extends AuthRepostitory {
       } on ServerExecption catch (e) {
         return Left(ServerFailure(e.message ?? ""));
       } on DioException catch (e) {
+        print(e.response?.data);
         if (e.response?.statusCode == 403) {
           return Left(AccountNotActiveFailure());
         }
