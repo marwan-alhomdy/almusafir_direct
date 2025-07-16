@@ -1,10 +1,14 @@
 import 'package:almusafir_direct/core/widget/appbar/my_appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/constants/enum/explore.dart';
-import '../widgets/category/category.widget.dart';
-import '../widgets/category/filter_category.widget.dart';
+import '/injection_container.dart' as di;
+import '../../../../core/widget/state/error.widget.dart';
+import '../logic/explore_bloc/explore_bloc.dart';
+import '../logic/explore_type_cubit/explore_type_cubit.dart';
+import '../widgets/explores.widget.dart';
 import '../widgets/filter/filter_explore.widget.dart';
+import '../widgets/loading_explore.widget.dart';
 
 class ExploreView extends StatefulWidget {
   const ExploreView({super.key});
@@ -14,26 +18,50 @@ class ExploreView extends StatefulWidget {
 }
 
 class _ExploreViewState extends State<ExploreView> {
-  ExploreFilter selectedExplore = ExploreFilter.all;
+  bool isGridView = true;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const MyAppBarWithLogo(),
-      body: Column(
-        spacing: 10,
-        children: [
-          ExploreFilterBarWidget(
-            value: selectedExplore,
-            onChanged: (value) {
-              setState(() => selectedExplore = value);
-            },
-          ),
-          Expanded(
-              child: selectedExplore == ExploreFilter.all
-                  ? const CategoryWidget()
-                  : FilterCategoryWidget(category: selectedExplore)),
-        ],
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => di.sl<ExploreBloc>()),
+        BlocProvider(
+          create: (_) => di.sl<ExploreTypeCubit>()..getExploreType(),
+        ),
+      ],
+      child: Scaffold(
+        appBar: const MyAppBarWithLogo(),
+        body: BlocConsumer<ExploreTypeCubit, ExploreTypeState>(
+          builder: _builderExplore,
+          listener: _listenerExplore,
+        ),
       ),
     );
+  }
+
+  void _listenerExplore(BuildContext context, ExploreTypeState state) {
+    if (state is GetExploreTypeSuccessfullyState) {
+      final type = context.read<ExploreTypeCubit>().selectedExploreType;
+      BlocProvider.of<ExploreBloc>(context).add(GetShoppingExplore(type?.id));
+    }
+  }
+
+  Widget _builderExplore(BuildContext context, ExploreTypeState state) {
+    if (state is ExploreTypeErrorState) {
+      return ErrorCustomWidget(state.message,
+          onTap: () => _getExploreType(context));
+    } else if (state is ExploreTypeLoadingState) {
+      return const LoadingExploreWidget();
+    } else if (state is GetExploreTypeSuccessfullyState) {
+      return const CustomScrollView(
+        physics: AlwaysScrollableScrollPhysics(),
+        slivers: [ExploreFilterbar(), ShoppingWidget()],
+      );
+    } else {
+      return const SizedBox();
+    }
+  }
+
+  void _getExploreType(BuildContext context) {
+    context.read<ExploreTypeCubit>().getExploreType();
   }
 }

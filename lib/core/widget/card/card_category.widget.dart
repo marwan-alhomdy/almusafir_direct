@@ -1,3 +1,4 @@
+import 'package:almusafir_direct/core/utils/resource/color_app.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
@@ -50,12 +51,14 @@ class CardCategoryWidget extends StatelessWidget {
                 Row(
                   spacing: 4,
                   children: [
-                    const Icon(Iconsax.location_copy, size: 12),
+                    const Icon(Iconsax.location,
+                        color: AppColors.mainOneColor, size: 12),
                     Text(
                       address!,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: AppTextStyles.getMediumStyle(fontSize: 12),
+                      style: AppTextStyles.getMediumStyle(
+                          color: AppColors.mainOneColor, fontSize: 12),
                     ),
                   ],
                 ),
@@ -72,11 +75,12 @@ class CardCategoryWidget extends StatelessWidget {
               if (description != null)
                 Text(
                   description!,
-                  maxLines: 2,
+                  maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: AppTextStyles.getMediumStyle(fontSize: 10),
+                  style: AppTextStyles.getMediumStyle(
+                      color: Colors.orange, fontSize: 10),
                 ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 10),
             ],
           ),
         ),

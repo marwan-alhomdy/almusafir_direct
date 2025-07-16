@@ -46,6 +46,13 @@ import 'features/checkout/domain/usecases/services/get_payment_methods_uescases.
 import 'features/checkout/domain/usecases/services/get_vehicle_type_uescases.dart';
 import 'features/checkout/presentation/logic/form_checkout_cubit/form_checkout_cubit.dart';
 import 'features/checkout/presentation/logic/form_service_cubit/form_service_cubit.dart';
+import 'features/explore/data/datasources/explore_remote_datasources.dart';
+import 'features/explore/data/repositories/explore_repositories_imp.dart';
+import 'features/explore/domain/repositories/explore_repositories.dart';
+import 'features/explore/domain/usecases/get_explore.uescases.dart';
+import 'features/explore/domain/usecases/get_type_explore.uescases.dart';
+import 'features/explore/presentation/logic/explore_bloc/explore_bloc.dart';
+import 'features/explore/presentation/logic/explore_type_cubit/explore_type_cubit.dart';
 import 'features/home/data/datasources/home_local_datasource.dart';
 import 'features/home/data/datasources/home_remote_datasources.dart';
 import 'features/home/data/repositories/home_repositories_imp.dart';
@@ -128,6 +135,12 @@ Future<void> init() async {
 
   sl.registerFactory(
       () => OtherServicestsCubit(getOtherServicesUescases: sl()));
+
+  //Explore
+  sl.registerFactory(() => ExploreTypeCubit(getTypeExploresUescases: sl()));
+
+  sl.registerFactory(() => ExploreBloc(getExploresUescases: sl()));
+
   //Departments
   sl.registerFactory(
       () => DepartmentTypeCubit(getTypeDepartmentsUescases: sl()));
@@ -158,7 +171,6 @@ Future<void> init() async {
   sl.registerLazySingleton(() => CheckActivationUseCases(sl()));
 
   //Profile
-
   sl.registerLazySingleton(() => UpdateUserProfileUsecases(sl()));
   sl.registerLazySingleton(() => ChangeAvatarUsecases(sl()));
   sl.registerLazySingleton(() => LogoutDriverUseCases(sl()));
@@ -183,6 +195,9 @@ Future<void> init() async {
 
   //Services
   sl.registerLazySingleton(() => GetOtherServicesUescases(sl()));
+  //Explore
+  sl.registerLazySingleton(() => GetTypeExploresUescases(sl()));
+  sl.registerLazySingleton(() => GetExploresUescases(sl()));
 
   //Departments
   sl.registerLazySingleton(() => GetTypeDepartmentsUescases(sl()));
@@ -228,6 +243,12 @@ Future<void> init() async {
         networkInfo: sl(),
       ));
 
+  //Explore
+  sl.registerLazySingleton<ExploreRepostitory>(() => ExploreRepostitoryImp(
+        remoteDataSource: sl(),
+        networkInfo: sl(),
+      ));
+
   //Departments
   sl.registerLazySingleton<DepartmentRepostitory>(
       () => DepartmentRepostitoryImp(
@@ -269,6 +290,10 @@ Future<void> init() async {
   //Service
   sl.registerLazySingleton<ServiceRemoteDataSource>(
       () => ServiceRemoteDataSourceImplWithDio(apiService: sl()));
+
+  //Explore
+  sl.registerLazySingleton<ExploreRemoteDataSource>(
+      () => ExploreRemoteDataSourceImplWithDio(apiService: sl()));
 
   //Departments
   sl.registerLazySingleton<DepartmentRemoteDataSource>(

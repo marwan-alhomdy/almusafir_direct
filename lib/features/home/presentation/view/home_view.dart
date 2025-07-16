@@ -79,6 +79,7 @@ class HomeViewState extends State<HomeView> {
               const HomeWidget(),
               const MyOrdersView(),
               const ChatView(),
+              //const ExploreView(),
               const ExploreView(),
               const ProfileVeiw(),
             ][currentIndex]),
