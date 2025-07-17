@@ -34,13 +34,16 @@ class _OnboardingViewState extends State<OnboardingView> {
           children: [
             Expanded(
               flex: 3,
-              child: ImagesOnboardingWidget(
-                controller: _controller,
-                onPageChanged: (value) => setState(() => _currentPage = value),
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: ImagesOnboardingWidget(
+                  controller: _controller,
+                  onPageChanged: (value) =>
+                      setState(() => _currentPage = value),
+                ),
               ),
             ),
             Expanded(
-              flex: 1,
               child: ButtonsOnboardingWidget(
                 currentPage: _currentPage,
                 onSkip: () => Get.offAll(() => HomeView(

@@ -46,6 +46,7 @@ class CardExploreWidget extends StatelessWidget {
         margin: const EdgeInsets.all(5),
         child: InkWell(
           onTap: onPressed,
+          customBorder: RoundedRectangleBorderAttribute.all(12),
           child: Column(
             spacing: 5,
             mainAxisAlignment: MainAxisAlignment.center,

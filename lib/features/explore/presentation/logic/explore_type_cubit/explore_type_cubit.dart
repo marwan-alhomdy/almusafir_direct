@@ -13,6 +13,13 @@ class ExploreTypeCubit extends Cubit<ExploreTypeState> {
 
   List<DepartmentType> exploreTypes = [];
   DepartmentType? selectedExploreType;
+
+  void initExploreType() async {
+    if (exploreTypes.isEmpty) {
+      getExploreType();
+    }
+  }
+
   void getExploreType() async {
     emit(ExploreTypeLoadingState());
     final failureOrSuccess =

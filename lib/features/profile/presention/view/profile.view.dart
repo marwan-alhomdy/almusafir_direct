@@ -1,3 +1,4 @@
+import 'package:almusafir_direct/features/order/presentation/logic/order_cubit/order_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -42,6 +43,7 @@ class _ProfileVeiwState extends State<ProfileVeiw> {
     } else if (state is LogoutOrDeleteAccountSuccessfulState) {
       Get.back();
       ErrorTokenAuth.logoutApp();
+      context.read<OrderCubit>().orders = null;
       Helper.homeKey.currentState?.changeScreenWithBack(0);
     }
   }

@@ -75,7 +75,8 @@ class _FilterOrderWidgetState extends State<FilterOrderWidget> {
             } else if (state is LoadingFilterOrderState) {
               return const CircularProgressIndicator();
             } else if (state is EmptyFilterOrderState) {
-              return const Center(child: Text("لا توجد طلبات"));
+              return const Expanded(
+                  child: Center(child: Text("لا توجد طلبات")));
             } else {
               return const SizedBox();
             }

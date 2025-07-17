@@ -2,7 +2,6 @@ import 'package:almusafir_direct/core/widget/appbar/my_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '/injection_container.dart' as di;
 import '../../../../core/widget/state/error.widget.dart';
 import '../logic/explore_bloc/explore_bloc.dart';
 import '../logic/explore_type_cubit/explore_type_cubit.dart';
@@ -18,22 +17,19 @@ class ExploreView extends StatefulWidget {
 }
 
 class _ExploreViewState extends State<ExploreView> {
-  bool isGridView = true;
+  @override
+  void initState() {
+    context.read<ExploreTypeCubit>().initExploreType();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (_) => di.sl<ExploreBloc>()),
-        BlocProvider(
-          create: (_) => di.sl<ExploreTypeCubit>()..getExploreType(),
-        ),
-      ],
-      child: Scaffold(
-        appBar: const MyAppBarWithLogo(),
-        body: BlocConsumer<ExploreTypeCubit, ExploreTypeState>(
-          builder: _builderExplore,
-          listener: _listenerExplore,
-        ),
+    return Scaffold(
+      appBar: const MyAppBarWithLogo(),
+      body: BlocConsumer<ExploreTypeCubit, ExploreTypeState>(
+        builder: _builderExplore,
+        listener: _listenerExplore,
       ),
     );
   }

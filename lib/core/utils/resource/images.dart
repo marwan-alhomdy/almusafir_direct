@@ -6,6 +6,9 @@ mixin AppImages {
   static const String logo = "assets/icons/logo-color.png";
 
   static const String avatar = "assets/images/avater.png";
+  static const String onboarding1 = "assets/images/1-onboarding.png";
+  static const String onboarding2 = "assets/images/2-onboarding.png";
+  static const String onboarding3 = "assets/images/3-onboarding.png";
 }
 
 mixin AppLottie {

@@ -15,7 +15,6 @@ class ChatView extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => ChatCubit()),
         BlocProvider(create: (_) => di.sl<ChatWithOpenaiCubit>()),
       ],
       child: Builder(builder: (context) {
