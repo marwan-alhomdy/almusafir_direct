@@ -29,7 +29,7 @@ class ProductsShoppingView extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => ShopCartCubit(shop.id)..fetchCart()),
         BlocProvider(
-          create: (context) => di.sl<ShopProductsCubit>()
+          create: (_) => di.sl<ShopProductsCubit>()
             ..getShopProducts(
               orderType: orderType?.refType,
               departmentsId: shop.id,

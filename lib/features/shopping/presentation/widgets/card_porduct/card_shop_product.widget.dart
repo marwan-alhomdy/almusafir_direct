@@ -77,17 +77,16 @@ class _CardShopProductWidgetState extends State<CardShopProductWidget> {
                     spacing: 10,
                     children: [
                       Text(
-                        "${widget.product.price}\$",
+                        "${widget.product.price}",
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: AppTextStyles.getBoldStyle(
                           color: Colors.blueAccent,
-                          fontSize: 14,
                         ),
                       ),
                       if ((widget.product.oldPrice ?? 0) > 0)
                         Text(
-                          "${widget.product.oldPrice}\$",
+                          "${widget.product.oldPrice}",
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: AppTextStyles.getBoldStyle(
@@ -133,6 +132,8 @@ class _QuantityProductinCardWidgetState
   bool isLoaing = true;
   UnitsDatum? selectedUnit;
 
+  ShopCartCubit get shopCartCubit => context.read<ShopCartCubit>();
+
   @override
   void initState() {
     initSettingCount();
@@ -146,9 +147,7 @@ class _QuantityProductinCardWidgetState
   }
 
   void initSettingCount() {
-    final product = context
-        .read<ShopCartCubit>()
-        .rowCart
+    final product = shopCartCubit.rowCart
         .firstWhereOrNull((row) => row.id == widget.product.id);
     count = product?.qty ?? 0;
     if (product != null) {
@@ -180,18 +179,13 @@ class _QuantityProductinCardWidgetState
   }
 
   void addProductToCart(int count, UnitsDatum? unit) {
-    this.count == 0;
     selectedUnit = unit;
-    context.read<ShopCartCubit>().addToCart(widget.product, count, unit);
     this.count = count;
-    setState(() {});
+    shopCartCubit.addToCart(widget.product, count, unit);
   }
 
   void changeCountProductInCart(int count) {
-    context
-        .read<ShopCartCubit>()
-        .updateCart(widget.product, count, selectedUnit);
     this.count = count;
-    setState(() {});
+    shopCartCubit.updateCart(widget.product, count, selectedUnit);
   }
 }

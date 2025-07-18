@@ -7,7 +7,7 @@ import '../../../../core/widget/appbar/my_appbar.dart';
 import '../../../../core/widget/state/error.widget.dart';
 import '../../../home/data/model/orderstypes/datum.dart';
 import '../logic/shop_products_cubit/shop_products_cubit.dart';
-import '../widgets/products_shop/shop_products.widget.dart';
+import '../widgets/service/shop_products.widget.dart';
 import '../widgets/shop/state/loading_shopping.widget.dart';
 
 class ServiceItemsView extends StatefulWidget {
