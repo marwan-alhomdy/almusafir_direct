@@ -70,7 +70,7 @@ class FormInputManager {
   }
 
   void onPaymentMothed(FormCheckoutCubit formCheckoutCubit) {
-    formServiceCubit.getPaymentMethods();
+    formServiceCubit.getPaymentMethods(formCheckoutCubit.orderType?.refType);
     BottomSheetWidget.showIsScroll(BottomSheetFormServicesWidget(
         formServiceCubit: formServiceCubit,
         valueSelected: formCheckoutCubit.selectedpaymentMethod,

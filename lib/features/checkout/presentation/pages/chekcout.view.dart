@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 
 import '/injection_container.dart' as di;
 import '../../../../core/utils/function/message_box.dart';
-import '../../../../core/utils/handler/navigator.handler.dart';
 import '../../../../core/widget/appbar/my_appbar.dart';
 import '../../../../core/widget/button/button.widget.dart';
 import '../../../../helper/public_infromation.dart';
@@ -16,7 +15,7 @@ import '../logic/form_checkout_cubit/form_checkout_cubit.dart';
 import '../logic/form_service_cubit/form_service_cubit.dart';
 import '../widgets/form_checkout_input.widget.dart';
 import '../widgets/summery/porders_checkout.widget.dart';
-import 'order_success.view.dart';
+import '../widgets/summery/summery_checkout.widget.dart';
 
 class CheckoutView extends StatelessWidget {
   const CheckoutView(
@@ -58,7 +57,7 @@ class CheckoutView extends StatelessWidget {
                           style: AppTextStyles.getMediumStyle(),
                         ),
                         ProductsCheckoutWidget(productsCart: productsCart),
-                        // const SummeryCheckoutWidget(),
+                        const SummeryCheckoutWidget(),
                       ]
                     ],
                   ),
@@ -101,7 +100,8 @@ class CheckoutView extends StatelessWidget {
       MessageBox.showError(context, state.message);
     } else if (state is CheckoutSuccessfullyState) {
       Get.back();
-      NavigatorHandler.push(context, const OrderSuccessPage());
+      print(state.checkoutModule.steps?.next);
+      //  NavigatorHandler.push(context, const OrderSuccessPage());
     }
   }
 }

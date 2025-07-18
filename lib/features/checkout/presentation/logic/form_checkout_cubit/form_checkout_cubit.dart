@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/data/service.module.dart';
 import '../../../../../helper/public_infromation.dart';
+import '../../../data/models/checkout_module.dart';
 import '../../../domain/usecases/services/checkout2_uescases.dart';
 
 part 'form_checkout_state.dart';
@@ -57,9 +58,9 @@ class FormCheckoutCubit extends Cubit<FormCheckoutState> {
     if (formKey.currentState?.validate() ?? false) {
       emit(ServicesStateLoadingState());
       final failureOrSuccess = await checkout2Uescases(data: getDataCheckout());
-      failureOrSuccess.fold(
-          (failuer) => emit(ServicesStateErrorState(message: failuer.message)),
-          (_) => emit(CheckoutSuccessfullyState()));
+      emit(failureOrSuccess.fold(
+          (failuer) => ServicesStateErrorState(message: failuer.message),
+          CheckoutSuccessfullyState.new));
     }
   }
 
@@ -69,7 +70,6 @@ class FormCheckoutCubit extends Cubit<FormCheckoutState> {
       'order_type': orderType?.refType,
       'step': "details_shiping_coupon",
       'payment_method_id': selectedpaymentMethod?.id?.toString(),
-
       'vehicle_type_id': selectedVehicleType?.id?.toString(),
       'expected_cart_total': expectedTotalController.text,
       'customer_notes': customerNoteController.text,

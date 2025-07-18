@@ -11,7 +11,7 @@ class HeaderServer {
       'Content-Type': 'application/json',
       "api_version": "v2",
       'User-Agent': Platform.isIOS ? 'ios' : 'android',
-      'Accept-Language':LanguageHelper.isArabic?"ar":"en",
+      'Accept-Language': LanguageHelper.isArabic ? "ar" : "en",
     };
   }
 
@@ -22,7 +22,7 @@ class HeaderServer {
       'Content-Type': 'application/json',
       "api_version": "v2",
       'User-Agent': Platform.isIOS ? 'ios' : 'android',
-      'Accept-Language':LanguageHelper.isArabic?"ar":"en",
+      'Accept-Language': LanguageHelper.isArabic ? "ar" : "en",
     };
   }
 
@@ -31,7 +31,7 @@ class HeaderServer {
       "content-type": "multipart/form-data",
       "api_version": "v2",
       'User-Agent': Platform.isIOS ? 'ios' : 'android',
-      'Accept-Language':LanguageHelper.isArabic?"ar":"en",
+      'Accept-Language': LanguageHelper.isArabic ? "ar" : "en",
     };
   }
 

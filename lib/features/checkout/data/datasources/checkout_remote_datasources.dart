@@ -5,9 +5,10 @@ import 'package:almusafir_direct/core/server/header_server.dart';
 import '../../../../core/constants/endpoint.dart';
 import '../../../../core/data/service.module.dart';
 import '../../../../core/services/api.service.dart';
+import '../models/checkout_module.dart';
 
 abstract class CheckoutRemoteDataSource {
-  Future<dynamic> checkout2(Map<String, dynamic> data);
+  Future<CheckoutModule> checkout2(Map<String, dynamic> data);
 
   Future<List<ServiceModul>> getFlights(String orderType);
 
@@ -17,7 +18,7 @@ abstract class CheckoutRemoteDataSource {
 
   Future<List<ServiceModul>> getLoadsTypes(String orderType);
 
-  Future<List<ServiceModul>> getPaymentMethods();
+  Future<List<ServiceModul>> getPaymentMethods(String? orderType);
 }
 
 class CheckoutRemoteDataSourceImplWithDio extends CheckoutRemoteDataSource {
@@ -25,14 +26,14 @@ class CheckoutRemoteDataSourceImplWithDio extends CheckoutRemoteDataSource {
   CheckoutRemoteDataSourceImplWithDio({required this.apiService});
 
   @override
-  Future<dynamic> checkout2(Map<String, dynamic> data) async {
+  Future<CheckoutModule> checkout2(Map<String, dynamic> data) async {
     final response = await apiService.post(
       endPoint: EndPointName.checkout2,
       headers: HeaderServer.headerWithToken,
-      data: data,
+      data: data..addAll({"api_version": "v2"}),
     );
-    log(response.toString());
-    return response;
+
+    return CheckoutModule.fromJson(response);
   }
 
   @override
@@ -62,9 +63,8 @@ class CheckoutRemoteDataSourceImplWithDio extends CheckoutRemoteDataSource {
   @override
   Future<List<ServiceModul>> getLoadsTypes(String orderType) async {
     log(orderType.toString());
-    final response = await apiService.get(
-      endPoint: "${EndPointName.loadtypes}?order_type=$orderType",
-    );
+    final response = await apiService
+        .get(endPoint: EndPointName.loadtypes, data: {"order_type": orderType});
     log(response.toString());
     return (response["data"] as List?)
             ?.map((e) => ServiceModul.fromJson(e))
@@ -73,10 +73,9 @@ class CheckoutRemoteDataSourceImplWithDio extends CheckoutRemoteDataSource {
   }
 
   @override
-  Future<List<ServiceModul>> getPaymentMethods() async {
-    final response = await apiService.get(
-      endPoint: EndPointName.paymentMethods,
-    );
+  Future<List<ServiceModul>> getPaymentMethods(String? orderType) async {
+    final response =
+        await apiService.get(endPoint: EndPointName.paymentMethods);
 
     return (response["data"] as List?)
             ?.map((e) => ServiceModul.fromJson(e))

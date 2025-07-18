@@ -16,4 +16,7 @@ final class ServicesStateErrorState extends FormCheckoutState {
   const ServicesStateErrorState({required this.message});
 }
 
-final class CheckoutSuccessfullyState extends FormCheckoutState {}
+class CheckoutSuccessfullyState extends FormCheckoutState {
+  final CheckoutModule checkoutModule;
+  const CheckoutSuccessfullyState(this.checkoutModule);
+}

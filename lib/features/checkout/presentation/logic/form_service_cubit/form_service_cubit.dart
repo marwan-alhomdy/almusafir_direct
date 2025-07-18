@@ -88,12 +88,12 @@ class FormServiceCubit extends Cubit<FormServiceState> {
         (airports) => emit(FormServicesSuccessfullyState(services: airports)));
   }
 
-  void getPaymentMethods() async {
+  void getPaymentMethods(String? orderType) async {
     emit(FormServiceLoadingState());
     if (paymentMethods.isNotEmpty) {
       emit(FormServicesSuccessfullyState(services: paymentMethods));
     } else {
-      final failureOrSuccess = await getPaymentMethodsUescases();
+      final failureOrSuccess = await getPaymentMethodsUescases(orderType);
       failureOrSuccess.fold(
           (failuer) => emit(FormServiceErrorState(message: failuer.message)),
           (paymentMethods) {

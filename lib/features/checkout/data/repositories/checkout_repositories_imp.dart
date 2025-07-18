@@ -7,6 +7,7 @@ import '../../../../core/error/faiture.dart';
 import '../../../../core/services/network_info.dart';
 import '../../domain/repositories/checkout_repositories.dart';
 import '../datasources/checkout_remote_datasources.dart';
+import '../models/checkout_module.dart';
 
 class CheckoutRepostitoryImp extends CheckoutRepostitory {
   final CheckoutRemoteDataSource remoteDataSource;
@@ -17,7 +18,8 @@ class CheckoutRepostitoryImp extends CheckoutRepostitory {
       {required this.remoteDataSource, required this.networkInfo});
 
   @override
-  Future<Either<Failure, dynamic>> checkout2(Map<String, dynamic> data) async {
+  Future<Either<Failure, CheckoutModule>> checkout2(
+      Map<String, dynamic> data) async {
     if (await networkInfo.isConnected) {
       try {
         final remotePosts = await remoteDataSource.checkout2(data);
@@ -91,10 +93,11 @@ class CheckoutRepostitoryImp extends CheckoutRepostitory {
   }
 
   @override
-  Future<Either<Failure, List<ServiceModul>>> getPaymentMethods() async {
+  Future<Either<Failure, List<ServiceModul>>> getPaymentMethods(
+      String? orderType) async {
     if (await networkInfo.isConnected) {
       try {
-        final remotePosts = await remoteDataSource.getPaymentMethods();
+        final remotePosts = await remoteDataSource.getPaymentMethods(orderType);
         return Right(remotePosts);
       } on ServerExecption catch (e) {
         return Left(ServerFailure(e.message ?? ""));
