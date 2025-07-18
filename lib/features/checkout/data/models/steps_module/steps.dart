@@ -1,11 +1,11 @@
-import 'step_data.dart';
+import '../process_data_module/process_data.dart';
 
 class Steps {
   String? previous;
   String? current;
   String? next;
   bool? stepStatus;
-  StepData? stepData;
+  ProcessData? stepData;
 
   Steps({
     this.previous,
@@ -16,13 +16,13 @@ class Steps {
   });
 
   factory Steps.fromJson(Map<String, dynamic> json) => Steps(
-        previous: json['previous'] as String?,
-        current: json['current'] as String?,
-        next: json['next'] as String?,
+        previous: json['previous'],
+        current: json['current'],
+        next: json['next'],
         stepStatus: json['step_status'],
-        stepData: json['step_data'] == null
-            ? null
-            : StepData.fromJson(json['step_data'] as Map<String, dynamic>),
+        // stepData: json['step_data'] == null
+        //     ? null
+        //     : ProcessData.fromJson(json['step_data'] as Map<String, dynamic>),
       );
 
   Map<String, dynamic> toJson() => {

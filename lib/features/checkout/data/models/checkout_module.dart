@@ -51,9 +51,9 @@ class CheckoutModule {
       // cartData: json['cart_data'] == null
       //     ? null
       //     : CartData.fromJson(json['cart_data'] as Map<String, dynamic>),
-      // cartTotals: json['cart_totals'] == null
-      //     ? null
-      //     : CartTotals.fromJson(json['cart_totals'] as Map<String, dynamic>),
+      cartTotals: json['cart_totals'] == null
+          ? null
+          : CartTotals.fromJson(json['cart_totals'] as Map<String, dynamic>),
     );
   }
 

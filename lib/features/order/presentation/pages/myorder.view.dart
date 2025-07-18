@@ -1,4 +1,6 @@
 import 'package:almusafir_direct/features/order/presentation/logic/order_cubit/order_cubit.dart';
+import 'package:almusafir_direct/features/order/presentation/widgets/loading_order.widget.dart'
+    show LoadingOrdersWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -31,7 +33,7 @@ class _MyOrdersViewState extends State<MyOrdersView> {
         body: BlocBuilder<OrderCubit, OrderState>(
           builder: (context, state) {
             if (state is LoadingOrdersState) {
-              return const Center(child: CircularProgressIndicator());
+              return const LoadingOrdersWidget();
             } else if (state is ErrorGetOrderState) {
               return ErrorCustomWidget(state.message,
                   onTap: () => context.read<OrderCubit>().getOrders());

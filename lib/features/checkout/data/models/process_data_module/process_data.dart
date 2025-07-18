@@ -12,28 +12,31 @@ class ProcessData {
   dynamic loadRefType;
   dynamic loadTypeId;
   dynamic loadNotes;
-  bool? isLoadLiter;
+  int? isLoadLiter;
   int? isLoadStorageSensitive;
   int? isLoadFragileMaterials;
   dynamic weight;
   dynamic length;
   dynamic width;
   dynamic height;
+
   String? shippingFirstname;
   String? shippingLastname;
-  int? shippingCountry;
+  String? shippingCountry;
+
   String? shippingState;
   String? shippingAddress1;
-  String? shippingLat;
-  String? shippingLng;
+  num? shippingLat;
+  num? shippingLng;
   String? shippingPhone;
   String? shippingEmail;
-  dynamic shippingAddress2;
-  dynamic shippingLines;
-  dynamic shippingCity;
-  dynamic shippingZip;
-  dynamic shippingPostcode;
-  int? shippingRadius;
+  String? shippingAddress2;
+  String? shippingLines;
+  String? shippingCity;
+  String? shippingZip;
+  String? shippingPostcode;
+  String? shippingRadius;
+
   dynamic billingAddressId;
   dynamic billingCompany;
   String? billingFirstname;
@@ -46,8 +49,8 @@ class ProcessData {
   String? billingAddress1;
   dynamic billingAddress2;
   dynamic billingLines;
-  String? billingLat;
-  String? billingLng;
+  num? billingLat;
+  num? billingLng;
   dynamic billingZip;
   dynamic billingPostcode;
   bool? billingDiffers;
@@ -55,8 +58,8 @@ class ProcessData {
   int? fromCountry;
   String? fromState;
   String? fromAddress1;
-  String? fromLat;
-  String? fromLng;
+  num? fromLat;
+  num? fromLng;
   dynamic image;
   dynamic image2;
   dynamic image3;
@@ -127,64 +130,72 @@ class ProcessData {
         cartData: json['cart_data'] == null
             ? null
             : CartData.fromJson(json['cart_data'] as Map<String, dynamic>),
-        cartTotal: json['cart_total'] as int?,
-        departmentsId: json['departments_id'] as int?,
-        userId: json['user_id'] as int?,
-        email: json['email'] as String?,
-        customerId: json['customer_id'] as int?,
-        stateId: json['state_id'] as int?,
-        customerNotes: json['customer_notes'] as String?,
-        loadRefType: json['load_ref_type'] as dynamic,
-        loadTypeId: json['load_type_id'] as dynamic,
-        loadNotes: json['load_notes'] as dynamic,
-        isLoadLiter: json['is_load_liter'] as bool?,
-        isLoadStorageSensitive: json['is_load_storage_sensitive'] as int?,
-        isLoadFragileMaterials: json['is_load_fragile_materials'] as int?,
-        weight: json['weight'] as dynamic,
-        length: json['length'] as dynamic,
-        width: json['width'] as dynamic,
-        height: json['height'] as dynamic,
-        shippingFirstname: json['shipping_firstname'] as String?,
-        shippingLastname: json['shipping_lastname'] as String?,
-        shippingCountry: json['shipping_country'] as int?,
-        shippingState: json['shipping_state'] as String?,
-        shippingAddress1: json['shipping_address_1'] as String?,
-        shippingLat: json['shipping_lat'] as String?,
-        shippingLng: json['shipping_lng'] as String?,
-        shippingPhone: json['shipping_phone'] as String?,
-        shippingEmail: json['shipping_email'] as String?,
-        shippingAddress2: json['shipping_address_2'] as dynamic,
-        shippingLines: json['shipping_lines'] as dynamic,
-        shippingCity: json['shipping_city'] as dynamic,
-        shippingZip: json['shipping_zip'] as dynamic,
-        shippingPostcode: json['shipping_postcode'] as dynamic,
-        shippingRadius: json['shipping_radius'] as int?,
-        billingAddressId: json['billing_address_id'] as dynamic,
-        billingCompany: json['billing_company'] as dynamic,
-        billingFirstname: json['billing_firstname'] as String?,
-        billingLastname: json['billing_lastname'] as String?,
-        billingEmail: json['billing_email'] as String?,
-        billingPhone: json['billing_phone'] as String?,
-        billingCountry: json['billing_country'] as int?,
-        billingState: json['billing_state'] as String?,
-        billingCity: json['billing_city'] as dynamic,
-        billingAddress1: json['billing_address_1'] as String?,
-        billingAddress2: json['billing_address_2'] as dynamic,
-        billingLines: json['billing_lines'] as dynamic,
-        billingLat: json['billing_lat'] as String?,
-        billingLng: json['billing_lng'] as String?,
-        billingZip: json['billing_zip'] as dynamic,
-        billingPostcode: json['billing_postcode'] as dynamic,
-        billingDiffers: json['billing_differs'] as bool?,
-        fromPhone: json['from_phone'] as String?,
-        fromCountry: json['from_country'] as int?,
-        fromState: json['from_state'] as String?,
-        fromAddress1: json['from_address_1'] as String?,
-        fromLat: json['from_lat'] as String?,
-        fromLng: json['from_lng'] as String?,
-        image: json['image'] as dynamic,
-        image2: json['image2'] as dynamic,
-        image3: json['image3'] as dynamic,
+        cartTotal: json['cart_total'],
+        departmentsId: json['departments_id'],
+        userId: json['user_id'],
+        email: json['email'],
+        customerId: json['customer_id'],
+        stateId: json['state_id'],
+        customerNotes: json['customer_notes'],
+        loadRefType: json['load_ref_type'],
+        loadTypeId: json['load_type_id'],
+        loadNotes: json['load_notes'],
+
+        isLoadLiter: json['is_load_liter'],
+        isLoadStorageSensitive: json['is_load_storage_sensitive'],
+        isLoadFragileMaterials: json['is_load_fragile_materials'],
+        weight: json['weight'],
+        length: json['length'],
+        width: json['width'],
+        height: json['height'],
+
+        shippingFirstname: json['shipping_firstname'],
+        shippingLastname: json['shipping_lastname'],
+        shippingCountry: json['shipping_country'],
+
+        shippingState: json['shipping_state'],
+        shippingAddress1: json['shipping_address_1'],
+
+        shippingLat: json['shipping_lat'],
+        shippingLng: json['shipping_lng'],
+
+        shippingPhone: json['shipping_phone'],
+
+        shippingEmail: json['shipping_email'],
+        shippingAddress2: json['shipping_address_2'],
+        shippingLines: json['shipping_lines'],
+        shippingCity: json['shipping_city'],
+
+        shippingZip: json['shipping_zip'],
+        shippingPostcode: json['shipping_postcode'],
+        // shippingRadius: json['shipping_radius'],
+
+        billingAddressId: json['billing_address_id'],
+        billingCompany: json['billing_company'],
+        billingFirstname: json['billing_firstname'],
+        billingLastname: json['billing_lastname'],
+        billingEmail: json['billing_email'],
+        billingPhone: json['billing_phone'],
+        // billingCountry: json['billing_country'],
+        billingState: json['billing_state'],
+        billingCity: json['billing_city'],
+        billingAddress1: json['billing_address_1'],
+        billingAddress2: json['billing_address_2'],
+        billingLines: json['billing_lines'],
+        billingLat: json['billing_lat'],
+        billingLng: json['billing_lng'],
+        billingZip: json['billing_zip'],
+        billingPostcode: json['billing_postcode'],
+        billingDiffers: json['billing_differs'],
+        fromPhone: json['from_phone'],
+        // fromCountry: json['from_country'],
+        fromState: json['from_state'],
+        fromAddress1: json['from_address_1'],
+        fromLat: json['from_lat'],
+        fromLng: json['from_lng'],
+        image: json['image'],
+        image2: json['image2'],
+        image3: json['image3'],
       );
 
   Map<String, dynamic> toJson() => {

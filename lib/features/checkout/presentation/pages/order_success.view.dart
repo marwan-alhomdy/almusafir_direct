@@ -10,7 +10,8 @@ import '../../../../core/utils/resource/text_style.dart';
 import '../../../../helper/public_infromation.dart';
 
 class OrderSuccessPage extends StatelessWidget {
-  const OrderSuccessPage({super.key});
+  const OrderSuccessPage({super.key, required this.message});
+  final String message;
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +38,10 @@ class OrderSuccessPage extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       color: AppColors.mainOneColor,
                     )),
+                const SizedBox(height: 20),
+                Text(message,
+                    textAlign: TextAlign.center,
+                    style: AppTextStyles.getRegularStyle()),
                 const SizedBox(height: 20),
                 ButtonWidget(
                     onTap: () =>

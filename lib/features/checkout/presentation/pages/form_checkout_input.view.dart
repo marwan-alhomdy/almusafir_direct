@@ -18,9 +18,11 @@ import '../widgets/form_checkout_input.widget.dart';
 import 'order_success.view.dart';
 
 class FormCheckoutInputView extends StatelessWidget {
-  const FormCheckoutInputView({super.key, required this.orderType});
+  FormCheckoutInputView({super.key, required this.orderType});
 
   final OrderType? orderType;
+
+  bool isCheckoutPay = true;
 
   @override
   Widget build(BuildContext context) {
@@ -85,6 +87,7 @@ class FormCheckoutInputView extends StatelessWidget {
     }
   }
 
+  bool hhh = true;
   void _listenerServicesCubit(BuildContext context, FormCheckoutState state) {
     if (state is ServicesStateLoadingState) {
       MessageBox.showProgress(context, "loading".tr);
@@ -93,7 +96,13 @@ class FormCheckoutInputView extends StatelessWidget {
       MessageBox.showError(context, state.message);
     } else if (state is CheckoutSuccessfullyState) {
       Get.back();
-      NavigatorHandler.push(context, const OrderSuccessPage());
+      if (state.checkoutModule.steps?.next == "pay" && isCheckoutPay) {
+        isCheckoutPay = false;
+        context.read<FormCheckoutCubit>().checkout2("pay");
+      } else if (state.checkoutModule.steps?.next == "finsh") {
+        final message = state.checkoutModule.message ?? "--";
+        NavigatorHandler.push(context, OrderSuccessPage(message: message));
+      }
     }
   }
 }

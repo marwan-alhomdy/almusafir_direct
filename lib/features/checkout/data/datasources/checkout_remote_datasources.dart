@@ -32,6 +32,7 @@ class CheckoutRemoteDataSourceImplWithDio extends CheckoutRemoteDataSource {
       headers: HeaderServer.headerWithToken,
       data: data..addAll({"api_version": "v2"}),
     );
+    log(response.toString());
 
     return CheckoutModule.fromJson(response);
   }
@@ -74,8 +75,10 @@ class CheckoutRemoteDataSourceImplWithDio extends CheckoutRemoteDataSource {
 
   @override
   Future<List<ServiceModul>> getPaymentMethods(String? orderType) async {
-    final response =
-        await apiService.get(endPoint: EndPointName.paymentMethods);
+    final response = await apiService.get(
+      endPoint: EndPointName.paymentMethods,
+      //   data: {"order_type": orderType},
+    );
 
     return (response["data"] as List?)
             ?.map((e) => ServiceModul.fromJson(e))

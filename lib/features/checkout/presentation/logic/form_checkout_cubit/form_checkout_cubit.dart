@@ -54,22 +54,42 @@ class FormCheckoutCubit extends Cubit<FormCheckoutState> {
   ServiceModul? selectedpaymentMethod;
   ServiceModul? selectedflight;
 
-  void checkout2() async {
+  CheckoutModule? checkoutModule;
+
+  void step1Checkout() async {
+    emit(Step1DetailsCheckoutLoadingState());
+    final failureOrSuccess = await checkout2Uescases(
+        data: getDataCheckout("details_shiping_coupon"));
+    emit(failureOrSuccess.fold(
+        (failuer) => Step1DetailsCheckoutErrorState(message: failuer.message),
+        (checkoutModule) {
+      this.checkoutModule = checkoutModule;
+      return Step1DetailsCheckoutSuccessfullyState(checkoutModule);
+    }));
+  }
+
+  void checkout2([String step = "details_shiping_coupon"]) async {
     if (formKey.currentState?.validate() ?? false) {
       emit(ServicesStateLoadingState());
-      final failureOrSuccess = await checkout2Uescases(data: getDataCheckout());
-      emit(failureOrSuccess.fold(
-          (failuer) => ServicesStateErrorState(message: failuer.message),
-          CheckoutSuccessfullyState.new));
+      final failureOrSuccess =
+          await checkout2Uescases(data: getDataCheckout(step));
+      emit(failureOrSuccess
+          .fold((failuer) => ServicesStateErrorState(message: failuer.message),
+              (checkoutModule) {
+        this.checkoutModule = checkoutModule;
+        return CheckoutSuccessfullyState(checkoutModule);
+      }));
     }
   }
 
-  Map<String, dynamic> getDataCheckout() {
+  Map<String, dynamic> getDataCheckout(String step) {
     return {
       "shop_id": shopId,
       'order_type': orderType?.refType,
-      'step': "details_shiping_coupon",
+      'step': step,
       'payment_method_id': selectedpaymentMethod?.id?.toString(),
+      'shipping_method_id': selectedpaymentMethod?.id?.toString(),
+
       'vehicle_type_id': selectedVehicleType?.id?.toString(),
       'expected_cart_total': expectedTotalController.text,
       'customer_notes': customerNoteController.text,
@@ -86,6 +106,7 @@ class FormCheckoutCubit extends Cubit<FormCheckoutState> {
       'shipping_lastname': Helper.user?.name ?? "",
       'shipping_phone': Helper.user?.mobile,
       'shipping_email': Helper.user?.email,
+
       'tip_amount': tipController.text,
       'date_order': orderDateController.text,
       'return_date': returnDateController.text,
