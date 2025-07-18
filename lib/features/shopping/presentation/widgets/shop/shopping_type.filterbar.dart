@@ -1,23 +1,21 @@
 import 'package:almusafir_direct/core/utils/resource/color_app.dart';
-import 'package:almusafir_direct/core/utils/resource/text_style.dart';
-import 'package:almusafir_direct/core/widget/image/image_widget.dart';
 import 'package:almusafir_direct/features/home/data/model/orderstypes/datum.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/widget/button/button_filter.widget.dart';
 import '../../../data/models/department_type/department_type.dart';
 import '../../logic/department_bloc/department_bloc.dart';
 import '../../logic/department_type_cubit/department_type_cubit.dart';
 
-class ServiceCategoryFilterbar extends StatefulWidget {
-  const ServiceCategoryFilterbar({super.key, this.orderType});
+class ShoppingTypeFilterbar extends StatefulWidget {
+  const ShoppingTypeFilterbar({super.key, this.orderType});
   final OrderType? orderType;
   @override
-  State<ServiceCategoryFilterbar> createState() =>
-      _ServiceCategoryFilterbarState();
+  State<ShoppingTypeFilterbar> createState() => _ShoppingTypeFilterbarState();
 }
 
-class _ServiceCategoryFilterbarState extends State<ServiceCategoryFilterbar> {
+class _ShoppingTypeFilterbarState extends State<ShoppingTypeFilterbar> {
   late final DepartmentTypeCubit departmentTCubit;
   @override
   void initState() {
@@ -51,46 +49,22 @@ class _ServiceCategoryFilterbarState extends State<ServiceCategoryFilterbar> {
 
   Widget _itemBuilder(BuildContext context, int index) {
     final departmentType = departmentTCubit.departmentTypes[index];
-    final isSelected =
-        departmentType.id == departmentTCubit.selectedDepartmentType?.id;
-    return GestureDetector(
-      onTap: () => changeDepartmentTypes(departmentType),
-      child: Card.filled(
-        color: isSelected ? Colors.blue : null,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          spacing: 5,
-          children: [
-            const SizedBox(width: 10),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: ImageWidget(
-                departmentType.image?.small ?? "",
-                width: 25,
-                height: 25,
-              ),
-            ),
-            Text(
-              departmentType.name ?? "---",
-              style: AppTextStyles.getMediumStyle(
-                color: isSelected ? Colors.white : null,
-              ),
-            ),
-            const SizedBox(width: 10),
-          ],
-        ),
-      ),
+
+    return ButtonFilterWidget(
+      isSelected: departmentType.id == departmentTCubit.selectedDepartmentId,
+      onSelected: () => changeDepartmentTypes(departmentType),
+      image: departmentType.image?.small ?? "---",
+      title: departmentType.name ?? "---",
     );
   }
 
   void changeDepartmentTypes(DepartmentType? type) {
     if (departmentTCubit.selectedDepartmentType?.id == type?.id) return;
+
     departmentTCubit.selectedDepartmentType = type;
     final orderType = widget.orderType?.refType;
-    context
-        .read<DepartmentBloc>()
+    BlocProvider.of<DepartmentBloc>(context)
         .add(GetShoppingDepartment(orderType, type?.id));
-
     setState(() {});
   }
 }

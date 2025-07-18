@@ -11,8 +11,8 @@ import '../logic/shop_products_cubit/shop_products_cubit.dart';
 import '../widgets/card_porduct/card_shop_product.widget.dart';
 import '../widgets/products_shop/button_move_to_cart.widget.dart';
 import '../widgets/products_shop/header_shopping_widget.dart';
-import '../widgets/products_shop/loading_cardpoducts.widget.dart';
 import '../widgets/products_shop/sliver_shopping_header.dart';
+import '../widgets/products_shop/state/loading_cardpoducts.widget.dart';
 
 class ProductsShoppingView extends StatelessWidget {
   const ProductsShoppingView({
@@ -79,7 +79,7 @@ class ProductsShoppingView extends StatelessWidget {
         ),
       );
     } else {
-      return const SizedBox();
+      return const SliverFillRemaining();
     }
   }
 }

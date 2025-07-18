@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '/injection_container.dart' as di;
 import '../../../../core/data/models/department/data.dart';
@@ -9,7 +8,7 @@ import '../../../../core/widget/state/error.widget.dart';
 import '../../../home/data/model/orderstypes/datum.dart';
 import '../logic/shop_products_cubit/shop_products_cubit.dart';
 import '../widgets/products_shop/shop_products.widget.dart';
-import '../widgets/shop/loading_service_category.widget.dart';
+import '../widgets/shop/state/loading_shopping.widget.dart';
 
 class ServiceItemsView extends StatefulWidget {
   const ServiceItemsView({
@@ -37,18 +36,9 @@ class _ServiceItemsViewState extends State<ServiceItemsView> {
       child: Scaffold(
         appBar: widget.shop != null
             ? null
-            : MyAppBarWithLogo(
-                actions: [
-                  IconButton(
-                    icon: Icon(isGridView
-                        ? Iconsax.textalign_justifycenter
-                        : Iconsax.element_3_copy),
-                    onPressed: () => setState(() {
-                      isGridView = !isGridView;
-                    }),
-                  ),
-                  const SizedBox(width: 20),
-                ],
+            : MyAppBarWithFilter(
+                isGridView: isGridView,
+                onChange: (value) => setState(() => isGridView = value),
               ),
         body: BlocBuilder<ShopProductsCubit, ShopProductsState>(
           builder: _builderShopProducts,
@@ -66,7 +56,7 @@ class _ServiceItemsViewState extends State<ServiceItemsView> {
               departmentsId: widget.shop?.id,
             ));
     } else if (state is ShopProductsLoadingState) {
-      return LoadingServiceCategoryWidget(
+      return LoadingShoppingCategoryWidget(
         isGridView: isGridView,
         showHeader: false,
       );

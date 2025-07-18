@@ -16,17 +16,19 @@ import '../../../../../core/widget/rating/ratingbar.widget.dart';
 import '../../../../../helper/public_infromation.dart';
 import 'chekbox_units.widget.dart';
 
-class AddProductToCardWidget extends StatefulWidget {
-  const AddProductToCardWidget(
+class BottomSheetAddProductToCardWidget extends StatefulWidget {
+  const BottomSheetAddProductToCardWidget(
       {super.key, required this.product, required this.onChanged});
   final ShopProduct product;
   final void Function(int, UnitsDatum?) onChanged;
 
   @override
-  State<AddProductToCardWidget> createState() => _AddProductToCardWidgetState();
+  State<BottomSheetAddProductToCardWidget> createState() =>
+      _AddProductToCardWidgetState();
 }
 
-class _AddProductToCardWidgetState extends State<AddProductToCardWidget> {
+class _AddProductToCardWidgetState
+    extends State<BottomSheetAddProductToCardWidget> {
   UnitsDatum? selectedUnit;
   int count = 1;
   @override
@@ -46,47 +48,7 @@ class _AddProductToCardWidgetState extends State<AddProductToCardWidget> {
         mainAxisSize: MainAxisSize.min,
         children: [
           const LineButtonSheetWidget(),
-          Row(
-            spacing: 10,
-            children: [
-              ClipRRect(
-                  borderRadius: BorderRadiusAttribute.all(5),
-                  child: ImageWidget(widget.product.image?.small ?? "---",
-                      width: 50, height: 50, fit: BoxFit.cover)),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  spacing: 10,
-                  children: [
-                    Text(
-                      widget.product.name ?? "---",
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: AppTextStyles.getMediumStyle(),
-                    ),
-                    RatingBarWidget(
-                      initialRating: widget.product.userObjectRating?.rating,
-                      onRatingUpdate: (rating) {
-                        widget.product.userObjectRating ??= UserObjectRating();
-                        widget.product.userObjectRating?.rating = rating;
-                        RatingApi.toggleRating(
-                            objectType: widget.product.objectType,
-                            objectId: widget.product.id,
-                            rating: rating);
-                      },
-                    ),
-                  ],
-                ),
-              ),
-              if (Helper.isAuth)
-                Icon(
-                  widget.product.userIsFavorite == 1
-                      ? Iconsax.heart
-                      : Iconsax.heart_copy,
-                  color: Colors.redAccent,
-                ),
-            ],
-          ),
+          _DetailsProductWidget(product: widget.product),
           if ((widget.product.pricesUnits?.data?.length ?? 0) > 1)
             const Divider(thickness: 0.4),
           if ((widget.product.pricesUnits?.data?.length ?? 0) > 1)
@@ -105,7 +67,7 @@ class _AddProductToCardWidgetState extends State<AddProductToCardWidget> {
           const Divider(thickness: 0.4),
           ButtonAddToRemoveWidget(
             count: count,
-            price: widget.product.price ?? 0,
+            price: selectedUnit?.price ?? widget.product.price ?? 0,
             onChanged: (count0) {
               if (count0 == 0) Get.back();
               count = count0;
@@ -121,6 +83,53 @@ class _AddProductToCardWidgetState extends State<AddProductToCardWidget> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _DetailsProductWidget extends StatelessWidget {
+  const _DetailsProductWidget({required this.product});
+  final ShopProduct product;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      spacing: 10,
+      children: [
+        ClipRRect(
+            borderRadius: BorderRadiusAttribute.all(5),
+            child: ImageWidget(product.image?.small ?? "---",
+                width: 50, height: 50, fit: BoxFit.cover)),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: 10,
+            children: [
+              Text(
+                product.name ?? "---",
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: AppTextStyles.getMediumStyle(),
+              ),
+              RatingBarWidget(
+                initialRating: product.userObjectRating?.rating,
+                onRatingUpdate: (rating) {
+                  product.userObjectRating ??= UserObjectRating();
+                  product.userObjectRating?.rating = rating;
+                  RatingApi.toggleRating(
+                      objectType: product.objectType,
+                      objectId: product.id,
+                      rating: rating);
+                },
+              ),
+            ],
+          ),
+        ),
+        if (Helper.isAuth)
+          Icon(
+            product.userIsFavorite == 1 ? Iconsax.heart : Iconsax.heart_copy,
+            color: Colors.redAccent,
+          ),
+      ],
     );
   }
 }
@@ -195,22 +204,19 @@ class _ButtonAddToRemoveWidgetState extends State<ButtonAddToRemoveWidget> {
             setState(() {});
           },
         ),
-        Visibility(
-          visible: (count > 0),
-          child: Column(
-            spacing: 5,
-            children: [
-              Text(
-                "total".tr,
-                style: AppTextStyles.getMediumStyle(),
-              ),
-              Text(
-                (widget.price * count).truncateToDouble().toString(),
-                style: AppTextStyles.getMediumStyle(
-                    color: Colors.deepOrange, fontSize: 16),
-              ),
-            ],
-          ),
+        Column(
+          spacing: 5,
+          children: [
+            Text(
+              "total".tr,
+              style: AppTextStyles.getMediumStyle(),
+            ),
+            Text(
+              (widget.price * count).truncateToDouble().toString(),
+              style: AppTextStyles.getMediumStyle(
+                  color: Colors.deepOrange, fontSize: 16),
+            ),
+          ],
         ),
       ],
     );

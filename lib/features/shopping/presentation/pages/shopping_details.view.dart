@@ -7,9 +7,9 @@ import '../../../../core/utils/resource/color_app.dart';
 import '../../../../core/utils/resource/text_style.dart';
 import '../../../../core/widget/rating/rating.widget.dart';
 import '../../../../helper/public_infromation.dart';
-import '../widgets/details_shop/workinghours_serices.widget.dart';
 import '../widgets/products_shop/sliver_shopping_header.dart';
 import '../widgets/shop/ratting_shop.widget.dart';
+import '../widgets/workinghours/workinghours_serices.widget.dart';
 
 class ShopDetailsView extends StatelessWidget {
   const ShopDetailsView({super.key, required this.shop});

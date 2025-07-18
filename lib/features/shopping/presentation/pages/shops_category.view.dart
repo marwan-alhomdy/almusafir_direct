@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '/injection_container.dart' as di;
 import '../../../../core/utils/resource/color_app.dart';
@@ -9,9 +8,9 @@ import '../../../../core/widget/state/error.widget.dart';
 import '../../../home/data/model/orderstypes/datum.dart';
 import '../logic/department_bloc/department_bloc.dart';
 import '../logic/department_type_cubit/department_type_cubit.dart';
-import '../widgets/shop/loading_service_category.widget.dart';
-import '../widgets/shop/service_category.filterbar.dart';
 import '../widgets/shop/shopping.widget.dart';
+import '../widgets/shop/shopping_type.filterbar.dart';
+import '../widgets/shop/state/loading_shopping.widget.dart';
 
 class ShopCategoryView extends StatefulWidget {
   const ShopCategoryView({super.key, required this.orderType});
@@ -23,30 +22,24 @@ class ShopCategoryView extends StatefulWidget {
 
 class _ShopCategoryViewState extends State<ShopCategoryView> {
   bool isGridView = false;
+
+  String? get orderTypeRef => widget.orderType?.refType;
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => di.sl<DepartmentBloc>()),
         BlocProvider(
-          create: (_) => di.sl<DepartmentTypeCubit>()
-            ..getDepartmentType(widget.orderType?.refType),
+          create: (_) =>
+              di.sl<DepartmentTypeCubit>()..getDepartmentType(orderTypeRef),
         ),
       ],
       child: Scaffold(
-        appBar: MyAppBarWithLogo(
+        appBar: MyAppBarWithFilter(
           backgroundColor: AppColorsWithTheme.backgroundScroll,
-          actions: [
-            IconButton(
-              icon: Icon(isGridView
-                  ? Iconsax.textalign_justifycenter
-                  : Iconsax.element_3_copy),
-              onPressed: () => setState(() {
-                isGridView = !isGridView;
-              }),
-            ),
-            const SizedBox(width: 20),
-          ],
+          isGridView: isGridView,
+          onChange: (value) => setState(() => isGridView = value),
         ),
         body: BlocConsumer<DepartmentTypeCubit, DepartmentTypeState>(
           builder: _builderDepartment,
@@ -56,26 +49,17 @@ class _ShopCategoryViewState extends State<ShopCategoryView> {
     );
   }
 
-  void _listenerDepartment(BuildContext context, DepartmentTypeState state) {
-    if (state is GetDepartmentTypeSuccessfullyState) {
-      final type = context.read<DepartmentTypeCubit>().selectedDepartmentType;
-      BlocProvider.of<DepartmentBloc>(context)
-          .add(GetShoppingDepartment(widget.orderType?.refType, type?.id));
-    }
-  }
-
   Widget _builderDepartment(BuildContext context, DepartmentTypeState state) {
     if (state is DepartmentTypeErrorState) {
       return ErrorCustomWidget(state.message,
           onTap: () => _getDepartmentType(context));
     } else if (state is DepartmentTypeLoadingState) {
-      return LoadingServiceCategoryWidget(isGridView: isGridView);
+      return LoadingShoppingCategoryWidget(isGridView: isGridView);
     } else if (state is GetDepartmentTypeSuccessfullyState) {
       return CustomScrollView(
         physics: const AlwaysScrollableScrollPhysics(),
         slivers: [
-          if (state.departmentTypes.isNotEmpty)
-            const ServiceCategoryFilterbar(),
+          if (state.departmentTypes.isNotEmpty) const ShoppingTypeFilterbar(),
           ShoppingWidget(isGridView: isGridView, orderType: widget.orderType),
         ],
       );
@@ -84,9 +68,15 @@ class _ShopCategoryViewState extends State<ShopCategoryView> {
     }
   }
 
+  void _listenerDepartment(BuildContext context, DepartmentTypeState state) {
+    if (state is GetDepartmentTypeSuccessfullyState) {
+      final type = context.read<DepartmentTypeCubit>().selectedDepartmentType;
+      BlocProvider.of<DepartmentBloc>(context)
+          .add(GetShoppingDepartment(orderTypeRef, type?.id));
+    }
+  }
+
   void _getDepartmentType(BuildContext context) {
-    context
-        .read<DepartmentTypeCubit>()
-        .getDepartmentType(widget.orderType?.refType);
+    context.read<DepartmentTypeCubit>().getDepartmentType(orderTypeRef);
   }
 }

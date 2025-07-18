@@ -1,8 +1,8 @@
-import 'package:almusafir_direct/core/utils/resource/text_style.dart';
 import 'package:almusafir_direct/helper/language.helper.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/constants/enum/booking_type.dart';
+import '../../../../../../core/widget/button/button_filter.widget.dart';
 
 class FavoritesFilterbar extends StatelessWidget {
   const FavoritesFilterbar(
@@ -20,36 +20,12 @@ class FavoritesFilterbar extends StatelessWidget {
         itemCount: BookingType.values.length,
         itemBuilder: (context, index) {
           final boockingType = BookingType.values[index];
-          final isSelected = boockingType == selectedBookingType;
-
-          return GestureDetector(
-            onTap: () => onChanged(boockingType),
-            child: Card.filled(
-              color: isSelected ? Colors.blue : null,
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  spacing: 5,
-                  children: [
-                    // Icon(
-                    //   boockingType.icon,
-                    //   size: 15,
-                    //   color: isSelected ? Colors.white : null,
-                    // ),
-                    Text(
-                      LanguageHelper.isArabic
-                          ? boockingType.labelAr
-                          : boockingType.labelEn,
-                      style: AppTextStyles.getMediumStyle(
-                        color: isSelected ? Colors.white : null,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+          return ButtonFilterWidget(
+            isSelected: boockingType == selectedBookingType,
+            onSelected: () => onChanged(boockingType),
+            title: LanguageHelper.isArabic
+                ? boockingType.labelAr
+                : boockingType.labelEn,
           );
         },
       ),

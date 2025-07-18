@@ -1,7 +1,9 @@
+import 'package:almusafir_direct/helper/cache_helper.dart';
 import 'package:almusafir_direct/helper/public_infromation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../core/constants/cached/cached_name.dart';
 import '../../../../core/utils/resource/images.dart';
 import '../../../home/presentation/view/home_view.dart';
 import '../../../onboarding/presentation/pages/onboarding.view.dart';
@@ -38,12 +40,12 @@ class SplashViewBodyState extends State<SplashViewBody>
 
   void _goToNextView() {
     Future.delayed(const Duration(seconds: 2), () async {
-      if (true) {
-        Get.offAll(() => const OnboardingView());
+      final isOnBorading = CacheHelper.getBool(CachedAppKey.isOnBorading);
+      if (isOnBorading ?? false) {
+        Get.offAll(() => HomeView(key: Helper.homeKey));
       } else {
-        Get.offAll(() => HomeView(
-              key: Helper.homeKey,
-            ));
+        CacheHelper.setBool(CachedAppKey.isOnBorading, true);
+        Get.offAll(() => const OnboardingView());
       }
     });
   }

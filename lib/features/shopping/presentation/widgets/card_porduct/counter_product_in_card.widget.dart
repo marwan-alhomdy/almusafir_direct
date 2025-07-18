@@ -11,7 +11,7 @@ import '../../../../../core/utils/resource/text_style.dart';
 import '../../../../../core/utils/style/border_radius.dart';
 import '../../../../../helper/public_infromation.dart';
 import '../../../../auth/persention/view/auth_view.dart';
-import 'add_product_to_card.widget.dart';
+import 'bottomsheet_add_product_to_card.widget.dart';
 
 class CounterProductInCardWidget extends StatelessWidget {
   const CounterProductInCardWidget(
@@ -27,7 +27,7 @@ class CounterProductInCardWidget extends StatelessWidget {
 
   void onAddToCardOrAuth(BuildContext context) {
     if (Helper.isAuth) {
-      BottomSheetWidget.showIsScroll(AddProductToCardWidget(
+      BottomSheetWidget.showIsScroll(BottomSheetAddProductToCardWidget(
         product: product,
         onChanged: onAddToCard,
       ));

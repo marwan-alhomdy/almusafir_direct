@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../../../../../core/utils/resource/color_app.dart';
-import '../../../../../core/utils/style/border_radius.dart';
-import '../../../../../core/widget/rating/rating.widget.dart';
+import '../../../../../../core/utils/resource/color_app.dart';
+import '../../../../../../core/utils/style/border_radius.dart';
+import '../../../../../../core/widget/rating/rating.widget.dart';
 
-class LoadingServiceCategoryWidget extends StatelessWidget {
-  const LoadingServiceCategoryWidget(
+class LoadingShoppingCategoryWidget extends StatelessWidget {
+  const LoadingShoppingCategoryWidget(
       {super.key, required this.isGridView, this.showHeader = true});
   final bool isGridView;
   final bool showHeader;

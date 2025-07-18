@@ -1,10 +1,9 @@
 import 'package:almusafir_direct/core/utils/resource/color_app.dart';
-import 'package:almusafir_direct/core/utils/resource/text_style.dart';
-import 'package:almusafir_direct/core/widget/image/image_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
+import '../../../../../core/widget/button/button_filter.widget.dart';
 import '../../../../../core/widget/field/search_field.widget.dart';
 import '../../../../../core/widget/sliver/sliver_persistent_header.dart';
 import '../../../../shopping/data/models/department_type/department_type.dart';
@@ -55,34 +54,11 @@ class _ExploreFilterbarState extends State<ExploreFilterbar> {
 
   Widget _itemBuilder(BuildContext context, int index) {
     final exploreType = exploreTCubit.exploreTypes[index];
-    final isSelected = exploreType.id == exploreTCubit.selectedExploreType?.id;
-    return GestureDetector(
-      onTap: () => changeExploreTypes(exploreType),
-      child: Card.filled(
-        color: isSelected ? Colors.blue : null,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          spacing: 5,
-          children: [
-            const SizedBox(width: 10),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: ImageWidget(
-                exploreType.image?.small ?? "",
-                width: 25,
-                height: 25,
-              ),
-            ),
-            Text(
-              exploreType.name ?? "---",
-              style: AppTextStyles.getMediumStyle(
-                color: isSelected ? Colors.white : null,
-              ),
-            ),
-            const SizedBox(width: 10),
-          ],
-        ),
-      ),
+    return ButtonFilterWidget(
+      isSelected: exploreType.id == exploreTCubit.selectedExploreType?.id,
+      onSelected: () => changeExploreTypes(exploreType),
+      image: exploreType.image?.small ?? "",
+      title: exploreType.name ?? "---",
     );
   }
 

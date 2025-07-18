@@ -7,7 +7,7 @@ import '../../../../../core/utils/resource/text_style.dart';
 import '../../../../../core/widget/rating/rating.widget.dart';
 import '../../../../../helper/public_infromation.dart';
 import '../shop/ratting_shop.widget.dart';
-import '../shop/working_hours.view.dart';
+import '../workinghours/bottomsheet_working_hours.dart';
 
 class HeaderShoppingWidget extends StatelessWidget {
   const HeaderShoppingWidget({super.key, this.shop});
@@ -90,7 +90,7 @@ class HeaderShoppingWidget extends StatelessWidget {
   }
 
   void showWorkingHours() =>
-      BottomSheetWidget.showIsScroll(WorkingHoursView(shop: shop));
+      BottomSheetWidget.showIsScroll(BottomSheetWorkingHoursView(shop: shop));
 
   void showRatiingShow() =>
       BottomSheetWidget.showIsScroll(RattingShopWidget(shop: shop));

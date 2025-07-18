@@ -1,7 +1,6 @@
 import 'package:almusafir_direct/core/widget/appbar/my_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '/injection_container.dart' as di;
 import '../../../../core/widget/state/error.widget.dart';
@@ -26,18 +25,9 @@ class _ServicesViewState extends State<OtherServicesView> {
       create: (_) => di.sl<OtherServicestsCubit>()
         ..getShopProducts(widget.orderType?.refType),
       child: Scaffold(
-        appBar: MyAppBarWithLogo(
-          actions: [
-            IconButton(
-              icon: Icon(isGridView
-                  ? Iconsax.textalign_justifycenter
-                  : Iconsax.element_3_copy),
-              onPressed: () => setState(() {
-                isGridView = !isGridView;
-              }),
-            ),
-            const SizedBox(width: 20),
-          ],
+        appBar: MyAppBarWithFilter(
+          isGridView: isGridView,
+          onChange: (value) => setState(() => isGridView = value),
         ),
         body: BlocBuilder<OtherServicestsCubit, OtherServicesState>(
           builder: _builderShopProducts,

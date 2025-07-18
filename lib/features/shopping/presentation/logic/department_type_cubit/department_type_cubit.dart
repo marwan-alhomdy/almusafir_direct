@@ -13,6 +13,8 @@ class DepartmentTypeCubit extends Cubit<DepartmentTypeState> {
 
   List<DepartmentType> departmentTypes = [];
   DepartmentType? selectedDepartmentType;
+  int? get selectedDepartmentId => selectedDepartmentType?.id;
+
   void getDepartmentType(String? orderType) async {
     emit(DepartmentTypeLoadingState());
     final failureOrSuccess =

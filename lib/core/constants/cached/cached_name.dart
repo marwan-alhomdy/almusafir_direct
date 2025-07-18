@@ -8,4 +8,5 @@ class CachedAppKey {
   static const themeType = "Theme_TYPE";
   static const isAuth = "IS_AUTH";
   static const isNotification = "IS_NOTIFICATION_CACHED";
+  static const isOnBorading = "isOnBorading";
 }

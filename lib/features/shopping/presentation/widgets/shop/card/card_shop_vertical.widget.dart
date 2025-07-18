@@ -2,12 +2,12 @@ import 'package:almusafir_direct/core/widget/rating/rating.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
-import '../../../helper/public_infromation.dart';
-import '../../api/favorite.api.dart';
-import '../../data/models/department/data.dart';
-import '../../utils/resource/text_style.dart';
-import '../../utils/style/border_radius.dart';
-import '../image/image_widget.dart';
+import '../../../../../../core/api/favorite.api.dart';
+import '../../../../../../core/data/models/department/data.dart';
+import '../../../../../../core/utils/resource/text_style.dart';
+import '../../../../../../core/utils/style/border_radius.dart';
+import '../../../../../../core/widget/image/image_widget.dart';
+import '../../../../../../helper/public_infromation.dart';
 
 class CardShopVerticalWidget extends StatefulWidget {
   const CardShopVerticalWidget({super.key, required this.shop, this.onPressed});
