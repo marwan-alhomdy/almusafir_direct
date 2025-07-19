@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 
 import '../../injection_container.dart' as di;
 import '../constants/endpoint.dart';
@@ -21,7 +22,9 @@ class FavoriteApi {
         },
       );
     } catch (e) {
-      if (e is DioException) print(e.response?.data.toString());
+      if (e is DioException) {
+        if (kDebugMode) print(e.response?.data.toString());
+      }
     }
   }
 }

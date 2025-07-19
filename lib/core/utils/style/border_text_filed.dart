@@ -15,7 +15,8 @@ abstract class BorderTextFiled {
     return isOutline
         ? outlineInputBorder.copyWith(
             borderSide: BorderSide(
-                color: AppColors.grayTwoColor.withOpacity(0.5), width: 0.1),
+                color: AppColors.grayTwoColor.withValues(alpha: 0.5),
+                width: 0.1),
             borderRadius: BorderRadius.circular(radius))
         : underlineInputBorder;
   }

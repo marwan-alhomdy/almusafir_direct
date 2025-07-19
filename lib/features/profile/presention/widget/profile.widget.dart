@@ -18,6 +18,7 @@ import '../view/payment.methods.view.dart';
 import '../view/referral.view.dart';
 import 'button/button_Acount.widget.dart';
 import 'button/cardlist_profile.widget.dart';
+import 'devloper/devloper.widget.dart';
 import 'theme/change_theme.widget.dart';
 
 class ProfileWidget extends StatefulWidget {
@@ -91,6 +92,11 @@ class _ProfileWidgetState extends State<ProfileWidget> {
           onTap: chingeLanguage,
           icon: Iconsax.translate,
           title: "language".tr,
+        ),
+        CardListProfileWidget(
+          onTap: () => BottomSheetWidget.showIsScroll(const DevloperWidget()),
+          icon: Icons.code,
+          title: 'مطور التطبيق'.tr,
         ),
         CardListProfileWidget(
           onTap: changeTheme,

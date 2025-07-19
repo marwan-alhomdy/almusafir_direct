@@ -87,9 +87,8 @@ class ReferralWidget extends StatelessWidget {
               ),
             ),
             IconButton(
-              onPressed: () {
-                Share.share(referral.alias ?? "");
-              },
+              onPressed: () => SharePlus.instance
+                  .share(ShareParams(text: referral.alias ?? "")),
               icon: const Icon(
                 Iconsax.share,
                 size: 25,

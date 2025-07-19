@@ -21,7 +21,6 @@ class DepartmentBloc extends Bloc<DepartmentEvent, DepartmentState> {
 
   void getShoppingDepartment(
       GetShoppingDepartment event, Emitter<DepartmentState> emit) async {
-    print(event.orderType);
     emit(DepartmentLoadingState());
 
     for (var groub in groupDepartment) {

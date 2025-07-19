@@ -1,11 +1,9 @@
 import 'package:almusafir_direct/core/utils/resource/text_style.dart';
-import 'package:almusafir_direct/core/widget/image/image_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/Animation/animation_limiter_widget.dart';
-import '../../../../core/utils/style/border_radius.dart';
 import '../../../../core/widget/appbar/my_appbar.dart';
 import '../../../../core/widget/carousel_slider.widget.dart';
 import '../../../../core/widget/state/error.widget.dart';
@@ -90,41 +88,6 @@ class _HomeWidget extends StatelessWidget {
                     []),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _CardOfferWidget extends StatelessWidget {
-  const _CardOfferWidget({required this.image, required this.title});
-  final String image;
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 200,
-      child: Card(
-        elevation: 0.3,
-        margin: const EdgeInsets.all(5),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ClipRRect(
-                borderRadius: BorderRadiusAttribute.top(12),
-                child: ImageWidget(image,
-                    width: 200, height: 150, fit: BoxFit.cover)),
-            const SizedBox(height: 10),
-            Text(
-              title,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: AppTextStyles.getMediumStyle(),
-            ),
-            const SizedBox(height: 20),
-          ],
-        ),
       ),
     );
   }

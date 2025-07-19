@@ -2,8 +2,8 @@
 
 mixin AppImages {
   static const String logoWhite = "assets/icons/icon-white.png";
-
   static const String logo = "assets/icons/logo-color.png";
+  static const String naonLogo = "assets/icons/nano_logo.png";
 
   static const String avatar = "assets/images/avater.png";
   static const String onboarding1 = "assets/images/1-onboarding.png";

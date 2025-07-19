@@ -15,8 +15,8 @@ class HorizontalDashedWidget extends StatelessWidget {
             dashSpace: 4,
             dashWidth: 1,
             color: Get.isDarkMode
-                ? Colors.white.withOpacity(0.2)
-                : AppColors.secondaryOneColor.withOpacity(0.2)),
+                ? Colors.white.withValues(alpha: 0.2)
+                : AppColors.secondaryOneColor.withValues(alpha: 0.2)),
         child: const SizedBox(height: 2, width: double.infinity));
   }
 }

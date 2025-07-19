@@ -1,13 +1,7 @@
 class Links {
   Links();
 
-  factory Links.fromJson(Map<String, dynamic> json) {
-    // TODO: implement fromJson
-    throw UnimplementedError('Links.fromJson($json) is not implemented');
-  }
+  factory Links.fromJson(Map<String, dynamic> json) => Links();
 
-  Map<String, dynamic> toJson() {
-    // TODO: implement toJson
-    throw UnimplementedError();
-  }
+  Map<String, dynamic> toJson() => {};
 }

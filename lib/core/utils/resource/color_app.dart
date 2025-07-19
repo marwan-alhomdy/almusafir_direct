@@ -169,7 +169,7 @@ class AppBoxDecoration {
   );
 
   static BoxDecoration blueBoxDecoration = BoxDecoration(
-    color: AppColors.mainOneColor.withOpacity(0.2),
+    color: AppColors.mainOneColor.withValues(alpha: 0.2),
     borderRadius: const BorderRadius.all(Radius.circular(12)),
     boxShadow: const [
       BoxShadow(

@@ -59,9 +59,7 @@ class AuthRemoteImplWithDio extends AuthRemoteDataSource {
   }
 
   CurrentUser getCurrentUser(dynamic response) {
-    print(response);
     final token = response?["token_data"]?["token"];
-    print(response);
     if (token != null) {
       CacheHelper.setString(CachedAppKey.authToken, token);
       CacheHelper.setBool(CachedAppKey.isAuth, true);
