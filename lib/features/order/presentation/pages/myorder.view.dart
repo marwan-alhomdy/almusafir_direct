@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/widget/appbar/my_appbar.dart';
 import '../../../../core/widget/state/error.widget.dart';
 import '../logic/filter_order_cubit/filter_order_cubit.dart';
+import '../widgets/empty_order.widget.dart';
 import '../widgets/filter/order_filterbar.dart';
 import '../widgets/order/order.widget.dart';
 
@@ -77,8 +78,7 @@ class _FilterOrderWidgetState extends State<FilterOrderWidget> {
             } else if (state is LoadingFilterOrderState) {
               return const CircularProgressIndicator();
             } else if (state is EmptyFilterOrderState) {
-              return const Expanded(
-                  child: Center(child: Text("لا توجد طلبات")));
+              return const Expanded(child: EmptyWidget());
             } else {
               return const SizedBox();
             }

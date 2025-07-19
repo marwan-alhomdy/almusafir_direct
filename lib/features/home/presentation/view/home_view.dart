@@ -10,7 +10,6 @@ import 'package:get/get.dart';
 
 import '/injection_container.dart' as di;
 import '../../../../core/widget/upgrade/upgrade.widget.dart';
-import '../../../chat/presentation/logic/chat_cubit/chat_cubit.dart';
 import '../../../chat/presentation/pages/chat.view.dart';
 import '../../../explore/presentation/logic/explore_bloc/explore_bloc.dart';
 import '../../../explore/presentation/logic/explore_type_cubit/explore_type_cubit.dart';
@@ -73,7 +72,6 @@ class HomeViewState extends State<HomeView> {
         BlocProvider(create: (_) => di.sl<OrderCubit>()),
         BlocProvider(create: (_) => di.sl<ExploreBloc>()),
         BlocProvider(create: (_) => di.sl<ExploreTypeCubit>()),
-        BlocProvider(create: (_) => ChatCubit()),
       ],
       child: UpgradeWidget(
         child: Scaffold(

@@ -49,9 +49,11 @@ class FormCheckoutInputView extends StatelessWidget {
                 listener: _listenerServicesCubit,
                 child: Builder(builder: (context) {
                   return ButtonWidget(
-                    text: "OK".tr,
-                    onTap: () => checkout2(context),
-                  );
+                      text: "OK".tr,
+                      onTap: () {
+                        context.read<FormCheckoutCubit>().checkout2();
+                        isCheckoutPay = true;
+                      });
                 }),
               ),
               const SizedBox(height: 20),

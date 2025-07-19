@@ -95,7 +95,6 @@ class CheckoutView extends StatelessWidget {
       MessageBox.showError(context, state.message);
     } else if (state is CheckoutSuccessfullyState) {
       Get.back();
-
       if (state.checkoutModule.steps?.next == "pay" && isCheckoutPay) {
         isCheckoutPay = false;
         context.read<FormCheckoutCubit>().checkout2("pay");

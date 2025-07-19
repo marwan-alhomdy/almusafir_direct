@@ -9,6 +9,8 @@ import '../../../data/models/message.dart';
 
 part 'chat_state.dart';
 
+List<Message> _messages = [];
+
 class ChatCubit extends Cubit<ChatCubitState> {
   ChatCubit() : super(const ChatCubitState(messages: []));
 
@@ -18,15 +20,14 @@ class ChatCubit extends Cubit<ChatCubitState> {
 
   Stream<List<Message>> get messagesStream => streamController.stream;
 
+  List<Message> get messages => _messages;
+
   @override
   Future<void> close() {
     scrollController.dispose();
-
     streamController.close();
     return super.close();
   }
-
-  List<Message> messages = [];
 
   void sendMessage(Message message) {
     streamController.add([...messages, message]);
@@ -40,7 +41,7 @@ class ChatCubit extends Cubit<ChatCubitState> {
   }
 
   void addAllMessage(List<Message> messages) {
-    this.messages = messages;
+    _messages = messages;
   }
 
   void scrollToBottom() {

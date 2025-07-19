@@ -24,6 +24,7 @@ class FormInputManager {
   void onToAirport(FormCheckoutCubit formCheckoutCubit) {
     final data = {
       "order_type": formCheckoutCubit.orderType?.refType,
+      "is_has_to_flights": formCheckoutCubit.selectedFromAirport?.id,
       'from_airport_id': formCheckoutCubit.selectedFromAirport?.id,
     };
     formServiceCubit.getToAirport(data);

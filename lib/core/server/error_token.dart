@@ -8,7 +8,8 @@ import '../constants/cached/cached_name.dart';
 
 class ErrorTokenAuth {
   static bool scanTokenAuth(String resonseBody) {
-    if (resonseBody == '"Not authorized, token failed"' ||
+    if (resonseBody == "Unauthorized" ||
+        resonseBody == '"Not authorized, token failed"' ||
         resonseBody == "NOT AUTHORIZED, THE TOKEN FAILED" ||
         resonseBody == '"Not authorized, no token"') {
       logoutApp();

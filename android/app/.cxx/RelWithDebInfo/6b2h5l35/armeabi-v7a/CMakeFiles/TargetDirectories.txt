@@ -1,0 +1,2 @@
+/Users/prom1/AndroidStudioProjects/nano soft/almusafir_direct/almusafir_direct/android/app/.cxx/RelWithDebInfo/6b2h5l35/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/prom1/AndroidStudioProjects/nano soft/almusafir_direct/almusafir_direct/android/app/.cxx/RelWithDebInfo/6b2h5l35/armeabi-v7a/CMakeFiles/rebuild_cache.dir

@@ -54,7 +54,6 @@ dependencies:
   iconsax_flutter: ^1.0.0
   image: ^4.3.0
   path: ^1.9.0
-  device_info_plus: ^11.3.3
 
   win32: ^5.9.0
   carousel_slider: ^5.0.0

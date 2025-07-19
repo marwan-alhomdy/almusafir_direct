@@ -194,21 +194,21 @@ class _FormCheckoutInputWidgetState extends State<FormCheckoutInputWidget> {
                     controller: servicesCubit.countPersonController),
               ],
             ),
-          //if (orderType?.isAllowVehicleType == 1)
-          CardInputWidget(
-            children: [
-              const RouteInputWidget(
-                  title: "وسيلة التوصيل", icon: Iconsax.truck_fast),
-              DropTextFieldWidget(
-                controller: servicesCubit.vehicleTypeController,
-                validator: orderType?.isRequiredVehicleType == 1
-                    ? "هذا الحقل مطلوب".validator()
-                    : null,
-                onTap: () =>
-                    formServiceCubit.manager.onVehicleType(servicesCubit),
-              ),
-            ],
-          ),
+          if (orderType?.isAllowVehicleType == 1)
+            CardInputWidget(
+              children: [
+                const RouteInputWidget(
+                    title: "وسيلة التوصيل", icon: Iconsax.truck_fast),
+                DropTextFieldWidget(
+                  controller: servicesCubit.vehicleTypeController,
+                  validator: orderType?.isRequiredVehicleType == 1
+                      ? "هذا الحقل مطلوب".validator()
+                      : null,
+                  onTap: () =>
+                      formServiceCubit.manager.onVehicleType(servicesCubit),
+                ),
+              ],
+            ),
           CardInputWidget(
             children: [
               const RouteInputWidget(title: "طريقة الدفع", icon: Iconsax.money),
@@ -238,7 +238,7 @@ class _FormCheckoutInputWidgetState extends State<FormCheckoutInputWidget> {
                     keyboardType: TextInputType.number),
               ],
             ),
-          if (orderType?.isAllowExpectedCartTotal == 0)
+          if (orderType?.isAllowExpectedCartTotal == 1)
             CardInputWidget(
               children: [
                 const RouteInputWidget(

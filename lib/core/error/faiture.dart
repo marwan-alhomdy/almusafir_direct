@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 
 import '../../helper/language.helper.dart';
 import '../constants/failure.dart';
+import '../server/error_token.dart';
 
 abstract class Failure extends Equatable {
   String get message;
@@ -151,7 +152,17 @@ class DioFailure extends Failure {
   }
 
   factory DioFailure.fromResponse(statusCode, dynamic response) {
-    print(response);
+    if (statusCode == 401) {
+      try {
+        if (response is Map) {
+          final message = response['error']['message'] ?? "";
+          ErrorTokenAuth.scanTokenAuth(message);
+          return DioFailure(message ?? '');
+        } else {
+          return DioFailure(response['message'] ?? "");
+        }
+      } catch (e) {/***/}
+    }
     if (response is Map &&
         response["message"] != null &&
         response["error"] != null) {
