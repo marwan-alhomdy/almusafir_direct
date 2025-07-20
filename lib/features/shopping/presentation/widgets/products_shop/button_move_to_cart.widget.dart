@@ -30,7 +30,7 @@ class ButtonMoveToCartWidget extends StatelessWidget {
                   onPressed: () => Get.to(
                       () => MyCartView(orderType: orderType, shopId: shopId)),
                   icon: const Icon(Icons.shopping_cart, color: Colors.white),
-                  label: const Text('الانتقال إلى السلة'),
+                  label: Text("Go to Cart".tr),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.mainOneColor,
                     foregroundColor: Colors.white,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../../core/constants/enum/explore.dart';
 import '../../../../../core/utils/resource/text_style.dart';
@@ -23,7 +24,7 @@ class HeaderCategoryWidget extends StatelessWidget {
         const Spacer(),
         TextButton(
             onPressed: onPressed,
-            child: Text("عرض الكل",
+            child: Text("Show All".tr,
                 style: AppTextStyles.getMediumStyle(color: Colors.blue))),
       ],
     );

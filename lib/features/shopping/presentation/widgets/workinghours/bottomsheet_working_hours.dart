@@ -2,6 +2,7 @@ import 'package:almusafir_direct/core/utils/resource/text_style.dart';
 import 'package:almusafir_direct/core/widget/liner.widget.dart';
 import 'package:almusafir_direct/features/shopping/presentation/widgets/workinghours/working_hourse.widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../../../core/data/models/department/data.dart';
@@ -28,7 +29,7 @@ class BottomSheetWorkingHoursView extends StatelessWidget {
                 color: Colors.deepOrange,
               ),
               Text(
-                'أوقات العمل',
+                "Working Hours".tr,
                 style: AppTextStyles.getMediumStyle(fontSize: 16),
               ),
             ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../../core/utils/resource/color_app.dart';
@@ -18,30 +19,35 @@ class NavigationWidget extends StatelessWidget {
     return NavigationBar(
       selectedIndex: currentIndex,
       onDestinationSelected: chingeScreen,
-      destinations: const [
+      destinations: [
         NavigationDestination(
-          icon: Icon(Iconsax.home_copy),
-          selectedIcon: Icon(Iconsax.home_1, color: AppColors.mainOneColor),
-          label: 'الرئيسية',
+          icon: const Icon(Iconsax.home_copy),
+          selectedIcon:
+              const Icon(Iconsax.home_1, color: AppColors.mainOneColor),
+          label: "Home".tr,
         ),
         NavigationDestination(
-            icon: Icon(Iconsax.calendar_1_copy),
-            selectedIcon: Icon(Iconsax.calendar, color: AppColors.mainOneColor),
-            label: 'حجوزاتي'),
+            icon: const Icon(Iconsax.calendar_1_copy),
+            selectedIcon:
+                const Icon(Iconsax.calendar, color: AppColors.mainOneColor),
+            label: "My Bookings".tr),
         NavigationDestination(
-          icon: Icon(Iconsax.message_copy),
-          selectedIcon: Icon(Iconsax.message, color: AppColors.mainOneColor),
-          label: 'الرسائل',
+          icon: const Icon(Iconsax.message_copy),
+          selectedIcon:
+              const Icon(Iconsax.message, color: AppColors.mainOneColor),
+          label: "Chat".tr,
         ),
         NavigationDestination(
-          icon: Icon(Icons.explore_outlined),
-          selectedIcon: Icon(Icons.explore, color: AppColors.mainOneColor),
-          label: 'استكشاف',
+          icon: const Icon(Icons.explore_outlined),
+          selectedIcon:
+              const Icon(Icons.explore, color: AppColors.mainOneColor),
+          label: "Explore".tr,
         ),
         NavigationDestination(
-          icon: Icon(Iconsax.frame_1_copy),
-          selectedIcon: Icon(Iconsax.frame, color: AppColors.mainOneColor),
-          label: 'حسابي',
+          icon: const Icon(Iconsax.frame_1_copy),
+          selectedIcon:
+              const Icon(Iconsax.frame, color: AppColors.mainOneColor),
+          label: "My Account".tr,
         ),
       ],
     );

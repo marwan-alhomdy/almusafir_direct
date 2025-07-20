@@ -32,7 +32,7 @@ class OrderSuccessPage extends StatelessWidget {
                     repeat: false,
                   ),
                 ),
-                Text("تم الطلب بنجاح!",
+                Text("Order Placed Successfully!".tr,
                     style: AppTextStyles.getBoldStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -46,12 +46,12 @@ class OrderSuccessPage extends StatelessWidget {
                 ButtonWidget(
                     onTap: () =>
                         Helper.homeKey.currentState?.changeScreenWithBack(0),
-                    text: "العودة للرئيسية"),
+                    text: "Back to Home".tr),
                 const SizedBox(height: 10),
                 OutlinedButtonWidget(
                     onTap: () =>
                         Helper.homeKey.currentState?.changeScreenWithBack(1),
-                    text: "طلباتي"),
+                    text: "My Orders".tr),
                 const SizedBox(height: 30),
               ],
             ),

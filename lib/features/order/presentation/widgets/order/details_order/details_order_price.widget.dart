@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../../../core/utils/drwn/get_h_dashed_line_painter.dart';
 import '../../../../../../core/utils/resource/text_style.dart';
@@ -15,17 +16,17 @@ class DetailsOrderPriceWidget extends StatelessWidget {
         child: Column(
           spacing: 2,
           children: [
-            amountWidget("مبلغ الطلب :", order.subtotal),
-            amountWidget("مبلغ التوصيل :", order.shippingTotal),
-            amountWidget("مبلغ الخصم :", order.shippingDiscount),
-            amountWidget("الإكرامية أو البقشيش:", order.tipAmount),
-            amountWidget("رسوم خدمة :", order.plusAmount),
-            amountWidget("مبلغ الضريبة :", order.shippingTaxes),
-            amountWidget("خصومات إضافية :", order.minusAmount),
+            amountWidget("Order Amount:".tr, order.subtotal),
+            amountWidget("Delivery Fee:".tr, order.shippingTotal),
+            amountWidget("Discount Amount:".tr, order.shippingDiscount),
+            amountWidget("Tip or Gratuity:".tr, order.tipAmount),
+            amountWidget("Service Fee:".tr, order.plusAmount),
+            amountWidget("Tax Amount:".tr, order.shippingTaxes),
+            amountWidget("Additional Discounts:".tr, order.minusAmount),
             const SizedBox(height: 5),
             const HorizontalDashedWidget(),
             const SizedBox(height: 5),
-            amountWidget("إجمالي الطلب:", order.orderTotal),
+            amountWidget("Total Order Amount:".tr, order.orderTotal),
             const SizedBox(height: 10),
           ],
         ),

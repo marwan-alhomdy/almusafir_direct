@@ -1,4 +1,101 @@
 const Map<String, String> _almusafirAr = {
+  "Order Amount:": "مبلغ الطلب :",
+  "Delivery Fee:": "مبلغ التوصيل :",
+  "Discount Amount:": "مبلغ الخصم :",
+  "Tip or Gratuity:": "الإكرامية أو البقشيش:",
+  "Service Fee:": "رسوم خدمة :",
+  "Tax Amount:": "مبلغ الضريبة :",
+  "Additional Discounts:": "خصومات إضافية :",
+  "Total Order Amount:": "إجمالي الطلب:",
+
+  //!-- profile --->
+  "No transactions available": "لاتوجد عمليات",
+  "Delete Image": "حدف الصوره",
+  "Created and developed by Nano Soft": 'تم الإبتكار والتطوير بواسطة نانو سوفت',
+  "Total Points": "إجمالي النقاط",
+  "Total Deleted Points": 'إجمالي النقاط المحذوفة',
+  "Total Used Points": 'إجمالي النقاط المستخدمة',
+  "Total Current Points": 'إجمالي النقاط الحالية',
+  "Point Price": 'سعر النقطة',
+  "Total Points Value": 'إجمالي قيمة النقاط',
+  "Total Value of Used Points": 'اجمالي قيمة النقاط  المستخدمة',
+  "Total Value of Available Points": 'اجمالي قيمة النقاط المتاحة',
+  "View Points Transactions": 'عرض عمليات النقاط',
+  "Payment Methods": "طرق الدفع",
+  "My Points": 'نقاطي',
+  "Referral": "الإحالة",
+  "Privacy Policy": "سياسة الخصوصية",
+  "App Developer": 'مطور التطبيق',
+  "Change Theme": "تغيير الثيم",
+  "system": "النظام",
+  "dark": "داكن",
+  "light": "فاتح",
+
+  "Invite Friends and Companies": "دعوة الصديق والشركات",
+  "Your Personal Code": "رمزك الشخصي",
+  "Or Share": "أو شارك",
+  "Text copied!": 'تم نسخ النص!',
+  //!-- checkout -->
+  "My Orders": "طلباتي",
+  "Back to Home": "العودة للرئيسية",
+  "Order Placed Successfully!": "تم الطلب بنجاح!",
+  "Order Summary": "ملخص الطلب",
+  "This field is required": "هذا الحقل مطلوب",
+  "Is the trip round-trip?": "هل الرحلة ذهاب وعود؟",
+  "Departure Station": "المحطة من ",
+  "Arrival Station": "المحطة الى",
+  "Trips": "الرحلات",
+  "Departure Date": "تاريخ الذهاب",
+  "Return Date": "تاريخ العودة",
+  "Is it breakable?": "هل قابل للكسر ؟",
+  "Is it sensitive in terms of storage?": 'حساس في مسألة التخزين ؟',
+  "Type of Cargo": "نوع الحمولة",
+  "Number of People": "عدد الاشخاص",
+  "Delivery Method": "وسيلة التوصيل",
+  "Payment Method": "طريقة الدفع",
+  "Discount Code": "كود الخصم",
+  "Driver Tip": "إكرامية السائق",
+  "Please enter the expected amount": "يرجى كتابة المبلغ المتوقع ",
+  "Customer Note": "ملاحظة العميل",
+  "Cargo Notes": "ملاحظات الحمولة",
+  //!--- order ---->
+  "Payment Method:": "طريقة الدفع :",
+  "Tax Number:": "الرقم الضريبي:",
+  "Delivery Distance:": "مسافة التوصيل :",
+  "Notes": "الملاحظات",
+  "No notes available": "لا يوجد ملاحظات",
+  "No orders found": "لا توجد طلبات",
+  "Order Number:": "رقم الطلب :",
+  "Date:": "التاريخ :",
+  "Time:": "الوقت :",
+  "Amount:": "Amount:",
+  "View Booking Details": "عرض تفاصيل الحجز",
+  "Total:": "Total:",
+  //!-- other -->
+  "Home": "الرئيسية",
+  "My Bookings": 'حجوزاتي',
+  "Chat": 'الرسائل',
+  "Explore": 'استكشاف',
+  "My Account": 'حسابي',
+  "Get started with us to receive the best services! 🎁✨":
+      "انطلق معنا للحصول على افضل الخدمات!🎁✨",
+  'Soon': 'قريبًا',
+  "Show All": "عرض الكل",
+  "Say Assalamu Alaikum": "قل السلام عليكم",
+  "Message": "الرسالة",
+  "No Cart Available": "لاتوجد سلة",
+  "Complete Order": 'إتمام الطلب',
+  "Delete Cart": "حذف السلة",
+  "Are you sure you want to delete the cart?": "هل انت متاكد من حذف السلة؟",
+  "Referral Code": 'رمز الإحالة',
+  'Inquire Now': "استفسر الآن",
+  "You need to log in. Do you want to log in?":
+      "يجب عليك تسجيل الدخول ، هل تريد تسجيل الدخول ؟",
+  "Go to Cart": 'الانتقال إلى السلة',
+  "Closed": "مغلق",
+  "Open": "مفتوح",
+  "Store Rating": 'تقييم المتجر',
+  "Working Hours": 'أوقات العمل',
   "website": "المواقع الإلكترونية",
   "youDon'tHaveAnAccount": "ليس لديك حساب ؟",
   "createAccount": "إنشاء حساب",
@@ -326,7 +423,7 @@ const Map<String, String> _ar = {
   "upload": "تحميل",
   "camera": "كاميرا",
   "gallery": "معرض الصور",
-  "rating": "التقييم",
+  "rating": "تقييم",
   "rating_text": "تعليق التقييم",
   "rate_order": "ما هو تقييمك لهذا الطلب",
   "pre_paid_order": "هذا الطلب مدفوع مسبقًا من خلال الطلب رقم ",

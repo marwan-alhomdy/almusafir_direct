@@ -68,8 +68,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
             Row(
               spacing: 5,
               children: [
-                Text('رمز الإحالة'.tr, style: AppTextStyles.getMediumStyle()),
-                Text("(اختياري)",
+                Text("Referral Code".tr, style: AppTextStyles.getMediumStyle()),
+                Text("optional".tr,
                     style: AppTextStyles.getRegularStyle(fontSize: 12)),
               ],
             ),

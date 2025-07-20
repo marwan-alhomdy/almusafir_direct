@@ -1,5 +1,6 @@
 import 'package:almusafir_direct/features/order/data/models/order_module/order_module.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../../../../core/utils/handler/handler.dart';
@@ -36,17 +37,17 @@ class HeaderDetailsOrderWidget extends StatelessWidget {
             const Divider(height: 5),
             OrderInfoWidget(
               icon: Iconsax.ticket_copy,
-              label: "رقم الطلب :",
+              label: "Order Number:".tr,
               value: "${order.id ?? "---"}#",
             ),
             OrderInfoWidget(
               icon: Iconsax.calendar_2_copy,
-              label: "التاريخ :",
+              label: "Date:".tr,
               value: DateTimeHandler.formatDateFromString(order.createdAt),
             ),
             OrderInfoWidget(
               icon: Iconsax.timer_1_copy,
-              label: "الوقت :",
+              label: "Time:".tr,
               value: DateTimeHandler.formatTimeFromString(order.createdAt),
             ),
           ],

@@ -38,22 +38,22 @@ class CardOrderWidget extends StatelessWidget {
             const SizedBox(height: 10),
             OrderInfoWidget(
               icon: Iconsax.ticket_copy,
-              label: "رقم الطلب :",
+              label: "Order Number:".tr,
               value: "${order.id ?? "---"}#",
             ),
             OrderInfoWidget(
               icon: Iconsax.calendar_2_copy,
-              label: "التاريخ :",
+              label: "Date:".tr,
               value: DateTimeHandler.formatDateFromString(order.createdAt),
             ),
             OrderInfoWidget(
               icon: Iconsax.timer_1_copy,
-              label: "الوقت :",
+              label: "Time:".tr,
               value: DateTimeHandler.formatTimeFromString(order.createdAt),
             ),
             OrderInfoWidget(
               icon: Iconsax.money_copy,
-              label: "المبلغ :",
+              label: "Amount:".tr,
               value: "${order.orderTotal ?? "0"}",
             ),
             const Divider(height: 20),
@@ -73,7 +73,7 @@ class CardOrderWidget extends StatelessWidget {
                 children: [
                   const Icon(Iconsax.document, color: Colors.white),
                   Text(
-                    "عرض فاتورة الحجز",
+                    "View Booking Details".tr,
                     style: AppTextStyles.getMediumStyle(),
                   ),
                 ],

@@ -62,7 +62,7 @@ class _HomeWidget extends StatelessWidget {
                   style: AppTextStyles.getMediumStyle(fontSize: 18),
                 ),
                 Text(
-                  "انطلق معنا للحصول على افضل الخدمات!" "🎁✨".tr,
+                  "Get started with us to receive the best services! 🎁✨".tr,
                   style: AppTextStyles.getRegularStyle(),
                 ),
               ],

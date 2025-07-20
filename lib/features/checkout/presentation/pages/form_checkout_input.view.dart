@@ -71,7 +71,7 @@ class FormCheckoutInputView extends StatelessWidget {
       showDialog(
         context: context,
         builder: (cxt) => MessageBoxDialogWidget(
-          message: "يجب عليك تسجيل الدخول ، هل تريد تسجيل الدخول ؟".tr,
+          message: "You need to log in. Do you want to log in?".tr,
           onAccenpt: () {
             Get.back();
             Get.to(() => const AuthView(),

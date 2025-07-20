@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../../../core/utils/resource/color_app.dart';
 import '../../../../../../core/utils/resource/text_style.dart';
@@ -86,7 +87,7 @@ class CardOrderProductWidget extends StatelessWidget {
               ],
             ),
             Text(
-              "الاجمالي : ${product?.subtotal.toString() ?? "--"}",
+              "${"Total:".tr} ${product?.subtotal.toString() ?? "--"}",
               style: AppTextStyles.getRegularStyle(),
             ),
           ],

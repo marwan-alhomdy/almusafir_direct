@@ -43,7 +43,7 @@ class MyCartView extends StatelessWidget {
             actions: [
               Builder(builder: (context) {
                 return IconButton(
-                  tooltip: "حذف السلة",
+                  tooltip: "Delete Cart".tr,
                   color: AppColors.redForeColor,
                   icon: const Icon(Iconsax.trash),
                   onPressed: () => _deleteCart(context),
@@ -89,7 +89,7 @@ class MyCartView extends StatelessWidget {
       builder: (_) => Material(
         color: Colors.transparent,
         child: MessageBoxDialogWidget(
-          message: "هل انت متاكد من حذف السلة؟".tr,
+          message: "Are you sure you want to delete the cart?".tr,
           onAccenpt: () {
             context.read<CartCubit>().deleteCart();
             Get.back();

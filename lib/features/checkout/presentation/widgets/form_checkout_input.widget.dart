@@ -3,6 +3,7 @@ import 'package:almusafir_direct/core/utils/validator/validator.dart';
 import 'package:almusafir_direct/core/widget/field/date_picker_fild_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../../core/Animation/animation_column_widget.dart';
@@ -48,7 +49,7 @@ class _FormCheckoutInputWidgetState extends State<FormCheckoutInputWidget> {
               CheckboxListTile(
                 contentPadding: const EdgeInsetsDirectional.only(start: 10),
                 value: servicesCubit.isRoundTrip,
-                title: const Text("هل الرحلة ذهاب وعود؟"),
+                title: Text("Is the trip round-trip?".tr),
                 secondary: const Icon(Iconsax.arrow_swap_horizontal_copy,
                     color: Colors.blue),
                 onChanged: (value) =>
@@ -59,11 +60,11 @@ class _FormCheckoutInputWidgetState extends State<FormCheckoutInputWidget> {
           if (orderType?.isAllowDepartureDestination == 1)
             CardInputWidget(
               children: [
-                const RouteInputWidget(
-                    title: "المحطة من ", icon: Iconsax.location),
+                RouteInputWidget(
+                    title: "Departure Station".tr, icon: Iconsax.location),
                 DropTextFieldWidget(
                   validator: orderType?.isRequiredDepartureDestination == 1
-                      ? "هذا الحقل مطلوب".validator()
+                      ? "This field is required".tr.validator()
                       : null,
                   controller: servicesCubit.fromTripController,
                   onTap: () =>
@@ -75,12 +76,12 @@ class _FormCheckoutInputWidgetState extends State<FormCheckoutInputWidget> {
           if (orderType?.isAllowArrivalDestination == 1)
             CardInputWidget(
               children: [
-                const RouteInputWidget(
-                    title: "المحطة الى", icon: Iconsax.location),
+                RouteInputWidget(
+                    title: "Arrival Station".tr, icon: Iconsax.location),
                 DropTextFieldWidget(
                   controller: servicesCubit.toTripController,
                   validator: orderType?.isRequiredArrivalDestination == 1
-                      ? "هذا الحقل مطلوب".validator()
+                      ? "This field is required".tr.validator()
                       : null,
                   onTap: () =>
                       formServiceCubit.manager.onToAirport(servicesCubit),
@@ -90,12 +91,11 @@ class _FormCheckoutInputWidgetState extends State<FormCheckoutInputWidget> {
           if (orderType?.isAllowFlightNumber == 1)
             CardInputWidget(
               children: [
-                const RouteInputWidget(
-                    title: "الرحلات", icon: Iconsax.location),
+                RouteInputWidget(title: "Trips".tr, icon: Iconsax.location),
                 DropTextFieldWidget(
                   controller: servicesCubit.flightController,
                   validator: orderType?.isRequiredFlightNumber == 1
-                      ? "هذا الحقل مطلوب".validator()
+                      ? "This field is required".tr.validator()
                       : null,
                   onTap: () =>
                       formServiceCubit.manager.onFlights(servicesCubit),
@@ -105,12 +105,12 @@ class _FormCheckoutInputWidgetState extends State<FormCheckoutInputWidget> {
           if (orderType?.isAllowOrderDate == 1)
             CardInputWidget(
               children: [
-                const RouteInputWidget(
-                    title: "تاريخ الذهاب", icon: Iconsax.calendar),
+                RouteInputWidget(
+                    title: "Departure Date".tr, icon: Iconsax.calendar),
                 DatePickerFieldWidget(
                   controller: servicesCubit.orderDateController,
                   validator: orderType?.isRequiredOrderDate == 1
-                      ? "هذا الحقل مطلوب".validator()
+                      ? "This field is required".tr.validator()
                       : null,
                 ),
               ],
@@ -118,12 +118,12 @@ class _FormCheckoutInputWidgetState extends State<FormCheckoutInputWidget> {
           if (orderType?.isAllowReturnDate == 1 && servicesCubit.isRoundTrip)
             CardInputWidget(
               children: [
-                const RouteInputWidget(
-                    title: "تاريخ العودة", icon: Iconsax.calendar),
+                RouteInputWidget(
+                    title: "Return Date".tr, icon: Iconsax.calendar),
                 DatePickerFieldWidget(
                   controller: servicesCubit.returnDateController,
                   validator: orderType?.isRequiredReturnDate == 1
-                      ? "هذا الحقل مطلوب".validator()
+                      ? "This field is required".tr.validator()
                       : null,
                 ),
               ],
@@ -134,7 +134,7 @@ class _FormCheckoutInputWidgetState extends State<FormCheckoutInputWidget> {
                 CheckboxListTile(
                   contentPadding: const EdgeInsetsDirectional.only(start: 10),
                   value: servicesCubit.isLoadFragileMaterials,
-                  title: const Text("هل قابل للكسر ؟"),
+                  title: Text("Is it breakable?".tr),
                   secondary: const Icon(Iconsax.dcube, color: Colors.blue),
                   onChanged: (value) => setState(() =>
                       servicesCubit.isLoadFragileMaterials = value ?? true),
@@ -148,7 +148,7 @@ class _FormCheckoutInputWidgetState extends State<FormCheckoutInputWidget> {
                 CheckboxListTile(
                   contentPadding: const EdgeInsetsDirectional.only(start: 10),
                   value: servicesCubit.isLoadStorageSensitive,
-                  title: const Text('حساس في مسألة التخزين ؟'),
+                  title: Text("Is it sensitive in terms of storage?".tr),
                   secondary: const Icon(Iconsax.dcube, color: Colors.blue),
                   onChanged: (value) => setState(() =>
                       servicesCubit.isLoadStorageSensitive = value ?? true),
@@ -158,11 +158,11 @@ class _FormCheckoutInputWidgetState extends State<FormCheckoutInputWidget> {
           if (orderType?.isAllowLoadType == 1)
             CardInputWidget(
               children: [
-                const RouteInputWidget(title: "نوع الحمولة", icon: Iconsax.box),
+                RouteInputWidget(title: "Type of Cargo".tr, icon: Iconsax.box),
                 DropTextFieldWidget(
                   controller: servicesCubit.loadsTypeController,
                   validator: orderType?.isRequiredLoadType == 1
-                      ? "هذا الحقل مطلوب".validator()
+                      ? "This field is required".tr.validator()
                       : null,
                   onTap: () =>
                       formServiceCubit.manager.onLoadsTypes(servicesCubit),
@@ -177,19 +177,19 @@ class _FormCheckoutInputWidgetState extends State<FormCheckoutInputWidget> {
           //       RouteInputWidget(
           //           title: "اوزان الحمولة", icon: Iconsax.align_vertically),
           //       TextFieldWidget(
-          //           validator: "هذا الحقل مطلوب".validator(),
+          //           validator: "This field is required".tr.validator(),
           //           controller: servicesCubit.returnDateController),
           //     ],
           //   ),
           if (orderType?.isAllowLoadPeople == 1)
             CardInputWidget(
               children: [
-                const RouteInputWidget(
-                    title: "عدد الاشخاص", icon: Iconsax.profile_2user),
+                RouteInputWidget(
+                    title: "Number of People".tr, icon: Iconsax.profile_2user),
                 TextFieldWidget(
                     keyboardType: TextInputType.number,
                     validator: orderType?.isRequiredLoadPeople == 1
-                        ? "هذا الحقل مطلوب".validator()
+                        ? "This field is required".tr.validator()
                         : null,
                     controller: servicesCubit.countPersonController),
               ],
@@ -197,12 +197,12 @@ class _FormCheckoutInputWidgetState extends State<FormCheckoutInputWidget> {
           if (orderType?.isAllowVehicleType == 1)
             CardInputWidget(
               children: [
-                const RouteInputWidget(
-                    title: "وسيلة التوصيل", icon: Iconsax.truck_fast),
+                RouteInputWidget(
+                    title: "Delivery Method".tr, icon: Iconsax.truck_fast),
                 DropTextFieldWidget(
                   controller: servicesCubit.vehicleTypeController,
                   validator: orderType?.isRequiredVehicleType == 1
-                      ? "هذا الحقل مطلوب".validator()
+                      ? "This field is required".tr.validator()
                       : null,
                   onTap: () =>
                       formServiceCubit.manager.onVehicleType(servicesCubit),
@@ -211,9 +211,9 @@ class _FormCheckoutInputWidgetState extends State<FormCheckoutInputWidget> {
             ),
           CardInputWidget(
             children: [
-              const RouteInputWidget(title: "طريقة الدفع", icon: Iconsax.money),
+              RouteInputWidget(title: "Payment Method".tr, icon: Iconsax.money),
               DropTextFieldWidget(
-                validator: "هذا الحقل مطلوب".validator(),
+                validator: "This field is required".tr.validator(),
                 controller: servicesCubit.paymentMethodTypeController,
                 onTap: () =>
                     formServiceCubit.manager.onPaymentMothed(servicesCubit),
@@ -224,15 +224,14 @@ class _FormCheckoutInputWidgetState extends State<FormCheckoutInputWidget> {
           if (orderType?.isAllowCoupon == 1)
             CardInputWidget(
               children: [
-                const RouteInputWidget(title: "كود الخصم", icon: Iconsax.gift),
+                RouteInputWidget(title: "Discount Code".tr, icon: Iconsax.gift),
                 TextFieldWidget(controller: servicesCubit.couponController)
               ],
             ),
           if (orderType?.isAllowTip == 1)
             CardInputWidget(
               children: [
-                const RouteInputWidget(
-                    title: "إكرامية السائق", icon: Iconsax.car),
+                RouteInputWidget(title: "Driver Tip".tr, icon: Iconsax.car),
                 TextFieldWidget(
                     controller: servicesCubit.tipController,
                     keyboardType: TextInputType.number),
@@ -241,14 +240,14 @@ class _FormCheckoutInputWidgetState extends State<FormCheckoutInputWidget> {
           if (orderType?.isAllowExpectedCartTotal == 1)
             CardInputWidget(
               children: [
-                const RouteInputWidget(
-                    title: "يرجى كتابة المبلغ المتوقع ",
+                RouteInputWidget(
+                    title: "Please enter the expected amount".tr,
                     icon: Iconsax.dollar_circle),
                 TextFieldWidget(
                   keyboardType: TextInputType.number,
                   controller: servicesCubit.expectedTotalController,
                   validator: orderType?.isRequiredExpectedCartTotal == 1
-                      ? "هذا الحقل مطلوب".validator()
+                      ? "This field is required".tr.validator()
                       : null,
                 ),
               ],
@@ -256,13 +255,12 @@ class _FormCheckoutInputWidgetState extends State<FormCheckoutInputWidget> {
           if (orderType?.isAllowCustomerNotes == 1)
             CardInputWidget(
               children: [
-                const RouteInputWidget(
-                    title: "ملاحظة العميل", icon: Iconsax.note),
+                RouteInputWidget(title: "Customer Note".tr, icon: Iconsax.note),
                 TextFieldWidget(
                   maxLines: 3,
                   controller: servicesCubit.customerNoteController,
                   validator: orderType?.isRequiredCustomerNotes == 1
-                      ? "هذا الحقل مطلوب".validator()
+                      ? "This field is required".tr.validator()
                       : null,
                 ),
               ],
@@ -270,13 +268,12 @@ class _FormCheckoutInputWidgetState extends State<FormCheckoutInputWidget> {
           if (orderType?.isAllowLoadNotes == 1)
             CardInputWidget(
               children: [
-                const RouteInputWidget(
-                    title: "ملاحظات الحمولة", icon: Iconsax.note),
+                RouteInputWidget(title: "Cargo Notes".tr, icon: Iconsax.note),
                 TextFieldWidget(
                   maxLines: 3,
                   controller: servicesCubit.loadNotesController,
                   validator: orderType?.isRequiredLoadNotes == 1
-                      ? "هذا الحقل مطلوب".validator()
+                      ? "This field is required".tr.validator()
                       : null,
                 ),
               ],

@@ -1,5 +1,6 @@
 import 'package:almusafir_direct/helper/public_infromation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../../../../core/api/favorite.api.dart';
@@ -75,7 +76,7 @@ class _CardShopCategoryWidgetState extends State<CardShopCategoryWidget> {
                   ),
                   const Spacer(),
                   Text(
-                    widget.shop.isOpen == 1 ? "مفتوح" : "مغلق",
+                    widget.shop.isOpen == 1 ? "Open".tr : "Closed".tr,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: AppTextStyles.getRegularStyle(

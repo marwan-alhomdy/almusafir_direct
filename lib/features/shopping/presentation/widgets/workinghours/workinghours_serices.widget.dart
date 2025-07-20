@@ -1,5 +1,6 @@
 import 'package:almusafir_direct/core/utils/resource/text_style.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../../../core/data/models/working_hours/working_hours.module.dart';
@@ -27,7 +28,7 @@ class WorkingHoursSericesWidget extends StatelessWidget {
                 color: Colors.deepOrange,
               ),
               Text(
-                'أوقات العمل',
+                "Working Hours".tr,
                 style: AppTextStyles.getMediumStyle(fontSize: 16),
               ),
             ],

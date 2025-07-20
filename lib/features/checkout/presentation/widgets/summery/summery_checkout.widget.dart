@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 import '../../../../../../core/utils/drwn/get_h_dashed_line_painter.dart';
 import '../../../../../../core/utils/resource/text_style.dart';
@@ -19,17 +20,20 @@ class SummeryCheckoutWidget extends StatelessWidget {
           child: Column(
             spacing: 2,
             children: [
-              amountWidget("مبلغ الطلب :", cartTotals?.subtotal?.value),
-              amountWidget("مبلغ التوصيل :", cartTotals?.shippingTotal?.value),
-              amountWidget("مبلغ الخصم :", cartTotals?.shippingDiscount?.value),
-              amountWidget("الإكرامية أو البقشيش:", cartTotals?.tip?.value),
-              amountWidget("رسوم خدمة :", cartTotals?.plusAmount?.value),
-              amountWidget("مبلغ الضريبة :", cartTotals?.shippingTaxes?.value),
-              amountWidget("خصومات إضافية :", cartTotals?.minusAmount?.value),
+              amountWidget("Order Amount:".tr, cartTotals?.subtotal?.value),
+              amountWidget(
+                  "Delivery Fee:".tr, cartTotals?.shippingTotal?.value),
+              amountWidget(
+                  "Discount Amount:".tr, cartTotals?.shippingDiscount?.value),
+              amountWidget("Tip or Gratuity:".tr, cartTotals?.tip?.value),
+              amountWidget("Service Fee:".tr, cartTotals?.plusAmount?.value),
+              amountWidget("Tax Amount:".tr, cartTotals?.shippingTaxes?.value),
+              amountWidget(
+                  "Additional Discounts:".tr, cartTotals?.minusAmount?.value),
               const SizedBox(height: 5),
               const HorizontalDashedWidget(),
               const SizedBox(height: 5),
-              amountWidget("إجمالي الطلب:", cartTotals?.total?.value),
+              amountWidget("Total Order Amount:".tr, cartTotals?.total?.value),
               const SizedBox(height: 10),
             ],
           ),

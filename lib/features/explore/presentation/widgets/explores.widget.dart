@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 import '../../../../../core/widget/state/error.widget.dart';
 import '../logic/explore_bloc/explore_bloc.dart';
@@ -25,8 +26,8 @@ class ShoppingWidget extends StatelessWidget {
           ));
         } else if (state is ExploreSuccessfullyState) {
           return (state.shoppingExplores.isEmpty)
-              ? const SliverFillRemaining(
-                  child: Center(child: Text("لا توجد بيانات")))
+              ? SliverFillRemaining(
+                  child: Center(child: Text("noDataAlert".tr)))
               : SliverList(
                   delegate: SliverChildListDelegate(
                     [

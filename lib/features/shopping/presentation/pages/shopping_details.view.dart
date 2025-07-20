@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../../core/data/models/department/data.dart';
@@ -41,7 +42,7 @@ class ShopDetailsView extends StatelessWidget {
                         TextButton(
                           onPressed: showRatiingShow,
                           child: Text(
-                            "تقييم",
+                            "rating".tr,
                             style: AppTextStyles.getMediumStyle(
                               color: Colors.orange,
                             ),
@@ -73,7 +74,7 @@ class ShopDetailsView extends StatelessWidget {
                     children: [
                       const Icon(Iconsax.note_2_copy, color: Colors.deepOrange),
                       Text(
-                        "الوصف",
+                        "description".tr,
                         style: AppTextStyles.getMediumStyle(fontSize: 20),
                       ),
                     ],

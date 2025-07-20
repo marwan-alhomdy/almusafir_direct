@@ -12,6 +12,7 @@ import '../../../../core/logic/theme_cubit/theme_cubit.dart';
 import '../../../../core/utils/dialoge/messagebox_dialog_widget.dart';
 import '../../../../helper/public_infromation.dart';
 import '../../../auth/persention/view/auth_view.dart';
+import '../../../splash/presentation/splash_view.dart';
 import '../bloc/profile_bloc/profile_bloc.dart';
 import '../view/contactus.view.dart';
 import '../view/payment.methods.view.dart';
@@ -47,13 +48,13 @@ class _ProfileWidgetState extends State<ProfileWidget> {
         CardListProfileWidget(
           onTap: () => Get.to(() => const PaymentMethodsWidget()),
           icon: Iconsax.card,
-          title: "طرق الدفع".tr,
+          title: "Payment Methods".tr,
         ),
 
         CardListProfileWidget(
           onTap: () => Get.to(() => const ContactUsView()),
           icon: Iconsax.message,
-          title: "تواصل معنا".tr,
+          title: "contact_us".tr,
         ),
 
         // CardListProfileWidget(
@@ -71,13 +72,13 @@ class _ProfileWidgetState extends State<ProfileWidget> {
           CardListProfileWidget(
             onTap: () => Get.to(() => const MyPointsView()),
             icon: Iconsax.wallet,
-            title: "نقاطي".tr,
+            title: "My Points".tr,
           ),
         if (Helper.isAuth)
           CardListProfileWidget(
             onTap: () => Get.to(() => const ReferralView()),
             icon: Iconsax.share,
-            title: "الإحالة".tr,
+            title: "Referral".tr,
           ),
 
         CardListProfileWidget(
@@ -86,7 +87,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
             launchUrl(Uri.parse(privacy), mode: LaunchMode.externalApplication);
           },
           icon: Iconsax.information,
-          title: "سياسة الخصوصية".tr,
+          title: "Privacy Policy".tr,
         ),
         CardListProfileWidget(
           onTap: chingeLanguage,
@@ -96,12 +97,12 @@ class _ProfileWidgetState extends State<ProfileWidget> {
         CardListProfileWidget(
           onTap: () => BottomSheetWidget.showIsScroll(const DevloperWidget()),
           icon: Icons.code,
-          title: 'مطور التطبيق'.tr,
+          title: "App Developer".tr,
         ),
         CardListProfileWidget(
           onTap: changeTheme,
           icon: Iconsax.sun_1,
-          title: "تغيير الثيم".tr,
+          title: "Change Theme".tr,
         ),
 
         if (Helper.isAuth) ...[
@@ -124,7 +125,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
     LocaleController localeController = Get.find();
     final codeLng = localeController.languageCode == "en" ? "ar" : "en";
     localeController.chingeLanguage(languageCode: codeLng);
-    // Get.offAll(() => const SplashView());
+    Get.offAll(() => const SplashView());
   }
 
   void changeTheme() {

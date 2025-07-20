@@ -35,7 +35,7 @@ class CounterProductInCardWidget extends StatelessWidget {
       showDialog(
         context: context,
         builder: (cxt) => MessageBoxDialogWidget(
-          message: "يجب عليك تسجيل الدخول ، هل تريد تسجيل الدخول ؟".tr,
+          message: "You need to log in. Do you want to log in?".tr,
           onAccenpt: () {
             Get.back();
             Get.to(() => const AuthView(),
@@ -61,7 +61,7 @@ class CounterProductInCardWidget extends StatelessWidget {
           shape: RoundedRectangleBorderAttribute.all(5),
           icon: const Icon(Iconsax.add_square, size: 16),
           extendedTextStyle: AppTextStyles.getMediumStyle(fontSize: 12),
-          label: const Text("اضافة"),
+          label: Text("ADD".tr),
           onPressed: () => onAddToCardOrAuth(context),
         ),
       );

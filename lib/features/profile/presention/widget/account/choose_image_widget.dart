@@ -36,7 +36,7 @@ class ChooseImageWidget extends StatelessWidget {
               onTap: () => onChooseImage(ImageSource.gallery)),
           _ButtonWidget(
               icon: Iconsax.trash_copy,
-              text: "حدف الصوره".tr,
+              text: "Delete Image".tr,
               color: Colors.redAccent,
               onTap: onDeleteImage),
           const SizedBox(height: 10),

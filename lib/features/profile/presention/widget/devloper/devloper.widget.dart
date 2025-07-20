@@ -1,6 +1,7 @@
 import 'package:almusafir_direct/core/utils/resource/images.dart';
 import 'package:almusafir_direct/core/widget/liner.widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -20,7 +21,7 @@ class DevloperWidget extends StatelessWidget {
         children: [
           const LineButtonSheetWidget(),
           Image.asset(AppImages.naonLogo, height: 80),
-          Text('تم الإبتكار والتطوير بواسطة نانو سوفت',
+          Text("Created and developed by Nano Soft".tr,
               style: AppTextStyles.getMediumStyle(fontSize: 16)),
           const SizedBox(height: 20),
           CardListProfileWidget(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../../../core/data/models/department/data.dart';
@@ -47,7 +48,7 @@ class HeaderShoppingWidget extends StatelessWidget {
                 ],
               ),
               Text(
-                shop?.isOpen == 1 ? "مفتوح" : "مغلق",
+                shop?.isOpen == 1 ? "Open".tr : "Closed".tr,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: AppTextStyles.getMediumStyle(
@@ -67,7 +68,7 @@ class HeaderShoppingWidget extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    "تقييم",
+                    "rating".tr,
                     style: AppTextStyles.getRegularStyle(
                       color: Colors.deepOrange,
                     ),
@@ -79,7 +80,7 @@ class HeaderShoppingWidget extends StatelessWidget {
               onTap: showWorkingHours,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text("اوقات العمل",
+                child: Text("Working Hours".tr,
                     style: AppTextStyles.getMediumStyle(color: Colors.blue)),
               ),
             ),

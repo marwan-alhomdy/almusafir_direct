@@ -39,7 +39,7 @@ class SplashViewBodyState extends State<SplashViewBody>
   }
 
   void _goToNextView() {
-    Future.delayed(const Duration(seconds: 2), () async {
+    Future.delayed(const Duration(seconds: 1), () async {
       final isOnBorading = CacheHelper.getBool(CachedAppKey.isOnBorading);
       if (isOnBorading ?? false) {
         Get.offAll(() => HomeView(key: Helper.homeKey));

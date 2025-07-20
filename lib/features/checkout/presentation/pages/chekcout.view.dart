@@ -56,7 +56,7 @@ class CheckoutView extends StatelessWidget {
                       FormCheckoutInputWidget(orderType: orderType),
                       if (productsCart.isNotEmpty) ...[
                         Text(
-                          "ملخص الطلب",
+                          "Order Summary".tr,
                           style: AppTextStyles.getMediumStyle(),
                         ),
                         ProductsCheckoutWidget(productsCart: productsCart),

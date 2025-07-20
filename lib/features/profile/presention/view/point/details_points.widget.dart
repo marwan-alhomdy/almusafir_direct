@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 import '/injection_container.dart' as di;
 import '../../../../../core/widget/appbar/my_appbar.dart';
@@ -40,7 +41,7 @@ class _PointsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (points.isEmpty) {
-      return const Center(child: Text("لاتوجد عمليات"));
+      return Center(child: Text("No transactions available".tr));
     }
 
     return SingleChildScrollView(

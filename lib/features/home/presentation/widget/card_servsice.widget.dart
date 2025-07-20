@@ -56,7 +56,7 @@ class CardServsiceWidget extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(
-                    'قريبًا',
+                    'Soon'.tr,
                     style: AppTextStyles.getRegularStyle(
                         color: Colors.white, fontSize: 12),
                   ),

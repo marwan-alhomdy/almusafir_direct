@@ -47,7 +47,7 @@ class _RattingShopWidgetState extends State<RattingShopWidget> {
                 color: Colors.grey,
               ),
               Text(
-                'تقييم المتجر',
+                "Store Rating".tr,
                 style: AppTextStyles.getMediumStyle(fontSize: 16),
               ),
             ],

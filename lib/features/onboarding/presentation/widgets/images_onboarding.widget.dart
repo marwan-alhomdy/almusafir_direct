@@ -1,3 +1,4 @@
+import 'package:almusafir_direct/helper/language.helper.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/resource/text_style.dart';
@@ -30,7 +31,9 @@ class ImagesOnboardingWidget extends StatelessWidget {
                 ),
               ),
               Text(
-                onboardingContents[i].title,
+                LanguageHelper.isArabic
+                    ? onboardingContents[i].title
+                    : onboardingContents[i].titleEn,
                 textAlign: TextAlign.center,
                 style: AppTextStyles.getRegularStyle(
                   fontSize: 16,

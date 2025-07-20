@@ -24,7 +24,7 @@ class ReferralWidget extends StatelessWidget {
           width: 200,
         ),
         Text(
-          "دعوة الصديق والشركات",
+          "Invite Friends and Companies".tr,
           style: AppTextStyles.getMediumStyle(),
         ),
         Text(
@@ -32,12 +32,12 @@ class ReferralWidget extends StatelessWidget {
           style: AppTextStyles.getMediumStyle(color: Colors.grey),
         ),
         Text(
-          "رمزك الشخصي",
+          "Your Personal Code".tr,
           style: AppTextStyles.getMediumStyle(),
         ),
         CopyTextButton(referral.alias ?? ""),
         const SizedBox(),
-        Text("أو شارك", style: AppTextStyles.getMediumStyle()),
+        Text("Or Share".tr, style: AppTextStyles.getMediumStyle()),
         const SizedBox(),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -115,11 +115,11 @@ class CopyTextButton extends StatelessWidget {
         onPressed: () {
           Clipboard.setData(ClipboardData(text: alias));
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
+            SnackBar(
               backgroundColor: Colors.blue,
               content: Text(
-                'تم نسخ النص!',
-                style: TextStyle(
+                "Text copied!".tr,
+                style: const TextStyle(
                     fontFamily: 'Tajawal',
                     fontSize: 16,
                     color: Colors.white,

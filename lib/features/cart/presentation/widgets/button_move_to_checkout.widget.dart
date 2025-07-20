@@ -30,7 +30,7 @@ class ButtonMoveToCheckoutWidget extends StatelessWidget {
                 child: ElevatedButton.icon(
                   onPressed: () => _moveToCheckout(context),
                   icon: const Icon(Icons.shopping_cart, color: Colors.white),
-                  label: const Text('اتمام الطلب'),
+                  label: Text("Complete Order".tr),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.mainOneColor,
                     foregroundColor: Colors.white,
@@ -52,7 +52,7 @@ class ButtonMoveToCheckoutWidget extends StatelessWidget {
       showDialog(
         context: context,
         builder: (cxt) => MessageBoxDialogWidget(
-          message: "يجب عليك تسجيل الدخول ، هل تريد تسجيل الدخول ؟".tr,
+          message: "You need to log in. Do you want to log in?".tr,
           onAccenpt: () {
             Get.back();
             Get.to(() => const AuthView(),

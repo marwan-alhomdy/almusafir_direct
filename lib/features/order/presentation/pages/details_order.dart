@@ -1,5 +1,6 @@
 import 'package:almusafir_direct/core/utils/resource/text_style.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../../core/widget/appbar/my_appbar.dart';
@@ -49,16 +50,16 @@ class DetailsOrderWidget extends StatelessWidget {
                 children: [
                   OrderInfoWidget(
                       icon: Iconsax.card_copy,
-                      label: "طريقة الدفع :",
+                      label: "Payment Method:".tr,
                       value: order.paymentMethod?.name ?? ""),
                   OrderInfoWidget(
                     icon: Iconsax.save_2_copy,
-                    label: "الرقم الضريبي:",
+                    label: "Tax Number:".tr,
                     value: order.department?.vatNumber ?? "",
                   ),
                   OrderInfoWidget(
                     icon: Iconsax.car_copy,
-                    label: "مسافة التوصيل :",
+                    label: "Delivery Distance:".tr,
                     value: order.shippingDistance?.toStringAsFixed(4) ?? "",
                   ),
                 ],
@@ -72,10 +73,10 @@ class DetailsOrderWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("الملاحظات",
+                  Text("Notes".tr,
                       style: AppTextStyles.getBoldStyle(fontSize: 16)),
                   const Divider(),
-                  Text(order.customerNotes ?? "لا يوجد ملاحظات",
+                  Text(order.customerNotes ?? "No notes available".tr,
                       style: AppTextStyles.getRegularStyle()),
                 ],
               ),

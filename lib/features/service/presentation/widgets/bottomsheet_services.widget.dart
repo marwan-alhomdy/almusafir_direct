@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -56,7 +57,7 @@ class BottomSheetServicesWidget extends StatelessWidget {
               children: [
                 const Icon(Iconsax.whatsapp, color: Colors.white),
                 Text(
-                  'Inquire Now',
+                  'Inquire Now'.tr,
                   style: AppTextStyles.getMediumStyle(),
                 ),
               ],

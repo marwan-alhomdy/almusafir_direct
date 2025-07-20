@@ -22,7 +22,7 @@ class EmptyWidget extends StatelessWidget {
         const Icon(Icons.nearby_error_outlined,
             color: AppColors.grayTwoColor, size: 120),
         const SizedBox(height: 20),
-        Text("لا توجد طلبات",
+        Text("No orders found".tr,
             style: AppTextStyles.getRegularStyle(fontSize: 16)),
         const SizedBox(height: 20),
         SizedBox(
